@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "agency": "DINUM (Interministerial Digital Directorate)",
+    "country": "France",
+    "toolName": "Albert API / LaSuite Assistant",
+    "primaryModel": "Mistral AI (Open-Weight)",
+    "hostingProvider": "SecNumCloud Sovereign Infrastructure",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "2",
+    "agency": "Federal Ministry of the Interior (BMI)",
+    "country": "Germany",
+    "toolName": "Bundes-AI Portal",
+    "primaryModel": "Aleph Alpha / Llama 3",
+    "hostingProvider": "GovCloud Germany (On-Premise)",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "3",
+    "agency": "National Health Insurance (Ameli)",
+    "country": "France",
+    "toolName": "Ameli Digital Support Bot",
+    "primaryModel": "Proprietary Commercial LLM",
+    "hostingProvider": "US Hyperscaler European Region",
+    "sovereigntyType": "Dependent",
+    "euAiActStatus": "In Transition",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "4",
+    "agency": "Ministry of Digital Transformation",
+    "country": "Spain",
+    "toolName": "AESIA Regulation Parser",
+    "primaryModel": "Llama 3 70B Fine-tuned",
+    "hostingProvider": "National Supercomputing Network (RES)",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  }
+]
