@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import {
   Search,
   ShieldCheck,
@@ -15,11 +15,44 @@ import {
   Check,
   X,
   User,
+  PlusCircle,
 } from "lucide-react";
 import observatoryData from "@/data/data.json";
 
 type Lang = "EN" | "FR" | "DE" | "AR";
 type SovereigntyFilter = "all" | "Sovereign" | "Dependent";
+type SubmitCountry =
+  | "France"
+  | "Germany"
+  | "Spain"
+  | "EU"
+  | "North Africa / Other";
+
+interface SubmitFormState {
+  agency: string;
+  country: SubmitCountry | "";
+  toolName: string;
+  modelHosting: string;
+  verificationUrl: string;
+  notes: string;
+}
+
+const EMPTY_SUBMIT_FORM: SubmitFormState = {
+  agency: "",
+  country: "",
+  toolName: "",
+  modelHosting: "",
+  verificationUrl: "",
+  notes: "",
+};
+
+const SUBMIT_COUNTRIES: SubmitCountry[] = [
+  "France",
+  "Germany",
+  "Spain",
+  "EU",
+  "North Africa / Other",
+];
 
 interface ObservatoryEntry {
   id: string;
@@ -162,6 +195,30 @@ const translations = {
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
     results: "results",
+    submitData: "Submit Data",
+    submitModalTitle: "Submit a Public AI Project",
+    submitAgencyLabel: "Public Agency / Organization Name",
+    submitAgencyPlaceholder: "e.g., French Ministry of Health",
+    submitCountryLabel: "Country",
+    submitCountryPlaceholder: "Select a country",
+    submitToolLabel: "AI Tool / Framework Name",
+    submitToolPlaceholder: "e.g., Albert API",
+    submitModelHostingLabel: "Primary Model & Hosting Provider",
+    submitModelHostingPlaceholder: "e.g., SecNumCloud Sovereign Cloud",
+    submitVerificationLabel: "Verification Source Link",
+    submitVerificationPlaceholder: "https://…",
+    submitNotesLabel: "Contributor Email / Notes",
+    submitNotesPlaceholder: "Optional contact or context",
+    submitForReview: "Submit for Review",
+    submitCancel: "Cancel",
+    submitSuccess:
+      "Thank you! Our research team (Adel El Bouzagaoui & A4I) will review your source URL.",
+    submitRequiredError: "Please complete all required fields.",
+    submitCountryFrance: "France",
+    submitCountryGermany: "Germany",
+    submitCountrySpain: "Spain",
+    submitCountryEu: "EU",
+    submitCountryNorthAfricaOther: "North Africa / Other",
   },
   FR: {
     brand: "Article 4 Institute",
@@ -217,6 +274,30 @@ const translations = {
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
     results: "résultats",
+    submitData: "Soumettre une donnée",
+    submitModalTitle: "Proposer un projet IA public",
+    submitAgencyLabel: "Nom de l’agence / organisation publique",
+    submitAgencyPlaceholder: "ex. : Ministère français de la Santé",
+    submitCountryLabel: "Pays",
+    submitCountryPlaceholder: "Sélectionner un pays",
+    submitToolLabel: "Nom de l’outil / cadre IA",
+    submitToolPlaceholder: "ex. : Albert API",
+    submitModelHostingLabel: "Modèle principal et hébergeur",
+    submitModelHostingPlaceholder: "ex. : Cloud souverain SecNumCloud",
+    submitVerificationLabel: "Lien de vérification",
+    submitVerificationPlaceholder: "https://…",
+    submitNotesLabel: "E-mail du contributeur / notes",
+    submitNotesPlaceholder: "Contact ou contexte (facultatif)",
+    submitForReview: "Envoyer pour vérification",
+    submitCancel: "Annuler",
+    submitSuccess:
+      "Merci ! Notre équipe de recherche (Adel El Bouzagaoui & A4I) examinera votre URL source.",
+    submitRequiredError: "Veuillez renseigner tous les champs obligatoires.",
+    submitCountryFrance: "France",
+    submitCountryGermany: "Allemagne",
+    submitCountrySpain: "Espagne",
+    submitCountryEu: "UE",
+    submitCountryNorthAfricaOther: "Afrique du Nord / Autre",
   },
   DE: {
     brand: "Article 4 Institute",
@@ -272,6 +353,30 @@ const translations = {
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
     results: "Ergebnisse",
+    submitData: "Daten einreichen",
+    submitModalTitle: "Öffentliches KI-Projekt einreichen",
+    submitAgencyLabel: "Öffentliche Behörde / Organisationsname",
+    submitAgencyPlaceholder: "z. B. Französisches Gesundheitsministerium",
+    submitCountryLabel: "Land",
+    submitCountryPlaceholder: "Land auswählen",
+    submitToolLabel: "KI-Tool / Framework-Name",
+    submitToolPlaceholder: "z. B. Albert API",
+    submitModelHostingLabel: "Primäres Modell & Hosting-Anbieter",
+    submitModelHostingPlaceholder: "z. B. SecNumCloud Sovereign Cloud",
+    submitVerificationLabel: "Nachweis-Link",
+    submitVerificationPlaceholder: "https://…",
+    submitNotesLabel: "E-Mail des Mitwirkenden / Notizen",
+    submitNotesPlaceholder: "Optionaler Kontakt oder Kontext",
+    submitForReview: "Zur Prüfung einreichen",
+    submitCancel: "Abbrechen",
+    submitSuccess:
+      "Vielen Dank! Unser Forschungsteam (Adel El Bouzagaoui & A4I) wird Ihre Quell-URL prüfen.",
+    submitRequiredError: "Bitte füllen Sie alle Pflichtfelder aus.",
+    submitCountryFrance: "Frankreich",
+    submitCountryGermany: "Deutschland",
+    submitCountrySpain: "Spanien",
+    submitCountryEu: "EU",
+    submitCountryNorthAfricaOther: "Nordafrika / Sonstige",
   },
   AR: {
     brand: "معهد المادة 4",
@@ -327,6 +432,30 @@ const translations = {
     footerLink: "article4institute.org",
     footerLinkedIn: "لينكد إن",
     results: "نتائج",
+    submitData: "إرسال بيانات",
+    submitModalTitle: "تضمين مشروع ذكاء اصطناعي حكومي",
+    submitAgencyLabel: "اسم الجهة / المنظمة العامة",
+    submitAgencyPlaceholder: "مثال: وزارة الصحة الفرنسية",
+    submitCountryLabel: "البلد",
+    submitCountryPlaceholder: "اختر بلداً",
+    submitToolLabel: "اسم أداة / إطار الذكاء الاصطناعي",
+    submitToolPlaceholder: "مثال: Albert API",
+    submitModelHostingLabel: "النموذج الأساسي ومزوّد الاستضافة",
+    submitModelHostingPlaceholder: "مثال: سحابة سيادية SecNumCloud",
+    submitVerificationLabel: "رابط الإثبات أو التحقق",
+    submitVerificationPlaceholder: "https://…",
+    submitNotesLabel: "بريد المساهم / ملاحظات",
+    submitNotesPlaceholder: "جهة اتصال أو سياق (اختياري)",
+    submitForReview: "إرسال للمراجعة",
+    submitCancel: "إلغاء",
+    submitSuccess:
+      "شكراً لك! سيراجع فريق البحث (Adel El Bouzagaoui و A4I) رابط المصدر الخاص بك.",
+    submitRequiredError: "يرجى إكمال جميع الحقول المطلوبة.",
+    submitCountryFrance: "فرنسا",
+    submitCountryGermany: "ألمانيا",
+    submitCountrySpain: "إسبانيا",
+    submitCountryEu: "الاتحاد الأوروبي",
+    submitCountryNorthAfricaOther: "شمال أفريقيا / أخرى",
   },
 } as const;
 
@@ -405,9 +534,64 @@ export default function Home() {
   const [sovereignty, setSovereignty] = useState<SovereigntyFilter>("all");
   const [citeOpen, setCiteOpen] = useState(false);
   const [copiedKey, setCopiedKey] = useState<"apa" | "bibtex" | null>(null);
+  const [submitOpen, setSubmitOpen] = useState(false);
+  const [submitForm, setSubmitForm] =
+    useState<SubmitFormState>(EMPTY_SUBMIT_FORM);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const t = translations[lang];
   const dir = lang === "AR" ? "rtl" : "ltr";
+
+  const countryLabels: Record<SubmitCountry, string> = {
+    France: t.submitCountryFrance,
+    Germany: t.submitCountryGermany,
+    Spain: t.submitCountrySpain,
+    EU: t.submitCountryEu,
+    "North Africa / Other": t.submitCountryNorthAfricaOther,
+  };
+
+  const openSubmitModal = () => {
+    setSubmitForm(EMPTY_SUBMIT_FORM);
+    setSubmitSuccess(false);
+    setSubmitError(false);
+    setSubmitOpen(true);
+  };
+
+  const closeSubmitModal = () => {
+    setSubmitOpen(false);
+    setSubmitSuccess(false);
+    setSubmitError(false);
+  };
+
+  const updateSubmitField = <K extends keyof SubmitFormState>(
+    key: K,
+    value: SubmitFormState[K],
+  ) => {
+    setSubmitForm((prev) => ({ ...prev, [key]: value }));
+    setSubmitError(false);
+  };
+
+  const handleSubmitProject = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { agency, country, toolName, modelHosting, verificationUrl } =
+      submitForm;
+    const isValid =
+      agency.trim() !== "" &&
+      country !== "" &&
+      toolName.trim() !== "" &&
+      modelHosting.trim() !== "" &&
+      verificationUrl.trim() !== "";
+
+    if (!isValid) {
+      setSubmitError(true);
+      setSubmitSuccess(false);
+      return;
+    }
+
+    setSubmitError(false);
+    setSubmitSuccess(true);
+  };
 
   const countries = Array.from(new Set(data.map((d) => d.country))).sort();
 
@@ -467,7 +651,15 @@ export default function Home() {
               {t.platform}
             </h1>
           </div>
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={openSubmitModal}
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-900 transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white/40"
+            >
+              <PlusCircle className="h-3.5 w-3.5 shrink-0" aria-hidden />
+              {t.submitData}
+            </button>
             <a
               href={LINKEDIN_URL}
               target="_blank"
@@ -919,6 +1111,179 @@ export default function Home() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      ) : null}
+
+      {/* Submit Public AI Project modal */}
+      {submitOpen ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="submit-modal-title"
+          onClick={closeSubmitModal}
+        >
+          <div
+            dir={dir}
+            className="max-h-[90vh] w-full max-w-lg overflow-y-auto border border-slate-300 bg-white shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between bg-slate-900 px-5 py-4 text-white">
+              <div className="flex items-center gap-2">
+                <PlusCircle className="h-4 w-4 text-slate-300" aria-hidden />
+                <h3
+                  id="submit-modal-title"
+                  className="text-base font-semibold tracking-tight"
+                >
+                  {t.submitModalTitle}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={closeSubmitModal}
+                className="rounded p-1 text-slate-300 hover:bg-slate-800 hover:text-white"
+                aria-label={t.close}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmitProject} className="space-y-4 px-5 py-5">
+              {submitSuccess ? (
+                <div
+                  role="status"
+                  className="border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"
+                >
+                  {t.submitSuccess}
+                </div>
+              ) : null}
+
+              {submitError ? (
+                <div
+                  role="alert"
+                  className="border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+                >
+                  {t.submitRequiredError}
+                </div>
+              ) : null}
+
+              <label className="block">
+                <span className="mb-1 block text-xs font-medium text-slate-600">
+                  {t.submitAgencyLabel}
+                </span>
+                <input
+                  type="text"
+                  required
+                  value={submitForm.agency}
+                  onChange={(e) => updateSubmitField("agency", e.target.value)}
+                  placeholder={t.submitAgencyPlaceholder}
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-1 block text-xs font-medium text-slate-600">
+                  {t.submitCountryLabel}
+                </span>
+                <select
+                  required
+                  value={submitForm.country}
+                  onChange={(e) =>
+                    updateSubmitField(
+                      "country",
+                      e.target.value as SubmitCountry | "",
+                    )
+                  }
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                >
+                  <option value="">{t.submitCountryPlaceholder}</option>
+                  {SUBMIT_COUNTRIES.map((code) => (
+                    <option key={code} value={code}>
+                      {countryLabels[code]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="mb-1 block text-xs font-medium text-slate-600">
+                  {t.submitToolLabel}
+                </span>
+                <input
+                  type="text"
+                  required
+                  value={submitForm.toolName}
+                  onChange={(e) =>
+                    updateSubmitField("toolName", e.target.value)
+                  }
+                  placeholder={t.submitToolPlaceholder}
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-1 block text-xs font-medium text-slate-600">
+                  {t.submitModelHostingLabel}
+                </span>
+                <input
+                  type="text"
+                  required
+                  value={submitForm.modelHosting}
+                  onChange={(e) =>
+                    updateSubmitField("modelHosting", e.target.value)
+                  }
+                  placeholder={t.submitModelHostingPlaceholder}
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-1 block text-xs font-medium text-slate-600">
+                  {t.submitVerificationLabel}
+                </span>
+                <input
+                  type="url"
+                  required
+                  value={submitForm.verificationUrl}
+                  onChange={(e) =>
+                    updateSubmitField("verificationUrl", e.target.value)
+                  }
+                  placeholder={t.submitVerificationPlaceholder}
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-1 block text-xs font-medium text-slate-600">
+                  {t.submitNotesLabel}
+                </span>
+                <textarea
+                  value={submitForm.notes}
+                  onChange={(e) => updateSubmitField("notes", e.target.value)}
+                  placeholder={t.submitNotesPlaceholder}
+                  rows={3}
+                  className="w-full resize-y border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                />
+              </label>
+
+              <div className="flex flex-wrap items-center justify-end gap-2 border-t border-slate-200 pt-4">
+                <button
+                  type="button"
+                  onClick={closeSubmitModal}
+                  className="inline-flex items-center gap-2 border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-1 focus:ring-slate-400"
+                >
+                  {t.submitCancel}
+                </button>
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 border border-slate-900 bg-slate-900 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-400"
+                >
+                  <PlusCircle className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                  {t.submitForReview}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       ) : null}
