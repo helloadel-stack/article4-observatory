@@ -1,0 +1,21 @@
+# Article 4 Institute — European AI Sovereignty Observatory
+> Independent research and open tracking engine for European public-sector AI adoptions, cloud infrastructure dependencies, and EU AI Act readiness.
+
+## Core Purpose
+The Observatory tracks and indexes artificial intelligence adoptions across public sector entities in Europe, measuring compliance with the EU AI Act and evaluating sovereign infrastructure vs foreign cloud dependencies.
+
+## Primary Metrics Monitored
+- Public Sector AI Tooling Index (France, Germany, Spain, EU Institutions)
+- Infrastructure Sovereignty Classification (SecNumCloud, Sovereign GovCloud vs US Hyperscalers)
+- EU AI Act Transparency & Regulatory Compliance Status
+
+## Research Methodology & Technology
+- Methodology: Data extracted from official procurement releases, government digital directorates (e.g., DINUM), and public audits.
+- Assessment Engine: Automated compliance benchmarking and security assurance powered by the open framework at SafeAI.report.
+
+## Governance & Leadership
+- Organization: L'Institut Article 4 (A4I) (Operating as a neutral French non-profit initiative under Association 1901).
+- Lead Researcher: Adel El Bouzagaoui, Research Director & AI Governance Lead.
+- LinkedIn: https://www.linkedin.com/company/l-institut-article-4-a4i/
+- Website: https://article4institute.org
+- License: Open Data under Creative Commons Attribution 4.0 (CC BY 4.0).
