@@ -18,8 +18,20 @@ import {
   PlusCircle,
 } from "lucide-react";
 import observatoryData from "@/data/data.json";
+import PricingSection from "@/components/PricingSection";
+import WaqfLedgerAuditSection from "@/components/WaqfLedgerAuditSection";
+import AssessmentSection from "@/components/AssessmentSection";
+import HtmlLangSync from "@/components/HtmlLangSync";
+import {
+  BRAND,
+  SITE_METADATA,
+  SUPPORTED_LANGS,
+  localizeCountry,
+  localizeEuAiActStatus,
+  type Lang,
+} from "@/src/config/constants";
+import { translations } from "@/src/i18n/translations";
 
-type Lang = "EN" | "FR" | "DE" | "AR";
 type SovereigntyFilter = "all" | "Sovereign" | "Dependent";
 type SubmitCountry =
   | "France"
@@ -86,380 +98,92 @@ function LinkedInIcon({
   );
 }
 
+function LangToggle({
+  lang,
+  onChange,
+  ariaLabel,
+}: {
+  lang: Lang;
+  onChange: (lang: Lang) => void;
+  ariaLabel: string;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label={ariaLabel}
+      className="inline-flex shrink-0 rounded-lg border border-slate-200 bg-slate-100 p-1"
+    >
+      {SUPPORTED_LANGS.map((code) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => onChange(code)}
+          className={
+            lang === code
+              ? "rounded-md bg-indigo-700 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm"
+              : "rounded-md px-3.5 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-white hover:text-indigo-800"
+          }
+          aria-pressed={lang === code}
+        >
+          {code}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 const data = observatoryData as ObservatoryEntry[];
 
-const INSTITUTE_URL = "https://article4institute.org";
-const LINKEDIN_URL =
-  "https://www.linkedin.com/company/l-institut-article-4-a4i/";
-const AUTHOR_NAME = "Adel El Bouzagaoui";
-const PUBLISHER_NAME = "L'Institut Article 4 (A4I)";
-const DATASET_TITLE = "European AI Sovereignty Index";
-const APA_CITATION = `Article 4 Institute. (2026). ${DATASET_TITLE}. ${INSTITUTE_URL}`;
+const APA_CITATION = `Article 4 Institute. (${SITE_METADATA.year}). ${SITE_METADATA.datasetTitle}. ${BRAND.instituteUrl}`;
 const BIBTEX_CITATION = `@misc{article4institute2026easi,
   author       = {{Article 4 Institute}},
-  title        = {${DATASET_TITLE}},
-  year         = {2026},
-  howpublished = {\\url{${INSTITUTE_URL}}},
-  note         = {Lead Researcher: ${AUTHOR_NAME}}
+  title        = {${SITE_METADATA.datasetTitle}},
+  year         = {${SITE_METADATA.year}},
+  howpublished = {\\url{${BRAND.instituteUrl}}},
+  note         = {Lead Researcher: ${SITE_METADATA.author}}
 }`;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ResearchProject",
-      name: DATASET_TITLE,
-      description:
-        "An independent research instrument mapping public-sector AI adoption, infrastructure sovereignty, and EU AI Act readiness across Europe.",
-      url: INSTITUTE_URL,
+      "@type": "SoftwareApplication",
+      name: BRAND.name,
+      applicationCategory: "BusinessApplication",
+      description: SITE_METADATA.description,
+      url: BRAND.instituteUrl,
       author: {
         "@type": "Person",
-        name: AUTHOR_NAME,
-        jobTitle: "Lead Researcher & Founder",
+        name: SITE_METADATA.author,
+      },
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "EUR",
+        lowPrice: "399",
+        highPrice: "2499",
       },
       publisher: {
         "@type": "Organization",
-        name: PUBLISHER_NAME,
-        url: INSTITUTE_URL,
-        sameAs: [LINKEDIN_URL],
+        name: SITE_METADATA.publisher,
+        url: BRAND.instituteUrl,
+        sameAs: [BRAND.linkedInUrl],
       },
     },
     {
       "@type": "Organization",
-      name: PUBLISHER_NAME,
-      url: INSTITUTE_URL,
-      sameAs: [LINKEDIN_URL],
+      name: SITE_METADATA.publisher,
+      url: BRAND.instituteUrl,
+      sameAs: [BRAND.linkedInUrl],
       description:
         "A neutral French non-profit initiative (Association 1901) dedicated to European digital resilience and open methodology.",
       founder: {
         "@type": "Person",
-        name: AUTHOR_NAME,
+        name: SITE_METADATA.author,
         jobTitle: "Founder & Lead Researcher",
       },
     },
   ],
 };
-
-const translations = {
-  EN: {
-    brand: "Article 4 Institute",
-    platform: "European AI Sovereignty Observatory",
-    heroTitle: "Mapping public-sector AI adoption across Europe",
-    heroText:
-      "An independent research instrument tracking European public administrations’ AI tool deployments, infrastructure sovereignty, and readiness under the EU AI Act. Built for policymakers, compliance officers, and civic technologists.",
-    totalEntities: "Total Entities Monitored",
-    sovereignPct: "Sovereign Infrastructure %",
-    compliancePct: "Compliance %",
-    coverageRegion: "Active Coverage Region",
-    explorerTitle: "Data Explorer",
-    explorerSubtitle:
-      "Filter monitored agencies and tools by name, country, and hosting sovereignty.",
-    searchPlaceholder: "Search by agency or tool name…",
-    countryFilter: "Country",
-    sovereigntyFilter: "Sovereignty type",
-    allCountries: "All countries",
-    allTypes: "All types",
-    sovereign: "Sovereign",
-    dependent: "Dependent",
-    colAgency: "Agency",
-    colCountry: "Country",
-    colTool: "Tool",
-    colModel: "Primary Model",
-    colHosting: "Hosting Provider",
-    colSovereignty: "Sovereignty",
-    colCompliance: "EU AI Act Status",
-    colUpdated: "Last Updated",
-    noResults: "No records match the current filters.",
-    downloadCsv: "Download CSV",
-    citeDataset: "Cite This Dataset",
-    citeModalTitle: "Cite This Dataset",
-    citeApaLabel: "APA",
-    citeBibtexLabel: "BibTeX",
-    copyCitation: "Copy Citation",
-    copied: "Copied",
-    close: "Close",
-    methodologyTitle: "Methodology & Open Research",
-    methodologyText:
-      "The Article 4 Institute maintains this Observatory as an open, non-partisan research framework. Entries are drawn from publicly verifiable sources and institutional disclosures. Classifications of “Sovereign” and “Dependent” hosting reflect infrastructure jurisdiction and operational control, not political endorsement. Datasets are versioned and open to scholarly scrutiny.",
-    safeAiDisclosure:
-      "Automated compliance assessment and security benchmarking powered by the open audit framework at SafeAI.report.",
-    poweredBySafeAi: "Powered by SafeAI.report",
-    aboutTitle: "About the Institute & Research Team",
-    leadResearcher: "Lead Researcher",
-    founderRole: "Founder & Lead Researcher",
-    aboutLeadName: "Adel El Bouzagaoui",
-    aboutText:
-      "The Article 4 Institute is a neutral French non-profit initiative (Association 1901) dedicated to European digital resilience and open methodology. Led by Adel El Bouzagaoui as Founder & Lead Researcher, the Institute publishes transparent, reproducible indicators for public-sector AI sovereignty and EU AI Act readiness.",
-    connectLinkedIn: "Connect on LinkedIn",
-    footerCopy: "© 2026 Article 4 Institute. All rights reserved.",
-    footerLink: "article4institute.org",
-    footerLinkedIn: "LinkedIn",
-    results: "results",
-    submitData: "Submit Data",
-    submitModalTitle: "Submit a Public AI Project",
-    submitAgencyLabel: "Public Agency / Organization Name",
-    submitAgencyPlaceholder: "e.g., French Ministry of Health",
-    submitCountryLabel: "Country",
-    submitCountryPlaceholder: "Select a country",
-    submitToolLabel: "AI Tool / Framework Name",
-    submitToolPlaceholder: "e.g., Albert API",
-    submitModelHostingLabel: "Primary Model & Hosting Provider",
-    submitModelHostingPlaceholder: "e.g., SecNumCloud Sovereign Cloud",
-    submitVerificationLabel: "Verification Source Link",
-    submitVerificationPlaceholder: "https://…",
-    submitNotesLabel: "Contributor Email / Notes",
-    submitNotesPlaceholder: "Optional contact or context",
-    submitForReview: "Submit for Review",
-    submitCancel: "Cancel",
-    submitSuccess:
-      "Thank you! Our research team (Adel El Bouzagaoui & A4I) will review your source URL.",
-    submitRequiredError: "Please complete all required fields.",
-    submitCountryFrance: "France",
-    submitCountryGermany: "Germany",
-    submitCountrySpain: "Spain",
-    submitCountryEu: "EU",
-    submitCountryNorthAfricaOther: "North Africa / Other",
-  },
-  FR: {
-    brand: "Article 4 Institute",
-    platform: "Observatoire européen de la souveraineté de l’IA",
-    heroTitle: "Cartographier l’adoption de l’IA dans le secteur public européen",
-    heroText:
-      "Un instrument de recherche indépendant suivant les déploiements d’outils d’IA dans les administrations publiques européennes, la souveraineté des infrastructures et la préparation au règlement européen sur l’IA. Conçu pour les décideurs, les responsables conformité et les technologues civiques.",
-    totalEntities: "Entités suivies au total",
-    sovereignPct: "% d’infrastructure souveraine",
-    compliancePct: "% de conformité",
-    coverageRegion: "Région de couverture active",
-    explorerTitle: "Explorateur de données",
-    explorerSubtitle:
-      "Filtrez les agences et outils suivis par nom, pays et souveraineté d’hébergement.",
-    searchPlaceholder: "Rechercher par agence ou outil…",
-    countryFilter: "Pays",
-    sovereigntyFilter: "Type de souveraineté",
-    allCountries: "Tous les pays",
-    allTypes: "Tous les types",
-    sovereign: "Souverain",
-    dependent: "Dépendant",
-    colAgency: "Agence",
-    colCountry: "Pays",
-    colTool: "Outil",
-    colModel: "Modèle principal",
-    colHosting: "Fournisseur d’hébergement",
-    colSovereignty: "Souveraineté",
-    colCompliance: "Statut AI Act UE",
-    colUpdated: "Dernière mise à jour",
-    noResults: "Aucun enregistrement ne correspond aux filtres actuels.",
-    downloadCsv: "Télécharger CSV",
-    citeDataset: "Citer ce jeu de données",
-    citeModalTitle: "Citer ce jeu de données",
-    citeApaLabel: "APA",
-    citeBibtexLabel: "BibTeX",
-    copyCitation: "Copier la citation",
-    copied: "Copié",
-    close: "Fermer",
-    methodologyTitle: "Méthodologie et recherche ouverte",
-    methodologyText:
-      "L’Article 4 Institute maintient cet Observatoire comme un cadre de recherche ouvert et non partisan. Les entrées proviennent de sources publiques vérifiables et de divulgations institutionnelles. Les classifications « Souverain » et « Dépendant » reflètent la juridiction et le contrôle opérationnel des infrastructures, et non un endossement politique. Les jeux de données sont versionnés et ouverts à l’examen scientifique.",
-    safeAiDisclosure:
-      "Évaluation automatisée de la conformité et analyse comparative de la sécurité alimentées par le cadre d’audit ouvert de SafeAI.report.",
-    poweredBySafeAi: "Propulsé par SafeAI.report",
-    aboutTitle: "À propos de l’Institut et de l’équipe de recherche",
-    leadResearcher: "Chercheur principal",
-    founderRole: "Fondateur et chercheur principal",
-    aboutLeadName: "Adel El Bouzagaoui",
-    aboutText:
-      "L’Article 4 Institute est une initiative associative française neutre (Association loi 1901) dédiée à la résilience numérique européenne et à une méthodologie ouverte. Sous la direction d’Adel El Bouzagaoui, Fondateur et chercheur principal, l’Institut publie des indicateurs transparents et reproductibles sur la souveraineté de l’IA dans le secteur public et la préparation au règlement européen sur l’IA.",
-    connectLinkedIn: "Suivez-nous sur LinkedIn",
-    footerCopy: "© 2026 Article 4 Institute. Tous droits réservés.",
-    footerLink: "article4institute.org",
-    footerLinkedIn: "LinkedIn",
-    results: "résultats",
-    submitData: "Soumettre une donnée",
-    submitModalTitle: "Proposer un projet IA public",
-    submitAgencyLabel: "Nom de l’agence / organisation publique",
-    submitAgencyPlaceholder: "ex. : Ministère français de la Santé",
-    submitCountryLabel: "Pays",
-    submitCountryPlaceholder: "Sélectionner un pays",
-    submitToolLabel: "Nom de l’outil / cadre IA",
-    submitToolPlaceholder: "ex. : Albert API",
-    submitModelHostingLabel: "Modèle principal et hébergeur",
-    submitModelHostingPlaceholder: "ex. : Cloud souverain SecNumCloud",
-    submitVerificationLabel: "Lien de vérification",
-    submitVerificationPlaceholder: "https://…",
-    submitNotesLabel: "E-mail du contributeur / notes",
-    submitNotesPlaceholder: "Contact ou contexte (facultatif)",
-    submitForReview: "Envoyer pour vérification",
-    submitCancel: "Annuler",
-    submitSuccess:
-      "Merci ! Notre équipe de recherche (Adel El Bouzagaoui & A4I) examinera votre URL source.",
-    submitRequiredError: "Veuillez renseigner tous les champs obligatoires.",
-    submitCountryFrance: "France",
-    submitCountryGermany: "Allemagne",
-    submitCountrySpain: "Espagne",
-    submitCountryEu: "UE",
-    submitCountryNorthAfricaOther: "Afrique du Nord / Autre",
-  },
-  DE: {
-    brand: "Article 4 Institute",
-    platform: "Europäisches Observatorium für KI-Souveränität",
-    heroTitle: "KI-Einführung im europäischen öffentlichen Sektor erfassen",
-    heroText:
-      "Ein unabhängiges Forschungsinstrument zur Erfassung von KI-Werkzeugeinsätzen in europäischen Verwaltungen, der Souveränität der Infrastruktur und der Bereitschaft gemäß dem EU-KI-Gesetz. Für politische Entscheider, Compliance-Verantwortliche und Civic Technologists.",
-    totalEntities: "Überwachte Einrichtungen gesamt",
-    sovereignPct: "Anteil souveräner Infrastruktur",
-    compliancePct: "Compliance-Anteil",
-    coverageRegion: "Aktiver Abdeckungsraum",
-    explorerTitle: "Datenexplorer",
-    explorerSubtitle:
-      "Filtern Sie überwachte Behörden und Tools nach Name, Land und Hosting-Souveränität.",
-    searchPlaceholder: "Nach Behörde oder Tool suchen…",
-    countryFilter: "Land",
-    sovereigntyFilter: "Souveränitätstyp",
-    allCountries: "Alle Länder",
-    allTypes: "Alle Typen",
-    sovereign: "Souverän",
-    dependent: "Abhängig",
-    colAgency: "Behörde",
-    colCountry: "Land",
-    colTool: "Tool",
-    colModel: "Primäres Modell",
-    colHosting: "Hosting-Anbieter",
-    colSovereignty: "Souveränität",
-    colCompliance: "EU-KI-Gesetz-Status",
-    colUpdated: "Zuletzt aktualisiert",
-    noResults: "Keine Einträge entsprechen den aktuellen Filtern.",
-    downloadCsv: "CSV herunterladen",
-    citeDataset: "Datensatz zitieren",
-    citeModalTitle: "Datensatz zitieren",
-    citeApaLabel: "APA",
-    citeBibtexLabel: "BibTeX",
-    copyCitation: "Zitat kopieren",
-    copied: "Kopiert",
-    close: "Schließen",
-    methodologyTitle: "Methodik & offene Forschung",
-    methodologyText:
-      "Das Article 4 Institute betreibt dieses Observatorium als offenes, überparteiliches Forschungsframework. Einträge stammen aus öffentlich überprüfbaren Quellen und institutionellen Offenlegungen. Die Klassifikationen „Souverän“ und „Abhängig“ spiegeln Infrastrukturzuständigkeit und operative Kontrolle wider – keine politische Empfehlung. Datensätze sind versioniert und wissenschaftlich überprüfbar.",
-    safeAiDisclosure:
-      "Automatisierte Compliance-Bewertung und Sicherheits-Benchmarking basieren auf dem offenen Audit-Framework von SafeAI.report.",
-    poweredBySafeAi: "Unterstützt von SafeAI.report",
-    aboutTitle: "Über das Institut & Forschungsteam",
-    leadResearcher: "Leitender Forscher",
-    founderRole: "Gründer & leitender Forscher",
-    aboutLeadName: "Adel El Bouzagaoui",
-    aboutText:
-      "Das Article 4 Institute ist eine neutrale französische Non-Profit-Initiative (Association 1901), die sich europäischer digitaler Resilienz und offener Methodik widmet. Unter der Leitung von Adel El Bouzagaoui als Gründer und leitendem Forscher veröffentlicht das Institut transparente, reproduzierbare Indikatoren zur KI-Souveränität im öffentlichen Sektor und zur Bereitschaft gemäß dem EU-KI-Gesetz.",
-    connectLinkedIn: "Auf LinkedIn verbinden",
-    footerCopy: "© 2026 Article 4 Institute. Alle Rechte vorbehalten.",
-    footerLink: "article4institute.org",
-    footerLinkedIn: "LinkedIn",
-    results: "Ergebnisse",
-    submitData: "Daten einreichen",
-    submitModalTitle: "Öffentliches KI-Projekt einreichen",
-    submitAgencyLabel: "Öffentliche Behörde / Organisationsname",
-    submitAgencyPlaceholder: "z. B. Französisches Gesundheitsministerium",
-    submitCountryLabel: "Land",
-    submitCountryPlaceholder: "Land auswählen",
-    submitToolLabel: "KI-Tool / Framework-Name",
-    submitToolPlaceholder: "z. B. Albert API",
-    submitModelHostingLabel: "Primäres Modell & Hosting-Anbieter",
-    submitModelHostingPlaceholder: "z. B. SecNumCloud Sovereign Cloud",
-    submitVerificationLabel: "Nachweis-Link",
-    submitVerificationPlaceholder: "https://…",
-    submitNotesLabel: "E-Mail des Mitwirkenden / Notizen",
-    submitNotesPlaceholder: "Optionaler Kontakt oder Kontext",
-    submitForReview: "Zur Prüfung einreichen",
-    submitCancel: "Abbrechen",
-    submitSuccess:
-      "Vielen Dank! Unser Forschungsteam (Adel El Bouzagaoui & A4I) wird Ihre Quell-URL prüfen.",
-    submitRequiredError: "Bitte füllen Sie alle Pflichtfelder aus.",
-    submitCountryFrance: "Frankreich",
-    submitCountryGermany: "Deutschland",
-    submitCountrySpain: "Spanien",
-    submitCountryEu: "EU",
-    submitCountryNorthAfricaOther: "Nordafrika / Sonstige",
-  },
-  AR: {
-    brand: "معهد المادة 4",
-    platform: "مرصد السيادة الأوروبية في الذكاء الاصطناعي",
-    heroTitle: "تتبع تبنّي الذكاء الاصطناعي في القطاع العام الأوروبي",
-    heroText:
-      "أداة بحث مستقلة ترصد نشر أدوات الذكاء الاصطناعي لدى الإدارات العامة الأوروبية، وسيادة البنية التحتية، وجاهزية الامتثال لقانون الذكاء الاصطناعي للاتحاد الأوروبي. موجهة لصنّاع السياسات ومسؤولي الامتثال وتقنيي القطاع العام.",
-    totalEntities: "إجمالي الجهات المراقَبة",
-    sovereignPct: "نسبة البنية السيادية",
-    compliancePct: "نسبة الامتثال",
-    coverageRegion: "نطاق التغطية النشط",
-    explorerTitle: "مستكشف البيانات",
-    explorerSubtitle:
-      "صفِّ الجهات والأدوات حسب الاسم أو البلد أو نوع سيادة الاستضافة.",
-    searchPlaceholder: "ابحث باسم الجهة أو الأداة…",
-    countryFilter: "البلد",
-    sovereigntyFilter: "نوع السيادة",
-    allCountries: "كل البلدان",
-    allTypes: "كل الأنواع",
-    sovereign: "سيادي",
-    dependent: "تابع",
-    colAgency: "الجهة",
-    colCountry: "البلد",
-    colTool: "الأداة",
-    colModel: "النموذج الأساسي",
-    colHosting: "مزوّد الاستضافة",
-    colSovereignty: "السيادة",
-    colCompliance: "حالة قانون الذكاء الاصطناعي",
-    colUpdated: "آخر تحديث",
-    noResults: "لا توجد سجلات مطابقة للمرشحات الحالية.",
-    downloadCsv: "تنزيل CSV",
-    citeDataset: "الاستشهاد بمجموعة البيانات",
-    citeModalTitle: "الاستشهاد بمجموعة البيانات",
-    citeApaLabel: "APA",
-    citeBibtexLabel: "BibTeX",
-    copyCitation: "نسخ الاستشهاد",
-    copied: "تم النسخ",
-    close: "إغلاق",
-    methodologyTitle: "المنهجية والبحث المفتوح",
-    methodologyText:
-      "يحافظ معهد المادة 4 على هذا المرصد كإطار بحثي مفتوح وغير حزبي. تُستمد الإدخالات من مصادر عامة قابلة للتحقق وإفصاحات مؤسسية. تصنيفا «سيادي» و«تابع» يعكسان ولاية البنية التحتية والسيطرة التشغيلية، لا تأييداً سياسياً. تُصدَر مجموعات البيانات بإصدارات وتكون مفتوحة للمراجعة العلمية.",
-    safeAiDisclosure:
-      "تقييم الامتثال الآلي وقياس الأداء الأمني مدعومان بإطار التدقيق المفتوح في SafeAI.report.",
-    poweredBySafeAi: "مدعوم من SafeAI.report",
-    aboutTitle: "عن المعهد وفريق البحث",
-    leadResearcher: "الباحث الرئيسي",
-    founderRole: "المؤسس والباحث الرئيسي",
-    aboutLeadName: "Adel El Bouzagaoui",
-    aboutText:
-      "معهد المادة 4 مبادرة فرنسية غير ربحية محايدة (جمعية وفق قانون 1901) مكرّسة للمرونة الرقمية الأوروبية والمنهجية المفتوحة. يقوده Adel El Bouzagaoui بصفته المؤسس والباحث الرئيسي، وينشر المعهد مؤشرات شفافة وقابلة للتكرار حول سيادة الذكاء الاصطناعي في القطاع العام وجاهزية الامتثال لقانون الذكاء الاصطناعي للاتحاد الأوروبي.",
-    connectLinkedIn: "تابعنا على لينكد إن",
-    footerCopy: "© 2026 معهد المادة 4. جميع الحقوق محفوظة.",
-    footerLink: "article4institute.org",
-    footerLinkedIn: "لينكد إن",
-    results: "نتائج",
-    submitData: "إرسال بيانات",
-    submitModalTitle: "تضمين مشروع ذكاء اصطناعي حكومي",
-    submitAgencyLabel: "اسم الجهة / المنظمة العامة",
-    submitAgencyPlaceholder: "مثال: وزارة الصحة الفرنسية",
-    submitCountryLabel: "البلد",
-    submitCountryPlaceholder: "اختر بلداً",
-    submitToolLabel: "اسم أداة / إطار الذكاء الاصطناعي",
-    submitToolPlaceholder: "مثال: Albert API",
-    submitModelHostingLabel: "النموذج الأساسي ومزوّد الاستضافة",
-    submitModelHostingPlaceholder: "مثال: سحابة سيادية SecNumCloud",
-    submitVerificationLabel: "رابط الإثبات أو التحقق",
-    submitVerificationPlaceholder: "https://…",
-    submitNotesLabel: "بريد المساهم / ملاحظات",
-    submitNotesPlaceholder: "جهة اتصال أو سياق (اختياري)",
-    submitForReview: "إرسال للمراجعة",
-    submitCancel: "إلغاء",
-    submitSuccess:
-      "شكراً لك! سيراجع فريق البحث (Adel El Bouzagaoui و A4I) رابط المصدر الخاص بك.",
-    submitRequiredError: "يرجى إكمال جميع الحقول المطلوبة.",
-    submitCountryFrance: "فرنسا",
-    submitCountryGermany: "ألمانيا",
-    submitCountrySpain: "إسبانيا",
-    submitCountryEu: "الاتحاد الأوروبي",
-    submitCountryNorthAfricaOther: "شمال أفريقيا / أخرى",
-  },
-} as const;
-
-const LANGS: Lang[] = ["EN", "FR", "DE", "AR"];
 
 const CSV_HEADERS = [
   "id",
@@ -538,10 +262,15 @@ export default function Home() {
   const [submitForm, setSubmitForm] =
     useState<SubmitFormState>(EMPTY_SUBMIT_FORM);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
+  const [submitError, setSubmitError] = useState<"required" | "network" | null>(
+    null,
+  );
+  const [submitLoading, setSubmitLoading] = useState(false);
+  const [submissionId, setSubmissionId] = useState<string | null>(null);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [sessionProofs, setSessionProofs] = useState<string[]>([]);
 
   const t = translations[lang];
-  const dir = lang === "AR" ? "rtl" : "ltr";
 
   const countryLabels: Record<SubmitCountry, string> = {
     France: t.submitCountryFrance,
@@ -554,14 +283,17 @@ export default function Home() {
   const openSubmitModal = () => {
     setSubmitForm(EMPTY_SUBMIT_FORM);
     setSubmitSuccess(false);
-    setSubmitError(false);
+    setSubmitError(null);
+    setSubmitLoading(false);
+    setSubmissionId(null);
     setSubmitOpen(true);
   };
 
   const closeSubmitModal = () => {
     setSubmitOpen(false);
     setSubmitSuccess(false);
-    setSubmitError(false);
+    setSubmitError(null);
+    setSubmitLoading(false);
   };
 
   const updateSubmitField = <K extends keyof SubmitFormState>(
@@ -569,12 +301,12 @@ export default function Home() {
     value: SubmitFormState[K],
   ) => {
     setSubmitForm((prev) => ({ ...prev, [key]: value }));
-    setSubmitError(false);
+    setSubmitError(null);
   };
 
-  const handleSubmitProject = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmitProject = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { agency, country, toolName, modelHosting, verificationUrl } =
+    const { agency, country, toolName, modelHosting, verificationUrl, notes } =
       submitForm;
     const isValid =
       agency.trim() !== "" &&
@@ -584,13 +316,50 @@ export default function Home() {
       verificationUrl.trim() !== "";
 
     if (!isValid) {
-      setSubmitError(true);
+      setSubmitError("required");
       setSubmitSuccess(false);
       return;
     }
 
-    setSubmitError(false);
-    setSubmitSuccess(true);
+    setSubmitError(null);
+    setSubmitLoading(true);
+
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          agencyName: agency,
+          country,
+          submitterEmail: notes.trim() || undefined,
+          sovereigntyStatus: undefined,
+          euAiActStatus: undefined,
+          // Contextual extras retained for operator review (ignored by schema if unused)
+          toolName,
+          modelHosting,
+          verificationUrl,
+        }),
+      });
+      const json = (await res.json()) as {
+        success?: boolean;
+        submissionId?: string;
+        error?: string;
+      };
+
+      if (!res.ok || !json.success || !json.submissionId) {
+        setSubmitError(res.status === 400 ? "required" : "network");
+        setSubmitSuccess(false);
+        return;
+      }
+
+      setSubmissionId(json.submissionId);
+      setSubmitSuccess(true);
+    } catch {
+      setSubmitError("network");
+      setSubmitSuccess(false);
+    } finally {
+      setSubmitLoading(false);
+    }
   };
 
   const countries = Array.from(new Set(data.map((d) => d.country))).sort();
@@ -602,12 +371,12 @@ export default function Home() {
   const highCompliance = data.filter(
     (d) => d.euAiActStatus === "High Compliance",
   ).length;
-  const regionCount = new Set(data.map((d) => d.country)).size;
+  const countriesIndexed = new Set(data.map((d) => d.country)).size;
   const metrics = {
     total,
     sovereignPct: total ? Math.round((sovereignCount / total) * 100) : 0,
     compliancePct: total ? Math.round((highCompliance / total) * 100) : 0,
-    regionCount,
+    countriesIndexed,
   };
 
   const q = search.trim().toLowerCase();
@@ -630,86 +399,156 @@ export default function Home() {
     }
   };
 
+  const navLinks = [
+    { href: "#framework", label: t.navFramework },
+    { href: "#pricing", label: t.navComplianceKits },
+    { href: "#waqfledger", label: t.navWaqfLedger },
+    { href: "#assessment", label: t.navDocumentation },
+  ] as const;
+
   return (
-    <div dir={dir} className="min-h-full flex flex-col bg-slate-50 text-slate-900">
+    <div className="flex min-h-full flex-col bg-slate-50 text-slate-900">
+      <HtmlLangSync lang={lang} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Navbar */}
-      <header className="bg-slate-900 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <div className="flex min-w-0 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-3">
-            <span className="text-sm font-semibold tracking-wide text-slate-300">
-              {t.brand}
-            </span>
-            <span className="hidden text-slate-600 sm:inline" aria-hidden>
-              |
-            </span>
-            <h1 className="truncate text-base font-semibold tracking-tight sm:text-lg">
+      <div className="bg-indigo-950 text-indigo-50">
+        <p className="mx-auto max-w-7xl px-4 py-2.5 text-center text-xs font-medium leading-relaxed tracking-wide sm:px-6 sm:text-sm lg:px-8">
+          {t.announcement}
+        </p>
+      </div>
+
+      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-3.5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <a href="#" className="group flex min-w-0 flex-col gap-1">
+            <span className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
               {t.platform}
-            </h1>
-          </div>
+            </span>
+            <span className="inline-flex w-fit items-center rounded-md bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-indigo-700 ring-1 ring-inset ring-indigo-200">
+              {t.logoSubtitle}
+            </span>
+          </a>
+
+          <nav
+            aria-label="Primary"
+            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-slate-600"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
           <div className="flex shrink-0 flex-wrap items-center gap-2">
+            <LangToggle
+              lang={lang}
+              onChange={setLang}
+              ariaLabel={t.langToggleLabel}
+            />
             <button
               type="button"
               onClick={openSubmitModal}
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-900 transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white/40"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
             >
               <PlusCircle className="h-3.5 w-3.5 shrink-0" aria-hidden />
               {t.submitData}
             </button>
             <a
-              href={LINKEDIN_URL}
+              href={BRAND.linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
               aria-label={t.connectLinkedIn}
             >
               <LinkedInIcon className="h-4 w-4" aria-hidden />
             </a>
-            <nav
-              aria-label="Language"
-              className="flex items-center gap-1 rounded-lg bg-slate-800 p-1"
-            >
-              {LANGS.map((code) => (
-                <button
-                  key={code}
-                  type="button"
-                  onClick={() => setLang(code)}
-                  className={
-                    lang === code
-                      ? "rounded-md bg-white px-2.5 py-1 text-xs font-semibold text-slate-900"
-                      : "rounded-md px-2.5 py-1 text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-                  }
-                  aria-pressed={lang === code}
-                >
-                  {code}
-                </button>
-              ))}
-            </nav>
           </div>
         </div>
       </header>
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
-        {/* Hero */}
-        <section className="border border-slate-200 bg-white px-6 py-8 sm:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-            {t.brand}
-          </p>
-          <h2 className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-            {t.heroTitle}
-          </h2>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
-            {t.heroText}
-          </p>
+        <section
+          aria-labelledby="hero-heading"
+          className="relative overflow-hidden border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-indigo-50 px-6 py-12 sm:px-10 sm:py-16"
+        >
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(99,102,241,0.14),_transparent_45%),radial-gradient(circle_at_bottom_left,_rgba(14,165,233,0.08),_transparent_40%)]"
+            aria-hidden
+          />
+          <div className="relative max-w-3xl">
+            <div className="flex flex-wrap items-center gap-3">
+              <p className="text-sm font-bold tracking-tight text-indigo-700">
+                {t.platform}
+              </p>
+              <LangToggle
+                lang={lang}
+                onChange={setLang}
+                ariaLabel={t.langToggleLabel}
+              />
+            </div>
+            <h1
+              id="hero-heading"
+              className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
+            >
+              {t.heroTitle}
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              {t.heroText}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#pricing"
+                className="inline-flex items-center justify-center rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+              >
+                {t.primaryCta}
+              </a>
+              <a
+                href="#waqfledger"
+                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+              >
+                {t.navWaqfLedger}
+              </a>
+            </div>
+
+            <ul
+              className="mt-8 flex flex-wrap gap-2"
+              aria-label="Trust signals"
+            >
+              {[t.badgeTrilingual, t.badgeGdpr, t.badgeZeroDev].map((badge) => (
+                <li
+                  key={badge}
+                  className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm"
+                >
+                  {badge}
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
-        {/* Metric cards */}
+        <AssessmentSection
+          lang={lang}
+          onProofGenerated={(proofId) =>
+            setSessionProofs((prev) =>
+              prev.includes(proofId) ? prev : [...prev, proofId],
+            )
+          }
+        />
+
+        <PricingSection lang={lang} onLangChange={setLang} />
+
+        <WaqfLedgerAuditSection lang={lang} sessionProofs={sessionProofs} />
+
         <section className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <article className="border border-slate-200 bg-white p-5">
+          <article className="border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-200">
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-slate-500">
                 {t.totalEntities}
@@ -720,7 +559,7 @@ export default function Home() {
               {metrics.total}
             </p>
           </article>
-          <article className="border border-slate-200 bg-white p-5">
+          <article className="border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-200">
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-slate-500">
                 {t.sovereignPct}
@@ -731,7 +570,7 @@ export default function Home() {
               {metrics.sovereignPct}%
             </p>
           </article>
-          <article className="border border-slate-200 bg-white p-5">
+          <article className="border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-200">
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-slate-500">
                 {t.compliancePct}
@@ -742,21 +581,19 @@ export default function Home() {
               {metrics.compliancePct}%
             </p>
           </article>
-          <article className="border border-slate-200 bg-white p-5">
+          <article className="border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-200">
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-slate-500">
-                {t.coverageRegion}
+                {t.countriesIndexed}
               </p>
               <Globe className="h-5 w-5 text-slate-400" aria-hidden />
             </div>
             <p className="mt-3 text-3xl font-semibold tabular-nums tracking-tight">
-              {metrics.regionCount}{" "}
-              <span className="text-base font-medium text-slate-500">EU</span>
+              {metrics.countriesIndexed}
             </p>
           </article>
         </section>
 
-        {/* Data Explorer */}
         <section className="mt-8 border border-slate-200 bg-white">
           <div className="border-b border-slate-200 px-6 py-5">
             <h2 className="text-lg font-semibold tracking-tight">
@@ -769,7 +606,7 @@ export default function Home() {
             <label className="relative block sm:col-span-2">
               <span className="sr-only">{t.searchPlaceholder}</span>
               <Search
-                className="pointer-events-none absolute top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 start-3"
+                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
                 aria-hidden
               />
               <input
@@ -777,7 +614,7 @@ export default function Home() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder={t.searchPlaceholder}
-                className="w-full border border-slate-200 bg-slate-50 py-2 pe-3 ps-9 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400"
+                className="w-full border border-slate-200 bg-slate-50 py-2 pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400"
               />
             </label>
 
@@ -788,12 +625,12 @@ export default function Home() {
               <select
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
-                className="w-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:border-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400"
+                className="w-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400"
               >
                 <option value="all">{t.allCountries}</option>
                 {countries.map((c) => (
                   <option key={c} value={c}>
-                    {c}
+                    {localizeCountry(c, lang)}
                   </option>
                 ))}
               </select>
@@ -808,7 +645,7 @@ export default function Home() {
                 onChange={(e) =>
                   setSovereignty(e.target.value as SovereigntyFilter)
                 }
-                className="w-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:border-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400"
+                className="w-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400"
               >
                 <option value="all">{t.allTypes}</option>
                 <option value="Sovereign">{t.sovereign}</option>
@@ -825,7 +662,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => downloadFilteredCsv(filtered)}
-                className="inline-flex items-center gap-2 border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-1 focus:ring-slate-400"
+                className="inline-flex items-center gap-2 border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-1 focus:ring-indigo-400"
               >
                 <Download className="h-3.5 w-3.5" aria-hidden />
                 {t.downloadCsv}
@@ -833,7 +670,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => setCiteOpen(true)}
-                className="inline-flex items-center gap-2 border border-slate-300 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-400"
+                className="inline-flex items-center gap-2 border border-indigo-700 bg-indigo-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-800 focus:outline-none focus:ring-1 focus:ring-indigo-400"
               >
                 <BookOpen className="h-3.5 w-3.5" aria-hidden />
                 {t.citeDataset}
@@ -842,7 +679,7 @@ export default function Home() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="min-w-full text-start text-sm">
+            <table className="min-w-full text-left text-sm">
               <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
                 <tr>
                   <th className="whitespace-nowrap px-4 py-3 font-semibold">
@@ -883,12 +720,12 @@ export default function Home() {
                   </tr>
                 ) : (
                   filtered.map((row) => (
-                    <tr key={row.id} className="hover:bg-slate-50/80">
+                    <tr key={row.id} className="hover:bg-indigo-50/40">
                       <td className="max-w-[14rem] px-4 py-3 font-medium text-slate-900">
                         {row.agency}
                       </td>
                       <td className="whitespace-nowrap px-4 py-3 text-slate-700">
-                        {row.country}
+                        {localizeCountry(row.country, lang)}
                       </td>
                       <td className="max-w-[12rem] px-4 py-3 text-slate-700">
                         {row.toolName}
@@ -910,7 +747,7 @@ export default function Home() {
                         />
                       </td>
                       <td className="whitespace-nowrap px-4 py-3 text-slate-700">
-                        {row.euAiActStatus}
+                        {localizeEuAiActStatus(row.euAiActStatus, lang)}
                       </td>
                       <td className="whitespace-nowrap px-4 py-3 tabular-nums text-slate-500">
                         {row.lastUpdated}
@@ -923,11 +760,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Methodology */}
-        <section className="mt-8 border border-slate-200 bg-white px-6 py-6 sm:px-8">
+        <section
+          id="framework"
+          className="mt-8 scroll-mt-24 border border-slate-200 bg-white px-6 py-6 sm:px-8"
+        >
           <div className="flex items-start gap-3">
             <ShieldCheck
-              className="mt-0.5 h-5 w-5 shrink-0 text-slate-500"
+              className="mt-0.5 h-5 w-5 shrink-0 text-indigo-600"
               aria-hidden
             />
             <div>
@@ -943,10 +782,10 @@ export default function Home() {
                     <span key={i}>
                       {part}
                       <a
-                        href="https://safeai.report"
+                        href={BRAND.safeAiReportUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-medium text-slate-900 underline underline-offset-2 hover:text-slate-700"
+                        className="font-medium text-indigo-700 underline underline-offset-2 hover:text-indigo-900"
                       >
                         SafeAI.report
                       </a>
@@ -963,11 +802,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Institute & Research Team */}
-        <section className="mt-8 border border-slate-200 bg-white px-6 py-6 sm:px-8">
+        <section
+          id="documentation"
+          className="mt-8 scroll-mt-24 border border-slate-200 bg-white px-6 py-6 sm:px-8"
+        >
           <div className="flex items-start gap-3">
             <User
-              className="mt-0.5 h-5 w-5 shrink-0 text-slate-500"
+              className="mt-0.5 h-5 w-5 shrink-0 text-indigo-600"
               aria-hidden
             />
             <div className="min-w-0 flex-1">
@@ -975,7 +816,7 @@ export default function Home() {
                 {t.aboutTitle}
               </h2>
               <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-slate-200 bg-slate-50 text-sm font-semibold text-slate-700">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-indigo-100 bg-indigo-50 text-sm font-semibold text-indigo-800">
                   AE
                 </div>
                 <div className="min-w-0">
@@ -992,10 +833,10 @@ export default function Home() {
                     {t.aboutText}
                   </p>
                   <a
-                    href={LINKEDIN_URL}
+                    href={BRAND.linkedInUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-1 focus:ring-slate-400"
+                    className="mt-4 inline-flex items-center gap-2 border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 transition-colors hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus:ring-1 focus:ring-indigo-400"
                   >
                     <LinkedInIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
                     {t.connectLinkedIn}
@@ -1007,34 +848,101 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="mt-auto border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>{t.footerCopy}</p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <button
+              type="button"
+              onClick={() => setPrivacyOpen(true)}
+              className="font-medium text-slate-900 hover:text-indigo-700 hover:underline"
+            >
+              {t.footerPrivacy}
+            </button>
             <a
-              href={LINKEDIN_URL}
+              href={BRAND.linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:underline"
+              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:text-indigo-700 hover:underline"
             >
               <LinkedInIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
               {t.footerLinkedIn}
             </a>
             <a
-              href={INSTITUTE_URL}
+              href={BRAND.instituteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:underline"
+              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:text-indigo-700 hover:underline"
             >
               {t.footerLink}
               <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            </a>
+            <a
+              href="#waqfledger"
+              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:text-indigo-700 hover:underline"
+            >
+              waqfledger.tech
             </a>
           </div>
         </div>
       </footer>
 
-      {/* Cite modal */}
+      {privacyOpen ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="privacy-modal-title"
+          onClick={() => setPrivacyOpen(false)}
+        >
+          <div
+            className="max-h-[90vh] w-full max-w-lg overflow-y-auto border border-slate-200 bg-white shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+              <h3
+                id="privacy-modal-title"
+                className="text-base font-semibold text-slate-900"
+              >
+                {t.privacyTitle}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setPrivacyOpen(false)}
+                className="rounded p-1 text-slate-500 hover:bg-slate-100 hover:text-slate-800"
+                aria-label={t.privacyClose}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="space-y-4 px-5 py-5 text-sm leading-relaxed text-slate-600">
+              <p>{t.privacyIntro}</p>
+              <p>{t.privacyTerms}</p>
+              <p>
+                <a
+                  href={`mailto:${SITE_METADATA.dpoEmail}`}
+                  className="font-medium text-indigo-700 underline underline-offset-2"
+                >
+                  {t.privacyDpo}
+                </a>
+              </p>
+              <p>{t.privacyProcessor}</p>
+              <p>
+                <a
+                  href={BRAND.lemonSqueezyDocsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-medium text-indigo-700 underline underline-offset-2"
+                >
+                  {t.privacyLemonLink}
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       {citeOpen ? (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
@@ -1044,7 +952,6 @@ export default function Home() {
           onClick={() => setCiteOpen(false)}
         >
           <div
-            dir={dir}
             className="w-full max-w-lg border border-slate-200 bg-white shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
@@ -1115,7 +1022,6 @@ export default function Home() {
         </div>
       ) : null}
 
-      {/* Submit Public AI Project modal */}
       {submitOpen ? (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
@@ -1125,13 +1031,12 @@ export default function Home() {
           onClick={closeSubmitModal}
         >
           <div
-            dir={dir}
             className="max-h-[90vh] w-full max-w-lg overflow-y-auto border border-slate-300 bg-white shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between bg-slate-900 px-5 py-4 text-white">
+            <div className="flex items-center justify-between bg-indigo-950 px-5 py-4 text-white">
               <div className="flex items-center gap-2">
-                <PlusCircle className="h-4 w-4 text-slate-300" aria-hidden />
+                <PlusCircle className="h-4 w-4 text-indigo-200" aria-hidden />
                 <h3
                   id="submit-modal-title"
                   className="text-base font-semibold tracking-tight"
@@ -1142,7 +1047,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={closeSubmitModal}
-                className="rounded p-1 text-slate-300 hover:bg-slate-800 hover:text-white"
+                className="rounded p-1 text-indigo-200 hover:bg-indigo-900 hover:text-white"
                 aria-label={t.close}
               >
                 <X className="h-4 w-4" />
@@ -1155,7 +1060,12 @@ export default function Home() {
                   role="status"
                   className="border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"
                 >
-                  {t.submitSuccess}
+                  <p>{t.submitSuccess}</p>
+                  {submissionId ? (
+                    <code className="mt-2 block break-all font-mono text-[11px]">
+                      {submissionId}
+                    </code>
+                  ) : null}
                 </div>
               ) : null}
 
@@ -1164,7 +1074,9 @@ export default function Home() {
                   role="alert"
                   className="border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"
                 >
-                  {t.submitRequiredError}
+                  {submitError === "required"
+                    ? t.submitRequiredError
+                    : t.submitNetworkError}
                 </div>
               ) : null}
 
@@ -1178,7 +1090,7 @@ export default function Home() {
                   value={submitForm.agency}
                   onChange={(e) => updateSubmitField("agency", e.target.value)}
                   placeholder={t.submitAgencyPlaceholder}
-                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </label>
 
@@ -1195,7 +1107,7 @@ export default function Home() {
                       e.target.value as SubmitCountry | "",
                     )
                   }
-                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 >
                   <option value="">{t.submitCountryPlaceholder}</option>
                   {SUBMIT_COUNTRIES.map((code) => (
@@ -1218,7 +1130,7 @@ export default function Home() {
                     updateSubmitField("toolName", e.target.value)
                   }
                   placeholder={t.submitToolPlaceholder}
-                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </label>
 
@@ -1234,7 +1146,7 @@ export default function Home() {
                     updateSubmitField("modelHosting", e.target.value)
                   }
                   placeholder={t.submitModelHostingPlaceholder}
-                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </label>
 
@@ -1250,7 +1162,7 @@ export default function Home() {
                     updateSubmitField("verificationUrl", e.target.value)
                   }
                   placeholder={t.submitVerificationPlaceholder}
-                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </label>
 
@@ -1263,7 +1175,7 @@ export default function Home() {
                   onChange={(e) => updateSubmitField("notes", e.target.value)}
                   placeholder={t.submitNotesPlaceholder}
                   rows={3}
-                  className="w-full resize-y border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                  className="w-full resize-y border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </label>
 
@@ -1271,16 +1183,17 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={closeSubmitModal}
-                  className="inline-flex items-center gap-2 border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-1 focus:ring-slate-400"
+                  className="inline-flex items-center gap-2 border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-1 focus:ring-indigo-400"
                 >
                   {t.submitCancel}
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 border border-slate-900 bg-slate-900 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-400"
+                  disabled={submitLoading}
+                  className="inline-flex items-center gap-2 border border-indigo-700 bg-indigo-700 px-3 py-2 text-xs font-semibold text-white hover:bg-indigo-800 focus:outline-none focus:ring-1 focus:ring-indigo-400 disabled:opacity-60"
                 >
                   <PlusCircle className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                  {t.submitForReview}
+                  {submitLoading ? t.submitLoading : t.submitForReview}
                 </button>
               </div>
             </form>
