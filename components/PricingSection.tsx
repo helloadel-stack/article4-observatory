@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Check, Mail } from "lucide-react";
 import {
   getProcurementMailto,
-  isPlaceholderCheckoutUrl,
+  isLiveLemonCheckoutUrl,
   LEMON_SQUEEZY,
   PRICING_TIERS,
   SUPPORTED_LANGS,
@@ -137,7 +137,7 @@ export default function PricingSection({
         {PRICING_TIERS.map((tier) => {
           const localized = tier[lang];
           const href = LEMON_SQUEEZY.checkoutUrls[tier.checkoutKey];
-          const placeholder = isPlaceholderCheckoutUrl(href);
+          const liveCheckout = isLiveLemonCheckoutUrl(href);
           const procurementHref = getProcurementMailto(localized.title);
 
           return (
@@ -186,7 +186,18 @@ export default function PricingSection({
                 ))}
               </ul>
 
-              {placeholder ? (
+              {liveCheckout ? (
+                <a
+                  href={href}
+                  className={
+                    tier.featured
+                      ? "lemonsqueezy-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+                      : "lemonsqueezy-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+                  }
+                >
+                  {copy.cta}
+                </a>
+              ) : (
                 <div className="mt-6 space-y-2">
                   <button
                     type="button"
@@ -208,17 +219,6 @@ export default function PricingSection({
                     {copy.procurementHint}
                   </p>
                 </div>
-              ) : (
-                <a
-                  href={href}
-                  className={
-                    tier.featured
-                      ? "lemonsqueezy-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-                      : "lemonsqueezy-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
-                  }
-                >
-                  {copy.cta}
-                </a>
               )}
             </article>
           );

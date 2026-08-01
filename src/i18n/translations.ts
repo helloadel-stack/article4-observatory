@@ -58,7 +58,15 @@ export type TranslationDict = {
   footerCopy: string;
   footerLink: string;
   footerLinkedIn: string;
+  footerLegalHeading: string;
+  footerEcosystemHeading: string;
   footerPrivacy: string;
+  footerTerms: string;
+  footerGdpr: string;
+  footerWaqfLedger: string;
+  footerAssessment: string;
+  footerStorefront: string;
+  footerMerchantDisclosure: string;
   results: string;
   submitData: string;
   submitModalTitle: string;
@@ -160,7 +168,16 @@ export const translations: Record<Lang, TranslationDict> = {
     footerCopy: "© 2026 Article 4 Institute. All rights reserved.",
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
-    footerPrivacy: "GDPR & EU AI Act Compliance",
+    footerLegalHeading: "Legal & Compliance",
+    footerEcosystemHeading: "Ecosystem",
+    footerPrivacy: "Privacy Policy / Politique de Confidentialité",
+    footerTerms: "Terms of Service / Conditions Générales",
+    footerGdpr: "GDPR & Cryptographic Compliance",
+    footerWaqfLedger: "WaqfLedger Proof Engine",
+    footerAssessment: "Article 4 AI Assessment",
+    footerStorefront: "SafeAI Storefront",
+    footerMerchantDisclosure:
+      "SafeAI Framework is a project of Article 4 Institute. Payments, invoicing, and EU VAT collection are securely processed by Lemon Squeezy, our Merchant of Record.",
     results: "results",
     submitData: "Submit Data",
     submitModalTitle: "Submit a Public AI Project",
@@ -261,10 +278,19 @@ export const translations: Record<Lang, TranslationDict> = {
     aboutText:
       "L’Article 4 Institute est une initiative associative française neutre (Association loi 1901) dédiée à la résilience numérique européenne et à une méthodologie ouverte. Sous la direction d’Adel El Bouzagaoui, Fondateur et chercheur principal, l’Institut publie des indicateurs transparents et reproductibles sur la souveraineté de l’IA dans le secteur public et la préparation au règlement européen sur l’IA.",
     connectLinkedIn: "Suivez-nous sur LinkedIn",
-    footerCopy: "© 2026 Article 4 Institute. Tous droits réservés.",
+    footerCopy: "© 2026 Article 4 Institute. All rights reserved.",
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
-    footerPrivacy: "Conformité RGPD & AI Act UE",
+    footerLegalHeading: "Juridique & Conformité",
+    footerEcosystemHeading: "Écosystème",
+    footerPrivacy: "Privacy Policy / Politique de Confidentialité",
+    footerTerms: "Terms of Service / Conditions Générales",
+    footerGdpr: "GDPR & Cryptographic Compliance",
+    footerWaqfLedger: "Moteur de preuve WaqfLedger",
+    footerAssessment: "Évaluation IA Article 4",
+    footerStorefront: "Boutique SafeAI",
+    footerMerchantDisclosure:
+      "SafeAI Framework est un projet d’Article 4 Institute. Les paiements, la facturation et la collecte de la TVA UE sont traités de manière sécurisée par Lemon Squeezy, notre Merchant of Record.",
     results: "résultats",
     submitData: "Soumettre une donnée",
     submitModalTitle: "Proposer un projet IA public",
@@ -365,10 +391,19 @@ export const translations: Record<Lang, TranslationDict> = {
     aboutText:
       "El Article 4 Institute es una iniciativa asociativa francesa neutral (Association 1901) dedicada a la resiliencia digital europea y a una metodología abierta. Bajo la dirección de Adel El Bouzagaoui, Fundador e investigador principal, el Instituto publica indicadores transparentes y reproducibles sobre soberanía de IA en el sector público y preparación para el reglamento europeo de IA.",
     connectLinkedIn: "Conectar en LinkedIn",
-    footerCopy: "© 2026 Article 4 Institute. Todos los derechos reservados.",
+    footerCopy: "© 2026 Article 4 Institute. All rights reserved.",
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
-    footerPrivacy: "Cumplimiento RGPD y AI Act UE",
+    footerLegalHeading: "Legal y cumplimiento",
+    footerEcosystemHeading: "Ecosistema",
+    footerPrivacy: "Privacy Policy / Politique de Confidentialité",
+    footerTerms: "Terms of Service / Conditions Générales",
+    footerGdpr: "GDPR & Cryptographic Compliance",
+    footerWaqfLedger: "Motor de pruebas WaqfLedger",
+    footerAssessment: "Evaluación IA Artículo 4",
+    footerStorefront: "Tienda SafeAI",
+    footerMerchantDisclosure:
+      "SafeAI Framework es un proyecto de Article 4 Institute. Los pagos, la facturación y la recaudación del IVA de la UE son procesados de forma segura por Lemon Squeezy, nuestro Merchant of Record.",
     results: "resultados",
     submitData: "Enviar datos",
     submitModalTitle: "Proponer un proyecto de IA público",

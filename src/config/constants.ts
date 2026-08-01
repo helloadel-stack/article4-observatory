@@ -38,27 +38,43 @@ export const SITE_METADATA = {
   publisher: "L'Institut Article 4 (A4I)",
   datasetTitle: "European AI Sovereignty Index",
   salesEmail: "sales@article4institute.org",
+  privacyEmail: "privacy@article4institute.org",
   dpoEmail: "dpo@article4institute.org",
   year: 2026,
 } as const;
 
 export const LEMON_SQUEEZY = {
+  storeName: "SafeAI Framework",
   scriptSrc: "https://assets.lemonsqueezy.com/lemon.js",
-  /** Replace with live Lemon Squeezy overlay / checkout URLs before go-live */
+  /**
+   * Live overlay checkout URLs for the SafeAI Framework store.
+   * Prefer NEXT_PUBLIC_LEMON_TIER_*_URL; fallbacks are placeholders until product IDs are wired.
+   */
   checkoutUrls: {
-    tier1: "YOUR_LEMON_SQUEEZY_TIER_1_URL",
-    tier2: "YOUR_LEMON_SQUEEZY_TIER_2_URL",
-    tier3: "YOUR_LEMON_SQUEEZY_TIER_3_URL",
+    tier1:
+      process.env.NEXT_PUBLIC_LEMON_TIER_1_URL ||
+      "https://safeai.lemonsqueezy.com/buy/YOUR_TIER_1_ID",
+    tier2:
+      process.env.NEXT_PUBLIC_LEMON_TIER_2_URL ||
+      "https://safeai.lemonsqueezy.com/buy/YOUR_TIER_2_ID",
+    tier3:
+      process.env.NEXT_PUBLIC_LEMON_TIER_3_URL ||
+      "https://safeai.lemonsqueezy.com/buy/YOUR_TIER_3_ID",
   },
 } as const;
 
 export type CheckoutKey = keyof typeof LEMON_SQUEEZY.checkoutUrls;
 
-const PLACEHOLDER_CHECKOUT_RE = /^YOUR_LEMON_SQUEEZY_TIER_\d+_URL$/;
+const PLACEHOLDER_TOKEN_RE = /YOUR_TIER_\d+_ID|YOUR_LEMON_SQUEEZY_TIER_\d+_URL/i;
 
-/** Runtime commerce guard — placeholder URLs must never activate checkout CTAs. */
-export function isPlaceholderCheckoutUrl(url: string): boolean {
-  return PLACEHOLDER_CHECKOUT_RE.test(url.trim());
+/** True when URL is a live Lemon Squeezy checkout (not a placeholder / missing value). */
+export function isLiveLemonCheckoutUrl(url: string): boolean {
+  const trimmed = url.trim();
+  if (!trimmed || PLACEHOLDER_TOKEN_RE.test(trimmed)) return false;
+  return (
+    trimmed.startsWith("https://safeai.lemonsqueezy.com") ||
+    trimmed.startsWith("https://lemonsqueezy.com")
+  );
 }
 
 export function getProcurementMailto(tierTitle: string): string {

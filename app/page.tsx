@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import {
   Search,
   ShieldCheck,
@@ -267,7 +268,6 @@ export default function Home() {
   );
   const [submitLoading, setSubmitLoading] = useState(false);
   const [submissionId, setSubmissionId] = useState<string | null>(null);
-  const [privacyOpen, setPrivacyOpen] = useState(false);
   const [sessionProofs, setSessionProofs] = useState<string[]>([]);
 
   const t = translations[lang];
@@ -849,99 +849,111 @@ export default function Home() {
       </main>
 
       <footer className="mt-auto border-t border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>{t.footerCopy}</p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <button
-              type="button"
-              onClick={() => setPrivacyOpen(true)}
-              className="font-medium text-slate-900 hover:text-indigo-700 hover:underline"
-            >
-              {t.footerPrivacy}
-            </button>
-            <a
-              href={BRAND.linkedInUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:text-indigo-700 hover:underline"
-            >
-              <LinkedInIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
-              {t.footerLinkedIn}
-            </a>
-            <a
-              href={BRAND.instituteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:text-indigo-700 hover:underline"
-            >
-              {t.footerLink}
-              <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            </a>
-            <a
-              href="#waqfledger"
-              className="inline-flex items-center gap-1.5 font-medium text-slate-900 hover:text-indigo-700 hover:underline"
-            >
-              waqfledger.tech
-            </a>
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
+            <nav aria-labelledby="footer-legal-heading">
+              <h2
+                id="footer-legal-heading"
+                className="text-xs font-semibold uppercase tracking-wider text-slate-500"
+              >
+                {t.footerLegalHeading}
+              </h2>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+                  >
+                    {t.footerPrivacy}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms"
+                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+                  >
+                    {t.footerTerms}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/gdpr"
+                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+                  >
+                    {t.footerGdpr}
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            <nav aria-labelledby="footer-ecosystem-heading">
+              <h2
+                id="footer-ecosystem-heading"
+                className="text-xs font-semibold uppercase tracking-wider text-slate-500"
+              >
+                {t.footerEcosystemHeading}
+              </h2>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                <li>
+                  <a
+                    href={BRAND.waqfLedgerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+                  >
+                    {t.footerWaqfLedger}
+                    <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#assessment"
+                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+                  >
+                    {t.footerAssessment}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#pricing"
+                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+                  >
+                    {t.footerStorefront}
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1 lg:items-end">
+              <a
+                href={BRAND.linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+              >
+                <LinkedInIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                {t.footerLinkedIn}
+              </a>
+              <a
+                href={BRAND.instituteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
+              >
+                {t.footerLink}
+                <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-10 space-y-3 border-t border-slate-200 pt-6">
+            <p className="max-w-3xl text-xs leading-relaxed text-slate-500">
+              {t.footerMerchantDisclosure}
+            </p>
+            <p className="text-sm text-slate-600">{t.footerCopy}</p>
           </div>
         </div>
       </footer>
-
-      {privacyOpen ? (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="privacy-modal-title"
-          onClick={() => setPrivacyOpen(false)}
-        >
-          <div
-            className="max-h-[90vh] w-full max-w-lg overflow-y-auto border border-slate-200 bg-white shadow-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
-              <h3
-                id="privacy-modal-title"
-                className="text-base font-semibold text-slate-900"
-              >
-                {t.privacyTitle}
-              </h3>
-              <button
-                type="button"
-                onClick={() => setPrivacyOpen(false)}
-                className="rounded p-1 text-slate-500 hover:bg-slate-100 hover:text-slate-800"
-                aria-label={t.privacyClose}
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-            <div className="space-y-4 px-5 py-5 text-sm leading-relaxed text-slate-600">
-              <p>{t.privacyIntro}</p>
-              <p>{t.privacyTerms}</p>
-              <p>
-                <a
-                  href={`mailto:${SITE_METADATA.dpoEmail}`}
-                  className="font-medium text-indigo-700 underline underline-offset-2"
-                >
-                  {t.privacyDpo}
-                </a>
-              </p>
-              <p>{t.privacyProcessor}</p>
-              <p>
-                <a
-                  href={BRAND.lemonSqueezyDocsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 font-medium text-indigo-700 underline underline-offset-2"
-                >
-                  {t.privacyLemonLink}
-                  <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : null}
 
       {citeOpen ? (
         <div
