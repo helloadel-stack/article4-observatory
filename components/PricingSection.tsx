@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { Check, Mail } from "lucide-react";
 import {
   getProcurementMailto,
@@ -20,8 +19,8 @@ const sectionCopy = {
       "Institutional policy packs, high-risk classification matrices, and Article 4 literacy frameworks ready for university deployment.",
     featuresLabel: "Included",
     cta: "Purchase Kit",
+    fallbackCta: "Launch Direct Procurement",
     langGroup: "Pricing language",
-    procurementBadge: "Launch Direct Procurement",
     procurementHint:
       "Checkout URL not yet live — request institutional procurement by email.",
   },
@@ -31,8 +30,8 @@ const sectionCopy = {
       "Packs de politiques institutionnelles, matrices de classification à haut risque et cadres de littératie Article 4 prêts pour le déploiement universitaire.",
     featuresLabel: "Inclus",
     cta: "Acheter le kit",
+    fallbackCta: "Lancer l’achat direct",
     langGroup: "Langue de la tarification",
-    procurementBadge: "Lancer l’achat direct",
     procurementHint:
       "URL de paiement non encore active — demandez l’achat institutionnel par e-mail.",
   },
@@ -42,8 +41,8 @@ const sectionCopy = {
       "Paquetes de políticas institucionales, matrices de clasificación de alto riesgo y marcos de alfabetización Artículo 4 listos para universidades.",
     featuresLabel: "Incluido",
     cta: "Comprar kit",
+    fallbackCta: "Iniciar adquisición directa",
     langGroup: "Idioma de precios",
-    procurementBadge: "Iniciar adquisición directa",
     procurementHint:
       "URL de pago aún no activa — solicite adquisición institucional por correo.",
   },
@@ -59,22 +58,6 @@ export default function PricingSection({
   onLangChange,
 }: PricingSectionProps) {
   const copy = sectionCopy[lang];
-
-  useEffect(() => {
-    const existing = document.querySelector<HTMLScriptElement>(
-      `script[src="${GUMROAD.scriptSrc}"]`,
-    );
-    if (existing) return;
-
-    const script = document.createElement("script");
-    script.src = GUMROAD.scriptSrc;
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, []);
 
   return (
     <section
@@ -121,8 +104,8 @@ export default function PricingSection({
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {PRICING_TIERS.map((tier) => {
           const localized = tier[lang];
-          const href = GUMROAD.checkoutUrls[tier.checkoutKey];
-          const liveCheckout = isLiveGumroadCheckoutUrl(href);
+          const checkoutUrl = GUMROAD.checkoutUrls[tier.checkoutKey];
+          const isLiveUrl = isLiveGumroadCheckoutUrl(checkoutUrl);
           const procurementHref = getProcurementMailto(localized.title);
 
           return (
@@ -171,35 +154,28 @@ export default function PricingSection({
                 ))}
               </ul>
 
-              {liveCheckout ? (
+              {isLiveUrl ? (
                 <a
-                  href={href}
+                  href={checkoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={
                     tier.featured
-                      ? "gumroad-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-                      : "gumroad-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+                      ? "mt-6 block w-full rounded-xl bg-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+                      : "mt-6 block w-full rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white transition-colors duration-200 hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
                   }
-                  data-gumroad-single-product="true"
                 >
                   {copy.cta}
                 </a>
               ) : (
                 <div className="mt-6 space-y-2">
-                  <button
-                    type="button"
-                    disabled
-                    aria-disabled="true"
-                    className="inline-flex w-full cursor-not-allowed items-center justify-center rounded-lg bg-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-500"
-                  >
-                    {copy.cta}
-                  </button>
                   <a
                     href={procurementHref}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-amber-400 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-950 transition-colors hover:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
-                    aria-label={copy.procurementBadge}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-amber-400 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-950 transition-colors duration-200 hover:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+                    aria-label={copy.fallbackCta}
                   >
                     <Mail className="h-4 w-4 shrink-0" aria-hidden />
-                    {copy.procurementBadge}
+                    {copy.fallbackCta}
                   </a>
                   <p className="text-center text-[11px] leading-snug text-slate-500">
                     {copy.procurementHint}
