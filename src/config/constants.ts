@@ -26,7 +26,7 @@ export const BRAND = {
   linkedInUrl: "https://www.linkedin.com/company/l-institut-article-4-a4i/",
   waqfLedgerUrl: "https://waqfledger.tech",
   safeAiReportUrl: "https://safeai.report",
-  gumroadStoreUrl: "https://safeai.gumroad.com",
+  gumroadStoreUrl: "https://gumroad.com",
 } as const;
 
 export const SITE_METADATA = {
@@ -48,18 +48,18 @@ export const GUMROAD = {
   scriptSrc: "https://gumroad.com/js/gumroad.js",
   /**
    * Live overlay checkout URLs for the SafeAI Framework Gumroad store.
-   * Prefer NEXT_PUBLIC_GUMROAD_TIER_*_URL; fallbacks point at published product pages.
+   * Prefer NEXT_PUBLIC_GUMROAD_TIER_*_URL; fallbacks are clean product page URLs.
    */
   checkoutUrls: {
     tier1:
       process.env.NEXT_PUBLIC_GUMROAD_TIER_1_URL ||
-      "https://safeai.gumroad.com/l/framework",
+      "https://gumroad.com/l/framework",
     tier2:
       process.env.NEXT_PUBLIC_GUMROAD_TIER_2_URL ||
-      "https://safeai.gumroad.com/l/Audit",
+      "https://gumroad.com/l/Audit",
     tier3:
       process.env.NEXT_PUBLIC_GUMROAD_TIER_3_URL ||
-      "https://safeai.gumroad.com/l/AIgovernance",
+      "https://gumroad.com/l/AIgovernance",
   },
 } as const;
 
