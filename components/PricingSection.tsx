@@ -154,34 +154,27 @@ export default function PricingSection({
                 ))}
               </ul>
 
-              {isLiveUrl ? (
-                <a
-                  href={checkoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={
-                    tier.featured
-                      ? "mt-6 block w-full rounded-xl bg-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-                      : "mt-6 block w-full rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white transition-colors duration-200 hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
-                  }
-                >
-                  {copy.cta}
-                </a>
-              ) : (
-                <div className="mt-6 space-y-2">
-                  <a
-                    href={procurementHref}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-amber-400 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-950 transition-colors duration-200 hover:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
-                    aria-label={copy.fallbackCta}
-                  >
-                    <Mail className="h-4 w-4 shrink-0" aria-hidden />
-                    {copy.fallbackCta}
-                  </a>
-                  <p className="text-center text-[11px] leading-snug text-slate-500">
-                    {copy.procurementHint}
-                  </p>
-                </div>
-              )}
+              <a
+                href={isLiveUrl ? checkoutUrl : procurementHref}
+                {...(isLiveUrl
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className={
+                  isLiveUrl
+                    ? "mt-6 block w-full rounded-xl bg-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+                    : "mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-amber-400 bg-amber-50 px-4 py-3 text-center text-sm font-semibold text-amber-950 transition-colors duration-200 hover:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+                }
+              >
+                {!isLiveUrl ? (
+                  <Mail className="h-4 w-4 shrink-0" aria-hidden />
+                ) : null}
+                {isLiveUrl ? copy.cta : copy.fallbackCta}
+              </a>
+              {!isLiveUrl ? (
+                <p className="mt-2 text-center text-[11px] leading-snug text-slate-500">
+                  {copy.procurementHint}
+                </p>
+              ) : null}
             </article>
           );
         })}

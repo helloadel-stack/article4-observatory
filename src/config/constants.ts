@@ -26,7 +26,7 @@ export const BRAND = {
   linkedInUrl: "https://www.linkedin.com/company/l-institut-article-4-a4i/",
   waqfLedgerUrl: "https://waqfledger.tech",
   safeAiReportUrl: "https://safeai.report",
-  gumroadStoreUrl: "https://gumroad.com",
+  gumroadStoreUrl: "https://safeai.gumroad.com",
 } as const;
 
 export const SITE_METADATA = {
@@ -45,21 +45,20 @@ export const SITE_METADATA = {
 
 export const GUMROAD = {
   storeName: "SafeAI Framework",
-  scriptSrc: "https://gumroad.com/js/gumroad.js",
   /**
-   * Live overlay checkout URLs for the SafeAI Framework Gumroad store.
-   * Prefer NEXT_PUBLIC_GUMROAD_TIER_*_URL; fallbacks are clean product page URLs.
+   * Absolute https:// Gumroad product URLs for the SafeAI Framework store.
+   * Prefer NEXT_PUBLIC_GUMROAD_TIER_*_URL; fallbacks are canonical store links.
    */
   checkoutUrls: {
     tier1:
       process.env.NEXT_PUBLIC_GUMROAD_TIER_1_URL ||
-      "https://gumroad.com/l/framework",
+      "https://safeai.gumroad.com/l/framework",
     tier2:
       process.env.NEXT_PUBLIC_GUMROAD_TIER_2_URL ||
-      "https://gumroad.com/l/Audit",
+      "https://safeai.gumroad.com/l/Audit",
     tier3:
       process.env.NEXT_PUBLIC_GUMROAD_TIER_3_URL ||
-      "https://gumroad.com/l/AIgovernance",
+      "https://safeai.gumroad.com/l/AIgovernance",
   },
 } as const;
 
@@ -67,21 +66,12 @@ export type CheckoutKey = keyof typeof GUMROAD.checkoutUrls;
 
 const PLACEHOLDER_TOKEN_RE = /YOUR_TIER_\d+_SLUG|YOUR_TIER_\d+_ID/i;
 
-/** True when URL is a live Gumroad checkout (not a placeholder / missing value). */
+/** True when URL is a live absolute Gumroad product link (not a placeholder). */
 export function isLiveGumroadCheckoutUrl(url: string): boolean {
   const trimmed = url.trim();
   if (!trimmed || PLACEHOLDER_TOKEN_RE.test(trimmed)) return false;
-  try {
-    const parsed = new URL(trimmed);
-    if (parsed.protocol !== "https:") return false;
-    return (
-      parsed.hostname === "safeai.gumroad.com" ||
-      parsed.hostname === "gumroad.com" ||
-      parsed.hostname.endsWith(".gumroad.com")
-    );
-  } catch {
-    return false;
-  }
+  if (!trimmed.startsWith("https://")) return false;
+  return trimmed.includes("gumroad.com/l/");
 }
 
 export function getProcurementMailto(tierTitle: string): string {
