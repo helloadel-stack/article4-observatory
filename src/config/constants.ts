@@ -26,7 +26,7 @@ export const BRAND = {
   linkedInUrl: "https://www.linkedin.com/company/l-institut-article-4-a4i/",
   waqfLedgerUrl: "https://waqfledger.tech",
   safeAiReportUrl: "https://safeai.report",
-  lemonSqueezyDocsUrl: "https://docs.lemonsqueezy.com/help/privacy",
+  gumroadStoreUrl: "https://safeai.gumroad.com",
 } as const;
 
 export const SITE_METADATA = {
@@ -43,38 +43,45 @@ export const SITE_METADATA = {
   year: 2026,
 } as const;
 
-export const LEMON_SQUEEZY = {
+export const GUMROAD = {
   storeName: "SafeAI Framework",
-  scriptSrc: "https://assets.lemonsqueezy.com/lemon.js",
+  scriptSrc: "https://gumroad.com/js/gumroad.js",
   /**
-   * Live overlay checkout URLs for the SafeAI Framework store.
-   * Prefer NEXT_PUBLIC_LEMON_TIER_*_URL; fallbacks are placeholders until product IDs are wired.
+   * Live overlay checkout URLs for the SafeAI Framework Gumroad store.
+   * Prefer NEXT_PUBLIC_GUMROAD_TIER_*_URL; fallbacks point at published product pages.
    */
   checkoutUrls: {
     tier1:
-      process.env.NEXT_PUBLIC_LEMON_TIER_1_URL ||
-      "https://safeai.lemonsqueezy.com/buy/YOUR_TIER_1_ID",
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_1_URL ||
+      "https://safeai.gumroad.com/l/framework",
     tier2:
-      process.env.NEXT_PUBLIC_LEMON_TIER_2_URL ||
-      "https://safeai.lemonsqueezy.com/buy/YOUR_TIER_2_ID",
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_2_URL ||
+      "https://safeai.gumroad.com/l/Audit",
     tier3:
-      process.env.NEXT_PUBLIC_LEMON_TIER_3_URL ||
-      "https://safeai.lemonsqueezy.com/buy/YOUR_TIER_3_ID",
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_3_URL ||
+      "https://safeai.gumroad.com/l/AIgovernance",
   },
 } as const;
 
-export type CheckoutKey = keyof typeof LEMON_SQUEEZY.checkoutUrls;
+export type CheckoutKey = keyof typeof GUMROAD.checkoutUrls;
 
-const PLACEHOLDER_TOKEN_RE = /YOUR_TIER_\d+_ID|YOUR_LEMON_SQUEEZY_TIER_\d+_URL/i;
+const PLACEHOLDER_TOKEN_RE = /YOUR_TIER_\d+_SLUG|YOUR_TIER_\d+_ID/i;
 
-/** True when URL is a live Lemon Squeezy checkout (not a placeholder / missing value). */
-export function isLiveLemonCheckoutUrl(url: string): boolean {
+/** True when URL is a live Gumroad checkout (not a placeholder / missing value). */
+export function isLiveGumroadCheckoutUrl(url: string): boolean {
   const trimmed = url.trim();
   if (!trimmed || PLACEHOLDER_TOKEN_RE.test(trimmed)) return false;
-  return (
-    trimmed.startsWith("https://safeai.lemonsqueezy.com") ||
-    trimmed.startsWith("https://lemonsqueezy.com")
-  );
+  try {
+    const parsed = new URL(trimmed);
+    if (parsed.protocol !== "https:") return false;
+    return (
+      parsed.hostname === "safeai.gumroad.com" ||
+      parsed.hostname === "gumroad.com" ||
+      parsed.hostname.endsWith(".gumroad.com")
+    );
+  } catch {
+    return false;
+  }
 }
 
 export function getProcurementMailto(tierTitle: string): string {

@@ -16,11 +16,11 @@ const nextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
-          {
-            key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.lemonsqueezy.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://assets.lemonsqueezy.com https://waqfledger.tech;",
-          },
+            {
+              key: "Content-Security-Policy",
+              value:
+                "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gumroad.com https://*.gumroad.com; style-src 'self' 'unsafe-inline' https://gumroad.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://gumroad.com https://*.gumroad.com https://waqfledger.tech; frame-src 'self' https://gumroad.com https://*.gumroad.com;",
+            },
         ],
       },
     ];

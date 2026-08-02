@@ -4,20 +4,14 @@ import { useEffect } from "react";
 import { Check, Mail } from "lucide-react";
 import {
   getProcurementMailto,
-  isLiveLemonCheckoutUrl,
-  LEMON_SQUEEZY,
+  isLiveGumroadCheckoutUrl,
+  GUMROAD,
   PRICING_TIERS,
   SUPPORTED_LANGS,
   type Lang,
 } from "@/src/config/constants";
 
 export type StorefrontLang = Lang;
-
-declare global {
-  interface Window {
-    createLemonSqueezy?: () => void;
-  }
-}
 
 const sectionCopy = {
   EN: {
@@ -68,26 +62,17 @@ export default function PricingSection({
 
   useEffect(() => {
     const existing = document.querySelector<HTMLScriptElement>(
-      `script[src="${LEMON_SQUEEZY.scriptSrc}"]`,
+      `script[src="${GUMROAD.scriptSrc}"]`,
     );
-
-    const initLemon = () => {
-      window.createLemonSqueezy?.();
-    };
-
-    if (existing) {
-      initLemon();
-      return;
-    }
+    if (existing) return;
 
     const script = document.createElement("script");
-    script.src = LEMON_SQUEEZY.scriptSrc;
-    script.defer = true;
-    script.onload = initLemon;
+    script.src = GUMROAD.scriptSrc;
+    script.async = true;
     document.body.appendChild(script);
 
     return () => {
-      script.onload = null;
+      script.remove();
     };
   }, []);
 
@@ -136,8 +121,8 @@ export default function PricingSection({
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {PRICING_TIERS.map((tier) => {
           const localized = tier[lang];
-          const href = LEMON_SQUEEZY.checkoutUrls[tier.checkoutKey];
-          const liveCheckout = isLiveLemonCheckoutUrl(href);
+          const href = GUMROAD.checkoutUrls[tier.checkoutKey];
+          const liveCheckout = isLiveGumroadCheckoutUrl(href);
           const procurementHref = getProcurementMailto(localized.title);
 
           return (
@@ -191,9 +176,10 @@ export default function PricingSection({
                   href={href}
                   className={
                     tier.featured
-                      ? "lemonsqueezy-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-                      : "lemonsqueezy-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+                      ? "gumroad-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+                      : "gumroad-button mt-6 inline-flex w-full items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
                   }
+                  data-gumroad-single-product="true"
                 >
                   {copy.cta}
                 </a>

@@ -98,7 +98,7 @@ export type TranslationDict = {
   privacyTerms: string;
   privacyDpo: string;
   privacyProcessor: string;
-  privacyLemonLink: string;
+  privacyGumroadLink: string;
   privacyClose: string;
 };
 
@@ -177,7 +177,7 @@ export const translations: Record<Lang, TranslationDict> = {
     footerAssessment: "Article 4 AI Assessment",
     footerStorefront: "SafeAI Storefront",
     footerMerchantDisclosure:
-      "SafeAI Framework is a project of Article 4 Institute. Payments, invoicing, and EU VAT collection are securely processed by Lemon Squeezy, our Merchant of Record.",
+      "SafeAI Framework is a project of Article 4 Institute. Payments, invoicing, and EU VAT collection are securely processed by Gumroad, Inc., our Merchant of Record.",
     results: "results",
     submitData: "Submit Data",
     submitModalTitle: "Submit a Public AI Project",
@@ -212,8 +212,8 @@ export const translations: Record<Lang, TranslationDict> = {
       "Privacy Terms: We collect only information you voluntarily submit (agency names, tool metadata, optional contact notes). Data is used for research review, procurement follow-up, and cryptographic proof logging via WaqfLedger. We do not sell personal data. Retention is limited to verification and audit necessities.",
     privacyDpo: `Data Protection Officer: ${SITE_METADATA.dpoEmail}`,
     privacyProcessor:
-      "Payment processing for compliance kits is handled by Lemon Squeezy as a data processor under their merchant-of-record terms.",
-    privacyLemonLink: "Lemon Squeezy privacy documentation",
+      "Digital products, invoicing, and EU VAT collection for SafeAI Framework are securely processed and fulfilled by Gumroad, Inc., our global Merchant of Record.",
+    privacyGumroadLink: "Gumroad, Inc. privacy documentation",
     privacyClose: "Close privacy notice",
   },
   FR: {
@@ -290,7 +290,7 @@ export const translations: Record<Lang, TranslationDict> = {
     footerAssessment: "Évaluation IA Article 4",
     footerStorefront: "Boutique SafeAI",
     footerMerchantDisclosure:
-      "SafeAI Framework est un projet d’Article 4 Institute. Les paiements, la facturation et la collecte de la TVA UE sont traités de manière sécurisée par Lemon Squeezy, notre Merchant of Record.",
+      "SafeAI Framework est un projet d’Article 4 Institute. Les paiements, la facturation et la collecte de la TVA UE sont traités de manière sécurisée par Gumroad, Inc., notre Merchant of Record.",
     results: "résultats",
     submitData: "Soumettre une donnée",
     submitModalTitle: "Proposer un projet IA public",
@@ -325,8 +325,8 @@ export const translations: Record<Lang, TranslationDict> = {
       "Conditions de confidentialité : nous collectons uniquement les informations que vous soumettez volontairement (noms d’agences, métadonnées d’outils, notes de contact facultatives). Les données servent à la revue de recherche, au suivi des achats et à la journalisation cryptographique via WaqfLedger. Nous ne vendons pas de données personnelles. La conservation est limitée aux nécessités de vérification et d’audit.",
     privacyDpo: `Délégué à la protection des données : ${SITE_METADATA.dpoEmail}`,
     privacyProcessor:
-      "Le traitement des paiements des kits de conformité est assuré par Lemon Squeezy en tant que sous-traitant selon ses conditions de merchant-of-record.",
-    privacyLemonLink: "Documentation confidentialité Lemon Squeezy",
+      "Les produits numériques, la facturation et la collecte de la TVA UE pour SafeAI Framework sont traités et fournis de manière sécurisée par Gumroad, Inc., notre Merchant of Record mondial.",
+    privacyGumroadLink: "Documentation confidentialité Gumroad, Inc.",
     privacyClose: "Fermer l’avis de confidentialité",
   },
   ES: {
@@ -403,7 +403,7 @@ export const translations: Record<Lang, TranslationDict> = {
     footerAssessment: "Evaluación IA Artículo 4",
     footerStorefront: "Tienda SafeAI",
     footerMerchantDisclosure:
-      "SafeAI Framework es un proyecto de Article 4 Institute. Los pagos, la facturación y la recaudación del IVA de la UE son procesados de forma segura por Lemon Squeezy, nuestro Merchant of Record.",
+      "SafeAI Framework es un proyecto de Article 4 Institute. Los pagos, la facturación y la recaudación del IVA de la UE son procesados de forma segura por Gumroad, Inc., nuestro Merchant of Record.",
     results: "resultados",
     submitData: "Enviar datos",
     submitModalTitle: "Proponer un proyecto de IA público",
@@ -438,8 +438,8 @@ export const translations: Record<Lang, TranslationDict> = {
       "Términos de privacidad: solo recopilamos la información que usted envía voluntariamente (nombres de agencias, metadatos de herramientas, notas de contacto opcionales). Los datos se usan para revisión de investigación, seguimiento de compras y registro criptográfico vía WaqfLedger. No vendemos datos personales. La retención se limita a necesidades de verificación y auditoría.",
     privacyDpo: `Delegado de protección de datos: ${SITE_METADATA.dpoEmail}`,
     privacyProcessor:
-      "El procesamiento de pagos de los kits de cumplimiento lo realiza Lemon Squeezy como encargado del tratamiento según sus términos de merchant-of-record.",
-    privacyLemonLink: "Documentación de privacidad de Lemon Squeezy",
+      "Los productos digitales, la facturación y la recaudación del IVA de la UE para SafeAI Framework son procesados y entregados de forma segura por Gumroad, Inc., nuestro Merchant of Record global.",
+    privacyGumroadLink: "Documentación de privacidad de Gumroad, Inc.",
     privacyClose: "Cerrar aviso de privacidad",
   },
 };
