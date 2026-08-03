@@ -30,6 +30,7 @@ type TermsCopy = LegalCommon & {
   storeTitle: string;
   storeBody: string;
   productsTitle: string;
+  tier0: string;
   tier1: string;
   tier2: string;
   tier3: string;
@@ -128,6 +129,8 @@ export const termsCopy: Record<Lang, TermsCopy> = {
     storeTitle: "Store Name",
     storeBody: `${BRAND.shortName} is the storefront brand operated by ${BRAND.institute} for institutional EU AI Act governance toolkits.`,
     productsTitle: "B2B Digital Products & List Prices",
+    tier0:
+      "Tier 0 — Faculty AI Starter Pack: €49 Individual Faculty / Course Pass.",
     tier1:
       "Tier 1 — Article 4 AI Literacy Kit: €399 Single Campus / Department Pass.",
     tier2:
@@ -153,6 +156,8 @@ export const termsCopy: Record<Lang, TermsCopy> = {
     storeTitle: "Nom de la boutique",
     storeBody: `${BRAND.shortName} est la marque commerciale exploitée par ${BRAND.institute} pour les boîtes à outils institutionnelles de gouvernance AI Act UE.`,
     productsTitle: "Produits numériques B2B et prix catalogue",
+    tier0:
+      "Niveau 0 — Pack Démarrage IA Enseignant : €49 Pass enseignant / cours individuel.",
     tier1:
       "Niveau 1 — Kit Culture IA Article 4 : €399 Pass campus unique / département.",
     tier2:
@@ -178,6 +183,8 @@ export const termsCopy: Record<Lang, TermsCopy> = {
     storeTitle: "Nombre de la tienda",
     storeBody: `${BRAND.shortName} es la marca comercial operada por ${BRAND.institute} para kits institucionales de gobernanza del AI Act UE.`,
     productsTitle: "Productos digitales B2B y precios de lista",
+    tier0:
+      "Nivel 0 — Pack Inicial IA Docente: €49 Pase docente / curso individual.",
     tier1:
       "Nivel 1 — Kit de Alfabetización IA Artículo 4: €399 Pase de campus único / departamento.",
     tier2:

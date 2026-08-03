@@ -24,6 +24,7 @@ export default function TermsPage() {
 
       <LegalSection title={t.productsTitle}>
         <ul className="list-disc space-y-2 pl-5">
+          <li>{t.tier0}</li>
           <li>{t.tier1}</li>
           <li>{t.tier2}</li>
           <li>{t.tier3}</li>

@@ -50,6 +50,9 @@ export const GUMROAD = {
    * Prefer NEXT_PUBLIC_GUMROAD_TIER_*_URL; fallbacks are canonical store links.
    */
   checkoutUrls: {
+    tier0:
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_0_URL ||
+      "https://safeai.gumroad.com/l/starter",
     tier1:
       process.env.NEXT_PUBLIC_GUMROAD_TIER_1_URL ||
       "https://safeai.gumroad.com/l/framework",
@@ -114,6 +117,42 @@ type PricingTier = {
 
 /** Strict B2B pricing registry — never invent free tiers */
 export const PRICING_TIERS = [
+  {
+    id: "tier0",
+    price: "€49",
+    featured: false,
+    checkoutKey: "tier0",
+    EN: {
+      title: "Faculty AI Starter Pack",
+      target: "Individual Faculty / Course Pass",
+      badge: null,
+      features: [
+        "Classroom AI Policy (.docx)",
+        "Student Declaration Form (.pdf)",
+        "Article 4 Quick-Checklist (.pdf)",
+      ],
+    },
+    FR: {
+      title: "Pack Démarrage IA Enseignant",
+      target: "Pass enseignant / cours individuel",
+      badge: null,
+      features: [
+        "Politique IA de classe (.docx)",
+        "Formulaire de déclaration étudiante (.pdf)",
+        "Checklist rapide Article 4 (.pdf)",
+      ],
+    },
+    ES: {
+      title: "Pack Inicial IA Docente",
+      target: "Pase docente / curso individual",
+      badge: null,
+      features: [
+        "Política de IA en el aula (.docx)",
+        "Formulario de declaración estudiantil (.pdf)",
+        "Lista rápida Artículo 4 (.pdf)",
+      ],
+    },
+  },
   {
     id: "tier1",
     price: "€399",
