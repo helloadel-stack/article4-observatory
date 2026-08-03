@@ -3,8 +3,11 @@
  * Metadata truth — never invent free tiers or placeholder commerce as live.
  */
 
-export const SUPPORTED_LANGS = ["EN", "FR", "ES"] as const;
+export const SUPPORTED_LANGS = ["FR", "EN", "ES"] as const;
 export type Lang = (typeof SUPPORTED_LANGS)[number];
+
+/** Platform primary language — French first across storefront & legal surfaces. */
+export const DEFAULT_LANG: Lang = "FR";
 
 /** HTML lang attribute binding — LTR only; Arabic/RTL excluded by mandate. */
 export const LANG_TO_HTML: Record<Lang, string> = {
@@ -27,6 +30,24 @@ export const BRAND = {
   waqfLedgerUrl: "https://waqfledger.tech",
   safeAiReportUrl: "https://safeai.report",
   gumroadStoreUrl: "https://safeai.gumroad.com",
+} as const;
+
+/** Pro bono public-sector shield initiative (French institutional landing) */
+export const BOUCLIER_PUBLIC = {
+  path: "/bouclier-public",
+  title: "Bouclier IA Publique (Safe Public AI Shield)",
+  license: "CC BY-NC 4.0",
+  bundlePath: "/downloads/bouclier-ia-publique-bundle.zip",
+  attestationPrefix: "A4I-SHIELD-2026",
+} as const;
+
+/** Executive onsite workshops for law firms, CLOs, and bar associations */
+export const ATELIERS_JURIDIQUES = {
+  path: "/ateliers-juridiques",
+  title:
+    "Masterclass & Workshop In-Situ : Gouvernance IA & Audit AI Act pour Professionnels du Droit",
+  plaquettePath: "/downloads/ateliers-juridiques-plaquette.pdf",
+  bookingPrefix: "A4I-MISSION",
 } as const;
 
 export const SITE_METADATA = {

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import {
   BRAND,
+  DEFAULT_LANG,
   WAQFLEDGER_SEED_PROOFS,
   type Lang,
 } from "@/src/config/constants";
@@ -162,7 +163,7 @@ type VerifyState =
   | { kind: "unknown" };
 
 export default function WaqfLedgerAuditSection({
-  lang = "EN",
+  lang = DEFAULT_LANG,
   sessionProofs = [],
 }: WaqfLedgerAuditSectionProps) {
   const t = copy[lang];

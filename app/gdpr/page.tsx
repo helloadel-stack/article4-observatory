@@ -2,11 +2,16 @@
 
 import { useState } from "react";
 import LegalPageShell, { LegalSection } from "@/components/LegalPageShell";
-import { BRAND, SITE_METADATA, type Lang } from "@/src/config/constants";
+import {
+  BRAND,
+  DEFAULT_LANG,
+  SITE_METADATA,
+  type Lang,
+} from "@/src/config/constants";
 import { gdprCopy } from "@/src/i18n/legal";
 
 export default function GdprPage() {
-  const [lang, setLang] = useState<Lang>("EN");
+  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
   const t = gdprCopy[lang];
 
   return (

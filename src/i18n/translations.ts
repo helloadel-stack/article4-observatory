@@ -8,6 +8,8 @@ export type TranslationDict = {
   navComplianceKits: string;
   navWaqfLedger: string;
   navDocumentation: string;
+  navBouclierPublic: string;
+  navAteliersJuridiques: string;
   heroTitle: string;
   heroText: string;
   primaryCta: string;
@@ -112,6 +114,8 @@ export const translations: Record<Lang, TranslationDict> = {
     navComplianceKits: "Compliance Kits",
     navWaqfLedger: "WaqfLedger Proof",
     navDocumentation: "Documentation",
+    navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
+    navAteliersJuridiques: "Ateliers Juridiques",
     heroTitle:
       "Turnkey EU AI Act & Ethical AI Governance Toolkits for Higher Education.",
     heroText:
@@ -225,6 +229,8 @@ export const translations: Record<Lang, TranslationDict> = {
     navComplianceKits: "Kits de conformité",
     navWaqfLedger: "Preuve WaqfLedger",
     navDocumentation: "Documentation",
+    navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
+    navAteliersJuridiques: "Ateliers Juridiques",
     heroTitle:
       "Boîtes à outils clés en main de gouvernance IA éthique et AI Act UE pour l’enseignement supérieur.",
     heroText:
@@ -338,6 +344,8 @@ export const translations: Record<Lang, TranslationDict> = {
     navComplianceKits: "Kits de cumplimiento",
     navWaqfLedger: "Prueba WaqfLedger",
     navDocumentation: "Documentación",
+    navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
+    navAteliersJuridiques: "Ateliers Juridiques",
     heroTitle:
       "Kits llave en mano de gobernanza ética de IA y AI Act UE para educación superior.",
     heroText:

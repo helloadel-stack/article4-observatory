@@ -25,6 +25,7 @@ import AssessmentSection from "@/components/AssessmentSection";
 import HtmlLangSync from "@/components/HtmlLangSync";
 import {
   BRAND,
+  DEFAULT_LANG,
   SITE_METADATA,
   SUPPORTED_LANGS,
   localizeCountry,
@@ -253,7 +254,7 @@ function SovereigntyBadge({
 }
 
 export default function Home() {
-  const [lang, setLang] = useState<Lang>("EN");
+  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
   const [search, setSearch] = useState("");
   const [country, setCountry] = useState("all");
   const [sovereignty, setSovereignty] = useState<SovereigntyFilter>("all");
@@ -399,12 +400,22 @@ export default function Home() {
     }
   };
 
-  const navLinks = [
+  const navLinks: {
+    href: string;
+    label: string;
+    route?: boolean;
+  }[] = [
     { href: "#framework", label: t.navFramework },
     { href: "#pricing", label: t.navComplianceKits },
     { href: "#waqfledger", label: t.navWaqfLedger },
     { href: "#assessment", label: t.navDocumentation },
-  ] as const;
+    { href: "/bouclier-public", label: t.navBouclierPublic, route: true },
+    {
+      href: "/ateliers-juridiques",
+      label: t.navAteliersJuridiques,
+      route: true,
+    },
+  ];
 
   return (
     <div className="flex min-h-full flex-col bg-slate-50 text-slate-900">
@@ -435,15 +446,25 @@ export default function Home() {
             aria-label="Primary"
             className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-slate-600"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.route ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs font-medium text-slate-500 transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 sm:text-sm"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
           </nav>
 
           <div className="flex shrink-0 flex-wrap items-center gap-2">

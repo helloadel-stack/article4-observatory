@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import LegalPageShell, { LegalSection } from "@/components/LegalPageShell";
-import { type Lang } from "@/src/config/constants";
+import { DEFAULT_LANG, type Lang } from "@/src/config/constants";
 import { termsCopy } from "@/src/i18n/legal";
 
 export default function TermsPage() {
-  const [lang, setLang] = useState<Lang>("EN");
+  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
   const t = termsCopy[lang];
 
   return (

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import LegalPageShell, { LegalSection } from "@/components/LegalPageShell";
-import { SITE_METADATA, type Lang } from "@/src/config/constants";
+import { DEFAULT_LANG, SITE_METADATA, type Lang } from "@/src/config/constants";
 import { privacyCopy } from "@/src/i18n/legal";
 
 export default function PrivacyPage() {
-  const [lang, setLang] = useState<Lang>("EN");
+  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
   const t = privacyCopy[lang];
 
   return (
