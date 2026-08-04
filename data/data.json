@@ -34,11 +34,77 @@
   },
   {
     "id": "4",
-    "agency": "Ministry of Digital Transformation",
+    "agency": "AESIA / Ministry of Digital Transformation (MDT)",
     "country": "Spain",
     "toolName": "AESIA Regulation Parser",
     "primaryModel": "Llama 3 70B Fine-tuned",
     "hostingProvider": "National Supercomputing Network (RES)",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "5",
+    "agency": "CHU de Lyon (Hospices Civils de Lyon)",
+    "country": "France",
+    "toolName": "Diagnostic Imaging Assistant",
+    "primaryModel": "Owkin / In-House Clinical Vision Model",
+    "hostingProvider": "HCL Private Clinical Cloud (On-Premise)",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "6",
+    "agency": "FPS Public Health (Belgium)",
+    "country": "Belgium",
+    "toolName": "Citizen Triage Assistant",
+    "primaryModel": "Mistral Large (EU Open-Weight)",
+    "hostingProvider": "Belgian Federal Cloud (Smals)",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "7",
+    "agency": "Federal Office of Public Health (FOPH)",
+    "country": "Switzerland",
+    "toolName": "nLPD Compliance Evaluator",
+    "primaryModel": "SwissGPT / Open-Weight LLM",
+    "hostingProvider": "Swiss Government Cloud (Admin.ch)",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "8",
+    "agency": "City of Amsterdam",
+    "country": "Netherlands",
+    "toolName": "Algorithmic Transparency Register",
+    "primaryModel": "Rule-Based + Open-Weight NLP Classifier",
+    "hostingProvider": "Amsterdam Municipal Data Platform (On-Premise)",
+    "sovereigntyType": "Sovereign",
+    "euAiActStatus": "High Compliance",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "9",
+    "agency": "INPS (National Social Security Institute)",
+    "country": "Italy",
+    "toolName": "Automated Claims Routing System",
+    "primaryModel": "Proprietary Commercial LLM",
+    "hostingProvider": "US Hyperscaler European Region",
+    "sovereigntyType": "Dependent",
+    "euAiActStatus": "In Transition",
+    "lastUpdated": "2026-07"
+  },
+  {
+    "id": "10",
+    "agency": "Ministry of Justice (Estonia)",
+    "country": "Estonia",
+    "toolName": "AI Legal Summary Tool",
+    "primaryModel": "Llama 3 Fine-tuned (Estonian Legal Corpus)",
+    "hostingProvider": "RIK State IT Centre (GovCloud EE)",
     "sovereigntyType": "Sovereign",
     "euAiActStatus": "High Compliance",
     "lastUpdated": "2026-07"

@@ -89,42 +89,42 @@ const pageCopy = {
         summary:
           "Cartographiez les usages non déclarés et adoptez une charte d'usage alignée sur les obligations de littératie IA de l'Article 4.",
         deliverables: [
-          "Matrice Shadow AI (services, outils, données)",
+          "Matrice Shadow AI (.xlsx)",
           "Charte d'usage institutionnelle (.docx)",
-          "Plan de sensibilisation DGS / DSI / DPO",
+          "Plan de sensibilisation DGS/DSI/DPO (.pdf)",
         ],
       },
       {
         id: 2,
         title: "La Boussole du Risque IA™ & Clause Marchés Publics (CCAP)",
         summary:
-          "Classez les systèmes selon le risque et intégrez une clause AI Act prête à l'emploi dans vos marchés publics.",
+          "Arbre décisionnel pour qualifier les systèmes IA et clause type à insérer dans les cahiers des charges (CCAP) imposant la transparence et la souveraineté.",
         deliverables: [
           "Boussole du Risque IA™ (.xlsx)",
-          "Clause CCAP / CCTP fournisseurs IA",
-          "Grille d'évaluation des offres",
+          "Clause Type CCAP Marchés Publics IA (.docx)",
+          "Grille d'évaluation fournisseurs (.pdf)",
         ],
       },
       {
         id: 3,
         title: "Registre Général & Transparence Algorithmique (Art. 50)",
         summary:
-          "Tenez le registre des systèmes d'IA et formalisez les obligations de transparence envers usagers et agents.",
+          "Inventaire public des algorithmes déployés, traçabilité des consignes structurantes et chaîne d'arbitrage humain.",
         deliverables: [
-          "Registre général des systèmes IA",
-          "Journal de transparence Article 50",
-          "Modèles de mentions usagers / patients",
+          "Registre des Modèles & Prompts à Haut Impact (.xlsx)",
+          "Protocoles de Supervision Humaine (.docx)",
+          "Formulaire de signalement d'incident (.pdf)",
         ],
       },
       {
         id: 4,
         title: "Scorecard Exécutif (Niveaux 0 à 5) & Feuille de Route",
         summary:
-          "Mesurez la maturité de gouvernance (IA Sauvage → IA Exemplaire) et priorisez les actions budgétaires.",
+          "Auto-évaluation de maturité et chronogramme d'actions à 6 et 12 mois pour le comité de gouvernance.",
         deliverables: [
-          "Scorecard exécutif 1 page",
-          "Feuille de route 12–24 mois",
-          "Attestation de préparation (WaqfLedger)",
+          "Scorecard de Maturité IA Publique (.pdf)",
+          "Roadmap stratégique 6/12 mois (.docx)",
+          "Guide de structuration du Comité IA (.pdf)",
         ],
       },
     ],
@@ -189,44 +189,44 @@ const pageCopy = {
         id: 1,
         title: "Shadow AI Diagnostic & Use Charter (Art. 4)",
         summary:
-          "Map undeclared AI use and adopt a use charter aligned with Article 4 AI literacy obligations.",
+          "Map undeclared AI use and adopt an institutional use charter aligned with Article 4 AI literacy obligations.",
         deliverables: [
-          "Shadow AI matrix (services, tools, data)",
-          "Institutional use charter (.docx)",
-          "Awareness plan for CIO / IT / DPO",
+          "Shadow AI Matrix (.xlsx)",
+          "Institutional Use Charter (.docx)",
+          "Awareness Plan for CIO/IT/DPO (.pdf)",
         ],
       },
       {
         id: 2,
         title: "AI Risk Compass™ & Public Procurement Clause (CCAP)",
         summary:
-          "Classify systems by risk and embed a ready-to-use AI Act clause in public procurement.",
+          "Decision tree to qualify AI systems and a model clause for procurement specifications (CCAP) requiring transparency and sovereignty.",
         deliverables: [
           "AI Risk Compass™ (.xlsx)",
-          "CCAP / CCTP AI vendor clause",
-          "Bid evaluation grid",
+          "Model CCAP AI Public Procurement Clause (.docx)",
+          "Vendor Evaluation Grid (.pdf)",
         ],
       },
       {
         id: 3,
         title: "General Register & Algorithmic Transparency (Art. 50)",
         summary:
-          "Maintain the AI systems register and formalize transparency obligations toward users and staff.",
+          "Public inventory of deployed algorithms, traceability of structuring prompts, and the human arbitration chain.",
         deliverables: [
-          "General AI systems register",
-          "Article 50 transparency log",
-          "User / patient disclosure templates",
+          "High-Impact Models & Prompts Register (.xlsx)",
+          "Human Oversight Protocols (.docx)",
+          "Incident Reporting Form (.pdf)",
         ],
       },
       {
         id: 4,
         title: "Executive Scorecard (Levels 0–5) & Roadmap",
         summary:
-          "Measure governance maturity (Wild AI → Exemplary AI) and prioritize budget actions.",
+          "Maturity self-assessment and a 6- and 12-month action timeline for the governance committee.",
         deliverables: [
-          "1-page executive scorecard",
-          "12–24 month roadmap",
-          "Readiness attestation (WaqfLedger)",
+          "Public AI Maturity Scorecard (.pdf)",
+          "Strategic Roadmap 6/12 months (.docx)",
+          "AI Committee Structuring Guide (.pdf)",
         ],
       },
     ],
@@ -293,42 +293,42 @@ const pageCopy = {
         summary:
           "Cartografíe los usos no declarados y adopte una carta de uso alineada con las obligaciones de alfabetización IA del Artículo 4.",
         deliverables: [
-          "Matriz Shadow AI (servicios, herramientas, datos)",
+          "Matriz Shadow AI (.xlsx)",
           "Carta de uso institucional (.docx)",
-          "Plan de sensibilización DGS / DSI / DPO",
+          "Plan de sensibilización DGS/DSI/DPO (.pdf)",
         ],
       },
       {
         id: 2,
         title: "La Brújula del Riesgo IA™ & Cláusula de Contratación Pública (CCAP)",
         summary:
-          "Clasifique los sistemas según el riesgo e integre una cláusula AI Act lista para usar en sus contratos públicos.",
+          "Árbol de decisión para calificar los sistemas de IA y cláusula tipo para insertar en los pliegos de condiciones (CCAP) que impone transparencia y soberanía.",
         deliverables: [
           "Brújula del Riesgo IA™ (.xlsx)",
-          "Cláusula CCAP / CCTP proveedores IA",
-          "Cuadrícula de evaluación de ofertas",
+          "Cláusula Tipo CCAP Contratación Pública IA (.docx)",
+          "Cuadrícula de evaluación de proveedores (.pdf)",
         ],
       },
       {
         id: 3,
         title: "Registro General & Transparencia Algorítmica (Art. 50)",
         summary:
-          "Mantenga el registro de sistemas de IA y formalice las obligaciones de transparencia hacia usuarios y agentes.",
+          "Inventario público de los algoritmos desplegados, trazabilidad de las consignas estructurantes y cadena de arbitraje humano.",
         deliverables: [
-          "Registro general de sistemas IA",
-          "Diario de transparencia Artículo 50",
-          "Modelos de menciones usuarios / pacientes",
+          "Registro de Modelos y Prompts de Alto Impacto (.xlsx)",
+          "Protocolos de Supervisión Humana (.docx)",
+          "Formulario de notificación de incidentes (.pdf)",
         ],
       },
       {
         id: 4,
         title: "Scorecard Ejecutivo (Niveles 0 a 5) & Hoja de Ruta",
         summary:
-          "Mida la madurez de gobernanza (IA Salvaje → IA Ejemplar) y priorice las acciones presupuestarias.",
+          "Autoevaluación de madurez y cronograma de acciones a 6 y 12 meses para el comité de gobernanza.",
         deliverables: [
-          "Scorecard ejecutivo 1 página",
-          "Hoja de ruta 12–24 meses",
-          "Attestation de preparación (WaqfLedger)",
+          "Scorecard de Madurez IA Pública (.pdf)",
+          "Hoja de ruta estratégica 6/12 meses (.docx)",
+          "Guía de estructuración del Comité IA (.pdf)",
         ],
       },
     ],

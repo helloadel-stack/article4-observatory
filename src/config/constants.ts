@@ -37,7 +37,7 @@ export const BOUCLIER_PUBLIC = {
   path: "/bouclier-public",
   title: "Bouclier IA Publique (Safe Public AI Shield)",
   license: "CC BY-NC 4.0",
-  bundlePath: "/downloads/bouclier-ia-publique-bundle.zip",
+  bundlePath: "/bundles/Bouclier_IA_Publique_Bundle_v2026.zip",
   attestationPrefix: "A4I-SHIELD-2026",
 } as const;
 
@@ -329,6 +329,11 @@ export const COUNTRY_LABELS: Record<string, Record<Lang, string>> = {
   France: { EN: "France", FR: "France", ES: "Francia" },
   Germany: { EN: "Germany", FR: "Allemagne", ES: "Alemania" },
   Spain: { EN: "Spain", FR: "Espagne", ES: "España" },
+  Belgium: { EN: "Belgium", FR: "Belgique", ES: "Bélgica" },
+  Switzerland: { EN: "Switzerland", FR: "Suisse", ES: "Suiza" },
+  Netherlands: { EN: "Netherlands", FR: "Pays-Bas", ES: "Países Bajos" },
+  Italy: { EN: "Italy", FR: "Italie", ES: "Italia" },
+  Estonia: { EN: "Estonia", FR: "Estonie", ES: "Estonia" },
   EU: { EN: "EU", FR: "UE", ES: "UE" },
 };
 

@@ -512,16 +512,9 @@ export default function Home() {
             aria-hidden
           />
           <div className="relative max-w-3xl">
-            <div className="flex flex-wrap items-center gap-3">
-              <p className="text-sm font-bold tracking-tight text-indigo-700">
-                {t.platform}
-              </p>
-              <LangToggle
-                lang={lang}
-                onChange={handleLangChange}
-                ariaLabel={t.langToggleLabel}
-              />
-            </div>
+            <p className="text-sm font-bold tracking-tight text-indigo-700">
+              {t.platform}
+            </p>
             <h1
               id="hero-heading"
               className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight"

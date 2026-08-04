@@ -3,12 +3,15 @@
 import { useState, type FormEvent } from "react";
 import {
   Award,
+  Check,
   CheckCircle2,
+  Copy,
   ExternalLink,
   Loader2,
   ShieldCheck,
+  X,
 } from "lucide-react";
-import { DEFAULT_LANG, type Lang } from "@/src/config/constants";
+import { BRAND, DEFAULT_LANG, type Lang } from "@/src/config/constants";
 
 export type DepartmentType = "Collectivité" | "Hôpital" | "Administration";
 
@@ -36,13 +39,17 @@ const formCopy = {
       "Veuillez renseigner l'institution, le type et l'e-mail de contact.",
     errorGeneration: "Échec de la génération de l'attestation.",
     errorNetwork: "Erreur réseau. Veuillez réessayer dans un instant.",
-    submitLoading: "Génération en cours…",
+    submitLoading: "Calcul de l'empreinte SHA-256...",
     submitButton: "Générer l'Attestation de Préparation",
+    modalTitle: "Attestation de Préparation à la Gouvernance IA",
     successSeal: "Sceau d'attestation",
-    successId: "Identifiant",
+    successId: "Identifiant du certificat",
     successIssued: "Émise le",
-    successHash: "Empreinte SHA-256",
-    successVerify: "Vérifier sur WaqfLedger.tech",
+    successHash: "Preuve d'empreinte SHA-256",
+    copyHash: "Copier le hash",
+    copiedHash: "Hash copié",
+    successVerify: "Vérifier le Hash sur WaqfLedger.tech",
+    closeModal: "Fermer",
     maturityLevels: [
       {
         level: 0,
@@ -106,13 +113,17 @@ const formCopy = {
       "Please provide the institution, department type, and contact email.",
     errorGeneration: "Failed to generate the attestation.",
     errorNetwork: "Network error. Please try again shortly.",
-    submitLoading: "Generating…",
+    submitLoading: "Computing SHA-256 fingerprint...",
     submitButton: "Generate Readiness Attestation",
+    modalTitle: "AI Governance Readiness Attestation",
     successSeal: "Attestation seal",
-    successId: "Identifier",
+    successId: "Certificate ID",
     successIssued: "Issued on",
-    successHash: "SHA-256 fingerprint",
-    successVerify: "Verify on WaqfLedger.tech",
+    successHash: "SHA-256 hash proof",
+    copyHash: "Copy hash",
+    copiedHash: "Hash copied",
+    successVerify: "Verify the Hash on WaqfLedger.tech",
+    closeModal: "Close",
     maturityLevels: [
       {
         level: 0,
@@ -176,13 +187,17 @@ const formCopy = {
       "Indique la institución, el tipo y el correo de contacto.",
     errorGeneration: "Error al generar la attestation.",
     errorNetwork: "Error de red. Inténtelo de nuevo en un momento.",
-    submitLoading: "Generando…",
+    submitLoading: "Calculando la huella SHA-256...",
     submitButton: "Generar Attestation de Preparación",
+    modalTitle: "Attestation de Preparación a la Gobernanza IA",
     successSeal: "Sello de attestation",
-    successId: "Identificador",
+    successId: "ID del certificado",
     successIssued: "Emitida el",
-    successHash: "Huella SHA-256",
-    successVerify: "Verificar en WaqfLedger.tech",
+    successHash: "Prueba de huella SHA-256",
+    copyHash: "Copiar hash",
+    copiedHash: "Hash copiado",
+    successVerify: "Verificar el Hash en WaqfLedger.tech",
+    closeModal: "Cerrar",
     maturityLevels: [
       {
         level: 0,
@@ -270,15 +285,34 @@ export default function BouclierAttestationForm({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<AttestationResponse | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [hashCopied, setHashCopied] = useState(false);
 
   const selectedLevel =
     t.maturityLevels.find((m) => m.level === form.maturityLevel) ??
     t.maturityLevels[0];
 
+  const closeModal = () => {
+    setModalOpen(false);
+    setHashCopied(false);
+  };
+
+  const handleCopyHash = async (hash: string) => {
+    try {
+      await navigator.clipboard.writeText(hash);
+      setHashCopied(true);
+      window.setTimeout(() => setHashCopied(false), 2000);
+    } catch {
+      setHashCopied(false);
+    }
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
     setResult(null);
+    setModalOpen(false);
+    setHashCopied(false);
 
     if (!form.institutionName.trim() || !form.departmentType || !form.email.trim()) {
       setError(t.errorRequired);
@@ -299,11 +333,12 @@ export default function BouclierAttestationForm({
       });
 
       const data = (await response.json()) as AttestationResponse;
-      if (!response.ok || !data.success) {
+      if (response.status !== 201 || !data.success || !data.hashProof || !data.attestationId) {
         setError(data.error ?? t.errorGeneration);
         return;
       }
       setResult(data);
+      setModalOpen(true);
     } catch {
       setError(t.errorNetwork);
     } finally {
@@ -473,52 +508,96 @@ export default function BouclierAttestationForm({
         </button>
       </form>
 
-      {result?.success && result.hashProof && result.verifyUrl ? (
+      {modalOpen && result?.success && result.hashProof && result.attestationId ? (
         <div
-          role="status"
-          className="mt-8 rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-950/80 via-slate-900 to-indigo-950/60 p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="attestation-modal-title"
+          onClick={closeModal}
         >
-          <div className="flex flex-wrap items-start gap-4">
-            <div
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-emerald-400/70 bg-emerald-500/10 text-emerald-300"
-              aria-hidden
-            >
-              <CheckCircle2 className="h-8 w-8" />
+          <div
+            className="w-full max-w-lg overflow-hidden rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 shadow-2xl shadow-emerald-950/40"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3 border-b border-emerald-500/20 px-5 py-4">
+              <div className="flex items-start gap-3">
+                <div
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-emerald-400/70 bg-emerald-500/10 text-emerald-300"
+                  aria-hidden
+                >
+                  <CheckCircle2 className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                    {t.successSeal}
+                  </p>
+                  <h3
+                    id="attestation-modal-title"
+                    className="mt-1 text-lg font-bold leading-snug text-white"
+                  >
+                    {result.title ?? t.modalTitle}
+                  </h3>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={closeModal}
+                className="rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-800 hover:text-white"
+                aria-label={t.closeModal}
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
-            <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
-                {t.successSeal}
-              </p>
-              <h3 className="mt-1 text-lg font-bold text-white">
-                {result.title}
-              </h3>
-              <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+
+            <div className="space-y-5 px-5 py-5">
+              <dl className="grid gap-4 text-sm">
                 <div>
                   <dt className="text-slate-500">{t.successId}</dt>
-                  <dd className="mt-0.5 font-mono text-xs text-slate-200 break-all">
+                  <dd className="mt-1 font-mono text-sm font-semibold tracking-wide text-emerald-200">
                     {result.attestationId}
                   </dd>
                 </div>
                 <div>
                   <dt className="text-slate-500">{t.successIssued}</dt>
-                  <dd className="mt-0.5 text-slate-200">
+                  <dd className="mt-1 text-slate-200">
                     {result.issuedAt
                       ? new Date(result.issuedAt).toLocaleString(t.dateLocale)
                       : "—"}
                   </dd>
                 </div>
-                <div className="sm:col-span-2">
+                <div>
                   <dt className="text-slate-500">{t.successHash}</dt>
-                  <dd className="mt-0.5 font-mono text-xs text-indigo-200 break-all">
-                    {result.hashProof}
+                  <dd className="mt-2 rounded-lg border border-slate-700 bg-slate-950/70 p-3">
+                    <code className="block break-all font-mono text-xs leading-relaxed text-indigo-200">
+                      {result.hashProof}
+                    </code>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyHash(result.hashProof!)}
+                      className="mt-3 inline-flex items-center gap-2 rounded-md border border-slate-600 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-indigo-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                    >
+                      {hashCopied ? (
+                        <>
+                          <Check className="h-3.5 w-3.5 text-emerald-400" aria-hidden />
+                          {t.copiedHash}
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-3.5 w-3.5" aria-hidden />
+                          {t.copyHash}
+                        </>
+                      )}
+                    </button>
                   </dd>
                 </div>
               </dl>
+
               <a
-                href={result.verifyUrl}
+                href={BRAND.waqfLedgerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-lg border border-emerald-400/50 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-emerald-400/50 bg-emerald-500/15 px-4 py-3 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-500/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
               >
                 {t.successVerify}
                 <ExternalLink className="h-3.5 w-3.5" aria-hidden />

@@ -222,7 +222,7 @@ function makePdf(lines) {
   return Buffer.from(pdf, "latin1");
 }
 
-const outDir = path.join(root, "public", "downloads");
+const outDir = path.join(root, "public", "bundles");
 fs.mkdirSync(outDir, { recursive: true });
 
 const docx = makeDocx([
@@ -301,6 +301,6 @@ const bundle = zipStore([
   { name: "04-scorecard-executif-feuille-de-route.pdf", data: pdfScorecard },
 ]);
 
-const outPath = path.join(outDir, "bouclier-ia-publique-bundle.zip");
+const outPath = path.join(outDir, "Bouclier_IA_Publique_Bundle_v2026.zip");
 fs.writeFileSync(outPath, bundle);
 console.log(`Wrote ${outPath} (${bundle.length} bytes)`);
