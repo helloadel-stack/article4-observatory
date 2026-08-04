@@ -8,47 +8,225 @@ import {
   Loader2,
   ShieldCheck,
 } from "lucide-react";
-
-export const MATURITY_LEVELS = [
-  {
-    level: 0,
-    label: "IA Sauvage",
-    description:
-      "Usages non gouvernés, Shadow AI généralisée, aucun registre ni charte.",
-  },
-  {
-    level: 1,
-    label: "Sensibilisation",
-    description:
-      "Première cartographie Shadow AI et sensibilisation Article 4 engagée.",
-  },
-  {
-    level: 2,
-    label: "Cadre Initial",
-    description:
-      "Charte d'usage adoptée ; clause marchés publics et boussole de risque en cours.",
-  },
-  {
-    level: 3,
-    label: "Gouvernance Opérationnelle",
-    description:
-      "Registre général actif, transparence Art. 50 et contrôles DPO/DSI formalisés.",
-  },
-  {
-    level: 4,
-    label: "Maîtrise Institutionnelle",
-    description:
-      "Scorecard exécutif suivi, feuille de route budgétée, audits périodiques.",
-  },
-  {
-    level: 5,
-    label: "IA Exemplaire",
-    description:
-      "Gouvernance mature, preuves WaqfLedger, alignement DINUM/CNIL/APD/nLPD démontré.",
-  },
-] as const;
+import { DEFAULT_LANG, type Lang } from "@/src/config/constants";
 
 export type DepartmentType = "Collectivité" | "Hôpital" | "Administration";
+
+const formCopy = {
+  FR: {
+    eyebrow: "Scorecard exécutif",
+    title: "Niveaux 0 à 5 — Attestation de préparation",
+    description:
+      "Auto-évaluez la maturité de gouvernance IA de votre institution, puis générez une attestation scellée par empreinte SHA-256 via WaqfLedger.",
+    badge: "1 page · Preuve cryptographique",
+    levelLabel: "Niveau",
+    selectedLevel: "Niveau sélectionné",
+    institutionLabel: "Nom de l'institution",
+    institutionPlaceholder: "Ex. Métropole de Lyon, CHU de Bordeaux…",
+    departmentLabel: "Type de département",
+    selectPlaceholder: "Sélectionner…",
+    departmentOptions: {
+      Collectivité: "Collectivité",
+      Hôpital: "Hôpital",
+      Administration: "Administration",
+    },
+    emailLabel: "E-mail de contact",
+    emailPlaceholder: "dgs@collectivite.fr",
+    errorRequired:
+      "Veuillez renseigner l'institution, le type et l'e-mail de contact.",
+    errorGeneration: "Échec de la génération de l'attestation.",
+    errorNetwork: "Erreur réseau. Veuillez réessayer dans un instant.",
+    submitLoading: "Génération en cours…",
+    submitButton: "Générer l'Attestation de Préparation",
+    successSeal: "Sceau d'attestation",
+    successId: "Identifiant",
+    successIssued: "Émise le",
+    successHash: "Empreinte SHA-256",
+    successVerify: "Vérifier sur WaqfLedger.tech",
+    maturityLevels: [
+      {
+        level: 0,
+        label: "IA Sauvage",
+        description:
+          "Usages non gouvernés, Shadow AI généralisée, aucun registre ni charte.",
+      },
+      {
+        level: 1,
+        label: "Sensibilisation",
+        description:
+          "Première cartographie Shadow AI et sensibilisation Article 4 engagée.",
+      },
+      {
+        level: 2,
+        label: "Cadre Initial",
+        description:
+          "Charte d'usage adoptée ; clause marchés publics et boussole de risque en cours.",
+      },
+      {
+        level: 3,
+        label: "Gouvernance Opérationnelle",
+        description:
+          "Registre général actif, transparence Art. 50 et contrôles DPO/DSI formalisés.",
+      },
+      {
+        level: 4,
+        label: "Maîtrise Institutionnelle",
+        description:
+          "Scorecard exécutif suivi, feuille de route budgétée, audits périodiques.",
+      },
+      {
+        level: 5,
+        label: "IA Exemplaire",
+        description:
+          "Gouvernance mature, preuves WaqfLedger, alignement DINUM/CNIL/APD/nLPD démontré.",
+      },
+    ],
+    dateLocale: "fr-FR",
+  },
+  EN: {
+    eyebrow: "Executive scorecard",
+    title: "Levels 0 to 5 — Readiness attestation",
+    description:
+      "Self-assess your institution's AI governance maturity, then generate an attestation sealed with a SHA-256 fingerprint via WaqfLedger.",
+    badge: "1 page · Cryptographic proof",
+    levelLabel: "Level",
+    selectedLevel: "Selected level",
+    institutionLabel: "Institution name",
+    institutionPlaceholder: "e.g. City of Lyon, Bordeaux University Hospital…",
+    departmentLabel: "Department type",
+    selectPlaceholder: "Select…",
+    departmentOptions: {
+      Collectivité: "Local government",
+      Hôpital: "Hospital",
+      Administration: "Public administration",
+    },
+    emailLabel: "Contact email",
+    emailPlaceholder: "dgs@municipality.gov",
+    errorRequired:
+      "Please provide the institution, department type, and contact email.",
+    errorGeneration: "Failed to generate the attestation.",
+    errorNetwork: "Network error. Please try again shortly.",
+    submitLoading: "Generating…",
+    submitButton: "Generate Readiness Attestation",
+    successSeal: "Attestation seal",
+    successId: "Identifier",
+    successIssued: "Issued on",
+    successHash: "SHA-256 fingerprint",
+    successVerify: "Verify on WaqfLedger.tech",
+    maturityLevels: [
+      {
+        level: 0,
+        label: "Wild AI",
+        description:
+          "Ungoverned use, widespread Shadow AI, no register or charter.",
+      },
+      {
+        level: 1,
+        label: "Awareness",
+        description:
+          "Initial Shadow AI mapping and Article 4 awareness underway.",
+      },
+      {
+        level: 2,
+        label: "Initial Framework",
+        description:
+          "Use charter adopted; procurement clause and risk compass in progress.",
+      },
+      {
+        level: 3,
+        label: "Operational Governance",
+        description:
+          "Active general register, Art. 50 transparency and formal DPO/IT controls.",
+      },
+      {
+        level: 4,
+        label: "Institutional Mastery",
+        description:
+          "Executive scorecard tracked, budgeted roadmap, periodic audits.",
+      },
+      {
+        level: 5,
+        label: "Exemplary AI",
+        description:
+          "Mature governance, WaqfLedger proofs, DINUM/CNIL/APD/nLPD alignment demonstrated.",
+      },
+    ],
+    dateLocale: "en-GB",
+  },
+  ES: {
+    eyebrow: "Scorecard ejecutivo",
+    title: "Niveles 0 a 5 — Attestation de preparación",
+    description:
+      "Autoevalúe la madurez de gobernanza IA de su institución y genere una attestation sellada con huella SHA-256 vía WaqfLedger.",
+    badge: "1 página · Prueba criptográfica",
+    levelLabel: "Nivel",
+    selectedLevel: "Nivel seleccionado",
+    institutionLabel: "Nombre de la institución",
+    institutionPlaceholder: "Ej. Metrópolis de Lyon, CHU de Burdeos…",
+    departmentLabel: "Tipo de departamento",
+    selectPlaceholder: "Seleccionar…",
+    departmentOptions: {
+      Collectivité: "Colectividad",
+      Hôpital: "Hospital",
+      Administration: "Administración",
+    },
+    emailLabel: "Correo de contacto",
+    emailPlaceholder: "dgs@colectividad.es",
+    errorRequired:
+      "Indique la institución, el tipo y el correo de contacto.",
+    errorGeneration: "Error al generar la attestation.",
+    errorNetwork: "Error de red. Inténtelo de nuevo en un momento.",
+    submitLoading: "Generando…",
+    submitButton: "Generar Attestation de Preparación",
+    successSeal: "Sello de attestation",
+    successId: "Identificador",
+    successIssued: "Emitida el",
+    successHash: "Huella SHA-256",
+    successVerify: "Verificar en WaqfLedger.tech",
+    maturityLevels: [
+      {
+        level: 0,
+        label: "IA Salvaje",
+        description:
+          "Usos no gobernados, Shadow AI generalizada, sin registro ni carta.",
+      },
+      {
+        level: 1,
+        label: "Sensibilización",
+        description:
+          "Primera cartografía Shadow AI y sensibilización Artículo 4 iniciada.",
+      },
+      {
+        level: 2,
+        label: "Marco Inicial",
+        description:
+          "Carta de uso adoptada; cláusula de contratación pública y brújula de riesgo en curso.",
+      },
+      {
+        level: 3,
+        label: "Gobernanza Operativa",
+        description:
+          "Registro general activo, transparencia Art. 50 y controles DPO/DSI formalizados.",
+      },
+      {
+        level: 4,
+        label: "Dominio Institucional",
+        description:
+          "Scorecard ejecutivo seguido, hoja de ruta presupuestada, auditorías periódicas.",
+      },
+      {
+        level: 5,
+        label: "IA Ejemplar",
+        description:
+          "Gobernanza madura, pruebas WaqfLedger, alineación DINUM/CNIL/APD/nLPD demostrada.",
+      },
+    ],
+    dateLocale: "es-ES",
+  },
+} as const;
+
+/** FR labels preserved for backward compatibility with external imports. */
+export const MATURITY_LEVELS = formCopy.FR.maturityLevels;
 
 type AttestationResponse = {
   success: boolean;
@@ -74,15 +252,28 @@ const INITIAL_FORM: FormState = {
   maturityLevel: 0,
 };
 
-export default function BouclierAttestationForm() {
+const DEPARTMENT_VALUES: DepartmentType[] = [
+  "Collectivité",
+  "Hôpital",
+  "Administration",
+];
+
+type BouclierAttestationFormProps = {
+  lang?: Lang;
+};
+
+export default function BouclierAttestationForm({
+  lang = DEFAULT_LANG,
+}: BouclierAttestationFormProps) {
+  const t = formCopy[lang];
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<AttestationResponse | null>(null);
 
   const selectedLevel =
-    MATURITY_LEVELS.find((m) => m.level === form.maturityLevel) ??
-    MATURITY_LEVELS[0];
+    t.maturityLevels.find((m) => m.level === form.maturityLevel) ??
+    t.maturityLevels[0];
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -90,7 +281,7 @@ export default function BouclierAttestationForm() {
     setResult(null);
 
     if (!form.institutionName.trim() || !form.departmentType || !form.email.trim()) {
-      setError("Veuillez renseigner l'institution, le type et l'e-mail de contact.");
+      setError(t.errorRequired);
       return;
     }
 
@@ -109,12 +300,12 @@ export default function BouclierAttestationForm() {
 
       const data = (await response.json()) as AttestationResponse;
       if (!response.ok || !data.success) {
-        setError(data.error ?? "Échec de la génération de l'attestation.");
+        setError(data.error ?? t.errorGeneration);
         return;
       }
       setResult(data);
     } catch {
-      setError("Erreur réseau. Veuillez réessayer dans un instant.");
+      setError(t.errorNetwork);
     } finally {
       setLoading(false);
     }
@@ -129,27 +320,26 @@ export default function BouclierAttestationForm() {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300">
-            Scorecard exécutif
+            {t.eyebrow}
           </p>
           <h2
             id="scorecard-heading"
             className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
           >
-            Niveaux 0 à 5 — Attestation de préparation
+            {t.title}
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-400">
-            Auto-évaluez la maturité de gouvernance IA de votre institution, puis
-            générez une attestation scellée par empreinte SHA-256 via WaqfLedger.
+            {t.description}
           </p>
         </div>
         <div className="inline-flex items-center gap-2 rounded-lg border border-indigo-500/40 bg-indigo-950/60 px-3 py-2 text-xs font-medium text-indigo-200">
           <ShieldCheck className="h-4 w-4 shrink-0" aria-hidden />
-          1 page · Preuve cryptographique
+          {t.badge}
         </div>
       </div>
 
       <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {MATURITY_LEVELS.map((item) => {
+        {t.maturityLevels.map((item) => {
           const active = form.maturityLevel === item.level;
           return (
             <li key={item.level}>
@@ -166,7 +356,7 @@ export default function BouclierAttestationForm() {
                 aria-pressed={active}
               >
                 <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300">
-                  Niveau {item.level}
+                  {t.levelLabel} {item.level}
                 </span>
                 <span className="mt-1 text-base font-semibold text-white">
                   {item.label}
@@ -183,17 +373,17 @@ export default function BouclierAttestationForm() {
       <form onSubmit={handleSubmit} className="mt-8 space-y-5 border-t border-slate-700 pt-8">
         <div className="rounded-xl border border-slate-700 bg-slate-950/60 px-4 py-3">
           <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-            Niveau sélectionné
+            {t.selectedLevel}
           </p>
           <p className="mt-1 text-sm font-semibold text-white">
-            Niveau {selectedLevel.level} — {selectedLevel.label}
+            {t.levelLabel} {selectedLevel.level} — {selectedLevel.label}
           </p>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <label className="block sm:col-span-2">
             <span className="mb-1.5 block text-sm font-medium text-slate-300">
-              Nom de l&apos;institution
+              {t.institutionLabel}
             </span>
             <input
               type="text"
@@ -206,14 +396,14 @@ export default function BouclierAttestationForm() {
                   institutionName: e.target.value,
                 }))
               }
-              placeholder="Ex. Métropole de Lyon, CHU de Bordeaux…"
+              placeholder={t.institutionPlaceholder}
               className="w-full rounded-lg border border-slate-600 bg-slate-950 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
             />
           </label>
 
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-slate-300">
-              Type de département
+              {t.departmentLabel}
             </span>
             <select
               required
@@ -227,17 +417,19 @@ export default function BouclierAttestationForm() {
               className="w-full rounded-lg border border-slate-600 bg-slate-950 px-3.5 py-2.5 text-sm text-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
             >
               <option value="" disabled>
-                Sélectionner…
+                {t.selectPlaceholder}
               </option>
-              <option value="Collectivité">Collectivité</option>
-              <option value="Hôpital">Hôpital</option>
-              <option value="Administration">Administration</option>
+              {DEPARTMENT_VALUES.map((value) => (
+                <option key={value} value={value}>
+                  {t.departmentOptions[value]}
+                </option>
+              ))}
             </select>
           </label>
 
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-slate-300">
-              E-mail de contact
+              {t.emailLabel}
             </span>
             <input
               type="email"
@@ -247,7 +439,7 @@ export default function BouclierAttestationForm() {
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, email: e.target.value }))
               }
-              placeholder="dgs@collectivite.fr"
+              placeholder={t.emailPlaceholder}
               className="w-full rounded-lg border border-slate-600 bg-slate-950 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
             />
           </label>
@@ -270,12 +462,12 @@ export default function BouclierAttestationForm() {
           {loading ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-              Génération en cours…
+              {t.submitLoading}
             </>
           ) : (
             <>
               <Award className="h-4 w-4" aria-hidden />
-              Générer l&apos;Attestation de Préparation
+              {t.submitButton}
             </>
           )}
         </button>
@@ -295,28 +487,28 @@ export default function BouclierAttestationForm() {
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
-                Sceau d&apos;attestation
+                {t.successSeal}
               </p>
               <h3 className="mt-1 text-lg font-bold text-white">
                 {result.title}
               </h3>
               <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
                 <div>
-                  <dt className="text-slate-500">Identifiant</dt>
+                  <dt className="text-slate-500">{t.successId}</dt>
                   <dd className="mt-0.5 font-mono text-xs text-slate-200 break-all">
                     {result.attestationId}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">Émise le</dt>
+                  <dt className="text-slate-500">{t.successIssued}</dt>
                   <dd className="mt-0.5 text-slate-200">
                     {result.issuedAt
-                      ? new Date(result.issuedAt).toLocaleString("fr-FR")
+                      ? new Date(result.issuedAt).toLocaleString(t.dateLocale)
                       : "—"}
                   </dd>
                 </div>
                 <div className="sm:col-span-2">
-                  <dt className="text-slate-500">Empreinte SHA-256</dt>
+                  <dt className="text-slate-500">{t.successHash}</dt>
                   <dd className="mt-0.5 font-mono text-xs text-indigo-200 break-all">
                     {result.hashProof}
                   </dd>
@@ -328,7 +520,7 @@ export default function BouclierAttestationForm() {
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex items-center gap-2 rounded-lg border border-emerald-400/50 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
               >
-                Vérifier sur WaqfLedger.tech
+                {t.successVerify}
                 <ExternalLink className="h-3.5 w-3.5" aria-hidden />
               </a>
             </div>

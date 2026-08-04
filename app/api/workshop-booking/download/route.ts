@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { BRAND, SITE_METADATA } from "@/src/config/constants";
-import { getWorkshopBooking } from "@/src/lib/workshopBookings";
+import { getWorkshopBookingByToken } from "@/src/lib/workshopBookings";
 import { buildSimplePdf } from "@/src/lib/simplePdf";
 import { sanitizeText } from "@/src/lib/sanitize";
 
@@ -69,21 +69,24 @@ function buildMissionPdf(params: {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const bookingId = sanitizeText(searchParams.get("id"), 80);
+    const token = sanitizeText(searchParams.get("token"), 80);
 
-    if (!bookingId) {
+    if (!token) {
       return NextResponse.json(
-        { success: false, error: "Missing booking id." },
+        {
+          success: false,
+          error: "Missing download token. Use the secure link from your booking confirmation.",
+        },
         { status: 400 },
       );
     }
 
-    const record = getWorkshopBooking(bookingId);
+    const record = await getWorkshopBookingByToken(token);
     if (!record) {
       return NextResponse.json(
         {
           success: false,
-          error: "Booking not found. Resubmit the workshop request.",
+          error: "Invalid or expired download token. Resubmit the workshop request.",
         },
         { status: 404 },
       );

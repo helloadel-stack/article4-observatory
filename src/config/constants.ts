@@ -414,8 +414,21 @@ export const ASSESSMENT_SCENARIOS: readonly AssessmentScenario[] = [
   },
 ] as const;
 
-/** Total scenarios in the full Cisco-grade benchmark (hub teaser surfaces Scenario 1+) */
+/** Total scenarios in the full institutional Cisco-grade framework (preview ships Scenario 1). */
 export const ASSESSMENT_SCENARIO_COUNT = 30;
+
+/** Public-facing assessment product label — honest about preview vs full bank. */
+export const ASSESSMENT_PUBLIC_LABEL = {
+  EN: "Article 4 Benchmark: Scenario 1 Interactive Preview (30-Scenario Institutional Framework)",
+  FR: "Benchmark Article 4 : Aperçu interactif du scénario 1 (cadre institutionnel à 30 scénarios)",
+  ES: "Benchmark Artículo 4: Vista previa interactiva del escenario 1 (marco institucional de 30 escenarios)",
+} as const;
+
+export const ASSESSMENT_ROADMAP_BADGE = {
+  EN: "Full 30-Scenario Bank Available for Enterprise Licensees",
+  FR: "Banque complète de 30 scénarios disponible pour les licenciés Enterprise",
+  ES: "Banco completo de 30 escenarios disponible para licenciarios Enterprise",
+} as const;
 
 export type AssessmentChoice = {
   id: string;
@@ -457,18 +470,41 @@ export const SCENARIO_1_CHOICES: readonly AssessmentChoice[] = [
   },
 ] as const;
 
-/** Seed proofs for the in-page WaqfLedger Hash Verifier (deterministic demo registry) */
+/**
+ * Canonical demo payloads whose SHA-256 digests seed the local proof registry.
+ * Hashes are derived via the same sorted-key JSON canonicalization as generateProofId.
+ */
+export const WAQFLEDGER_DEMO_PAYLOADS = {
+  license: {
+    demo: true,
+    institute: "Article 4 Institute",
+    kind: "license",
+    product: "B2B Institutional License",
+    tier: "tier3",
+  },
+  certificate: {
+    demo: true,
+    institute: "Article 4 Institute",
+    kind: "certificate",
+    product: "Article 4 Certificate",
+    tier: "benchmark",
+  },
+} as const;
+
+/** Seed proofs for the in-page Local Cryptographic Proof Engine (canonical demo hashes). */
 export const WAQFLEDGER_SEED_PROOFS = [
   {
     proofId:
-      "A4I-LIC-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "A4I-LIC-afffdf2657dcc06630f4c752a9ba9285d178eecdf06d08e07927e75c26ffb999",
     kind: "license" as const,
-    label: "Enterprise License — Tier 3 (demo seed)",
+    label: "Enterprise License — Tier 3 (canonical demo)",
+    payload: WAQFLEDGER_DEMO_PAYLOADS.license,
   },
   {
     proofId:
-      "A4I-CERT-7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730",
+      "A4I-CERT-b5ceff92fd3f3396ae6b7006c76c5fe21fe1302535e03810917285ba95573947",
     kind: "certificate" as const,
-    label: "Article 4 Benchmark Certificate (demo seed)",
+    label: "Article 4 Benchmark Certificate (canonical demo)",
+    payload: WAQFLEDGER_DEMO_PAYLOADS.certificate,
   },
 ] as const;

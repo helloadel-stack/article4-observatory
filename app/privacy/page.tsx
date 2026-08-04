@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import LegalPageShell, { LegalSection } from "@/components/LegalPageShell";
-import { DEFAULT_LANG, SITE_METADATA, type Lang } from "@/src/config/constants";
+import { DEFAULT_LANG, SITE_METADATA } from "@/src/config/constants";
 import { privacyCopy } from "@/src/i18n/legal";
+import { useSyncedLang } from "@/src/lib/useSyncedLang";
 
 export default function PrivacyPage() {
-  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
+  const [lang, handleLangChange] = useSyncedLang(DEFAULT_LANG);
   const t = privacyCopy[lang];
 
   return (
     <LegalPageShell
       lang={lang}
-      onLangChange={setLang}
+      onLangChange={handleLangChange}
       title={t.title}
       subtitle={t.subtitle}
       backLabel={t.backLabel}

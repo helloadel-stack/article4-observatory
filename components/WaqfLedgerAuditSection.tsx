@@ -16,16 +16,16 @@ import {
 } from "@/src/config/constants";
 import {
   generateProofId,
-  isValidProofIdFormat,
   normalizeProofId,
+  verifyAgainstWaqfLedger,
 } from "@/src/lib/hash";
 
 const copy = {
   EN: {
     title: "Cryptographic Auditability Powered by WaqfLedger Engine",
-    badge: "Powered by WaqfLedger Engine",
+    badge: "Local Cryptographic Proof Engine (WaqfLedger Hash Verification)",
     headline: "Mathematical Proof for Institutional AI Audits",
-    body: "Compliance isn't just about static documentation—it requires immutable verification. SafeAI Framework Enterprise integrates directly with waqfledger.tech to store cryptographic hash proofs of your institutional AI risk assessments, ensuring audit trails cannot be altered post-inspection.",
+    body: "Compliance isn't just about static documentation—it requires immutable verification. This page runs a Local Cryptographic Proof Engine (WaqfLedger Hash Verification): SHA-256 proof IDs are checked locally, then a live request is attempted against waqfledger.tech/api/verify with graceful fallback.",
     cta: "Open WaqfLedger.tech",
     features: [
       {
@@ -47,27 +47,30 @@ const copy = {
         icon: Link2,
       },
     ],
-    engineTitle: "Proof Engine",
+    engineTitle: "Local Cryptographic Proof Engine",
     generateLicense: "Generate License Proof",
     generateCert: "Generate Certificate Proof",
     generating: "Hashing…",
     latestProof: "Latest generated proof ID",
-    verifierTitle: "Hash Verifier",
+    verifierTitle: "WaqfLedger Hash Verification",
     verifierHint:
-      "Paste a proof ID (A4I-LIC-… / A4I-CERT-…) to verify against the local WaqfLedger registry and waqfledger.tech.",
+      "Paste a proof ID (A4I-LIC-… / A4I-CERT-…). We attempt https://waqfledger.tech/api/verify, then fall back to local SHA-256 validation against the demo registry.",
     verifierPlaceholder: "A4I-CERT-…",
     verify: "Verify Proof",
-    statusValid: "Verified — proof found in WaqfLedger registry",
+    verifying: "Verifying…",
+    statusRemote: "Verified on waqfledger.tech",
+    statusLocal: "Verified by Local Cryptographic Proof Engine",
     statusInvalidFormat: "Invalid proof ID format",
-    statusUnknown: "Not found in local registry — check on waqfledger.tech",
-    seedLabel: "Demo seed proofs",
+    statusUnknown:
+      "Format OK — not found in remote ledger or local demo registry",
+    seedLabel: "Canonical demo proofs (real payload hashes)",
     externalVerify: "Verify on waqfledger.tech",
   },
   FR: {
     title: "Auditabilité cryptographique propulsée par le moteur WaqfLedger",
-    badge: "Propulsé par le moteur WaqfLedger",
+    badge: "Moteur de preuve cryptographique local (vérification de hash WaqfLedger)",
     headline: "Preuve mathématique pour les audits IA institutionnels",
-    body: "La conformité ne se limite pas à la documentation statique — elle exige une vérification immuable. SafeAI Framework Enterprise s’intègre directement à waqfledger.tech pour stocker des preuves de hachage cryptographique de vos évaluations de risque IA, garantissant des pistes d’audit inaltérables après inspection.",
+    body: "La conformité ne se limite pas à la documentation statique — elle exige une vérification immuable. Cette page exécute un moteur de preuve cryptographique local (vérification de hash WaqfLedger) : les ID SHA-256 sont contrôlés localement, puis une requête live est tentée vers waqfledger.tech/api/verify avec repli gracieux.",
     cta: "Ouvrir WaqfLedger.tech",
     features: [
       {
@@ -89,28 +92,30 @@ const copy = {
         icon: Link2,
       },
     ],
-    engineTitle: "Moteur de preuve",
+    engineTitle: "Moteur de preuve cryptographique local",
     generateLicense: "Générer une preuve de licence",
     generateCert: "Générer une preuve de certificat",
     generating: "Hachage…",
     latestProof: "Dernier ID de preuve généré",
-    verifierTitle: "Vérificateur de hash",
+    verifierTitle: "Vérification de hash WaqfLedger",
     verifierHint:
-      "Collez un ID de preuve (A4I-LIC-… / A4I-CERT-…) pour vérifier dans le registre WaqfLedger local et sur waqfledger.tech.",
+      "Collez un ID de preuve (A4I-LIC-… / A4I-CERT-…). Tentative vers https://waqfledger.tech/api/verify, puis validation SHA-256 locale contre le registre de démonstration.",
     verifierPlaceholder: "A4I-CERT-…",
     verify: "Vérifier la preuve",
-    statusValid: "Vérifié — preuve trouvée dans le registre WaqfLedger",
+    verifying: "Vérification…",
+    statusRemote: "Vérifié sur waqfledger.tech",
+    statusLocal: "Vérifié par le moteur de preuve cryptographique local",
     statusInvalidFormat: "Format d’ID de preuve invalide",
     statusUnknown:
-      "Introuvable dans le registre local — vérifiez sur waqfledger.tech",
-    seedLabel: "Preuves de démonstration",
+      "Format OK — introuvable dans le registre distant ou le registre de démo local",
+    seedLabel: "Preuves de démonstration canoniques (vrais hash de payload)",
     externalVerify: "Vérifier sur waqfledger.tech",
   },
   ES: {
     title: "Auditabilidad criptográfica impulsada por el motor WaqfLedger",
-    badge: "Impulsado por el motor WaqfLedger",
+    badge: "Motor de prueba criptográfica local (verificación de hash WaqfLedger)",
     headline: "Prueba matemática para auditorías institucionales de IA",
-    body: "El cumplimiento no es solo documentación estática: requiere verificación inmutable. SafeAI Framework Enterprise se integra directamente con waqfledger.tech para almacenar pruebas hash criptográficas de sus evaluaciones de riesgo de IA, garantizando pistas de auditoría inalterables tras la inspección.",
+    body: "El cumplimiento no es solo documentación estática: requiere verificación inmutable. Esta página ejecuta un motor de prueba criptográfica local (verificación de hash WaqfLedger): los ID SHA-256 se comprueban localmente y luego se intenta una solicitud en vivo a waqfledger.tech/api/verify con fallback.",
     cta: "Abrir WaqfLedger.tech",
     features: [
       {
@@ -132,21 +137,23 @@ const copy = {
         icon: Link2,
       },
     ],
-    engineTitle: "Motor de pruebas",
+    engineTitle: "Motor de prueba criptográfica local",
     generateLicense: "Generar prueba de licencia",
     generateCert: "Generar prueba de certificado",
     generating: "Hasheando…",
     latestProof: "Último ID de prueba generado",
-    verifierTitle: "Verificador de hash",
+    verifierTitle: "Verificación de hash WaqfLedger",
     verifierHint:
-      "Pegue un ID de prueba (A4I-LIC-… / A4I-CERT-…) para verificar contra el registro local de WaqfLedger y waqfledger.tech.",
+      "Pegue un ID de prueba (A4I-LIC-… / A4I-CERT-…). Intentamos https://waqfledger.tech/api/verify y, si falla, validamos SHA-256 localmente contra el registro demo.",
     verifierPlaceholder: "A4I-CERT-…",
     verify: "Verificar prueba",
-    statusValid: "Verificado — prueba encontrada en el registro WaqfLedger",
+    verifying: "Verificando…",
+    statusRemote: "Verificado en waqfledger.tech",
+    statusLocal: "Verificado por el motor de prueba criptográfica local",
     statusInvalidFormat: "Formato de ID de prueba inválido",
     statusUnknown:
-      "No encontrado en el registro local — compruebe en waqfledger.tech",
-    seedLabel: "Pruebas de demostración",
+      "Formato OK — no encontrado en el ledger remoto ni en el registro demo local",
+    seedLabel: "Pruebas demo canónicas (hashes reales de payload)",
     externalVerify: "Verificar en waqfledger.tech",
   },
 } as const;
@@ -158,7 +165,9 @@ type WaqfLedgerAuditSectionProps = {
 
 type VerifyState =
   | { kind: "idle" }
-  | { kind: "valid"; label?: string }
+  | { kind: "verifying" }
+  | { kind: "remote"; label?: string }
+  | { kind: "local"; label?: string }
   | { kind: "invalid-format" }
   | { kind: "unknown" };
 
@@ -202,21 +211,30 @@ export default function WaqfLedgerAuditSection({
         prev.includes(proofId) ? prev : [...prev, proofId],
       );
       setInput(proofId);
-      setVerifyState({ kind: "valid", label: "Session-generated proof" });
+      setVerifyState({ kind: "local", label: "Session-generated proof" });
     } finally {
       setBusy(null);
     }
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
+    setVerifyState({ kind: "verifying" });
     const normalized = normalizeProofId(input);
-    if (!isValidProofIdFormat(normalized)) {
+    const label = registry.get(normalized);
+    const result = await verifyAgainstWaqfLedger(input, {
+      localRegistryHit: Boolean(label),
+    });
+
+    if (result.source === "invalid-format") {
       setVerifyState({ kind: "invalid-format" });
       return;
     }
-    const label = registry.get(normalized);
-    if (label) {
-      setVerifyState({ kind: "valid", label });
+    if (result.remoteVerified) {
+      setVerifyState({ kind: "remote", label });
+      return;
+    }
+    if (result.localVerified && label) {
+      setVerifyState({ kind: "local", label });
       return;
     }
     setVerifyState({ kind: "unknown" });
@@ -359,10 +377,11 @@ export default function WaqfLedgerAuditSection({
             <div className="mt-3 flex flex-wrap gap-2">
               <button
                 type="button"
-                onClick={handleVerify}
-                className="inline-flex items-center rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white hover:bg-sky-500"
+                onClick={() => void handleVerify()}
+                disabled={verifyState.kind === "verifying"}
+                className="inline-flex items-center rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white hover:bg-sky-500 disabled:opacity-60"
               >
-                {t.verify}
+                {verifyState.kind === "verifying" ? t.verifying : t.verify}
               </button>
               <a
                 href={externalUrl}
@@ -373,12 +392,21 @@ export default function WaqfLedgerAuditSection({
                 {t.externalVerify}
               </a>
             </div>
-            {verifyState.kind === "valid" ? (
+            {verifyState.kind === "remote" ? (
               <p
                 role="status"
                 className="mt-3 border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-200"
               >
-                {t.statusValid}
+                {t.statusRemote}
+                {verifyState.label ? ` — ${verifyState.label}` : ""}
+              </p>
+            ) : null}
+            {verifyState.kind === "local" ? (
+              <p
+                role="status"
+                className="mt-3 border border-sky-500/40 bg-sky-500/10 px-3 py-2 text-xs text-sky-200"
+              >
+                {t.statusLocal}
                 {verifyState.label ? ` — ${verifyState.label}` : ""}
               </p>
             ) : null}

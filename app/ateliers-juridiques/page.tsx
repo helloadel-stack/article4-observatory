@@ -1,5 +1,14 @@
 "use client";
 
+import {
+  ATELIERS_JURIDIQUES,
+  BRAND,
+  DEFAULT_LANG,
+  SITE_METADATA,
+  SUPPORTED_LANGS,
+  type Lang,
+} from "@/src/config/constants";
+import { useSyncedLang } from "@/src/lib/useSyncedLang";
 import { useState } from "react";
 import Link from "next/link";
 import {
@@ -14,14 +23,6 @@ import {
 } from "lucide-react";
 import WorkshopBookingForm from "@/components/WorkshopBookingForm";
 import HtmlLangSync from "@/components/HtmlLangSync";
-import {
-  ATELIERS_JURIDIQUES,
-  BRAND,
-  DEFAULT_LANG,
-  SITE_METADATA,
-  SUPPORTED_LANGS,
-  type Lang,
-} from "@/src/config/constants";
 
 const PLAQUETTE_HREF = ATELIERS_JURIDIQUES.plaquettePath;
 
@@ -327,7 +328,7 @@ function LangToggle({
 }
 
 export default function AteliersJuridiquesPage() {
-  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
+  const [lang, handleLangChange] = useSyncedLang(DEFAULT_LANG);
   const [openModule, setOpenModule] = useState<number | null>(1);
   const t = pageCopy[lang];
 
@@ -369,7 +370,7 @@ export default function AteliersJuridiquesPage() {
             </a>
             <LangToggle
               lang={lang}
-              onChange={setLang}
+              onChange={handleLangChange}
               ariaLabel={t.langLabel}
             />
             <a

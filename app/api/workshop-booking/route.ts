@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { sanitizeText } from "@/src/lib/sanitize";
 import {
+  generateDownloadToken,
   generateMissionBookingId,
   saveWorkshopBooking,
 } from "@/src/lib/workshopBookings";
@@ -37,14 +38,14 @@ function canonicalBookingPayload(fields: {
 }): string {
   return JSON.stringify({
     bookingId: fields.bookingId,
-    entityType: fields.entityType,
-    entityName: fields.entityName,
     city: fields.city,
-    country: fields.country,
-    format: fields.format,
-    contactName: fields.contactName,
     contactEmail: fields.contactEmail,
+    contactName: fields.contactName,
+    country: fields.country,
     coversLogistics: fields.coversLogistics,
+    entityName: fields.entityName,
+    entityType: fields.entityType,
+    format: fields.format,
     timestamp: fields.timestamp,
   });
 }
@@ -93,6 +94,7 @@ export async function POST(request: Request) {
     }
 
     const bookingId = generateMissionBookingId();
+    const downloadToken = generateDownloadToken();
     const timestamp = new Date().toISOString();
     const verificationHash = createHash("sha256")
       .update(
@@ -112,8 +114,9 @@ export async function POST(request: Request) {
       )
       .digest("hex");
 
-    saveWorkshopBooking({
+    await saveWorkshopBooking({
       bookingId,
+      downloadToken,
       verificationHash,
       timestamp,
       entityType,
@@ -134,10 +137,9 @@ export async function POST(request: Request) {
       city,
       country,
       format,
-      contactName,
-      contactEmail,
       coversLogistics,
       timestamp,
+      hasContactEmail: true,
     });
 
     return NextResponse.json(
@@ -152,7 +154,7 @@ export async function POST(request: Request) {
         },
         invitationTemplate: {
           title: "Convention de Formation & Lettre d'Invitation Officielle",
-          downloadUrl: `/api/workshop-booking/download?id=${encodeURIComponent(bookingId)}`,
+          downloadUrl: `/api/workshop-booking/download?token=${encodeURIComponent(downloadToken)}`,
           status: "Attente de Signature Hôte",
         },
         timestamp,

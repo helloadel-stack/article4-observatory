@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# durable local JSON store (submissions / attestations / bookings)
+.data/

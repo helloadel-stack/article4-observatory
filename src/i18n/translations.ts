@@ -82,6 +82,8 @@ export type TranslationDict = {
   submitModelHostingPlaceholder: string;
   submitVerificationLabel: string;
   submitVerificationPlaceholder: string;
+  submitEmailLabel: string;
+  submitEmailPlaceholder: string;
   submitNotesLabel: string;
   submitNotesPlaceholder: string;
   submitForReview: string;
@@ -113,7 +115,7 @@ export const translations: Record<Lang, TranslationDict> = {
     navFramework: "Framework",
     navComplianceKits: "Compliance Kits",
     navWaqfLedger: "WaqfLedger Proof",
-    navDocumentation: "Documentation",
+    navDocumentation: "Benchmark",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
     heroTitle:
@@ -195,8 +197,10 @@ export const translations: Record<Lang, TranslationDict> = {
     submitModelHostingPlaceholder: "e.g., SecNumCloud Sovereign Cloud",
     submitVerificationLabel: "Verification Source Link",
     submitVerificationPlaceholder: "https://…",
-    submitNotesLabel: "Contributor Email / Notes",
-    submitNotesPlaceholder: "Optional contact or context",
+    submitEmailLabel: "Contributor email (optional)",
+    submitEmailPlaceholder: "name@institution.eu",
+    submitNotesLabel: "Notes (optional)",
+    submitNotesPlaceholder: "Context for research review",
     submitForReview: "Submit for Review",
     submitCancel: "Cancel",
     submitSuccess:
@@ -228,7 +232,7 @@ export const translations: Record<Lang, TranslationDict> = {
     navFramework: "Cadre",
     navComplianceKits: "Kits de conformité",
     navWaqfLedger: "Preuve WaqfLedger",
-    navDocumentation: "Documentation",
+    navDocumentation: "Benchmark / Évaluation",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
     heroTitle:
@@ -310,8 +314,10 @@ export const translations: Record<Lang, TranslationDict> = {
     submitModelHostingPlaceholder: "ex. : Cloud souverain SecNumCloud",
     submitVerificationLabel: "Lien de vérification",
     submitVerificationPlaceholder: "https://…",
-    submitNotesLabel: "E-mail du contributeur / notes",
-    submitNotesPlaceholder: "Contact ou contexte (facultatif)",
+    submitEmailLabel: "E-mail du contributeur (facultatif)",
+    submitEmailPlaceholder: "nom@institution.eu",
+    submitNotesLabel: "Notes (facultatif)",
+    submitNotesPlaceholder: "Contexte pour la revue de recherche",
     submitForReview: "Envoyer pour vérification",
     submitCancel: "Annuler",
     submitSuccess:
@@ -343,7 +349,7 @@ export const translations: Record<Lang, TranslationDict> = {
     navFramework: "Marco",
     navComplianceKits: "Kits de cumplimiento",
     navWaqfLedger: "Prueba WaqfLedger",
-    navDocumentation: "Documentación",
+    navDocumentation: "Benchmark / Evaluación",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
     heroTitle:
@@ -425,8 +431,10 @@ export const translations: Record<Lang, TranslationDict> = {
     submitModelHostingPlaceholder: "p. ej., Nube soberana SecNumCloud",
     submitVerificationLabel: "Enlace de verificación",
     submitVerificationPlaceholder: "https://…",
-    submitNotesLabel: "Correo del colaborador / notas",
-    submitNotesPlaceholder: "Contacto o contexto (opcional)",
+    submitEmailLabel: "Correo del colaborador (opcional)",
+    submitEmailPlaceholder: "nombre@institucion.eu",
+    submitNotesLabel: "Notas (opcional)",
+    submitNotesPlaceholder: "Contexto para la revisión de investigación",
     submitForReview: "Enviar para revisión",
     submitCancel: "Cancelar",
     submitSuccess:

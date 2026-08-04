@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Award, ClipboardCheck, ShieldCheck } from "lucide-react";
 import {
+  ASSESSMENT_PUBLIC_LABEL,
+  ASSESSMENT_ROADMAP_BADGE,
   ASSESSMENT_SCENARIO_COUNT,
   ASSESSMENT_SCENARIOS,
   SCENARIO_1_CHOICES,
@@ -12,13 +14,14 @@ import { generateProofId } from "@/src/lib/hash";
 
 const copy = {
   EN: {
-    eyebrow: "Cisco-Grade Article 4 Benchmark",
-    title: "Article 4 AI Literacy Assessment",
-    subtitle: `${ASSESSMENT_SCENARIO_COUNT}-Scenario hub tracking human oversight compliance under EU AI Act Article 4.`,
+    eyebrow: "Article 4 Institutional Framework",
+    title: ASSESSMENT_PUBLIC_LABEL.EN,
+    subtitle:
+      "Interactive Scenario 1 preview with instant scoring. The full 30-scenario Cisco-grade bank ships with Enterprise licensees.",
     scenarioLabel: "Scenario",
     of: "of",
     rubric: "Scoring rubric",
-    cta: "Take Article 4 Benchmark Assessment",
+    cta: "Start Scenario 1 Preview",
     selectPrompt: "Select the compliant control:",
     scorecardTitle: "Instant Scorecard",
     scorePass: "Pass — Human Oversight Control Identified",
@@ -29,16 +32,19 @@ const copy = {
     copyProof: "Copy Proof ID",
     copied: "Copied",
     retry: "Retry Scenario 1",
-    hubNote: `Full institutional benchmark: ${ASSESSMENT_SCENARIO_COUNT} scenarios spanning Annex III, Article 4 literacy, and Article 50 transparency.`,
+    hubNote: `Preview scope: Scenario 1 interactive. Scenarios 2–${ASSESSMENT_SCENARIO_COUNT} form the institutional framework roadmap.`,
+    roadmapBadge: ASSESSMENT_ROADMAP_BADGE.EN,
+    roadmapHint: `Scenarios 2–${ASSESSMENT_SCENARIO_COUNT} — roadmap`,
   },
   FR: {
-    eyebrow: "Benchmark Article 4 de niveau Cisco",
-    title: "Évaluation de littératie IA Article 4",
-    subtitle: `Hub de ${ASSESSMENT_SCENARIO_COUNT} scénarios suivant la conformité de supervision humaine au titre de l’Article 4 du règlement européen sur l’IA.`,
+    eyebrow: "Cadre institutionnel Article 4",
+    title: ASSESSMENT_PUBLIC_LABEL.FR,
+    subtitle:
+      "Aperçu interactif du scénario 1 avec notation instantanée. La banque complète de 30 scénarios de niveau Cisco est réservée aux licenciés Enterprise.",
     scenarioLabel: "Scénario",
     of: "sur",
     rubric: "Barème de notation",
-    cta: "Passer l’évaluation Benchmark Article 4",
+    cta: "Lancer l’aperçu du scénario 1",
     selectPrompt: "Sélectionnez le contrôle conforme :",
     scorecardTitle: "Tableau de bord instantané",
     scorePass: "Réussi — Contrôle de supervision humaine identifié",
@@ -50,16 +56,19 @@ const copy = {
     copyProof: "Copier l’ID de preuve",
     copied: "Copié",
     retry: "Réessayer le scénario 1",
-    hubNote: `Benchmark institutionnel complet : ${ASSESSMENT_SCENARIO_COUNT} scénarios couvrant Annexe III, littératie Article 4 et transparence Article 50.`,
+    hubNote: `Périmètre de l’aperçu : scénario 1 interactif. Les scénarios 2–${ASSESSMENT_SCENARIO_COUNT} constituent la feuille de route du cadre institutionnel.`,
+    roadmapBadge: ASSESSMENT_ROADMAP_BADGE.FR,
+    roadmapHint: `Scénarios 2–${ASSESSMENT_SCENARIO_COUNT} — feuille de route`,
   },
   ES: {
-    eyebrow: "Benchmark Artículo 4 de grado Cisco",
-    title: "Evaluación de alfabetización IA Artículo 4",
-    subtitle: `Hub de ${ASSESSMENT_SCENARIO_COUNT} escenarios que rastrea el cumplimiento de supervisión humana bajo el Artículo 4 del AI Act UE.`,
+    eyebrow: "Marco institucional Artículo 4",
+    title: ASSESSMENT_PUBLIC_LABEL.ES,
+    subtitle:
+      "Vista previa interactiva del escenario 1 con puntuación instantánea. El banco completo de 30 escenarios de grado Cisco se incluye con licencias Enterprise.",
     scenarioLabel: "Escenario",
     of: "de",
     rubric: "Rúbrica de puntuación",
-    cta: "Realizar la evaluación Benchmark Artículo 4",
+    cta: "Iniciar vista previa del escenario 1",
     selectPrompt: "Seleccione el control conforme:",
     scorecardTitle: "Tarjeta de puntuación instantánea",
     scorePass: "Aprobado — Control de supervisión humana identificado",
@@ -71,7 +80,9 @@ const copy = {
     copyProof: "Copiar ID de prueba",
     copied: "Copiado",
     retry: "Reintentar escenario 1",
-    hubNote: `Benchmark institucional completo: ${ASSESSMENT_SCENARIO_COUNT} escenarios que abarcan Anexo III, alfabetización Artículo 4 y transparencia Artículo 50.`,
+    hubNote: `Alcance de la vista previa: escenario 1 interactivo. Los escenarios 2–${ASSESSMENT_SCENARIO_COUNT} forman la hoja de ruta del marco institucional.`,
+    roadmapBadge: ASSESSMENT_ROADMAP_BADGE.ES,
+    roadmapHint: `Escenarios 2–${ASSESSMENT_SCENARIO_COUNT} — hoja de ruta`,
   },
 } as const;
 
@@ -151,6 +162,9 @@ export default function AssessmentSection({
         <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
           {t.subtitle}
         </p>
+        <p className="mt-4 inline-flex items-center rounded-md border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-950">
+          {t.roadmapBadge}
+        </p>
       </div>
 
       <article className="mt-8 border border-indigo-200 bg-white p-6 shadow-sm">
@@ -163,6 +177,9 @@ export default function AssessmentSection({
             ·
           </span>
           <span className="text-indigo-700">{scenario.annex}</span>
+          <span className="rounded border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-800">
+            Interactive preview
+          </span>
         </div>
 
         <h3 className="mt-3 text-lg font-semibold tracking-tight text-slate-900">
@@ -282,8 +299,23 @@ export default function AssessmentSection({
               {t.scenarioLabel} {s.id}:
             </span>{" "}
             {s[lang].title}
+            {s.id === 1 ? (
+              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
+                Interactive
+              </span>
+            ) : (
+              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-amber-700">
+                {t.roadmapHint}
+              </span>
+            )}
           </li>
         ))}
+        <li className="border border-dashed border-amber-300 bg-amber-50/80 px-3 py-2 text-xs text-amber-950 sm:col-span-3">
+          <span className="font-semibold">{t.roadmapBadge}</span>
+          <span className="mt-1 block text-amber-900/80">
+            {t.roadmapHint}
+          </span>
+        </li>
       </ul>
     </section>
   );

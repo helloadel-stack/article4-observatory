@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { BOUCLIER_PUBLIC, BRAND } from "@/src/config/constants";
+import { upsertRecord } from "@/src/lib/db";
 import { sanitizeText } from "@/src/lib/sanitize";
 
 export const runtime = "nodejs";
@@ -16,6 +17,18 @@ type AttestationBody = {
   departmentType?: unknown;
   email?: unknown;
   maturityLevel?: unknown;
+};
+
+type AttestationRecord = {
+  id: string;
+  attestationId: string;
+  institutionName: string;
+  departmentType: DepartmentType;
+  email: string;
+  maturityLevel: MaturityLevel;
+  issuedAt: string;
+  hashProof: string;
+  verifyUrl: string;
 };
 
 function isValidEmail(value: string): boolean {
@@ -84,14 +97,20 @@ export async function POST(request: Request) {
     }
 
     const issuedAt = new Date().toISOString();
-    const hashProof = createHash("sha256")
-      .update(`${institutionName}${issuedAt}${maturityLevel}`, "utf8")
-      .digest("hex");
+    const canonical = JSON.stringify({
+      departmentType,
+      email,
+      institutionName,
+      issuedAt,
+      maturityLevel,
+    });
+    const hashProof = createHash("sha256").update(canonical, "utf8").digest("hex");
 
     const attestationId = `${BOUCLIER_PUBLIC.attestationPrefix}-${hashProof.slice(0, 12).toUpperCase()}`;
     const verifyUrl = `${BRAND.waqfLedgerUrl}/verify?hash=${hashProof}`;
 
-    console.log("[Bouclier IA Publique Attestation]", {
+    const record: AttestationRecord = {
+      id: attestationId,
       attestationId,
       institutionName,
       departmentType,
@@ -99,6 +118,19 @@ export async function POST(request: Request) {
       maturityLevel,
       issuedAt,
       hashProof,
+      verifyUrl,
+    };
+
+    await upsertRecord("attestations", record);
+
+    console.log("[Bouclier IA Publique Attestation]", {
+      attestationId,
+      institutionName,
+      departmentType,
+      maturityLevel,
+      issuedAt,
+      hashProof,
+      hasEmail: true,
     });
 
     return NextResponse.json(

@@ -33,6 +33,7 @@ import {
   type Lang,
 } from "@/src/config/constants";
 import { translations } from "@/src/i18n/translations";
+import { useSyncedLang } from "@/src/lib/useSyncedLang";
 
 type SovereigntyFilter = "all" | "Sovereign" | "Dependent";
 type SubmitCountry =
@@ -48,6 +49,7 @@ interface SubmitFormState {
   toolName: string;
   modelHosting: string;
   verificationUrl: string;
+  email: string;
   notes: string;
 }
 
@@ -57,6 +59,7 @@ const EMPTY_SUBMIT_FORM: SubmitFormState = {
   toolName: "",
   modelHosting: "",
   verificationUrl: "",
+  email: "",
   notes: "",
 };
 
@@ -254,7 +257,7 @@ function SovereigntyBadge({
 }
 
 export default function Home() {
-  const [lang, setLang] = useState<Lang>(DEFAULT_LANG);
+  const [lang, handleLangChange] = useSyncedLang(DEFAULT_LANG);
   const [search, setSearch] = useState("");
   const [country, setCountry] = useState("all");
   const [sovereignty, setSovereignty] = useState<SovereigntyFilter>("all");
@@ -307,8 +310,15 @@ export default function Home() {
 
   const handleSubmitProject = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { agency, country, toolName, modelHosting, verificationUrl, notes } =
-      submitForm;
+    const {
+      agency,
+      country,
+      toolName,
+      modelHosting,
+      verificationUrl,
+      email,
+      notes,
+    } = submitForm;
     const isValid =
       agency.trim() !== "" &&
       country !== "" &&
@@ -330,15 +340,13 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          agencyName: agency,
+          agencyName: agency.trim(),
           country,
-          submitterEmail: notes.trim() || undefined,
-          sovereigntyStatus: undefined,
-          euAiActStatus: undefined,
-          // Contextual extras retained for operator review (ignored by schema if unused)
-          toolName,
-          modelHosting,
-          verificationUrl,
+          toolName: toolName.trim(),
+          modelHosting: modelHosting.trim(),
+          verificationUrl: verificationUrl.trim(),
+          notes: notes.trim() || undefined,
+          email: email.trim() || undefined,
         }),
       });
       const json = (await res.json()) as {
@@ -470,7 +478,7 @@ export default function Home() {
           <div className="flex shrink-0 flex-wrap items-center gap-2">
             <LangToggle
               lang={lang}
-              onChange={setLang}
+              onChange={handleLangChange}
               ariaLabel={t.langToggleLabel}
             />
             <button
@@ -510,7 +518,7 @@ export default function Home() {
               </p>
               <LangToggle
                 lang={lang}
-                onChange={setLang}
+                onChange={handleLangChange}
                 ariaLabel={t.langToggleLabel}
               />
             </div>
@@ -564,7 +572,7 @@ export default function Home() {
           }
         />
 
-        <PricingSection lang={lang} onLangChange={setLang} />
+        <PricingSection lang={lang} onLangChange={handleLangChange} />
 
         <WaqfLedgerAuditSection lang={lang} sessionProofs={sessionProofs} />
 
@@ -824,7 +832,7 @@ export default function Home() {
         </section>
 
         <section
-          id="documentation"
+          id="about"
           className="mt-8 scroll-mt-24 border border-slate-200 bg-white px-6 py-6 sm:px-8"
         >
           <div className="flex items-start gap-3">
@@ -1195,6 +1203,19 @@ export default function Home() {
                     updateSubmitField("verificationUrl", e.target.value)
                   }
                   placeholder={t.submitVerificationPlaceholder}
+                  className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-1 block text-xs font-medium text-slate-600">
+                  {t.submitEmailLabel}
+                </span>
+                <input
+                  type="email"
+                  value={submitForm.email}
+                  onChange={(e) => updateSubmitField("email", e.target.value)}
+                  placeholder={t.submitEmailPlaceholder}
                   className="w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </label>
