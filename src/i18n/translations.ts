@@ -36,15 +36,51 @@ export type TranslationDict = {
   sovereignPct: string;
   compliancePct: string;
   countriesIndexed: string;
+  explorerEyebrow: string;
   explorerTitle: string;
   explorerSubtitle: string;
   searchPlaceholder: string;
   countryFilter: string;
   sovereigntyFilter: string;
+  riskFilter: string;
   allCountries: string;
   allTypes: string;
+  allRisks: string;
+  hostingToggle: string;
+  hostingAll: string;
   sovereign: string;
   dependent: string;
+  sovereignHosting: string;
+  dependentHosting: string;
+  kpiTotalDeployments: string;
+  kpiHighRiskAnnexIii: string;
+  kpiSovereignCloud: string;
+  kpiAvgCompliance: string;
+  kpiCoverageHint: string;
+  kpiHighRiskSystems: string;
+  kpiArt14Hint: string;
+  kpiSovereignRate: string;
+  kpiSovereignHint: string;
+  kpiWaqfAnchored: string;
+  kpiWaqfSealHint: string;
+  exportDatasetCsv: string;
+  searchLabel: string;
+  searchPlaceholderEntity: string;
+  jurisdictionFilter: string;
+  aiActClassificationFilter: string;
+  hostingSovereigntyFilter: string;
+  allAiActCategories: string;
+  riskFilterHigh: string;
+  riskFilterLow: string;
+  riskFilterProhibited: string;
+  hostingFilterSovereign: string;
+  hostingFilterDependent: string;
+  colSystemDeployment: string;
+  colAiActCategory: string;
+  colWaqfProof: string;
+  noResultsCriteria: string;
+  showingFiltered: string;
+  waqfIntegrityCertified: string;
   colAgency: string;
   colCountry: string;
   colTool: string;
@@ -53,8 +89,17 @@ export type TranslationDict = {
   colSovereignty: string;
   colCompliance: string;
   colUpdated: string;
+  colEntity: string;
+  colSystem: string;
+  colDomain: string;
+  colRisk: string;
+  colHitl: string;
+  colLiteracy: string;
+  colAuditDate: string;
+  verifyProofSha256: string;
   noResults: string;
   downloadCsv: string;
+  downloadJson: string;
   citeDataset: string;
   citeModalTitle: string;
   citeApaLabel: string;
@@ -159,30 +204,74 @@ export const translations: Record<Lang, TranslationDict> = {
     badgeTrilingual: "EN · FR · ES Trilingual",
     badgeGdpr: "GDPR · EU AI Act · Loi 25",
     badgeIso: "ISO/IEC 42001 Aligned",
-    totalEntities: "Total Entities Monitored",
-    sovereignPct: "Sovereign Infrastructure %",
-    compliancePct: "Compliance %",
+    totalEntities: "Total Deployments",
+    sovereignPct: "% Sovereign Cloud Adoption",
+    compliancePct: "Average Compliance Score",
     countriesIndexed: "Countries Indexed",
-    explorerTitle: "Data Explorer",
-    explorerSubtitle:
-      "Filter monitored agencies and tools by name, country, and hosting sovereignty.",
-    searchPlaceholder: "Search by agency or tool name…",
+    explorerEyebrow: localeMessages.EN.explorer.eyebrow,
+    explorerTitle: localeMessages.EN.explorer.title,
+    explorerSubtitle: localeMessages.EN.explorer.subtitle,
+    searchPlaceholder: localeMessages.EN.explorer.searchPlaceholder,
     countryFilter: "Country",
     sovereigntyFilter: "Sovereignty type",
-    allCountries: "All countries",
+    riskFilter: "Risk classification",
+    allCountries: localeMessages.EN.explorer.allCountries,
     allTypes: "All types",
+    allRisks: "All classifications",
+    hostingToggle: "Hosting sovereignty",
+    hostingAll: localeMessages.EN.explorer.hostingAll,
     sovereign: "Sovereign",
     dependent: "Dependent",
+    sovereignHosting: "Sovereign hosting",
+    dependentHosting: "Non-sovereign hosting",
+    kpiTotalDeployments: localeMessages.EN.explorer.kpiTotalDeployments,
+    kpiHighRiskAnnexIii: "% High-Risk Annex III",
+    kpiSovereignCloud: "% Sovereign Cloud Adoption",
+    kpiAvgCompliance: "Average Compliance Score",
+    kpiCoverageHint: localeMessages.EN.explorer.kpiCoverageHint,
+    kpiHighRiskSystems: localeMessages.EN.explorer.kpiHighRiskSystems,
+    kpiArt14Hint: localeMessages.EN.explorer.kpiArt14Hint,
+    kpiSovereignRate: localeMessages.EN.explorer.kpiSovereignRate,
+    kpiSovereignHint: localeMessages.EN.explorer.kpiSovereignHint,
+    kpiWaqfAnchored: localeMessages.EN.explorer.kpiWaqfAnchored,
+    kpiWaqfSealHint: localeMessages.EN.explorer.kpiWaqfSealHint,
+    exportDatasetCsv: localeMessages.EN.explorer.exportDatasetCsv,
+    searchLabel: localeMessages.EN.explorer.searchLabel,
+    searchPlaceholderEntity: localeMessages.EN.explorer.searchPlaceholderEntity,
+    jurisdictionFilter: localeMessages.EN.explorer.jurisdictionFilter,
+    aiActClassificationFilter: localeMessages.EN.explorer.aiActClassificationFilter,
+    hostingSovereigntyFilter: localeMessages.EN.explorer.hostingSovereigntyFilter,
+    allAiActCategories: localeMessages.EN.explorer.allAiActCategories,
+    riskFilterHigh: localeMessages.EN.explorer.riskFilterHigh,
+    riskFilterLow: localeMessages.EN.explorer.riskFilterLow,
+    riskFilterProhibited: localeMessages.EN.explorer.riskFilterProhibited,
+    hostingFilterSovereign: localeMessages.EN.explorer.hostingFilterSovereign,
+    hostingFilterDependent: localeMessages.EN.explorer.hostingFilterDependent,
+    colSystemDeployment: localeMessages.EN.explorer.colSystemDeployment,
+    colAiActCategory: localeMessages.EN.explorer.colAiActCategory,
+    colWaqfProof: localeMessages.EN.explorer.colWaqfProof,
+    noResultsCriteria: localeMessages.EN.explorer.noResultsCriteria,
+    showingFiltered: localeMessages.EN.explorer.showingFiltered,
+    waqfIntegrityCertified: localeMessages.EN.explorer.waqfIntegrityCertified,
     colAgency: "Agency",
-    colCountry: "Country",
+    colCountry: localeMessages.EN.explorer.colCountry,
     colTool: "Tool",
     colModel: "Primary Model",
-    colHosting: "Hosting Provider",
+    colHosting: localeMessages.EN.explorer.colHosting,
     colSovereignty: "Sovereignty",
     colCompliance: "EU AI Act Status",
     colUpdated: "Last Updated",
+    colEntity: localeMessages.EN.explorer.colEntity,
+    colSystem: "System",
+    colDomain: "Domain",
+    colRisk: "Risk tier",
+    colHitl: localeMessages.EN.explorer.colHitl,
+    colLiteracy: "Article 4 literacy",
+    colAuditDate: "Last audit",
+    verifyProofSha256: "Verify SHA-256 Proof",
     noResults: "No records match the current filters.",
     downloadCsv: "Download CSV",
+    downloadJson: "Download JSON",
     citeDataset: "Cite This Dataset",
     citeModalTitle: "Cite This Dataset",
     citeApaLabel: "APA",
@@ -192,7 +281,7 @@ export const translations: Record<Lang, TranslationDict> = {
     close: "Close",
     methodologyTitle: "Methodology & Open Research",
     methodologyText:
-      "The Article 4 Institute maintains this Observatoire as an open, non-partisan research framework. Entries are drawn from publicly verifiable sources and institutional disclosures. Classifications of “Sovereign” and “Dependent” hosting reflect infrastructure jurisdiction and operational control, not political endorsement. Datasets are versioned and open to scholarly scrutiny.",
+      "The Article 4 Institute maintains this Observatoire as an open, non-partisan research framework. The 2026 benchmarking corpus indexes 12 authoritative public and educational AI deployments. Entries are drawn from publicly verifiable sources and institutional disclosures. Risk tiers follow EU AI Act Annex III, Article 50, and Article 5. Hosting sovereignty reflects infrastructure jurisdiction and operational control, not political endorsement. Each record is bound to a SHA-256 digest resolvable on WaqfLedger. Datasets are versioned and open to scholarly scrutiny.",
     safeAiDisclosure:
       "Automated audits and security assurance powered by the VerifIA Protocol at SafeAI.report (Assurance Lab), with SHA-256 state receipts on WaqfLedger.",
     poweredBySafeAi: "Powered by VerifIA · SafeAI.report",
@@ -294,30 +383,74 @@ export const translations: Record<Lang, TranslationDict> = {
     badgeTrilingual: "Trilingue EN · FR · ES",
     badgeGdpr: "RGPD · AI Act UE · Loi 25",
     badgeIso: "Aligné ISO/IEC 42001",
-    totalEntities: "Entités suivies au total",
-    sovereignPct: "% d’infrastructure souveraine",
-    compliancePct: "% de conformité",
+    totalEntities: "Déploiements suivis",
+    sovereignPct: "% d’adoption cloud souverain",
+    compliancePct: "Score moyen de conformité",
     countriesIndexed: "Pays indexés",
-    explorerTitle: "Explorateur de données",
-    explorerSubtitle:
-      "Filtrez les agences et outils suivis par nom, pays et souveraineté d’hébergement.",
-    searchPlaceholder: "Rechercher par agence ou outil…",
+    explorerEyebrow: localeMessages.FR.explorer.eyebrow,
+    explorerTitle: localeMessages.FR.explorer.title,
+    explorerSubtitle: localeMessages.FR.explorer.subtitle,
+    searchPlaceholder: localeMessages.FR.explorer.searchPlaceholder,
     countryFilter: "Pays",
     sovereigntyFilter: "Type de souveraineté",
-    allCountries: "Tous les pays",
+    riskFilter: "Classification du risque",
+    allCountries: localeMessages.FR.explorer.allCountries,
     allTypes: "Tous les types",
+    allRisks: "Toutes les classifications",
+    hostingToggle: "Souveraineté d’hébergement",
+    hostingAll: localeMessages.FR.explorer.hostingAll,
     sovereign: "Souverain",
     dependent: "Dépendant",
+    sovereignHosting: "Hébergement souverain",
+    dependentHosting: "Hébergement non souverain",
+    kpiTotalDeployments: localeMessages.FR.explorer.kpiTotalDeployments,
+    kpiHighRiskAnnexIii: "% haut risque Annexe III",
+    kpiSovereignCloud: "% d’adoption cloud souverain",
+    kpiAvgCompliance: "Score moyen de conformité",
+    kpiCoverageHint: localeMessages.FR.explorer.kpiCoverageHint,
+    kpiHighRiskSystems: localeMessages.FR.explorer.kpiHighRiskSystems,
+    kpiArt14Hint: localeMessages.FR.explorer.kpiArt14Hint,
+    kpiSovereignRate: localeMessages.FR.explorer.kpiSovereignRate,
+    kpiSovereignHint: localeMessages.FR.explorer.kpiSovereignHint,
+    kpiWaqfAnchored: localeMessages.FR.explorer.kpiWaqfAnchored,
+    kpiWaqfSealHint: localeMessages.FR.explorer.kpiWaqfSealHint,
+    exportDatasetCsv: localeMessages.FR.explorer.exportDatasetCsv,
+    searchLabel: localeMessages.FR.explorer.searchLabel,
+    searchPlaceholderEntity: localeMessages.FR.explorer.searchPlaceholderEntity,
+    jurisdictionFilter: localeMessages.FR.explorer.jurisdictionFilter,
+    aiActClassificationFilter: localeMessages.FR.explorer.aiActClassificationFilter,
+    hostingSovereigntyFilter: localeMessages.FR.explorer.hostingSovereigntyFilter,
+    allAiActCategories: localeMessages.FR.explorer.allAiActCategories,
+    riskFilterHigh: localeMessages.FR.explorer.riskFilterHigh,
+    riskFilterLow: localeMessages.FR.explorer.riskFilterLow,
+    riskFilterProhibited: localeMessages.FR.explorer.riskFilterProhibited,
+    hostingFilterSovereign: localeMessages.FR.explorer.hostingFilterSovereign,
+    hostingFilterDependent: localeMessages.FR.explorer.hostingFilterDependent,
+    colSystemDeployment: localeMessages.FR.explorer.colSystemDeployment,
+    colAiActCategory: localeMessages.FR.explorer.colAiActCategory,
+    colWaqfProof: localeMessages.FR.explorer.colWaqfProof,
+    noResultsCriteria: localeMessages.FR.explorer.noResultsCriteria,
+    showingFiltered: localeMessages.FR.explorer.showingFiltered,
+    waqfIntegrityCertified: localeMessages.FR.explorer.waqfIntegrityCertified,
     colAgency: "Agence",
-    colCountry: "Pays",
+    colCountry: localeMessages.FR.explorer.colCountry,
     colTool: "Outil",
     colModel: "Modèle principal",
-    colHosting: "Fournisseur d’hébergement",
+    colHosting: localeMessages.FR.explorer.colHosting,
     colSovereignty: "Souveraineté",
     colCompliance: "Statut AI Act UE",
     colUpdated: "Dernière mise à jour",
+    colEntity: localeMessages.FR.explorer.colEntity,
+    colSystem: "Système",
+    colDomain: "Domaine",
+    colRisk: "Niveau de risque",
+    colHitl: localeMessages.FR.explorer.colHitl,
+    colLiteracy: "Littératie Article 4",
+    colAuditDate: "Dernier audit",
+    verifyProofSha256: "Vérifier la Preuve SHA-256",
     noResults: "Aucun enregistrement ne correspond aux filtres actuels.",
     downloadCsv: "Télécharger CSV",
+    downloadJson: "Télécharger JSON",
     citeDataset: "Citer ce jeu de données",
     citeModalTitle: "Citer ce jeu de données",
     citeApaLabel: "APA",
@@ -327,7 +460,7 @@ export const translations: Record<Lang, TranslationDict> = {
     close: "Fermer",
     methodologyTitle: "Méthodologie et recherche ouverte",
     methodologyText:
-      "L’Article 4 Institute maintient cet Observatoire comme un cadre de recherche ouvert et non partisan. Les entrées proviennent de sources publiques vérifiables et de divulgations institutionnelles. Les classifications « Souverain » et « Dépendant » reflètent la juridiction et le contrôle opérationnel des infrastructures, et non un endossement politique. Les jeux de données sont versionnés et ouverts à l’examen scientifique.",
+      "L’Article 4 Institute maintient cet Observatoire comme un cadre de recherche ouvert et non partisan. Le corpus de benchmarking 2026 indexe 12 déploiements publics et éducatifs faisant autorité. Les entrées proviennent de sources publiques vérifiables et de divulgations institutionnelles. Les niveaux de risque suivent l’Annexe III, l’Article 50 et l’Article 5 du règlement européen sur l’IA. La souveraineté d’hébergement reflète la juridiction et le contrôle opérationnel des infrastructures, et non un endossement politique. Chaque enregistrement est lié à un condensé SHA-256 résoluble sur WaqfLedger. Les jeux de données sont versionnés et ouverts à l’examen scientifique.",
     safeAiDisclosure:
       "Audits automatisés et assurance de sécurité alimentés par le protocole VerifIA sur SafeAI.report (Assurance Lab), avec reçus d’état SHA-256 sur WaqfLedger.",
     poweredBySafeAi: "Propulsé par VerifIA · SafeAI.report",
@@ -429,30 +562,74 @@ export const translations: Record<Lang, TranslationDict> = {
     badgeTrilingual: "Trilingüe EN · FR · ES",
     badgeGdpr: "RGPD · AI Act UE · Loi 25",
     badgeIso: "Alineado ISO/IEC 42001",
-    totalEntities: "Entidades monitoreadas",
-    sovereignPct: "% de infraestructura soberana",
-    compliancePct: "% de cumplimiento",
+    totalEntities: "Despliegues monitoreados",
+    sovereignPct: "% de adopción de nube soberana",
+    compliancePct: "Puntuación media de cumplimiento",
     countriesIndexed: "Países indexados",
-    explorerTitle: "Explorador de datos",
-    explorerSubtitle:
-      "Filtre agencias y herramientas monitoreadas por nombre, país y soberanía de alojamiento.",
-    searchPlaceholder: "Buscar por agencia o herramienta…",
+    explorerEyebrow: localeMessages.ES.explorer.eyebrow,
+    explorerTitle: localeMessages.ES.explorer.title,
+    explorerSubtitle: localeMessages.ES.explorer.subtitle,
+    searchPlaceholder: localeMessages.ES.explorer.searchPlaceholder,
     countryFilter: "País",
     sovereigntyFilter: "Tipo de soberanía",
-    allCountries: "Todos los países",
+    riskFilter: "Clasificación de riesgo",
+    allCountries: localeMessages.ES.explorer.allCountries,
     allTypes: "Todos los tipos",
+    allRisks: "Todas las clasificaciones",
+    hostingToggle: "Soberanía de alojamiento",
+    hostingAll: localeMessages.ES.explorer.hostingAll,
     sovereign: "Soberano",
     dependent: "Dependiente",
+    sovereignHosting: "Alojamiento soberano",
+    dependentHosting: "Alojamiento no soberano",
+    kpiTotalDeployments: localeMessages.ES.explorer.kpiTotalDeployments,
+    kpiHighRiskAnnexIii: "% alto riesgo Anexo III",
+    kpiSovereignCloud: "% de adopción de nube soberana",
+    kpiAvgCompliance: "Puntuación media de cumplimiento",
+    kpiCoverageHint: localeMessages.ES.explorer.kpiCoverageHint,
+    kpiHighRiskSystems: localeMessages.ES.explorer.kpiHighRiskSystems,
+    kpiArt14Hint: localeMessages.ES.explorer.kpiArt14Hint,
+    kpiSovereignRate: localeMessages.ES.explorer.kpiSovereignRate,
+    kpiSovereignHint: localeMessages.ES.explorer.kpiSovereignHint,
+    kpiWaqfAnchored: localeMessages.ES.explorer.kpiWaqfAnchored,
+    kpiWaqfSealHint: localeMessages.ES.explorer.kpiWaqfSealHint,
+    exportDatasetCsv: localeMessages.ES.explorer.exportDatasetCsv,
+    searchLabel: localeMessages.ES.explorer.searchLabel,
+    searchPlaceholderEntity: localeMessages.ES.explorer.searchPlaceholderEntity,
+    jurisdictionFilter: localeMessages.ES.explorer.jurisdictionFilter,
+    aiActClassificationFilter: localeMessages.ES.explorer.aiActClassificationFilter,
+    hostingSovereigntyFilter: localeMessages.ES.explorer.hostingSovereigntyFilter,
+    allAiActCategories: localeMessages.ES.explorer.allAiActCategories,
+    riskFilterHigh: localeMessages.ES.explorer.riskFilterHigh,
+    riskFilterLow: localeMessages.ES.explorer.riskFilterLow,
+    riskFilterProhibited: localeMessages.ES.explorer.riskFilterProhibited,
+    hostingFilterSovereign: localeMessages.ES.explorer.hostingFilterSovereign,
+    hostingFilterDependent: localeMessages.ES.explorer.hostingFilterDependent,
+    colSystemDeployment: localeMessages.ES.explorer.colSystemDeployment,
+    colAiActCategory: localeMessages.ES.explorer.colAiActCategory,
+    colWaqfProof: localeMessages.ES.explorer.colWaqfProof,
+    noResultsCriteria: localeMessages.ES.explorer.noResultsCriteria,
+    showingFiltered: localeMessages.ES.explorer.showingFiltered,
+    waqfIntegrityCertified: localeMessages.ES.explorer.waqfIntegrityCertified,
     colAgency: "Agencia",
-    colCountry: "País",
+    colCountry: localeMessages.ES.explorer.colCountry,
     colTool: "Herramienta",
     colModel: "Modelo principal",
-    colHosting: "Proveedor de alojamiento",
+    colHosting: localeMessages.ES.explorer.colHosting,
     colSovereignty: "Soberanía",
     colCompliance: "Estado AI Act UE",
     colUpdated: "Última actualización",
+    colEntity: localeMessages.ES.explorer.colEntity,
+    colSystem: "Sistema",
+    colDomain: "Dominio",
+    colRisk: "Nivel de riesgo",
+    colHitl: localeMessages.ES.explorer.colHitl,
+    colLiteracy: "Alfabetización Artículo 4",
+    colAuditDate: "Última auditoría",
+    verifyProofSha256: "Verificar la prueba SHA-256",
     noResults: "Ningún registro coincide con los filtros actuales.",
     downloadCsv: "Descargar CSV",
+    downloadJson: "Descargar JSON",
     citeDataset: "Citar este conjunto de datos",
     citeModalTitle: "Citar este conjunto de datos",
     citeApaLabel: "APA",
@@ -462,7 +639,7 @@ export const translations: Record<Lang, TranslationDict> = {
     close: "Cerrar",
     methodologyTitle: "Metodología e investigación abierta",
     methodologyText:
-      "El Article 4 Institute mantiene este Observatorio como un marco de investigación abierto y no partidista. Las entradas proceden de fuentes públicas verificables y divulgaciones institucionales. Las clasificaciones «Soberano» y «Dependiente» reflejan jurisdicción e infraestructura, no un respaldo político. Los conjuntos de datos están versionados y abiertos al escrutinio académico.",
+      "El Article 4 Institute mantiene este Observatorio como un marco de investigación abierto y no partidista. El corpus de benchmarking 2026 indexa 12 despliegues públicos y educativos de referencia. Las entradas proceden de fuentes públicas verificables y divulgaciones institucionales. Los niveles de riesgo siguen el Anexo III, el Artículo 50 y el Artículo 5 del Reglamento de IA. La soberanía de alojamiento refleja jurisdicción e infraestructura, no un respaldo político. Cada registro se vincula a un digest SHA-256 resoluble en WaqfLedger. Los conjuntos de datos están versionados y abiertos al escrutinio académico.",
     safeAiDisclosure:
       "Auditorías automatizadas y aseguramiento de seguridad impulsados por el protocolo VerifIA en SafeAI.report (Assurance Lab), con recibos de estado SHA-256 en WaqfLedger.",
     poweredBySafeAi: "Impulsado por VerifIA · SafeAI.report",

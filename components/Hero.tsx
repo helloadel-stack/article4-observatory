@@ -35,8 +35,14 @@ export default function Hero({ t }: HeroProps) {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
-            href="#pricing"
+            href="#observatory"
             className="inline-flex items-center justify-center rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+          >
+            {t.navFramework}
+          </a>
+          <a
+            href="#pricing"
+            className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
           >
             {t.primaryCta}
           </a>

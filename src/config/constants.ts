@@ -265,7 +265,8 @@ export const SITE_METADATA = {
   description: `${SITE_CONFIG.tagline}. ${SITE_CONFIG.legalRole} (${SITE_CONFIG.legalEntity}) — Tiers de Confiance bridging the EU AI Act, ISO/IEC 42001, and cryptographic evidence provenance via WaqfLedger.`,
   author: "Adel El Bouzagaoui",
   publisher: `${SITE_CONFIG.name} (${SITE_CONFIG.shortName})`,
-  datasetTitle: "European AI Sovereignty Index",
+  datasetTitle:
+    "European & Transatlantic AI Observatory — 2026 Benchmarking Dataset",
   /** Canonical institute contact — procurement, privacy, DPO, and general inquiries */
   contactEmail: "contact@article4institute.org",
   salesEmail: "contact@article4institute.org",
@@ -543,6 +544,19 @@ export const COUNTRY_LABELS: Record<string, Record<Lang, string>> = {
   EU: { EN: "EU", FR: "UE", ES: "UE" },
   Canada: { EN: "Canada", FR: "Canada", ES: "Canadá" },
   Quebec: { EN: "Quebec", FR: "Québec", ES: "Quebec" },
+  FR: { EN: "France", FR: "France", ES: "Francia" },
+  DE: { EN: "Germany", FR: "Allemagne", ES: "Alemania" },
+  ES: { EN: "Spain", FR: "Espagne", ES: "España" },
+  BE: { EN: "Belgium", FR: "Belgique", ES: "Bélgica" },
+  CH: { EN: "Switzerland", FR: "Suisse", ES: "Suiza" },
+  NL: { EN: "Netherlands", FR: "Pays-Bas", ES: "Países Bajos" },
+  IT: { EN: "Italy", FR: "Italie", ES: "Italia" },
+  EE: { EN: "Estonia", FR: "Estonie", ES: "Estonia" },
+  CA_QC: {
+    EN: "Quebec / Canada",
+    FR: "Québec / Canada",
+    ES: "Quebec / Canadá",
+  },
 };
 
 export function localizeCountry(country: string, lang: Lang): string {
