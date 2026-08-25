@@ -40,7 +40,7 @@ const pageCopy = {
     title:
       "Masterclass & Workshop In-Situ : Gouvernance IA & Audit AI Act pour Professionnels du Droit",
     subtitle:
-      "Sécurisez l'usage interne de l'IA (Secret professionnel, RGPD) et développez votre capacité d'audit réglementaire pour vos clients et contrats SaaS.",
+      "Masterclass exécutive de 6 heures : Article 4, Article 14, secret professionnel (client privilege) et avenants SaaS — pour sécuriser l'usage interne et auditer les contrats clients.",
     ctaPrimary: "Réserver un Workshop sur Site",
     ctaSecondary: "Télécharger la Plaquette Programme (PDF)",
     audienceHeading: "Public cible",
@@ -50,36 +50,45 @@ const pageCopy = {
       { label: "Ordres des Avocats / Barreaux", icon: Gavel },
       { label: "Équipes compliance & DPO", icon: Users },
     ],
-    modulesEyebrow: "Curriculum exécutif",
-    modulesTitle: "4 modules adaptés au secteur juridique",
+    modulesEyebrow: "Curriculum exécutif · 6 heures",
+    modulesTitle: "4 modules : Article 4, Article 14, secret professionnel & avenants SaaS",
     modulesSubtitle:
       "Un parcours opérationnel de 6 heures pédagogiques, déployable en journée intensive ou format résidentiel.",
+    curriculumFocus: [
+      "EU AI Act Art. 4",
+      "EU AI Act Art. 14",
+      "Secret professionnel",
+      "Avenants SaaS",
+    ],
     modules: [
       {
         id: 1,
         duration: "1,5 h",
-        title: "Secret Professionnel & Shadow AI Juridique",
+        title: "Article 4, Secret Professionnel & Shadow AI Juridique",
         points: [
-          "Risques de fuite de données d'instruction sur les LLM grand public.",
+          "Obligations d'acculturation et de littératie IA au titre de l'Article 4.",
+          "Secret professionnel (client privilege) : risques de fuite de données d'instruction sur les LLM grand public.",
           "Rédaction de la Charte d'Usage de l'IA en Cabinet & Direction Juridique.",
         ],
       },
       {
         id: 2,
         duration: "2 h",
-        title: 'Qualification Contractuelle & Clause "Marchés & SaaS IA"',
+        title: "Avenants SaaS IA & Qualification Contractuelle",
         points: [
+          "Rédaction d'avenants SaaS (transparence, souveraineté des données, indemnisation des biais).",
           "Application de La Boussole du Risque IA™ aux contrats fournisseurs d'IA.",
-          "Rédaction d'Avenants IA type (Transparence, Souveraineté des données, Indemnisation des biais).",
+          "Clause type Marchés & SaaS IA pour cabinets et directions juridiques.",
         ],
       },
       {
         id: 3,
         duration: "1,5 h",
-        title: "Transparence Algorithmique & Registre Art. 50",
+        title: "Article 14 — Supervision Humaine, Transparence & Registre Art. 50",
         points: [
-          "Montage du registre des cas d'usage IA à haut risque (Annexe III).",
-          "Supervision humaine et traçabilité des décisions assistées par IA.",
+          "Contrôles de supervision humaine (Article 14) pour les systèmes à haut risque.",
+          "Montage du registre des cas d'usage IA à haut risque (Annexe III) et transparence Art. 50.",
+          "Traçabilité des décisions assistées par IA et chaîne d'arbitrage humain.",
         ],
       },
       {
@@ -108,6 +117,10 @@ const pageCopy = {
         body: "Compatible PFPDT / nLPD — cadre fédéral de protection des données",
       },
       {
+        region: "Québec",
+        body: "Aligné Loi 25 — protection des renseignements personnels, principes OBVIA et éthique de la recherche",
+      },
+      {
         region: "Barreaux",
         body: "Conçu pour les standards de formation continue des Ordres des Avocats",
       },
@@ -128,7 +141,7 @@ const pageCopy = {
     title:
       "Masterclass & Onsite Workshop: AI Governance & AI Act Audit for Legal Professionals",
     subtitle:
-      "Secure internal AI use (professional secrecy, GDPR) and build regulatory audit capacity for clients and SaaS contracts.",
+      "A 6-hour executive masterclass covering Article 4, Article 14, client privilege (secret professionnel), and SaaS addenda — to secure internal AI use and audit client contracts.",
     ctaPrimary: "Book an Onsite Workshop",
     ctaSecondary: "Download Programme Brochure (PDF)",
     audienceHeading: "Target audience",
@@ -138,36 +151,45 @@ const pageCopy = {
       { label: "Bar Associations", icon: Gavel },
       { label: "Compliance & DPO teams", icon: Users },
     ],
-    modulesEyebrow: "Executive curriculum",
-    modulesTitle: "4 modules tailored for the legal sector",
+    modulesEyebrow: "Executive curriculum · 6 hours",
+    modulesTitle: "4 modules: Article 4, Article 14, client privilege & SaaS addenda",
     modulesSubtitle:
       "A 6-hour operational track, delivered as an intensive day or residential format.",
+    curriculumFocus: [
+      "EU AI Act Art. 4",
+      "EU AI Act Art. 14",
+      "Client privilege",
+      "SaaS addenda",
+    ],
     modules: [
       {
         id: 1,
         duration: "1.5 h",
-        title: "Professional Secrecy & Legal Shadow AI",
+        title: "Article 4, Professional Secrecy & Legal Shadow AI",
         points: [
-          "Risk of leaking case and instruction data into consumer LLMs.",
+          "Article 4 AI literacy and acculturation duties for legal professionals.",
+          "Client privilege (secret professionnel): risk of leaking case and instruction data into consumer LLMs.",
           "Drafting the AI Use Charter for law firms and legal departments.",
         ],
       },
       {
         id: 2,
         duration: "2 h",
-        title: 'Contract Qualification & "Procurement & AI SaaS" Clauses',
+        title: "SaaS AI Addenda & Contract Qualification",
         points: [
+          "Drafting SaaS addenda (transparency, data sovereignty, bias indemnification).",
           "Applying the AI Risk Compass™ to AI vendor contracts.",
-          "Drafting model AI addenda (Transparency, Data sovereignty, Bias indemnification).",
+          "Model Procurement & AI SaaS clauses for firms and legal departments.",
         ],
       },
       {
         id: 3,
         duration: "1.5 h",
-        title: "Algorithmic Transparency & Art. 50 Register",
+        title: "Article 14 — Human Oversight, Transparency & Art. 50 Register",
         points: [
-          "Building the register of high-risk AI use cases (Annex III).",
-          "Human oversight and traceability of AI-assisted decisions.",
+          "Human-oversight controls (Article 14) for high-risk systems.",
+          "Building the register of high-risk AI use cases (Annex III) and Art. 50 transparency.",
+          "Traceability of AI-assisted decisions and the human arbitration chain.",
         ],
       },
       {
@@ -196,6 +218,10 @@ const pageCopy = {
         body: "PFPDT / nLPD compatible — federal data-protection framework",
       },
       {
+        region: "Quebec",
+        body: "Law 25 aligned — personal-information protection, OBVIA principles, and research ethics",
+      },
+      {
         region: "Bar associations",
         body: "Designed for continuing-education standards of Bars / Ordres",
       },
@@ -216,7 +242,7 @@ const pageCopy = {
     title:
       "Masterclass & Workshop In-Situ: Gobernanza de IA & Auditoría AI Act para Profesionales del Derecho",
     subtitle:
-      "Asegure el uso interno de la IA (secreto profesional, RGPD) y desarrolle su capacidad de auditoría regulatoria para clientes y contratos SaaS.",
+      "Masterclass ejecutiva de 6 horas: Artículo 4, Artículo 14, secreto profesional (client privilege) y anexos SaaS — para asegurar el uso interno y auditar los contratos de clientes.",
     ctaPrimary: "Reservar un Workshop In Situ",
     ctaSecondary: "Descargar el Folleto del Programa (PDF)",
     audienceHeading: "Público objetivo",
@@ -226,36 +252,45 @@ const pageCopy = {
       { label: "Colegios de Abogados", icon: Gavel },
       { label: "Equipos compliance & DPO", icon: Users },
     ],
-    modulesEyebrow: "Currículo ejecutivo",
-    modulesTitle: "4 módulos adaptados al sector jurídico",
+    modulesEyebrow: "Currículo ejecutivo · 6 horas",
+    modulesTitle: "4 módulos: Artículo 4, Artículo 14, secreto profesional y anexos SaaS",
     modulesSubtitle:
       "Un itinerario operativo de 6 horas pedagógicas, en jornada intensiva o formato residencial.",
+    curriculumFocus: [
+      "EU AI Act Art. 4",
+      "EU AI Act Art. 14",
+      "Secreto profesional",
+      "Anexos SaaS",
+    ],
     modules: [
       {
         id: 1,
         duration: "1,5 h",
-        title: "Secreto Profesional & Shadow AI Jurídica",
+        title: "Artículo 4, Secreto Profesional & Shadow AI Jurídica",
         points: [
-          "Riesgos de fuga de datos de instrucción en LLM de consumo.",
+          "Obligaciones de aculturación y alfabetización IA del Artículo 4.",
+          "Secreto profesional (client privilege): riesgos de fuga de datos de instrucción en LLM de consumo.",
           "Redacción de la Carta de Uso de la IA en despacho y dirección jurídica.",
         ],
       },
       {
         id: 2,
         duration: "2 h",
-        title: 'Calificación Contractual & Cláusula "Mercados & SaaS IA"',
+        title: "Anexos SaaS IA & Calificación Contractual",
         points: [
+          "Redacción de anexos SaaS (transparencia, soberanía de datos, indemnización por sesgos).",
           "Aplicación de La Brújula del Riesgo IA™ a contratos de proveedores de IA.",
-          "Redacción de anexos IA tipo (Transparencia, Soberanía de datos, Indemnización por sesgos).",
+          "Cláusula tipo Mercados & SaaS IA para despachos y direcciones jurídicas.",
         ],
       },
       {
         id: 3,
         duration: "1,5 h",
-        title: "Transparencia Algorítmica & Registro Art. 50",
+        title: "Artículo 14 — Supervisión Humana, Transparencia & Registro Art. 50",
         points: [
-          "Montaje del registro de casos de uso de IA de alto riesgo (Anexo III).",
-          "Supervisión humana y trazabilidad de decisiones asistidas por IA.",
+          "Controles de supervisión humana (Artículo 14) para sistemas de alto riesgo.",
+          "Montaje del registro de casos de uso de IA de alto riesgo (Anexo III) y transparencia Art. 50.",
+          "Trazabilidad de decisiones asistidas por IA y cadena de arbitraje humano.",
         ],
       },
       {
@@ -282,6 +317,10 @@ const pageCopy = {
       {
         region: "Suiza",
         body: "Compatible PFPDT / nLPD — marco federal de protección de datos",
+      },
+      {
+        region: "Quebec",
+        body: "Alineado Ley 25 — protección de datos personales, principios OBVIA y ética de la investigación",
       },
       {
         region: "Colegios",
@@ -464,6 +503,16 @@ export default function AteliersJuridiquesPage() {
             <p className="mt-3 text-sm leading-relaxed text-slate-400">
               {t.modulesSubtitle}
             </p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {t.curriculumFocus.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-lg border border-indigo-500/30 bg-indigo-950/50 px-2.5 py-1 text-xs font-semibold text-indigo-200"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="mt-8 space-y-3">

@@ -47,13 +47,13 @@ const pageCopy = {
     navBundle: "Bundle open source",
     navScorecard: "Scorecard",
     downloadShort: "Télécharger",
-    badge: "Programme Non-Lucratif & Open Source (CC BY-NC 4.0)",
+    badge: "Programme Non-Lucratif & Open Source — CC BY-NC 4.0",
     title: "Bouclier IA Publique",
     titleAccent: "(Safe Public AI Shield)",
     subtitle:
       "Cadre opérationnel de gouvernance et de préparation à l'AI Act pour les collectivités, hôpitaux et institutions publiques francophones.",
     ctaPrimary: "Télécharger le bundle 4 modules",
-    ctaSecondary: "Générer une attestation",
+    ctaSecondary: "Générer l'Attestation de Préparation & Bilan de Maturité IA",
     audience: [
       { key: "collectivites" as AudienceKey, label: "Collectivités territoriales" },
       { key: "hopitaux" as AudienceKey, label: "Hôpitaux (CH / CHU)" },
@@ -62,11 +62,11 @@ const pageCopy = {
     ],
     alignmentHeading: "Alignement régional",
     alignmentSubtitle:
-      "Le Bouclier IA Publique est conçu pour rester compatible avec les cadres nationaux de la francophonie européenne.",
+      "Le Bouclier IA Publique est conçu pour rester compatible avec les cadres nationaux de la francophonie européenne et québécoise.",
     regionalBadges: [
       {
         region: "France",
-        body: "Compatible DINUM / CNIL — gouvernance & protection des données",
+        body: "Compatible DINUM / CNIL — gouvernance & protection des données · liaison France Universités / CGE · ISO/IEC 42001",
       },
       {
         region: "Belgique",
@@ -76,12 +76,17 @@ const pageCopy = {
         region: "Suisse",
         body: "Compatible nLPD / PFPDT — cadre fédéral de protection des données",
       },
+      {
+        region: "Québec",
+        body: "Aligné Loi 25 — protection des renseignements personnels, principes OBVIA et éthique de la recherche",
+      },
     ],
     modulesEyebrow: "Parcours opérationnel",
     modulesTitle: "Les 4 modules du Bouclier",
     modulesSubtitle:
-      "Dépliez chaque module pour découvrir les livrables prêts à déployer dans votre collectivité, CH/CHU ou administration.",
+      "Dépliez chaque module pour découvrir les livrables prêts à déployer dans votre collectivité, CH/CHU ou administration. Les 4 modules sont publiés sous la Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International (CC BY-NC 4.0).",
     moduleLabel: "Module",
+    moduleLicenseShort: "CC BY-NC 4.0",
     modules: [
       {
         id: 1,
@@ -131,11 +136,12 @@ const pageCopy = {
     bundleEyebrow: "Bundle gratuit · CC BY-NC 4.0",
     bundleTitle: "Pack open source des 4 modules",
     bundleBody:
-      "Téléchargez le package complet de modèles opérationnels — charte et diagnostic (.docx), boussole de risque (.xlsx), registres et scorecard (.pdf) — sans coût de licence pour le secteur public.",
+      "Téléchargez le package complet de modèles opérationnels — charte et diagnostic (.docx), boussole de risque (.xlsx), registres et scorecard (.pdf) — sous la Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International (CC BY-NC 4.0), sans coût de licence pour le secteur public.",
     bundleCta: "Télécharger le package complet",
-    bundleNote: "Archive ZIP · modèles éditables · usage non commercial",
+    bundleNote:
+      "Archive ZIP · modèles éditables · usage non commercial (CC BY-NC 4.0)",
     footerNote:
-      "Bouclier IA Publique — programme non-lucratif sous licence CC BY-NC 4.0",
+      "Bouclier IA Publique — programme non-lucratif sous Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International (CC BY-NC 4.0)",
     footerObservatory: "Observatoire",
     footerPrivacy: "Confidentialité",
     footerGdpr: "RGPD",
@@ -149,13 +155,13 @@ const pageCopy = {
     navBundle: "Open source bundle",
     navScorecard: "Scorecard",
     downloadShort: "Download",
-    badge: "Non-Profit & Open Source Programme (CC BY-NC 4.0)",
+    badge: "Non-Profit & Open Source Programme — CC BY-NC 4.0",
     title: "Public AI Shield",
     titleAccent: "(Bouclier IA Publique)",
     subtitle:
       "Operational AI governance and AI Act readiness framework for municipalities, hospitals, and francophone public institutions.",
     ctaPrimary: "Download the 4-module bundle",
-    ctaSecondary: "Generate an attestation",
+    ctaSecondary: "Generate the AI Readiness Attestation & Maturity Assessment",
     audience: [
       { key: "collectivites" as AudienceKey, label: "Local governments" },
       { key: "hopitaux" as AudienceKey, label: "Hospitals (public / university)" },
@@ -164,11 +170,11 @@ const pageCopy = {
     ],
     alignmentHeading: "Regional alignment",
     alignmentSubtitle:
-      "The Public AI Shield is designed to remain compatible with national frameworks across European francophone jurisdictions.",
+      "The Public AI Shield is designed to remain compatible with national frameworks across European and Quebec francophone jurisdictions.",
     regionalBadges: [
       {
         region: "France",
-        body: "DINUM / CNIL compatible — governance & data protection",
+        body: "DINUM / CNIL compatible — governance & data protection · France Universités / CGE liaison · ISO/IEC 42001",
       },
       {
         region: "Belgium",
@@ -178,12 +184,17 @@ const pageCopy = {
         region: "Switzerland",
         body: "nLPD / PFPDT compatible — federal data-protection framework",
       },
+      {
+        region: "Quebec",
+        body: "Law 25 aligned — personal-information protection, OBVIA principles, and research ethics",
+      },
     ],
     modulesEyebrow: "Operational track",
     modulesTitle: "The Shield's 4 modules",
     modulesSubtitle:
-      "Expand each module to discover deliverables ready to deploy in your municipality, hospital, or administration.",
+      "Expand each module to discover deliverables ready to deploy in your municipality, hospital, or administration. All 4 modules are released under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).",
     moduleLabel: "Module",
+    moduleLicenseShort: "CC BY-NC 4.0",
     modules: [
       {
         id: 1,
@@ -233,11 +244,12 @@ const pageCopy = {
     bundleEyebrow: "Free bundle · CC BY-NC 4.0",
     bundleTitle: "Open source 4-module pack",
     bundleBody:
-      "Download the full package of operational templates — charter and diagnostic (.docx), risk compass (.xlsx), registers and scorecard (.pdf) — at no licence cost for the public sector.",
+      "Download the full package of operational templates — charter and diagnostic (.docx), risk compass (.xlsx), registers and scorecard (.pdf) — under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0), at no licence cost for the public sector.",
     bundleCta: "Download the full package",
-    bundleNote: "ZIP archive · editable templates · non-commercial use",
+    bundleNote:
+      "ZIP archive · editable templates · non-commercial use (CC BY-NC 4.0)",
     footerNote:
-      "Public AI Shield — non-profit programme under CC BY-NC 4.0 licence",
+      "Public AI Shield — non-profit programme under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
     footerObservatory: "Observatory",
     footerPrivacy: "Privacy",
     footerGdpr: "GDPR",
@@ -251,13 +263,13 @@ const pageCopy = {
     navBundle: "Bundle open source",
     navScorecard: "Scorecard",
     downloadShort: "Descargar",
-    badge: "Programa Sin Fines de Lucro & Open Source (CC BY-NC 4.0)",
+    badge: "Programa Sin Fines de Lucro & Open Source — CC BY-NC 4.0",
     title: "Escudo IA Pública",
     titleAccent: "(Bouclier IA Publique)",
     subtitle:
       "Marco operativo de gobernanza y preparación para el AI Act para colectividades, hospitales e instituciones públicas francófonas.",
     ctaPrimary: "Descargar el bundle de 4 módulos",
-    ctaSecondary: "Generar una attestation",
+    ctaSecondary: "Generar la Atestación de Preparación y Balance de Madurez IA",
     audience: [
       { key: "collectivites" as AudienceKey, label: "Colectividades territoriales" },
       { key: "hopitaux" as AudienceKey, label: "Hospitales (públicos / universitarios)" },
@@ -266,11 +278,11 @@ const pageCopy = {
     ],
     alignmentHeading: "Alineación regional",
     alignmentSubtitle:
-      "El Escudo IA Pública está diseñado para mantenerse compatible con los marcos nacionales de la francofonía europea.",
+      "El Escudo IA Pública está diseñado para mantenerse compatible con los marcos nacionales de la francofonía europea y quebequense.",
     regionalBadges: [
       {
         region: "Francia",
-        body: "Compatible DINUM / CNIL — gobernanza y protección de datos",
+        body: "Compatible DINUM / CNIL — gobernanza y protección de datos · enlace France Universités / CGE · ISO/IEC 42001",
       },
       {
         region: "Bélgica",
@@ -280,12 +292,17 @@ const pageCopy = {
         region: "Suiza",
         body: "Compatible nLPD / PFPDT — marco federal de protección de datos",
       },
+      {
+        region: "Quebec",
+        body: "Alineado Ley 25 — protección de datos personales, principios OBVIA y ética de la investigación",
+      },
     ],
     modulesEyebrow: "Itinerario operativo",
     modulesTitle: "Los 4 módulos del Escudo",
     modulesSubtitle:
-      "Despliegue cada módulo para descubrir los entregables listos para implementar en su colectividad, hospital o administración.",
+      "Despliegue cada módulo para descubrir los entregables listos para implementar en su colectividad, hospital o administración. Los 4 módulos se publican bajo la Licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0).",
     moduleLabel: "Módulo",
+    moduleLicenseShort: "CC BY-NC 4.0",
     modules: [
       {
         id: 1,
@@ -335,11 +352,12 @@ const pageCopy = {
     bundleEyebrow: "Bundle gratuito · CC BY-NC 4.0",
     bundleTitle: "Pack open source de 4 módulos",
     bundleBody:
-      "Descargue el paquete completo de modelos operativos — carta y diagnóstico (.docx), brújula de riesgo (.xlsx), registros y scorecard (.pdf) — sin coste de licencia para el sector público.",
+      "Descargue el paquete completo de modelos operativos — carta y diagnóstico (.docx), brújula de riesgo (.xlsx), registros y scorecard (.pdf) — bajo la Licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0), sin coste de licencia para el sector público.",
     bundleCta: "Descargar el paquete completo",
-    bundleNote: "Archivo ZIP · modelos editables · uso no comercial",
+    bundleNote:
+      "Archivo ZIP · modelos editables · uso no comercial (CC BY-NC 4.0)",
     footerNote:
-      "Escudo IA Pública — programa sin fines de lucro bajo licencia CC BY-NC 4.0",
+      "Escudo IA Pública — programa sin fines de lucro bajo la Licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)",
     footerObservatory: "Observatorio",
     footerPrivacy: "Privacidad",
     footerGdpr: "RGPD",
@@ -450,7 +468,7 @@ export default function BouclierPublicPage() {
           <div className="relative max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-400/40 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-200">
               <Scale className="h-3.5 w-3.5" aria-hidden />
-              {t.badge}
+              {BOUCLIER_PUBLIC.licenseFull[lang]}
             </span>
 
             <h1
@@ -545,6 +563,9 @@ export default function BouclierPublicPage() {
             <p className="mt-3 text-sm leading-relaxed text-slate-400">
               {t.modulesSubtitle}
             </p>
+            <p className="mt-3 inline-flex max-w-3xl items-start rounded-lg border border-indigo-500/30 bg-indigo-950/40 px-3 py-2 text-xs font-medium leading-relaxed text-indigo-100">
+              {BOUCLIER_PUBLIC.licenseFull[lang]}
+            </p>
           </div>
 
           <div className="mt-8 space-y-3">
@@ -564,8 +585,13 @@ export default function BouclierPublicPage() {
                     className="flex w-full items-start justify-between gap-4 px-5 py-4 text-left transition hover:bg-slate-900/80"
                   >
                     <span>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300">
-                        {t.moduleLabel} {mod.id}
+                      <span className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300">
+                          {t.moduleLabel} {mod.id}
+                        </span>
+                        <span className="rounded border border-amber-500/30 bg-amber-950/40 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-200">
+                          {t.moduleLicenseShort}
+                        </span>
                       </span>
                       <span className="mt-1 block text-base font-semibold text-white sm:text-lg">
                         {mod.title}
@@ -595,6 +621,9 @@ export default function BouclierPublicPage() {
                           </li>
                         ))}
                       </ul>
+                      <p className="mt-4 text-xs leading-relaxed text-slate-500">
+                        {BOUCLIER_PUBLIC.licenseFull[lang]}
+                      </p>
                     </div>
                   ) : null}
                 </div>
@@ -622,6 +651,14 @@ export default function BouclierPublicPage() {
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300">
                 {t.bundleBody}
               </p>
+              <a
+                href={BOUCLIER_PUBLIC.licenseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-xs font-medium text-indigo-300 underline-offset-2 hover:underline"
+              >
+                {BOUCLIER_PUBLIC.licenseFull[lang]}
+              </a>
               <ul className="mt-5 flex flex-wrap gap-3 text-xs font-medium text-slate-300">
                 <li className="inline-flex items-center gap-1.5 rounded-md border border-slate-700 bg-slate-950/50 px-2.5 py-1">
                   <FileText className="h-3.5 w-3.5 text-indigo-300" aria-hidden />

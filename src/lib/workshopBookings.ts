@@ -4,6 +4,7 @@
  */
 
 import { randomBytes, randomUUID } from "node:crypto";
+import { ATELIERS_JURIDIQUES } from "@/src/config/constants";
 import {
   findRecordWhere,
   upsertRecord,
@@ -31,7 +32,7 @@ export type WorkshopBookingRecord = {
 };
 
 export function generateMissionBookingId(): string {
-  return `A4I-MISSION-${randomUUID()}`;
+  return `${ATELIERS_JURIDIQUES.bookingPrefix}-${randomUUID()}`;
 }
 
 /** Cryptographically strong 128-bit download token (32 hex chars). */

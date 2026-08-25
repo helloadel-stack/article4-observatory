@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "badge": "Independent Observatory & Trusted Third-Party",
+    "title": "Operationalizing EU AI Act Article 4 and Annex III High-Risk Compliance",
+    "subtitle": "Faculty AI literacy, educational high-risk algorithm governance, and cryptographic proof provenance for higher education integrity."
+  },
+  "ecosystem": {
+    "badge": "VerifIA™ Protocol",
+    "desc": "Audit infrastructure combining SafeAI.report assurance lab with WaqfLedger SHA-256 state receipts to mint the AI Audit Passport™."
+  },
+  "standards": {
+    "quebec": "Quebec Law 25 compliance & OBVIA research ethics alignment"
+  },
+  "legal": {
+    "entityNotice": "The Article 4 Institute is a non-profit association (French Law 1901) focused on open research and public goods. Commercial distribution of audit kits, enterprise licenses, and training is operated via our commercial corporate entity (LLC), with Gumroad, Inc. acting as Merchant of Record."
+  },
+  "header": {
+    "legalBadge": "Association Loi 1901",
+    "verifiaLab": "SafeAI.report",
+    "verifiaLedger": "WaqfLedger",
+    "llcNotice": "B2B tools via LLC · Gumroad MoR"
+  },
+  "footer": {
+    "mission": "Independent observatory and trusted third party for educational AI governance.",
+    "ecosystemHeading": "VerifIA Ecosystem",
+    "safeAi": "SafeAI.report (Assurance Lab / OIARF Engine)",
+    "waqfLedger": "WaqfLedger (SHA-256 Cryptographic Registry)",
+    "bouclier": "Bouclier IA Publique",
+    "ateliers": "Ateliers Juridiques",
+    "regulatoryHeading": "Regulatory standards",
+    "regEu": "EU AI Act (Art. 4, 14, 50, Annex III §3)",
+    "regIso": "ISO/IEC 42001",
+    "regQuebec": "Quebec Law 25",
+    "regFrance": "France Universités & CGE",
+    "legalHeading": "Legal & MoR",
+    "morNotice": "B2B payments and automated invoicing with European VAT are handled by Gumroad, Inc. (Merchant of Record) for our commercial entity (LLC).",
+    "copyright": "© 2026 L'Institut Article 4 (Association Loi 1901). Integrity fingerprints timestamped on waqfledger.tech."
+  }
+}

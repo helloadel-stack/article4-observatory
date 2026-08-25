@@ -69,9 +69,9 @@ const INITIAL: FormState = {
 const copy = {
   FR: {
     eyebrow: "Réservation sur site",
-    title: "Demande de Workshop & Lettre d'Invitation",
+    title: "Convention de Mission & Lettre d'Invitation Officielle",
     subtitle:
-      "Validez votre demande pour générer immédiatement la lettre d'invitation officielle, l'attestation de prise en charge et l'ordre de mission.",
+      "Validez votre demande pour générer immédiatement la Convention de Mission & Lettre d'Invitation Officielle, identifiée par un jeton unique A4I-MISSION-, avec clauses de garantie financière de l'hôte.",
     organism: "Type d'organisme",
     organismPlaceholder: "Sélectionner…",
     organisms: {
@@ -98,16 +98,16 @@ const copy = {
     email: "E-mail professionnel",
     emailPh: "associe@cabinet-avocat.fr",
     travel:
-      "L'établissement confirme la prise en charge des billets transport + hébergement",
-    submit: "Valider la Demande & Générer la Lettre d'Invitation Officielle",
+      "Garantie financière de l'hôte : l'établissement prend en charge les billets de transport, l'hébergement et les frais de mission de l'intervenant (condition obligatoire pour émettre la Convention de Mission).",
+    submit: "Valider la Demande & Générer la Convention de Mission & Lettre d'Invitation Officielle",
     loading: "Génération en cours…",
     requiredError: "Veuillez compléter tous les champs obligatoires.",
     travelError:
-      "La confirmation de prise en charge logistique est requise pour émettre l'ordre de mission.",
+      "La garantie financière de l'hôte (transport + hébergement) est requise pour émettre la Convention de Mission.",
     networkError: "Erreur réseau. Veuillez réessayer.",
-    successTitle: "Demande enregistrée",
+    successTitle: "Convention de Mission émise",
     downloadPdf:
-      "Télécharger l'Attestation de Prise en Charge & Ordre de Mission (PDF)",
+      "Télécharger la Convention de Mission & Lettre d'Invitation Officielle (PDF)",
     bookingRef: "Référence mission",
     issuedAt: "Émise le",
     hash: "Empreinte SHA-256",
@@ -116,9 +116,9 @@ const copy = {
   },
   EN: {
     eyebrow: "Onsite reservation",
-    title: "Workshop Request & Invitation Letter",
+    title: "Mission Agreement & Official Invitation Letter",
     subtitle:
-      "Submit your request to instantly generate the official invitation letter, cost-coverage attestation, and mission order.",
+      "Submit your request to instantly generate the Mission Agreement & Official Invitation Letter, identified by a unique A4I-MISSION- token, including host financial-guarantee clauses.",
     organism: "Organization type",
     organismPlaceholder: "Select…",
     organisms: {
@@ -145,16 +145,16 @@ const copy = {
     email: "Professional email",
     emailPh: "partner@lawfirm.eu",
     travel:
-      "The host confirms coverage of travel tickets + accommodation",
-    submit: "Validate Request & Generate Official Invitation Letter",
+      "Host financial guarantee: the establishment covers the speaker's travel tickets, accommodation, and mission expenses (mandatory to issue the Mission Agreement).",
+    submit: "Validate Request & Generate the Mission Agreement & Official Invitation Letter",
     loading: "Generating…",
     requiredError: "Please complete all required fields.",
     travelError:
-      "Logistics coverage confirmation is required to issue the mission order.",
+      "Host financial guarantee (travel + accommodation) is required to issue the Mission Agreement.",
     networkError: "Network error. Please try again.",
-    successTitle: "Request registered",
+    successTitle: "Mission Agreement issued",
     downloadPdf:
-      "Download Cost-Coverage Attestation & Mission Order (PDF)",
+      "Download the Mission Agreement & Official Invitation Letter (PDF)",
     bookingRef: "Mission reference",
     issuedAt: "Issued on",
     hash: "SHA-256 digest",
@@ -163,9 +163,9 @@ const copy = {
   },
   ES: {
     eyebrow: "Reserva in situ",
-    title: "Solicitud de Workshop & Carta de Invitación",
+    title: "Convenio de Misión y Carta de Invitación Oficial",
     subtitle:
-      "Valide su solicitud para generar de inmediato la carta de invitación oficial, la attestation de cobertura y la orden de misión.",
+      "Valide su solicitud para generar de inmediato el Convenio de Misión y Carta de Invitación Oficial, identificado por un token único A4I-MISSION-, con cláusulas de garantía financiera del anfitrión.",
     organism: "Tipo de organismo",
     organismPlaceholder: "Seleccionar…",
     organisms: {
@@ -192,16 +192,16 @@ const copy = {
     email: "Correo profesional",
     emailPh: "socio@despacho.eu",
     travel:
-      "El establecimiento confirma la cobertura de billetes de transporte + alojamiento",
-    submit: "Validar la Solicitud y Generar la Carta de Invitación Oficial",
+      "Garantía financiera del anfitrión: el establecimiento cubre los billetes de transporte, el alojamiento y los gastos de misión del interviniente (condición obligatoria para emitir el Convenio de Misión).",
+    submit: "Validar la Solicitud y Generar el Convenio de Misión y Carta de Invitación Oficial",
     loading: "Generando…",
     requiredError: "Complete todos los campos obligatorios.",
     travelError:
-      "Se requiere confirmar la cobertura logística para emitir la orden de misión.",
+      "La garantía financiera del anfitrión (transporte + alojamiento) es necesaria para emitir el Convenio de Misión.",
     networkError: "Error de red. Inténtelo de nuevo.",
-    successTitle: "Solicitud registrada",
+    successTitle: "Convenio de Misión emitido",
     downloadPdf:
-      "Descargar Attestation de Cobertura & Orden de Misión (PDF)",
+      "Descargar el Convenio de Misión y Carta de Invitación Oficial (PDF)",
     bookingRef: "Referencia de misión",
     issuedAt: "Emitida el",
     hash: "Huella SHA-256",
@@ -310,7 +310,7 @@ export default function WorkshopBookingForm({ lang }: WorkshopBookingFormProps) 
         </div>
         <div className="inline-flex items-center gap-2 rounded-lg border border-indigo-500/40 bg-indigo-950/60 px-3 py-2 text-xs font-medium text-indigo-200">
           <Scale className="h-4 w-4 shrink-0" aria-hidden />
-          Visa · Ordre de mission
+          Visa · A4I-MISSION
         </div>
       </div>
 

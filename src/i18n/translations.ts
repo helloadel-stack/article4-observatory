@@ -1,22 +1,37 @@
-import { BRAND, SITE_METADATA, type Lang } from "@/src/config/constants";
+import {
+  BRAND,
+  INSTITUTIONAL_POSITIONING,
+  LEGAL_ARTIFACTS,
+  SITE_METADATA,
+  type Lang,
+} from "@/src/config/constants";
+import { localeMessages } from "@/src/locales";
 
 export type TranslationDict = {
   platform: string;
   logoSubtitle: string;
   announcement: string;
   navFramework: string;
+  navNexus: string;
+  navMapping: string;
   navComplianceKits: string;
   navWaqfLedger: string;
   navDocumentation: string;
   navBouclierPublic: string;
   navAteliersJuridiques: string;
   heroTitle: string;
+  heroIdentity: string;
+  heroRole: string;
   heroText: string;
+  heroBadge: string;
+  ecosystemBadge: string;
+  ecosystemDesc: string;
+  standardsQuebec: string;
   primaryCta: string;
   langToggleLabel: string;
   badgeTrilingual: string;
   badgeGdpr: string;
-  badgeZeroDev: string;
+  badgeIso: string;
   totalEntities: string;
   sovereignPct: string;
   compliancePct: string;
@@ -65,10 +80,20 @@ export type TranslationDict = {
   footerPrivacy: string;
   footerTerms: string;
   footerGdpr: string;
+  footerLegalHub: string;
+  footerNexus: string;
   footerWaqfLedger: string;
   footerAssessment: string;
   footerStorefront: string;
   footerMerchantDisclosure: string;
+  footerIdentity: string;
+  nexusEyebrow: string;
+  nexusTitle: string;
+  nexusSubtitle: string;
+  mappingEyebrow: string;
+  mappingTitle: string;
+  mappingSubtitle: string;
+  artifactsDisclaimer: string;
   results: string;
   submitData: string;
   submitModalTitle: string;
@@ -96,6 +121,7 @@ export type TranslationDict = {
   submitCountryGermany: string;
   submitCountrySpain: string;
   submitCountryEu: string;
+  submitCountryQuebec: string;
   submitCountryNorthAfricaOther: string;
   privacyTitle: string;
   privacyIntro: string;
@@ -109,24 +135,30 @@ export type TranslationDict = {
 export const translations: Record<Lang, TranslationDict> = {
   EN: {
     platform: BRAND.name,
-    logoSubtitle: BRAND.subtitle.EN,
+    logoSubtitle: localeMessages.EN.hero.badge,
     announcement:
-      "EU AI Act Enforcement Active | Mandatory Article 4 & High-Risk Compliance Kits",
-    navFramework: "Framework",
-    navComplianceKits: "Compliance Kits",
+      "2026 Mandate | Article 4 · Annex III High-Risk · ISO/IEC 42001 · Quebec Law 25",
+    navFramework: "Observatoire",
+    navNexus: "A4I Nexus",
+    navMapping: "2026 Mapping",
+    navComplianceKits: "Audit Toolkits",
     navWaqfLedger: "WaqfLedger Proof",
     navDocumentation: "Benchmark",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
-    heroTitle:
-      "Turnkey EU AI Act & Ethical AI Governance Toolkits for Higher Education.",
-    heroText:
-      "Ready-to-deploy institutional policies, risk classification matrices, and Article 4 AI literacy frameworks. Standardized for European Universities and EdTech platforms.",
-    primaryCta: "View Compliance Kits",
+    heroTitle: localeMessages.EN.hero.title,
+    heroIdentity: localeMessages.EN.hero.badge,
+    heroRole: localeMessages.EN.hero.badge,
+    heroText: localeMessages.EN.hero.subtitle,
+    heroBadge: localeMessages.EN.hero.badge,
+    ecosystemBadge: localeMessages.EN.ecosystem.badge,
+    ecosystemDesc: localeMessages.EN.ecosystem.desc,
+    standardsQuebec: localeMessages.EN.standards.quebec,
+    primaryCta: "View Audit Toolkits",
     langToggleLabel: "Interface language",
     badgeTrilingual: "EN · FR · ES Trilingual",
-    badgeGdpr: "GDPR & EU AI Act Aligned",
-    badgeZeroDev: "Zero-Dev Setup",
+    badgeGdpr: "GDPR · EU AI Act · Loi 25",
+    badgeIso: "ISO/IEC 42001 Aligned",
     totalEntities: "Total Entities Monitored",
     sovereignPct: "Sovereign Infrastructure %",
     compliancePct: "Compliance %",
@@ -160,30 +192,41 @@ export const translations: Record<Lang, TranslationDict> = {
     close: "Close",
     methodologyTitle: "Methodology & Open Research",
     methodologyText:
-      "The Article 4 Institute maintains this Observatory as an open, non-partisan research framework. Entries are drawn from publicly verifiable sources and institutional disclosures. Classifications of “Sovereign” and “Dependent” hosting reflect infrastructure jurisdiction and operational control, not political endorsement. Datasets are versioned and open to scholarly scrutiny.",
+      "The Article 4 Institute maintains this Observatoire as an open, non-partisan research framework. Entries are drawn from publicly verifiable sources and institutional disclosures. Classifications of “Sovereign” and “Dependent” hosting reflect infrastructure jurisdiction and operational control, not political endorsement. Datasets are versioned and open to scholarly scrutiny.",
     safeAiDisclosure:
-      "Automated compliance assessment and security benchmarking powered by the open audit framework at SafeAI.report.",
-    poweredBySafeAi: "Powered by SafeAI.report",
+      "Automated audits and security assurance powered by the VerifIA Protocol at SafeAI.report (Assurance Lab), with SHA-256 state receipts on WaqfLedger.",
+    poweredBySafeAi: "Powered by VerifIA · SafeAI.report",
     aboutTitle: "About the Institute & Research Team",
     leadResearcher: "Lead Researcher",
     founderRole: "Founder & Lead Researcher",
     aboutLeadName: SITE_METADATA.author,
     aboutText:
-      "The Article 4 Institute is a neutral French non-profit initiative (Association 1901) dedicated to European digital resilience and open methodology. Led by Adel El Bouzagaoui as Founder & Lead Researcher, the Institute publishes transparent, reproducible indicators for public-sector AI sovereignty and EU AI Act readiness.",
+      "The Article 4 Institute is an independent Francophone Observatoire and think tank (Association Loi 1901) for educational AI governance and compliance. As a sovereign Tiers de Confiance, it bridges the EU AI Act, ISO/IEC 42001, applied pedagogical research, and cryptographic evidence provenance. Led by Adel El Bouzagaoui, the Institute publishes transparent, reproducible indicators for public-sector AI sovereignty and higher-education integrity.",
     connectLinkedIn: "Connect on LinkedIn",
-    footerCopy: "© 2026 Article 4 Institute. All rights reserved.",
+    footerCopy: "© 2026 Article 4 Institute — Association Loi 1901. All rights reserved.",
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
     footerLegalHeading: "Legal & Compliance",
-    footerEcosystemHeading: "Ecosystem",
+    footerEcosystemHeading: "A4I Nexus",
     footerPrivacy: "Privacy Policy / Politique de Confidentialité",
     footerTerms: "Terms of Service / Conditions Générales",
-    footerGdpr: "GDPR & Cryptographic Compliance",
+    footerGdpr: "GDPR, Loi 25 & Cryptographic Compliance",
+    footerLegalHub: "Institutional Mandate & Legal Artifacts",
+    footerNexus: "A4I Nexus Architecture",
     footerWaqfLedger: "WaqfLedger Proof Engine",
     footerAssessment: "Article 4 AI Assessment",
-    footerStorefront: "SafeAI Storefront",
-    footerMerchantDisclosure:
-      "SafeAI Framework is a project of Article 4 Institute. Payments, invoicing, and EU VAT collection are securely processed by Gumroad, Inc., our Merchant of Record.",
+    footerStorefront: "SafeAI Storefront (LLC / Gumroad MoR)",
+    footerMerchantDisclosure: localeMessages.EN.legal.entityNotice,
+    footerIdentity: INSTITUTIONAL_POSITIONING.identity.EN,
+    nexusEyebrow: localeMessages.EN.ecosystem.badge,
+    nexusTitle: "The A4I Nexus — Tripartite Architecture",
+    nexusSubtitle:
+      "A sovereign Tiers de Confiance spanning a non-profit observatoire, a RegTech audit protocol, and a US LLC commercial vehicle.",
+    mappingEyebrow: "2026 Standards",
+    mappingTitle: "Transatlantic Regulatory Mapping",
+    mappingSubtitle:
+      "Liaison node for EU Annex III Section 3 and Quebec Law 25 — without claiming official homologation.",
+    artifactsDisclaimer: `Deliverables are issued as ${LEGAL_ARTIFACTS.attestation.EN}, ${LEGAL_ARTIFACTS.maturity.EN}, and ${LEGAL_ARTIFACTS.passport.EN} — never as a legal conformity certificate or official AI Act homologation.`,
     results: "results",
     submitData: "Submit Data",
     submitModalTitle: "Submit a Public AI Project",
@@ -212,13 +255,14 @@ export const translations: Record<Lang, TranslationDict> = {
     submitCountryGermany: "Germany",
     submitCountrySpain: "Spain",
     submitCountryEu: "EU",
+    submitCountryQuebec: "Quebec / Canada",
     submitCountryNorthAfricaOther: "North Africa / Other",
-    privacyTitle: "GDPR & EU AI Act Compliance",
+    privacyTitle: "GDPR, Loi 25 & EU AI Act Alignment",
     privacyIntro:
-      "SafeAI Framework & European Observatory processes limited contact and crowdsource metadata to operate institutional compliance services under the GDPR and the EU AI Act.",
+      "Article 4 Institute processes limited contact and crowdsource metadata to operate observatoire and institutional governance services under the GDPR, Quebec Law 25, and EU AI Act transparency duties.",
     privacyTerms:
       "Privacy Terms: We collect only information you voluntarily submit (agency names, tool metadata, optional contact notes). Data is used for research review, procurement follow-up, and cryptographic proof logging via WaqfLedger. We do not sell personal data. Retention is limited to verification and audit necessities.",
-    privacyDpo: `Data Protection Officer: ${SITE_METADATA.dpoEmail}`,
+    privacyDpo: `Data Protection Officer: ${SITE_METADATA.contactEmail}`,
     privacyProcessor:
       "Digital products, invoicing, and EU VAT collection for SafeAI Framework are securely processed and fulfilled by Gumroad, Inc., our global Merchant of Record.",
     privacyGumroadLink: "Gumroad, Inc. privacy documentation",
@@ -226,24 +270,30 @@ export const translations: Record<Lang, TranslationDict> = {
   },
   FR: {
     platform: BRAND.name,
-    logoSubtitle: BRAND.subtitle.FR,
+    logoSubtitle: localeMessages.FR.hero.badge,
     announcement:
-      "Application de l’AI Act UE active | Kits de conformité Article 4 & haut risque obligatoires",
-    navFramework: "Cadre",
-    navComplianceKits: "Kits de conformité",
+      "Mandat 2026 | Article 4 · Annexe III haut risque · ISO/IEC 42001 · Loi 25 Québec",
+    navFramework: "Observatoire",
+    navNexus: "A4I Nexus",
+    navMapping: "Cartographie 2026",
+    navComplianceKits: "Kits d’audit",
     navWaqfLedger: "Preuve WaqfLedger",
     navDocumentation: "Benchmark / Évaluation",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
-    heroTitle:
-      "Boîtes à outils clés en main de gouvernance IA éthique et AI Act UE pour l’enseignement supérieur.",
-    heroText:
-      "Politiques institutionnelles prêtes à déployer, matrices de classification des risques et cadres de littératie IA Article 4. Standardisés pour les universités européennes et les plateformes EdTech.",
-    primaryCta: "Voir les kits de conformité",
+    heroTitle: localeMessages.FR.hero.title,
+    heroIdentity: localeMessages.FR.hero.badge,
+    heroRole: localeMessages.FR.hero.badge,
+    heroText: localeMessages.FR.hero.subtitle,
+    heroBadge: localeMessages.FR.hero.badge,
+    ecosystemBadge: localeMessages.FR.ecosystem.badge,
+    ecosystemDesc: localeMessages.FR.ecosystem.desc,
+    standardsQuebec: localeMessages.FR.standards.quebec,
+    primaryCta: "Voir les kits d’audit",
     langToggleLabel: "Langue de l’interface",
     badgeTrilingual: "Trilingue EN · FR · ES",
-    badgeGdpr: "Aligné RGPD & AI Act UE",
-    badgeZeroDev: "Mise en place sans développement",
+    badgeGdpr: "RGPD · AI Act UE · Loi 25",
+    badgeIso: "Aligné ISO/IEC 42001",
     totalEntities: "Entités suivies au total",
     sovereignPct: "% d’infrastructure souveraine",
     compliancePct: "% de conformité",
@@ -279,28 +329,39 @@ export const translations: Record<Lang, TranslationDict> = {
     methodologyText:
       "L’Article 4 Institute maintient cet Observatoire comme un cadre de recherche ouvert et non partisan. Les entrées proviennent de sources publiques vérifiables et de divulgations institutionnelles. Les classifications « Souverain » et « Dépendant » reflètent la juridiction et le contrôle opérationnel des infrastructures, et non un endossement politique. Les jeux de données sont versionnés et ouverts à l’examen scientifique.",
     safeAiDisclosure:
-      "Évaluation automatisée de la conformité et analyse comparative de la sécurité alimentées par le cadre d’audit ouvert de SafeAI.report.",
-    poweredBySafeAi: "Propulsé par SafeAI.report",
+      "Audits automatisés et assurance de sécurité alimentés par le protocole VerifIA sur SafeAI.report (Assurance Lab), avec reçus d’état SHA-256 sur WaqfLedger.",
+    poweredBySafeAi: "Propulsé par VerifIA · SafeAI.report",
     aboutTitle: "À propos de l’Institut et de l’équipe de recherche",
     leadResearcher: "Chercheur principal",
     founderRole: "Fondateur et chercheur principal",
     aboutLeadName: SITE_METADATA.author,
     aboutText:
-      "L’Article 4 Institute est une initiative associative française neutre (Association loi 1901) dédiée à la résilience numérique européenne et à une méthodologie ouverte. Sous la direction d’Adel El Bouzagaoui, Fondateur et chercheur principal, l’Institut publie des indicateurs transparents et reproductibles sur la souveraineté de l’IA dans le secteur public et la préparation au règlement européen sur l’IA.",
+      "L’Article 4 Institute est un Observatoire et think tank francophone indépendant (Association loi 1901) pour la gouvernance et la conformité de l’IA éducative. En tant que Tiers de confiance souverain, il articule le règlement européen sur l’IA, ISO/IEC 42001, la recherche pédagogique appliquée et la provenance cryptographique des preuves. Sous la direction d’Adel El Bouzagaoui, l’Institut publie des indicateurs transparents et reproductibles sur la souveraineté de l’IA dans le secteur public et l’intégrité de l’enseignement supérieur.",
     connectLinkedIn: "Suivez-nous sur LinkedIn",
-    footerCopy: "© 2026 Article 4 Institute. All rights reserved.",
+    footerCopy: "© 2026 Article 4 Institute — Association loi 1901. Tous droits réservés.",
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
     footerLegalHeading: "Juridique & Conformité",
-    footerEcosystemHeading: "Écosystème",
+    footerEcosystemHeading: "A4I Nexus",
     footerPrivacy: "Privacy Policy / Politique de Confidentialité",
     footerTerms: "Terms of Service / Conditions Générales",
-    footerGdpr: "GDPR & Cryptographic Compliance",
+    footerGdpr: "RGPD, Loi 25 & conformité cryptographique",
+    footerLegalHub: "Mandat institutionnel & artefacts juridiques",
+    footerNexus: "Architecture A4I Nexus",
     footerWaqfLedger: "Moteur de preuve WaqfLedger",
     footerAssessment: "Évaluation IA Article 4",
-    footerStorefront: "Boutique SafeAI",
-    footerMerchantDisclosure:
-      "SafeAI Framework est un projet d’Article 4 Institute. Les paiements, la facturation et la collecte de la TVA UE sont traités de manière sécurisée par Gumroad, Inc., notre Merchant of Record.",
+    footerStorefront: "Boutique SafeAI (LLC / Gumroad MoR)",
+    footerMerchantDisclosure: localeMessages.FR.legal.entityNotice,
+    footerIdentity: INSTITUTIONAL_POSITIONING.identity.FR,
+    nexusEyebrow: localeMessages.FR.ecosystem.badge,
+    nexusTitle: "Le A4I Nexus — architecture tripartite",
+    nexusSubtitle:
+      "Un Tiers de confiance souverain articulant un observatoire associatif, un protocole d’audit RegTech et un véhicule commercial LLC américaine.",
+    mappingEyebrow: "Référentiels 2026",
+    mappingTitle: "Cartographie réglementaire transatlantique",
+    mappingSubtitle:
+      "Nœud de liaison pour l’Annexe III section 3 et la Loi 25 du Québec — sans homologation officielle.",
+    artifactsDisclaimer: `Les livrables sont émis en tant qu’${LEGAL_ARTIFACTS.attestation.FR}, ${LEGAL_ARTIFACTS.maturity.FR} et ${LEGAL_ARTIFACTS.passport.FR} — jamais en tant que certificat de conformité légale ou homologation officielle AI Act.`,
     results: "résultats",
     submitData: "Soumettre une donnée",
     submitModalTitle: "Proposer un projet IA public",
@@ -329,13 +390,14 @@ export const translations: Record<Lang, TranslationDict> = {
     submitCountryGermany: "Allemagne",
     submitCountrySpain: "Espagne",
     submitCountryEu: "UE",
+    submitCountryQuebec: "Québec / Canada",
     submitCountryNorthAfricaOther: "Afrique du Nord / Autre",
-    privacyTitle: "Conformité RGPD & AI Act UE",
+    privacyTitle: "Alignement RGPD, Loi 25 & AI Act UE",
     privacyIntro:
-      "SafeAI Framework & European Observatory traite des métadonnées de contact et de crowdsourcing limitées pour opérer des services de conformité institutionnelle au titre du RGPD et de l’AI Act UE.",
+      "Article 4 Institute traite des métadonnées de contact et de crowdsourcing limitées pour opérer l’Observatoire et les services de gouvernance institutionnelle au titre du RGPD, de la Loi 25 du Québec et des devoirs de transparence de l’AI Act UE.",
     privacyTerms:
       "Conditions de confidentialité : nous collectons uniquement les informations que vous soumettez volontairement (noms d’agences, métadonnées d’outils, notes de contact facultatives). Les données servent à la revue de recherche, au suivi des achats et à la journalisation cryptographique via WaqfLedger. Nous ne vendons pas de données personnelles. La conservation est limitée aux nécessités de vérification et d’audit.",
-    privacyDpo: `Délégué à la protection des données : ${SITE_METADATA.dpoEmail}`,
+    privacyDpo: `Délégué à la protection des données : ${SITE_METADATA.contactEmail}`,
     privacyProcessor:
       "Les produits numériques, la facturation et la collecte de la TVA UE pour SafeAI Framework sont traités et fournis de manière sécurisée par Gumroad, Inc., notre Merchant of Record mondial.",
     privacyGumroadLink: "Documentation confidentialité Gumroad, Inc.",
@@ -343,24 +405,30 @@ export const translations: Record<Lang, TranslationDict> = {
   },
   ES: {
     platform: BRAND.name,
-    logoSubtitle: BRAND.subtitle.ES,
+    logoSubtitle: localeMessages.ES.hero.badge,
     announcement:
-      "Aplicación del AI Act UE activa | Kits de cumplimiento Artículo 4 y alto riesgo obligatorios",
-    navFramework: "Marco",
-    navComplianceKits: "Kits de cumplimiento",
+      "Mandato 2026 | Artículo 4 · Anexo III alto riesgo · ISO/IEC 42001 · Ley 25 de Quebec",
+    navFramework: "Observatorio",
+    navNexus: "A4I Nexus",
+    navMapping: "Cartografía 2026",
+    navComplianceKits: "Kits de auditoría",
     navWaqfLedger: "Prueba WaqfLedger",
     navDocumentation: "Benchmark / Evaluación",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
-    heroTitle:
-      "Kits llave en mano de gobernanza ética de IA y AI Act UE para educación superior.",
-    heroText:
-      "Políticas institucionales listas para desplegar, matrices de clasificación de riesgo y marcos de alfabetización IA Artículo 4. Estandarizados para universidades europeas y plataformas EdTech.",
-    primaryCta: "Ver kits de cumplimiento",
+    heroTitle: localeMessages.ES.hero.title,
+    heroIdentity: localeMessages.ES.hero.badge,
+    heroRole: localeMessages.ES.hero.badge,
+    heroText: localeMessages.ES.hero.subtitle,
+    heroBadge: localeMessages.ES.hero.badge,
+    ecosystemBadge: localeMessages.ES.ecosystem.badge,
+    ecosystemDesc: localeMessages.ES.ecosystem.desc,
+    standardsQuebec: localeMessages.ES.standards.quebec,
+    primaryCta: "Ver kits de auditoría",
     langToggleLabel: "Idioma de la interfaz",
     badgeTrilingual: "Trilingüe EN · FR · ES",
-    badgeGdpr: "Alineado con RGPD y AI Act UE",
-    badgeZeroDev: "Configuración sin desarrollo",
+    badgeGdpr: "RGPD · AI Act UE · Loi 25",
+    badgeIso: "Alineado ISO/IEC 42001",
     totalEntities: "Entidades monitoreadas",
     sovereignPct: "% de infraestructura soberana",
     compliancePct: "% de cumplimiento",
@@ -396,28 +464,39 @@ export const translations: Record<Lang, TranslationDict> = {
     methodologyText:
       "El Article 4 Institute mantiene este Observatorio como un marco de investigación abierto y no partidista. Las entradas proceden de fuentes públicas verificables y divulgaciones institucionales. Las clasificaciones «Soberano» y «Dependiente» reflejan jurisdicción e infraestructura, no un respaldo político. Los conjuntos de datos están versionados y abiertos al escrutinio académico.",
     safeAiDisclosure:
-      "Evaluación automatizada de cumplimiento y benchmarking de seguridad impulsados por el marco de auditoría abierto de SafeAI.report.",
-    poweredBySafeAi: "Impulsado por SafeAI.report",
+      "Auditorías automatizadas y aseguramiento de seguridad impulsados por el protocolo VerifIA en SafeAI.report (Assurance Lab), con recibos de estado SHA-256 en WaqfLedger.",
+    poweredBySafeAi: "Impulsado por VerifIA · SafeAI.report",
     aboutTitle: "Sobre el Instituto y el equipo de investigación",
     leadResearcher: "Investigador principal",
     founderRole: "Fundador e investigador principal",
     aboutLeadName: SITE_METADATA.author,
     aboutText:
-      "El Article 4 Institute es una iniciativa asociativa francesa neutral (Association 1901) dedicada a la resiliencia digital europea y a una metodología abierta. Bajo la dirección de Adel El Bouzagaoui, Fundador e investigador principal, el Instituto publica indicadores transparentes y reproducibles sobre soberanía de IA en el sector público y preparación para el reglamento europeo de IA.",
+      "El Article 4 Institute es un Observatorio y think tank francófono independiente (Association loi 1901) para la gobernanza y el cumplimiento de la IA educativa. Como Tiers de confiance soberano, articula el Reglamento de IA de la UE, ISO/IEC 42001, la investigación pedagógica aplicada y la procedencia criptográfica de las pruebas. Bajo la dirección de Adel El Bouzagaoui, el Instituto publica indicadores transparentes y reproducibles sobre soberanía de IA en el sector público e integridad de la educación superior.",
     connectLinkedIn: "Conectar en LinkedIn",
-    footerCopy: "© 2026 Article 4 Institute. All rights reserved.",
+    footerCopy: "© 2026 Article 4 Institute — Association loi 1901. Todos los derechos reservados.",
     footerLink: "article4institute.org",
     footerLinkedIn: "LinkedIn",
     footerLegalHeading: "Legal y cumplimiento",
-    footerEcosystemHeading: "Ecosistema",
+    footerEcosystemHeading: "A4I Nexus",
     footerPrivacy: "Privacy Policy / Politique de Confidentialité",
     footerTerms: "Terms of Service / Conditions Générales",
-    footerGdpr: "GDPR & Cryptographic Compliance",
+    footerGdpr: "RGPD, Loi 25 y cumplimiento criptográfico",
+    footerLegalHub: "Mandato institucional y artefactos jurídicos",
+    footerNexus: "Arquitectura A4I Nexus",
     footerWaqfLedger: "Motor de pruebas WaqfLedger",
     footerAssessment: "Evaluación IA Artículo 4",
-    footerStorefront: "Tienda SafeAI",
-    footerMerchantDisclosure:
-      "SafeAI Framework es un proyecto de Article 4 Institute. Los pagos, la facturación y la recaudación del IVA de la UE son procesados de forma segura por Gumroad, Inc., nuestro Merchant of Record.",
+    footerStorefront: "Tienda SafeAI (LLC / Gumroad MoR)",
+    footerMerchantDisclosure: localeMessages.ES.legal.entityNotice,
+    footerIdentity: INSTITUTIONAL_POSITIONING.identity.ES,
+    nexusEyebrow: localeMessages.ES.ecosystem.badge,
+    nexusTitle: "El A4I Nexus — arquitectura tripartita",
+    nexusSubtitle:
+      "Un Tiers de confiance soberano que articula un observatorio asociativo, un protocolo de auditoría RegTech y un vehículo comercial LLC estadounidense.",
+    mappingEyebrow: "Estándares 2026",
+    mappingTitle: "Cartografía regulatoria transatlántica",
+    mappingSubtitle:
+      "Nodo de enlace para el Anexo III sección 3 y la Ley 25 de Quebec — sin homologación oficial.",
+    artifactsDisclaimer: `Los entregables se emiten como ${LEGAL_ARTIFACTS.attestation.ES}, ${LEGAL_ARTIFACTS.maturity.ES} y ${LEGAL_ARTIFACTS.passport.ES} — nunca como certificado de conformidad legal ni homologación oficial del AI Act.`,
     results: "resultados",
     submitData: "Enviar datos",
     submitModalTitle: "Proponer un proyecto de IA público",
@@ -446,13 +525,14 @@ export const translations: Record<Lang, TranslationDict> = {
     submitCountryGermany: "Alemania",
     submitCountrySpain: "España",
     submitCountryEu: "UE",
+    submitCountryQuebec: "Quebec / Canadá",
     submitCountryNorthAfricaOther: "Norte de África / Otro",
-    privacyTitle: "Cumplimiento RGPD y AI Act UE",
+    privacyTitle: "Alineación RGPD, Loi 25 y AI Act UE",
     privacyIntro:
-      "SafeAI Framework & European Observatory procesa metadatos de contacto y crowdsourcing limitados para operar servicios de cumplimiento institucional bajo el RGPD y el AI Act UE.",
+      "Article 4 Institute procesa metadatos de contacto y crowdsourcing limitados para operar el Observatorio y los servicios de gobernanza institucional bajo el RGPD, la Ley 25 de Quebec y los deberes de transparencia del AI Act UE.",
     privacyTerms:
       "Términos de privacidad: solo recopilamos la información que usted envía voluntariamente (nombres de agencias, metadatos de herramientas, notas de contacto opcionales). Los datos se usan para revisión de investigación, seguimiento de compras y registro criptográfico vía WaqfLedger. No vendemos datos personales. La retención se limita a necesidades de verificación y auditoría.",
-    privacyDpo: `Delegado de protección de datos: ${SITE_METADATA.dpoEmail}`,
+    privacyDpo: `Delegado de protección de datos: ${SITE_METADATA.contactEmail}`,
     privacyProcessor:
       "Los productos digitales, la facturación y la recaudación del IVA de la UE para SafeAI Framework son procesados y entregados de forma segura por Gumroad, Inc., nuestro Merchant of Record global.",
     privacyGumroadLink: "Documentación de privacidad de Gumroad, Inc.",

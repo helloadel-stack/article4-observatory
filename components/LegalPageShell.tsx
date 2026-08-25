@@ -35,7 +35,7 @@ export default function LegalPageShell({
         <div className="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">
-              {BRAND.shortName}
+              {BRAND.name}
             </p>
             <p className="mt-1 text-sm text-slate-400">{BRAND.subtitle[lang]}</p>
           </div>
@@ -87,6 +87,9 @@ export default function LegalPageShell({
 
       <footer className="border-t border-slate-800 bg-slate-950">
         <div className="mx-auto flex max-w-3xl flex-wrap gap-x-4 gap-y-2 px-4 py-6 text-xs text-slate-500 sm:px-6">
+          <Link href="/legal" className="hover:text-indigo-300">
+            Mandate
+          </Link>
           <Link href="/privacy" className="hover:text-indigo-300">
             Privacy
           </Link>

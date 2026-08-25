@@ -1,14 +1,12 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import Link from "next/link";
 import {
   Search,
   ShieldCheck,
   Globe,
   Database,
   Filter,
-  ExternalLink,
   Download,
   BookOpen,
   Quote,
@@ -23,14 +21,18 @@ import PricingSection from "@/components/PricingSection";
 import WaqfLedgerAuditSection from "@/components/WaqfLedgerAuditSection";
 import AssessmentSection from "@/components/AssessmentSection";
 import HtmlLangSync from "@/components/HtmlLangSync";
+import Hero from "@/components/Hero";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import NexusSection from "@/components/NexusSection";
+import TransatlanticSection from "@/components/TransatlanticSection";
 import {
   BRAND,
   DEFAULT_LANG,
+  INSTITUTIONAL_POSITIONING,
   SITE_METADATA,
-  SUPPORTED_LANGS,
   localizeCountry,
   localizeEuAiActStatus,
-  type Lang,
 } from "@/src/config/constants";
 import { translations } from "@/src/i18n/translations";
 import { useSyncedLang } from "@/src/lib/useSyncedLang";
@@ -41,6 +43,7 @@ type SubmitCountry =
   | "Germany"
   | "Spain"
   | "EU"
+  | "Quebec / Canada"
   | "North Africa / Other";
 
 interface SubmitFormState {
@@ -68,6 +71,7 @@ const SUBMIT_COUNTRIES: SubmitCountry[] = [
   "Germany",
   "Spain",
   "EU",
+  "Quebec / Canada",
   "North Africa / Other",
 ];
 
@@ -103,40 +107,6 @@ function LinkedInIcon({
   );
 }
 
-function LangToggle({
-  lang,
-  onChange,
-  ariaLabel,
-}: {
-  lang: Lang;
-  onChange: (lang: Lang) => void;
-  ariaLabel: string;
-}) {
-  return (
-    <div
-      role="group"
-      aria-label={ariaLabel}
-      className="inline-flex shrink-0 rounded-lg border border-slate-200 bg-slate-100 p-1"
-    >
-      {SUPPORTED_LANGS.map((code) => (
-        <button
-          key={code}
-          type="button"
-          onClick={() => onChange(code)}
-          className={
-            lang === code
-              ? "rounded-md bg-indigo-700 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm"
-              : "rounded-md px-3.5 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-white hover:text-indigo-800"
-          }
-          aria-pressed={lang === code}
-        >
-          {code}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 const data = observatoryData as ObservatoryEntry[];
 
 const APA_CITATION = `Article 4 Institute. (${SITE_METADATA.year}). ${SITE_METADATA.datasetTitle}. ${BRAND.instituteUrl}`;
@@ -153,7 +123,7 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      name: BRAND.name,
+      name: BRAND.storefront,
       applicationCategory: "BusinessApplication",
       description: SITE_METADATA.description,
       url: BRAND.instituteUrl,
@@ -175,12 +145,12 @@ const jsonLd = {
       },
     },
     {
-      "@type": "Organization",
+      "@type": "NGO",
       name: SITE_METADATA.publisher,
       url: BRAND.instituteUrl,
       sameAs: [BRAND.linkedInUrl],
-      description:
-        "A neutral French non-profit initiative (Association 1901) dedicated to European digital resilience and open methodology.",
+      description: INSTITUTIONAL_POSITIONING.identity.EN,
+      slogan: INSTITUTIONAL_POSITIONING.slogan.EN,
       founder: {
         "@type": "Person",
         name: SITE_METADATA.author,
@@ -281,6 +251,7 @@ export default function Home() {
     Germany: t.submitCountryGermany,
     Spain: t.submitCountrySpain,
     EU: t.submitCountryEu,
+    "Quebec / Canada": t.submitCountryQuebec,
     "North Africa / Other": t.submitCountryNorthAfricaOther,
   };
 
@@ -413,7 +384,8 @@ export default function Home() {
     label: string;
     route?: boolean;
   }[] = [
-    { href: "#framework", label: t.navFramework },
+    { href: "#nexus", label: t.navNexus },
+    { href: "#mapping", label: t.navMapping },
     { href: "#pricing", label: t.navComplianceKits },
     { href: "#waqfledger", label: t.navWaqfLedger },
     { href: "#assessment", label: t.navDocumentation },
@@ -433,128 +405,20 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="bg-indigo-950 text-indigo-50">
-        <p className="mx-auto max-w-7xl px-4 py-2.5 text-center text-xs font-medium leading-relaxed tracking-wide sm:px-6 sm:text-sm lg:px-8">
-          {t.announcement}
-        </p>
-      </div>
-
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-3.5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <a href="#" className="group flex min-w-0 flex-col gap-1">
-            <span className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
-              {t.platform}
-            </span>
-            <span className="inline-flex w-fit items-center rounded-md bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-indigo-700 ring-1 ring-inset ring-indigo-200">
-              {t.logoSubtitle}
-            </span>
-          </a>
-
-          <nav
-            aria-label="Primary"
-            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-slate-600"
-          >
-            {navLinks.map((link) =>
-              link.route ? (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-xs font-medium text-slate-500 transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 sm:text-sm"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-                >
-                  {link.label}
-                </a>
-              ),
-            )}
-          </nav>
-
-          <div className="flex shrink-0 flex-wrap items-center gap-2">
-            <LangToggle
-              lang={lang}
-              onChange={handleLangChange}
-              ariaLabel={t.langToggleLabel}
-            />
-            <button
-              type="button"
-              onClick={openSubmitModal}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-            >
-              <PlusCircle className="h-3.5 w-3.5 shrink-0" aria-hidden />
-              {t.submitData}
-            </button>
-            <a
-              href={BRAND.linkedInUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-              aria-label={t.connectLinkedIn}
-            >
-              <LinkedInIcon className="h-4 w-4" aria-hidden />
-            </a>
-          </div>
-        </div>
-      </header>
+      <Header
+        t={t}
+        lang={lang}
+        onLangChange={handleLangChange}
+        navLinks={navLinks}
+        onSubmit={openSubmitModal}
+      />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
-        <section
-          aria-labelledby="hero-heading"
-          className="relative overflow-hidden border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-indigo-50 px-6 py-12 sm:px-10 sm:py-16"
-        >
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(99,102,241,0.14),_transparent_45%),radial-gradient(circle_at_bottom_left,_rgba(14,165,233,0.08),_transparent_40%)]"
-            aria-hidden
-          />
-          <div className="relative max-w-3xl">
-            <p className="text-sm font-bold tracking-tight text-indigo-700">
-              {t.platform}
-            </p>
-            <h1
-              id="hero-heading"
-              className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
-            >
-              {t.heroTitle}
-            </h1>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              {t.heroText}
-            </p>
+        <Hero t={t} />
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href="#pricing"
-                className="inline-flex items-center justify-center rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-              >
-                {t.primaryCta}
-              </a>
-              <a
-                href="#waqfledger"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
-              >
-                {t.navWaqfLedger}
-              </a>
-            </div>
+        <NexusSection lang={lang} t={t} />
 
-            <ul
-              className="mt-8 flex flex-wrap gap-2"
-              aria-label="Trust signals"
-            >
-              {[t.badgeTrilingual, t.badgeGdpr, t.badgeZeroDev].map((badge) => (
-                <li
-                  key={badge}
-                  className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm"
-                >
-                  {badge}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <TransatlanticSection lang={lang} t={t} />
 
         <AssessmentSection
           lang={lang}
@@ -870,112 +734,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="mt-auto border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
-            <nav aria-labelledby="footer-legal-heading">
-              <h2
-                id="footer-legal-heading"
-                className="text-xs font-semibold uppercase tracking-wider text-slate-500"
-              >
-                {t.footerLegalHeading}
-              </h2>
-              <ul className="mt-4 space-y-2.5 text-sm">
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-                  >
-                    {t.footerPrivacy}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/terms"
-                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-                  >
-                    {t.footerTerms}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/gdpr"
-                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-                  >
-                    {t.footerGdpr}
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-
-            <nav aria-labelledby="footer-ecosystem-heading">
-              <h2
-                id="footer-ecosystem-heading"
-                className="text-xs font-semibold uppercase tracking-wider text-slate-500"
-              >
-                {t.footerEcosystemHeading}
-              </h2>
-              <ul className="mt-4 space-y-2.5 text-sm">
-                <li>
-                  <a
-                    href={BRAND.waqfLedgerUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-                  >
-                    {t.footerWaqfLedger}
-                    <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#assessment"
-                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-                  >
-                    {t.footerAssessment}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#pricing"
-                    className="font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-                  >
-                    {t.footerStorefront}
-                  </a>
-                </li>
-              </ul>
-            </nav>
-
-            <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1 lg:items-end">
-              <a
-                href={BRAND.linkedInUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-              >
-                <LinkedInIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                {t.footerLinkedIn}
-              </a>
-              <a
-                href={BRAND.instituteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-800 transition-colors hover:text-indigo-700 hover:underline"
-              >
-                {t.footerLink}
-                <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-10 space-y-3 border-t border-slate-200 pt-6">
-            <p className="max-w-3xl text-xs leading-relaxed text-slate-500">
-              {t.footerMerchantDisclosure}
-            </p>
-            <p className="text-sm text-slate-600">{t.footerCopy}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer t={t} lang={lang} />
 
       {citeOpen ? (
         <div

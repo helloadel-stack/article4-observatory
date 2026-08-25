@@ -11,6 +11,7 @@ import {
 import {
   BRAND,
   DEFAULT_LANG,
+  WAQFLEDGER_PASSPORT_PRODUCT,
   WAQFLEDGER_SEED_PROOFS,
   type Lang,
 } from "@/src/config/constants";
@@ -43,13 +44,13 @@ const copy = {
       {
         title: "Institutional Chain of Custody",
         description:
-          "Link every certification and B2B license to a verifiable WaqfLedger proof.",
+          "Link every AI Audit Passport™ and B2B license to a verifiable WaqfLedger proof.",
         icon: Link2,
       },
     ],
     engineTitle: "Local Cryptographic Proof Engine",
     generateLicense: "Generate License Proof",
-    generateCert: "Generate Certificate Proof",
+    generateCert: "Generate AI Audit Passport™ Proof",
     generating: "Hashing…",
     latestProof: "Latest generated proof ID",
     verifierTitle: "WaqfLedger Hash Verification",
@@ -88,13 +89,13 @@ const copy = {
       {
         title: "Chaîne de custodie institutionnelle",
         description:
-          "Reliez chaque certification et licence B2B à une preuve WaqfLedger vérifiable.",
+          "Reliez chaque Passeport d’Audit IA™ et licence B2B à une preuve WaqfLedger vérifiable.",
         icon: Link2,
       },
     ],
     engineTitle: "Moteur de preuve cryptographique local",
     generateLicense: "Générer une preuve de licence",
-    generateCert: "Générer une preuve de certificat",
+    generateCert: "Générer une preuve de Passeport d’Audit IA™",
     generating: "Hachage…",
     latestProof: "Dernier ID de preuve généré",
     verifierTitle: "Vérification de hash WaqfLedger",
@@ -133,13 +134,13 @@ const copy = {
       {
         title: "Cadena de custodia institucional",
         description:
-          "Vincule cada certificación y licencia B2B a una prueba WaqfLedger verificable.",
+          "Vincule cada Pasaporte de Auditoría IA™ y licencia B2B a una prueba WaqfLedger verificable.",
         icon: Link2,
       },
     ],
     engineTitle: "Motor de prueba criptográfica local",
     generateLicense: "Generar prueba de licencia",
-    generateCert: "Generar prueba de certificado",
+    generateCert: "Generar prueba de Pasaporte de Auditoría IA™",
     generating: "Hasheando…",
     latestProof: "Último ID de prueba generado",
     verifierTitle: "Verificación de hash WaqfLedger",
@@ -191,7 +192,7 @@ export default function WaqfLedgerAuditSection({
       map.set(normalizeProofId(p), "Session-generated proof");
     }
     for (const p of sessionProofs) {
-      map.set(normalizeProofId(p), "Assessment certificate proof");
+      map.set(normalizeProofId(p), "Assessment AI Audit Passport™ proof");
     }
     return map;
   }, [localProofs, sessionProofs]);
@@ -201,7 +202,7 @@ export default function WaqfLedgerAuditSection({
     try {
       const proofId = await generateProofId(kind, {
         kind,
-        product: kind === "license" ? "B2B Institutional License" : "Article 4 Certificate",
+        product: kind === "license" ? "B2B Institutional License" : WAQFLEDGER_PASSPORT_PRODUCT,
         institute: BRAND.institute,
         tsBucket: new Date().toISOString().slice(0, 13),
         tier: kind === "license" ? "tier3" : "benchmark",
@@ -240,7 +241,7 @@ export default function WaqfLedgerAuditSection({
     setVerifyState({ kind: "unknown" });
   };
 
-  const externalUrl = `${BRAND.waqfLedgerUrl}/verify?id=${encodeURIComponent(input.trim())}`;
+  const externalUrl = `${BRAND.waqfLedgerVerifyUrl}?id=${encodeURIComponent(input.trim())}`;
 
   return (
     <section

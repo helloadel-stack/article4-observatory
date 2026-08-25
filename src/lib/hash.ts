@@ -1,5 +1,5 @@
 /**
- * Deterministic SHA-256 proof IDs for WaqfLedger license & certificate logging.
+ * Deterministic SHA-256 proof IDs for WaqfLedger license & AI Audit Passport logging.
  * Works in browser (Web Crypto) and Node (crypto.subtle / node:crypto).
  * Remote verify attempts hit waqfledger.tech with local hash fallback.
  */

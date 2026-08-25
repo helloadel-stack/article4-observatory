@@ -27,6 +27,10 @@ export default function GdprPage() {
         </ul>
       </LegalSection>
 
+      <LegalSection title={t.transatlanticTitle}>
+        <p>{t.transatlanticBody}</p>
+      </LegalSection>
+
       <LegalSection title={t.cryptoTitle}>
         <p>{t.cryptoBody}</p>
         <p>
@@ -45,10 +49,10 @@ export default function GdprPage() {
         <p>{t.dpoBody}</p>
         <p>
           <a
-            href={`mailto:${SITE_METADATA.dpoEmail}`}
+            href={`mailto:${SITE_METADATA.contactEmail}`}
             className="font-medium text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
           >
-            {SITE_METADATA.dpoEmail}
+            {SITE_METADATA.contactEmail}
           </a>
         </p>
       </LegalSection>

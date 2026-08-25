@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
+import { ATELIERS_JURIDIQUES } from "@/src/config/constants";
 import { sanitizeText } from "@/src/lib/sanitize";
 import {
   generateDownloadToken,
@@ -93,6 +94,17 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!coversLogistics) {
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "Host financial guarantee is required: travel tickets, accommodation, and mission expenses must be confirmed to issue the Convention de Mission.",
+        },
+        { status: 400 },
+      );
+    }
+
     const bookingId = generateMissionBookingId();
     const downloadToken = generateDownloadToken();
     const timestamp = new Date().toISOString();
@@ -153,7 +165,7 @@ export async function POST(request: Request) {
           country,
         },
         invitationTemplate: {
-          title: "Convention de Formation & Lettre d'Invitation Officielle",
+          title: ATELIERS_JURIDIQUES.documentTitle,
           downloadUrl: `/api/workshop-booking/download?token=${encodeURIComponent(downloadToken)}`,
           status: "Attente de Signature Hôte",
         },

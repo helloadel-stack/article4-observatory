@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "badge": "Observatorio y Tercero de Confianza Independiente",
+    "title": "Operacionalizar el Artículo 4 y el Anexo III del Reglamento de IA de la UE",
+    "subtitle": "Alfabetización docente, gobernanza de algoritmos educativos de alto riesgo y sellado criptográfico de auditorías."
+  },
+  "ecosystem": {
+    "badge": "Protocolo VerifIA™",
+    "desc": "Infraestructura de auditoría que combina el laboratorio de aseguramiento SafeAI.report con recibos de estado SHA-256 de WaqfLedger para emitir el AI Audit Passport™."
+  },
+  "standards": {
+    "quebec": "Alineación con la Ley 25 de Quebec y estándares de investigación"
+  },
+  "legal": {
+    "entityNotice": "L'Institut Article 4 es una asociación sin ánimo de lucro (Ley francesa 1901) dedicada a la investigación abierta y a los bienes públicos. La comercialización de herramientas de auditoría, licencias de sitio y formaciones es operada por nuestra entidad comercial (LLC), con Gumroad, Inc. actuando como Merchant of Record (MoR)."
+  },
+  "header": {
+    "legalBadge": "Association Loi 1901",
+    "verifiaLab": "SafeAI.report",
+    "verifiaLedger": "WaqfLedger",
+    "llcNotice": "Herramientas B2B vía LLC · Gumroad MoR"
+  },
+  "footer": {
+    "mission": "Observatorio independiente y tercero de confianza para la gobernanza de la IA educativa.",
+    "ecosystemHeading": "Ecosistema VerifIA",
+    "safeAi": "SafeAI.report (Laboratorio de Evaluación / OIARF Engine)",
+    "waqfLedger": "WaqfLedger (Registro Criptográfico SHA-256)",
+    "bouclier": "Bouclier IA Publique",
+    "ateliers": "Ateliers Juridiques",
+    "regulatoryHeading": "Referenciales",
+    "regEu": "EU AI Act (Art. 4, 14, 50, Annex III §3)",
+    "regIso": "ISO/IEC 42001",
+    "regQuebec": "Quebec Law 25",
+    "regFrance": "France Universités & CGE",
+    "legalHeading": "Jurídico & MoR",
+    "morNotice": "Los pagos B2B y la facturación automatizada con IVA europeo los gestiona Gumroad, Inc. (Merchant of Record) para nuestra entidad comercial (LLC).",
+    "copyright": "© 2026 L'Institut Article 4 (Association Loi 1901). Huellas de integridad fechadas en waqfledger.tech."
+  }
+}

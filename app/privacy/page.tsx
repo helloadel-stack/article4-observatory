@@ -22,10 +22,10 @@ export default function PrivacyPage() {
         <p>{t.controllerBody}</p>
         <p>
           <a
-            href={`mailto:${SITE_METADATA.privacyEmail}`}
+            href={`mailto:${SITE_METADATA.contactEmail}`}
             className="font-medium text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
           >
-            {SITE_METADATA.privacyEmail}
+            {SITE_METADATA.contactEmail}
           </a>
         </p>
       </LegalSection>
@@ -40,6 +40,10 @@ export default function PrivacyPage() {
 
       <LegalSection title={t.cookiesTitle}>
         <p>{t.cookiesBody}</p>
+      </LegalSection>
+
+      <LegalSection title={t.transatlanticTitle}>
+        <p>{t.transatlanticBody}</p>
       </LegalSection>
 
       <LegalSection title={t.contactTitle}>

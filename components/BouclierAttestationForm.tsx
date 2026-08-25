@@ -11,17 +11,17 @@ import {
   ShieldCheck,
   X,
 } from "lucide-react";
-import { BRAND, DEFAULT_LANG, type Lang } from "@/src/config/constants";
+import { BOUCLIER_PUBLIC, BRAND, DEFAULT_LANG, type Lang } from "@/src/config/constants";
 
 export type DepartmentType = "Collectivité" | "Hôpital" | "Administration";
 
 const formCopy = {
   FR: {
     eyebrow: "Scorecard exécutif",
-    title: "Niveaux 0 à 5 — Attestation de préparation",
+    title: "Niveaux 0 à 5 — Attestation de Préparation & Bilan de Maturité IA",
     description:
-      "Auto-évaluez la maturité de gouvernance IA de votre institution, puis générez une attestation scellée par empreinte SHA-256 via WaqfLedger.",
-    badge: "1 page · Preuve cryptographique",
+      "Auto-évaluez la maturité de gouvernance IA de votre institution, puis générez une Attestation de Préparation & Bilan de Maturité IA scellée par empreinte SHA-256 via WaqfLedger. Ce livrable n'est pas un certificat de conformité légale.",
+    badge: "A4I-SHIELD · Preuve cryptographique",
     levelLabel: "Niveau",
     selectedLevel: "Niveau sélectionné",
     institutionLabel: "Nom de l'institution",
@@ -40,10 +40,10 @@ const formCopy = {
     errorGeneration: "Échec de la génération de l'attestation.",
     errorNetwork: "Erreur réseau. Veuillez réessayer dans un instant.",
     submitLoading: "Calcul de l'empreinte SHA-256...",
-    submitButton: "Générer l'Attestation de Préparation",
-    modalTitle: "Attestation de Préparation à la Gouvernance IA",
+    submitButton: "Générer l'Attestation de Préparation & Bilan de Maturité IA",
+    modalTitle: "Attestation de Préparation & Bilan de Maturité IA",
     successSeal: "Sceau d'attestation",
-    successId: "Identifiant du certificat",
+    successId: "Identifiant d'attestation",
     successIssued: "Émise le",
     successHash: "Preuve d'empreinte SHA-256",
     copyHash: "Copier le hash",
@@ -92,10 +92,10 @@ const formCopy = {
   },
   EN: {
     eyebrow: "Executive scorecard",
-    title: "Levels 0 to 5 — Readiness attestation",
+    title: "Levels 0 to 5 — AI Readiness Attestation & Maturity Assessment",
     description:
-      "Self-assess your institution's AI governance maturity, then generate an attestation sealed with a SHA-256 fingerprint via WaqfLedger.",
-    badge: "1 page · Cryptographic proof",
+      "Self-assess your institution's AI governance maturity, then generate an AI Readiness Attestation & Maturity Assessment sealed with a SHA-256 fingerprint via WaqfLedger. This artifact is not a legal conformity certificate.",
+    badge: "A4I-SHIELD · Cryptographic proof",
     levelLabel: "Level",
     selectedLevel: "Selected level",
     institutionLabel: "Institution name",
@@ -114,10 +114,10 @@ const formCopy = {
     errorGeneration: "Failed to generate the attestation.",
     errorNetwork: "Network error. Please try again shortly.",
     submitLoading: "Computing SHA-256 fingerprint...",
-    submitButton: "Generate Readiness Attestation",
-    modalTitle: "AI Governance Readiness Attestation",
+    submitButton: "Generate the AI Readiness Attestation & Maturity Assessment",
+    modalTitle: "AI Readiness Attestation & Maturity Assessment",
     successSeal: "Attestation seal",
-    successId: "Certificate ID",
+    successId: "Attestation ID",
     successIssued: "Issued on",
     successHash: "SHA-256 hash proof",
     copyHash: "Copy hash",
@@ -166,10 +166,10 @@ const formCopy = {
   },
   ES: {
     eyebrow: "Scorecard ejecutivo",
-    title: "Niveles 0 a 5 — Attestation de preparación",
+    title: "Niveles 0 a 5 — Atestación de Preparación y Balance de Madurez IA",
     description:
-      "Autoevalúe la madurez de gobernanza IA de su institución y genere una attestation sellada con huella SHA-256 vía WaqfLedger.",
-    badge: "1 página · Prueba criptográfica",
+      "Autoevalúe la madurez de gobernanza IA de su institución y genere una Atestación de Preparación y Balance de Madurez IA sellada con huella SHA-256 vía WaqfLedger. Este entregable no es un certificado de conformidad legal.",
+    badge: "A4I-SHIELD · Prueba criptográfica",
     levelLabel: "Nivel",
     selectedLevel: "Nivel seleccionado",
     institutionLabel: "Nombre de la institución",
@@ -188,10 +188,10 @@ const formCopy = {
     errorGeneration: "Error al generar la attestation.",
     errorNetwork: "Error de red. Inténtelo de nuevo en un momento.",
     submitLoading: "Calculando la huella SHA-256...",
-    submitButton: "Generar Attestation de Preparación",
-    modalTitle: "Attestation de Preparación a la Gobernanza IA",
+    submitButton: "Generar la Atestación de Preparación y Balance de Madurez IA",
+    modalTitle: "Atestación de Preparación y Balance de Madurez IA",
     successSeal: "Sello de attestation",
-    successId: "ID del certificado",
+    successId: "ID de attestation",
     successIssued: "Emitida el",
     successHash: "Prueba de huella SHA-256",
     copyHash: "Copiar hash",
@@ -365,6 +365,9 @@ export default function BouclierAttestationForm({
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-400">
             {t.description}
+          </p>
+          <p className="mt-2 max-w-2xl text-xs leading-relaxed text-amber-200/90">
+            {BOUCLIER_PUBLIC.artifactDisclaimer[lang]}
           </p>
         </div>
         <div className="inline-flex items-center gap-2 rounded-lg border border-indigo-500/40 bg-indigo-950/60 px-3 py-2 text-xs font-medium text-indigo-200">
@@ -594,7 +597,10 @@ export default function BouclierAttestationForm({
               </dl>
 
               <a
-                href={BRAND.waqfLedgerUrl}
+                href={
+                  result.verifyUrl ??
+                  `${BRAND.waqfLedgerVerifyUrl}?hash=${encodeURIComponent(result.hashProof)}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-emerald-400/50 bg-emerald-500/15 px-4 py-3 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-500/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"

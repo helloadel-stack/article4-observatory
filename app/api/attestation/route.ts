@@ -107,7 +107,7 @@ export async function POST(request: Request) {
     const hashProof = createHash("sha256").update(canonical, "utf8").digest("hex");
 
     const attestationId = `${BOUCLIER_PUBLIC.attestationPrefix}-${hashProof.slice(0, 12).toUpperCase()}`;
-    const verifyUrl = `${BRAND.waqfLedgerUrl}/verify?hash=${hashProof}`;
+    const verifyUrl = `${BRAND.waqfLedgerVerifyUrl}?hash=${hashProof}`;
 
     const record: AttestationRecord = {
       id: attestationId,
@@ -138,7 +138,7 @@ export async function POST(request: Request) {
         success: true,
         attestationId,
         hashProof,
-        title: "Attestation de Préparation à la Gouvernance IA",
+        title: BOUCLIER_PUBLIC.artifactName.FR,
         issuedAt,
         verifyUrl,
         institutionName,

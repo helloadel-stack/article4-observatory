@@ -31,6 +31,10 @@ export default function TermsPage() {
         </ul>
       </LegalSection>
 
+      <LegalSection title={t.artifactsTitle}>
+        <p>{t.artifactsBody}</p>
+      </LegalSection>
+
       <LegalSection title={t.fulfillmentTitle}>
         <p>{t.fulfillmentBody}</p>
       </LegalSection>

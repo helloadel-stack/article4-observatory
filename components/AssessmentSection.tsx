@@ -27,7 +27,7 @@ const copy = {
     scorePass: "Pass — Human Oversight Control Identified",
     scoreFail: "Needs Review — Revisit Annex III Oversight Duties",
     score: "Score",
-    certTitle: "Cryptographic Certificate Proof Preview",
+    certTitle: "AI Audit Passport™ Proof Preview",
     certHint: "Deterministic SHA-256 proof ID ready for WaqfLedger logging.",
     copyProof: "Copy Proof ID",
     copied: "Copied",
@@ -50,7 +50,7 @@ const copy = {
     scorePass: "Réussi — Contrôle de supervision humaine identifié",
     scoreFail: "À revoir — Revoir les devoirs de supervision Annexe III",
     score: "Score",
-    certTitle: "Aperçu de preuve de certificat cryptographique",
+    certTitle: "Aperçu de preuve du Passeport d’Audit IA™",
     certHint:
       "Identifiant de preuve SHA-256 déterministe prêt pour la journalisation WaqfLedger.",
     copyProof: "Copier l’ID de preuve",
@@ -74,7 +74,7 @@ const copy = {
     scorePass: "Aprobado — Control de supervisión humana identificado",
     scoreFail: "Requiere revisión — Revisar deberes de supervisión Anexo III",
     score: "Puntuación",
-    certTitle: "Vista previa de prueba de certificado criptográfico",
+    certTitle: "Vista previa de prueba del Pasaporte de Auditoría IA™",
     certHint:
       "ID de prueba SHA-256 determinista listo para registro en WaqfLedger.",
     copyProof: "Copiar ID de prueba",

@@ -1,5 +1,5 @@
 /**
- * Canonical registry for SafeAI Framework & European Observatory.
+ * Canonical registry for Article 4 Institute (A4I Observatoire) & SafeAI Framework.
  * Metadata truth — never invent free tiers or placeholder commerce as live.
  */
 
@@ -16,20 +16,212 @@ export const LANG_TO_HTML: Record<Lang, string> = {
   ES: "es",
 };
 
-export const BRAND = {
-  name: "SafeAI Framework & European Observatory",
-  shortName: "SafeAI Framework",
-  subtitle: {
-    EN: "by Article 4 Institute",
-    FR: "par Article 4 Institute",
-    ES: "por Article 4 Institute",
+/**
+ * Canonical 2026 institutional identity, tripartite ecosystem links,
+ * Gumroad endpoints, and corporate structure.
+ * Association Loi 1901 think-tank + US LLC commercial vehicle + Gumroad MoR.
+ */
+export const SITE_CONFIG = {
+  name: "L'Institut Article 4",
+  shortName: "A4I",
+  legalEntity: "Association Loi 1901",
+  legalRole: "Observatoire & Tiers de Confiance Indépendant",
+  tagline:
+    "Operationalizing EU AI Act Article 4 and Annex III High-Risk Compliance for Higher Education Integrity",
+  url: "https://article4institute.org",
+  ecosystem: {
+    observatory: "https://article4institute.org",
+    assuranceLab: "https://safeai.report",
+    ledgerVerify: "https://waqfledger.tech/verify",
   },
-  institute: "Article 4 Institute",
-  instituteUrl: "https://article4institute.org",
+  gumroad: {
+    tier0: "https://safeai.gumroad.com/l/starter",
+    tier1: "https://safeai.gumroad.com/l/framework",
+    tier2: "https://safeai.gumroad.com/l/Audit",
+    tier3: "https://safeai.gumroad.com/l/AIgovernance",
+  },
+  regulatoryStandards: [
+    "EU AI Act (Articles 4, 14, 50 & Annex III §3)",
+    "ISO/IEC 42001:2023 (Artificial Intelligence Management System)",
+    "Loi 25 du Québec (Protection des renseignements personnels)",
+    "Cadres d'éthique et gouvernance de la recherche (OBVIA & Universités)",
+  ],
+  legalDisclaimer: {
+    fr: "L'Institut Article 4 est un observatoire et tiers de confiance indépendant constitué sous forme d'Association Loi 1901. Les kits documentaires B2B et licences logicielles sont distribués commercialement par notre entité commerciale (LLC), Gumroad Inc. agissant en qualité de Merchant of Record.",
+    en: "The Article 4 Institute is an independent observatory and trusted third-party established under French Association Law 1901. B2B documentation kits and software licenses are distributed commercially via our commercial corporate vehicle (LLC), with Gumroad Inc. serving as the Merchant of Record.",
+    es: "L'Institut Article 4 es un observatorio y tercero de confianza independiente constituido como Association Loi 1901. Los kits documentales B2B y las licencias de software se distribuyen comercialmente a través de nuestro vehículo comercial (LLC), con Gumroad Inc. actuando como Merchant of Record.",
+  },
+} as const;
+
+export const BRAND = {
+  name: SITE_CONFIG.name,
+  shortName: SITE_CONFIG.shortName,
+  storefront: "SafeAI Framework",
+  observatory: "Observatoire Article 4",
+  nexus: "A4I Nexus",
+  subtitle: {
+    EN: SITE_CONFIG.legalRole,
+    FR: SITE_CONFIG.legalRole,
+    ES: SITE_CONFIG.legalRole,
+  },
+  institute: SITE_CONFIG.name,
+  legalForm: SITE_CONFIG.legalEntity,
+  legalRole: SITE_CONFIG.legalRole,
+  commercialVehicle: "LLC",
+  instituteUrl: SITE_CONFIG.url,
   linkedInUrl: "https://www.linkedin.com/company/l-institut-article-4-a4i/",
   waqfLedgerUrl: "https://waqfledger.tech",
-  safeAiReportUrl: "https://safeai.report",
+  waqfLedgerVerifyUrl: SITE_CONFIG.ecosystem.ledgerVerify,
+  safeAiReportUrl: SITE_CONFIG.ecosystem.assuranceLab,
   gumroadStoreUrl: "https://safeai.gumroad.com",
+} as const;
+
+/**
+ * Finalized 2026 institutional positioning — metadata truth for all surfaces.
+ */
+export const INSTITUTIONAL_POSITIONING = {
+  slogan: {
+    EN: `${SITE_CONFIG.tagline}.`,
+    FR: "Opérationnaliser l’Article 4 du règlement européen sur l’IA et la conformité haut risque Annexe III pour l’intégrité de l’enseignement supérieur.",
+    ES: "Operacionalizar el Artículo 4 del Reglamento de IA de la UE y el cumplimiento de alto riesgo del Anexo III para la integridad de la educación superior.",
+  },
+  identity: {
+    EN: "Independent Francophone Observatoire & Think Tank (Association Loi 1901) for Educational AI Governance and Compliance.",
+    FR: "Observatoire et think tank francophone indépendant (Association loi 1901) pour la gouvernance et la conformité de l’IA éducative.",
+    ES: "Observatorio y think tank francófono independiente (Association loi 1901) para la gobernanza y el cumplimiento de la IA educativa.",
+  },
+  role: {
+    EN: 'Sovereign "Tiers de Confiance" bridging the EU AI Act, ISO/IEC 42001 (AI Management Systems), applied pedagogical research, and cryptographic evidence provenance.',
+    FR: "« Tiers de confiance » souverain articulant le règlement européen sur l’IA, ISO/IEC 42001 (systèmes de management de l’IA), la recherche pédagogique appliquée et la provenance cryptographique des preuves.",
+    ES: "« Tiers de confiance » soberano que articula el Reglamento de IA de la UE, ISO/IEC 42001 (sistemas de gestión de la IA), la investigación pedagógica aplicada y la procedencia criptográfica de las pruebas.",
+  },
+} as const;
+
+/**
+ * Tripartite architecture — the A4I Nexus.
+ * Non-profit core, VerifIA RegTech protocol, and US LLC commercial vehicle.
+ */
+export const A4I_NEXUS = {
+  nonprofit: {
+    key: "nonprofit",
+    title: {
+      EN: "Non-Profit Core (Association Loi 1901)",
+      FR: "Socle associatif (Association loi 1901)",
+      ES: "Núcleo asociativo (Association loi 1901)",
+    },
+    body: {
+      EN: "Custodian of open-access public goods: Bouclier IA Publique and Le Baromètre National de l’IA Literacy.",
+      FR: "Gardien des biens publics en accès ouvert : Bouclier IA Publique et Le Baromètre National de l’IA Literacy.",
+      ES: "Custodio de bienes públicos de acceso abierto: Bouclier IA Publique y Le Baromètre National de l’IA Literacy.",
+    },
+    goods: [
+      "Bouclier IA Publique",
+      "Le Baromètre National de l’IA Literacy",
+    ] as const,
+  },
+  verifia: {
+    key: "verifia",
+    title: {
+      EN: "VerifIA Protocol (Backend RegTech)",
+      FR: "Protocole VerifIA (RegTech backend)",
+      ES: "Protocolo VerifIA (RegTech backend)",
+    },
+    body: {
+      EN: "Powers automated audits via safeai.report (Assurance Lab) and waqfledger.tech (SHA-256 state receipts), minting the AI Audit Passport™.",
+      FR: "Alimente les audits automatisés via safeai.report (Assurance Lab) et waqfledger.tech (reçus d’état SHA-256), et émet le Passeport d’Audit IA™.",
+      ES: "Impulsa auditorías automatizadas vía safeai.report (Assurance Lab) y waqfledger.tech (recibos de estado SHA-256), emitiendo el Pasaporte de Auditoría IA™.",
+    },
+  },
+  commercial: {
+    key: "commercial",
+    title: {
+      EN: "Commercial Vehicle (US LLC)",
+      FR: "Véhicule commercial (LLC américaine)",
+      ES: "Vehículo comercial (LLC estadounidense)",
+    },
+    body: {
+      EN: "Commercializes enterprise audit toolkits, bespoke conformity evaluations, corporate retainers, and onsite masterclasses via the US LLC, with Gumroad Inc. as Merchant of Record.",
+      FR: "Commercialise les kits d’audit entreprise, les évaluations de conformité sur mesure, les retainers corporatifs et les masterclass sur site via la LLC américaine, Gumroad Inc. agissant en qualité de Merchant of Record.",
+      ES: "Comercializa kits de auditoría empresarial, evaluaciones de conformidad a medida, retainers corporativos y masterclass in situ vía la LLC estadounidense, con Gumroad Inc. como Merchant of Record.",
+    },
+  },
+} as const;
+
+export const A4I_NEXUS_PILLARS = [
+  A4I_NEXUS.nonprofit,
+  A4I_NEXUS.verifia,
+  A4I_NEXUS.commercial,
+] as const;
+
+/**
+ * Transatlantic 2026 regulatory mapping.
+ * Canada/Quebec: align to Loi 25, OBVIA, and institutional research ethics.
+ */
+export const TRANSATLANTIC_MAPPING = {
+  franceEu: {
+    key: "franceEu",
+    region: {
+      EN: "France / EU",
+      FR: "France / UE",
+      ES: "Francia / UE",
+    },
+    body: {
+      EN: "Liaison node for EU AI Act Annex III Section 3 (education and vocational training). Liaison with France Universités and Conférence des Grandes Écoles (CGE) standards, and ISO/IEC 42001 AI Management Systems.",
+      FR: "Nœud de liaison pour l’Annexe III section 3 du règlement européen sur l’IA (éducation et formation professionnelle). Liaison avec les référentiels de France Universités et de la Conférence des Grandes Écoles (CGE), et ISO/IEC 42001 (systèmes de management de l’IA).",
+      ES: "Nodo de enlace para el Anexo III sección 3 del Reglamento de IA de la UE (educación y formación profesional). Enlace con los estándares de France Universités y de la Conférence des Grandes Écoles (CGE), e ISO/IEC 42001 (sistemas de gestión de la IA).",
+    },
+    standards: [
+      "EU AI Act Annex III Section 3",
+      "France Universités",
+      "Conférence des Grandes Écoles (CGE)",
+      "ISO/IEC 42001",
+    ] as const,
+  },
+  canadaQuebec: {
+    key: "canadaQuebec",
+    region: {
+      EN: "Canada / Quebec",
+      FR: "Canada / Québec",
+      ES: "Canadá / Quebec",
+    },
+    body: {
+      EN: "Alignment with Quebec Law 25 (Loi 25 sur la protection des renseignements personnels), OBVIA research-ecosystem principles, and institutional research-ethics standards.",
+      FR: "Alignement sur la Loi 25 du Québec (protection des renseignements personnels), les principes de l’écosystème de recherche de l’OBVIA et les normes d’éthique de la recherche institutionnelle.",
+      ES: "Alineación con la Ley 25 de Quebec (Loi 25 sur la protection des renseignements personnels), los principios del ecosistema de investigación de OBVIA y las normas institucionales de ética de la investigación.",
+    },
+    standards: [
+      "Quebec Law 25 (Loi 25)",
+      "OBVIA research ecosystem principles",
+      "Institutional research ethics standards",
+    ] as const,
+  },
+} as const;
+
+export const TRANSATLANTIC_NODES = [
+  TRANSATLANTIC_MAPPING.franceEu,
+  TRANSATLANTIC_MAPPING.canadaQuebec,
+] as const;
+
+/**
+ * Mandated public-facing legal artifacts. Never describe these as a
+ * "Certificat de conformité légale" or "Homologation officielle AI Act".
+ */
+export const LEGAL_ARTIFACTS = {
+  attestation: {
+    EN: "AI Governance Readiness Attestation",
+    FR: "Attestation de Préparation à la Gouvernance IA",
+    ES: "Atestación de Preparación para la Gobernanza IA",
+  },
+  maturity: {
+    EN: "Maturity Assessment (Bilan de Maturité)",
+    FR: "Bilan de Maturité",
+    ES: "Balance de Madurez",
+  },
+  passport: {
+    EN: "AI Audit Passport™",
+    FR: "Passeport d’Audit IA™",
+    ES: "Pasaporte de Auditoría IA™",
+  },
 } as const;
 
 /** Pro bono public-sector shield initiative (French institutional landing) */
@@ -37,8 +229,24 @@ export const BOUCLIER_PUBLIC = {
   path: "/bouclier-public",
   title: "Bouclier IA Publique (Safe Public AI Shield)",
   license: "CC BY-NC 4.0",
+  licenseUrl: "https://creativecommons.org/licenses/by-nc/4.0/",
+  licenseFull: {
+    FR: "Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International (CC BY-NC 4.0)",
+    EN: "Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
+    ES: "Licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)",
+  },
   bundlePath: "/bundles/Bouclier_IA_Publique_Bundle_v2026.zip",
-  attestationPrefix: "A4I-SHIELD-2026",
+  attestationPrefix: "A4I-SHIELD",
+  artifactName: {
+    FR: "Attestation de Préparation & Bilan de Maturité IA",
+    EN: "AI Readiness Attestation & Maturity Assessment",
+    ES: "Atestación de Preparación y Balance de Madurez IA",
+  },
+  artifactDisclaimer: {
+    FR: "Livrable de préparation à la gouvernance — jamais un certificat de conformité légale ni une homologation officielle AI Act.",
+    EN: "Governance-readiness artifact — never a legal conformity certificate or official AI Act homologation.",
+    ES: "Artefacto de preparación a la gobernanza — nunca un certificado de conformidad legal ni una homologación oficial del AI Act.",
+  },
 } as const;
 
 /** Executive onsite workshops for law firms, CLOs, and bar associations */
@@ -48,19 +256,21 @@ export const ATELIERS_JURIDIQUES = {
     "Masterclass & Workshop In-Situ : Gouvernance IA & Audit AI Act pour Professionnels du Droit",
   plaquettePath: "/downloads/ateliers-juridiques-plaquette.pdf",
   bookingPrefix: "A4I-MISSION",
+  curriculumHours: 6,
+  documentTitle: "Convention de Mission & Lettre d'Invitation Officielle",
 } as const;
 
 export const SITE_METADATA = {
-  title:
-    "SafeAI Framework & European Observatory | EU AI Act & Higher Ed Governance",
-  description:
-    "Turnkey EU AI Act and ethical AI governance toolkits for higher education. Institutional policies, high-risk audit kits, and Article 4 literacy frameworks — logged via WaqfLedger.",
+  title: `${SITE_CONFIG.name} | Observatoire — EU AI Act Article 4 & Annex III for Higher Education`,
+  description: `${SITE_CONFIG.tagline}. ${SITE_CONFIG.legalRole} (${SITE_CONFIG.legalEntity}) — Tiers de Confiance bridging the EU AI Act, ISO/IEC 42001, and cryptographic evidence provenance via WaqfLedger.`,
   author: "Adel El Bouzagaoui",
-  publisher: "L'Institut Article 4 (A4I)",
+  publisher: `${SITE_CONFIG.name} (${SITE_CONFIG.shortName})`,
   datasetTitle: "European AI Sovereignty Index",
-  salesEmail: "sales@article4institute.org",
-  privacyEmail: "privacy@article4institute.org",
-  dpoEmail: "dpo@article4institute.org",
+  /** Canonical institute contact — procurement, privacy, DPO, and general inquiries */
+  contactEmail: "contact@article4institute.org",
+  salesEmail: "contact@article4institute.org",
+  privacyEmail: "contact@article4institute.org",
+  dpoEmail: "contact@article4institute.org",
   year: 2026,
 } as const;
 
@@ -72,17 +282,13 @@ export const GUMROAD = {
    */
   checkoutUrls: {
     tier0:
-      process.env.NEXT_PUBLIC_GUMROAD_TIER_0_URL ||
-      "https://safeai.gumroad.com/l/starter",
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_0_URL || SITE_CONFIG.gumroad.tier0,
     tier1:
-      process.env.NEXT_PUBLIC_GUMROAD_TIER_1_URL ||
-      "https://safeai.gumroad.com/l/framework",
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_1_URL || SITE_CONFIG.gumroad.tier1,
     tier2:
-      process.env.NEXT_PUBLIC_GUMROAD_TIER_2_URL ||
-      "https://safeai.gumroad.com/l/Audit",
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_2_URL || SITE_CONFIG.gumroad.tier2,
     tier3:
-      process.env.NEXT_PUBLIC_GUMROAD_TIER_3_URL ||
-      "https://safeai.gumroad.com/l/AIgovernance",
+      process.env.NEXT_PUBLIC_GUMROAD_TIER_3_URL || SITE_CONFIG.gumroad.tier3,
   },
 } as const;
 
@@ -100,7 +306,7 @@ export function isLiveGumroadCheckoutUrl(url: string): boolean {
 
 export function getProcurementMailto(tierTitle: string): string {
   const subject = encodeURIComponent(
-    `Direct Procurement — ${tierTitle} | Article 4 Institute`,
+    `Direct Procurement — ${tierTitle} | ${SITE_CONFIG.name}`,
   );
   const body = encodeURIComponent(
     [
@@ -116,7 +322,7 @@ export function getProcurementMailto(tierTitle: string): string {
       "Thank you.",
     ].join("\n"),
   );
-  return `mailto:${SITE_METADATA.salesEmail}?subject=${subject}&body=${body}`;
+  return `mailto:${SITE_METADATA.contactEmail}?subject=${subject}&body=${body}`;
 }
 
 type LocalizedTier = {
@@ -335,6 +541,8 @@ export const COUNTRY_LABELS: Record<string, Record<Lang, string>> = {
   Italy: { EN: "Italy", FR: "Italie", ES: "Italia" },
   Estonia: { EN: "Estonia", FR: "Estonie", ES: "Estonia" },
   EU: { EN: "EU", FR: "UE", ES: "UE" },
+  Canada: { EN: "Canada", FR: "Canada", ES: "Canadá" },
+  Quebec: { EN: "Quebec", FR: "Québec", ES: "Quebec" },
 };
 
 export function localizeCountry(country: string, lang: Lang): string {
@@ -496,6 +704,9 @@ export const WAQFLEDGER_DEMO_PAYLOADS = {
   },
 } as const;
 
+/** User-facing product for newly minted proofs. Seed payloads stay frozen for hash stability. */
+export const WAQFLEDGER_PASSPORT_PRODUCT = LEGAL_ARTIFACTS.passport.EN;
+
 /** Seed proofs for the in-page Local Cryptographic Proof Engine (canonical demo hashes). */
 export const WAQFLEDGER_SEED_PROOFS = [
   {
@@ -509,7 +720,7 @@ export const WAQFLEDGER_SEED_PROOFS = [
     proofId:
       "A4I-CERT-b5ceff92fd3f3396ae6b7006c76c5fe21fe1302535e03810917285ba95573947",
     kind: "certificate" as const,
-    label: "Article 4 Benchmark Certificate (canonical demo)",
+    label: "AI Audit Passport™ — Article 4 Benchmark (canonical demo)",
     payload: WAQFLEDGER_DEMO_PAYLOADS.certificate,
   },
 ] as const;

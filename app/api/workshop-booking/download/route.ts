@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { BRAND, SITE_METADATA } from "@/src/config/constants";
+import { ATELIERS_JURIDIQUES, BRAND, SITE_METADATA } from "@/src/config/constants";
 import { getWorkshopBookingByToken } from "@/src/lib/workshopBookings";
 import { buildSimplePdf } from "@/src/lib/simplePdf";
 import { sanitizeText } from "@/src/lib/sanitize";
@@ -31,13 +31,13 @@ function buildMissionPdf(params: {
       "SafeAI Framework — Mission & Formation Executive",
       BRAND.instituteUrl,
       "",
-      "CONVENTION DE FORMATION & LETTRE D'INVITATION OFFICIELLE",
-      "Attestation de Prise en Charge & Ordre de Mission",
+      "CONVENTION DE MISSION & LETTRE D'INVITATION OFFICIELLE",
+      ATELIERS_JURIDIQUES.documentTitle,
+      `Identifiant : ${params.bookingId}`,
       "",
-      `Référence mission : ${params.bookingId}`,
       `Date d'émission : ${issued}`,
       `Empreinte SHA-256 : ${params.verificationHash}`,
-      `Statut : Attente de Signature Hôte`,
+      "Statut : Attente de Signature Hôte",
       "",
       "Hôte / Établissement",
       `Type : ${params.entityType || "—"}`,
@@ -49,16 +49,17 @@ function buildMissionPdf(params: {
       `Nom : ${params.contactName}`,
       `Email : ${params.contactEmail}`,
       "",
-      "Logistique",
+      "CLAUSES DE GARANTIE FINANCIÈRE DE L'HÔTE",
       params.coversLogistics
-        ? "Prise en charge confirmée : billets transport + hébergement."
-        : "Prise en charge transport / hébergement : à confirmer.",
+        ? "L'établissement hôte confirme la prise en charge des billets de transport aller-retour, de l'hébergement pour la durée de la mission, et des frais de mission raisonnables de l'intervenant."
+        : "Garantie financière (transport / hébergement) : à confirmer — convention non émise.",
+      "Cette Convention de Mission n'est émise qu'après confirmation expresse de cette garantie.",
       "",
-      "Cette lettre vaut ordre de mission provisoire et invitation",
+      "Cette lettre vaut Convention de Mission et invitation",
       "officielle à intervenir sur site. Confirmation finale :",
-      SITE_METADATA.salesEmail,
+      SITE_METADATA.contactEmail,
       "",
-      `Vérification WaqfLedger : ${BRAND.waqfLedgerUrl}/verify?hash=${params.verificationHash}`,
+      `Vérification WaqfLedger : ${BRAND.waqfLedgerVerifyUrl}?hash=${params.verificationHash}`,
       "",
       `© ${SITE_METADATA.year} ${BRAND.institute}`,
     ],

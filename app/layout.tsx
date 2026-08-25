@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 const FR_OG_TITLE =
-  "SafeAI Framework | Observatoire Européen & Kit de Conformité AI Act";
+  "Article 4 Institute | Observatoire & Think Tank — Article 4 & Annexe III";
 const FR_OG_DESCRIPTION =
-  "Cadre opérationnel de gouvernance IA, matrices de risques Annexe III et kits de conformité Article 4 pour établissements d'enseignement supérieur, collectivités et éditeurs EdTech.";
+  "Opérationnaliser l'Article 4 du règlement européen sur l'IA et la conformité haut risque Annexe III pour l'intégrité de l'enseignement supérieur. Observatoire francophone indépendant (Association loi 1901) — Tiers de confiance ISO/IEC 42001.";
 
 export const metadata: Metadata = {
   title: SITE_METADATA.title,

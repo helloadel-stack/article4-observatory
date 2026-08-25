@@ -1,21 +1,35 @@
-# Article 4 Institute — European AI Sovereignty Observatory
-> Independent research and open tracking engine for European public-sector AI adoptions, cloud infrastructure dependencies, and EU AI Act readiness.
+# L'Institut Article 4 — Observatoire & Tiers de Confiance Indépendant
+> Operationalizing EU AI Act Article 4 and Annex III High-Risk Compliance for Higher Education Integrity.
 
-## Core Purpose
-The Observatory tracks and indexes artificial intelligence adoptions across public sector entities in Europe, measuring compliance with the EU AI Act and evaluating sovereign infrastructure vs foreign cloud dependencies.
+## Institutional Identity
+Independent Francophone Observatoire & Think Tank (Association Loi 1901) for Educational AI Governance and Compliance. Sovereign Tiers de Confiance bridging the EU AI Act, ISO/IEC 42001 (AI Management Systems), applied pedagogical research, and cryptographic evidence provenance.
+
+## The A4I Nexus (Tripartite Architecture)
+- Non-Profit Core (Association Loi 1901): Custodian of open-access public goods — Bouclier IA Publique and Le Baromètre National de l'IA Literacy.
+- VerifIA Protocol (Backend RegTech): Powers automated audits via safeai.report (Assurance Lab) and waqfledger.tech (SHA-256 state receipts), minting the AI Audit Passport.
+- Commercial Vehicle (US LLC): Commercializes enterprise audit toolkits, bespoke conformity evaluations, corporate retainers, and onsite masterclasses via Gumroad Inc. as Merchant of Record.
+
+## Transatlantic Regulatory Mapping (2026)
+- France / EU: Liaison node for EU AI Act Annex III Section 3; liaison with France Universités and Conférence des Grandes Écoles (CGE) standards; ISO/IEC 42001.
+- Canada / Quebec: Alignment with Quebec Law 25 (Loi 25 sur la protection des renseignements personnels), OBVIA research-ecosystem principles, and institutional research-ethics standards.
+
+## Legal Artifacts (Mandated Terminology)
+Issued: Attestation de Préparation à la Gouvernance IA; Bilan de Maturité; Passeport d'Audit IA.
+Not issued: legal conformity certificates; official AI Act homologation.
 
 ## Primary Metrics Monitored
-- Public Sector AI Tooling Index (France, Germany, Spain, EU Institutions)
+- Public Sector AI Tooling Index (France, Germany, Spain, EU Institutions, Quebec)
 - Infrastructure Sovereignty Classification (SecNumCloud, Sovereign GovCloud vs US Hyperscalers)
-- EU AI Act Transparency & Regulatory Compliance Status
+- EU AI Act Transparency & Regulatory Alignment Status
 
 ## Research Methodology & Technology
 - Methodology: Data extracted from official procurement releases, government digital directorates (e.g., DINUM), and public audits.
-- Assessment Engine: Automated compliance benchmarking and security assurance powered by the open framework at SafeAI.report.
+- Assessment Engine: Automated audits and security assurance powered by the VerifIA Protocol at SafeAI.report.
 
 ## Governance & Leadership
-- Organization: L'Institut Article 4 (A4I) (Operating as a neutral French non-profit initiative under Association 1901).
+- Organization: L'Institut Article 4 (A4I) — Association Loi 1901.
 - Lead Researcher: Adel El Bouzagaoui, Research Director & AI Governance Lead.
 - LinkedIn: https://www.linkedin.com/company/l-institut-article-4-a4i/
 - Website: https://article4institute.org
+- Contact: contact@article4institute.org
 - License: Open Data under Creative Commons Attribution 4.0 (CC BY 4.0).

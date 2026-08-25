@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "badge": "Observatoire & Tiers de Confiance Indépendant",
+    "title": "Opérationnaliser l'Article 4 et l'Annexe III du Règlement Européen sur l'IA",
+    "subtitle": "Acculturation des facultés, gouvernance des algorithmes éducatifs à haut risque et scellement cryptographique des audits pour l'enseignement supérieur."
+  },
+  "ecosystem": {
+    "badge": "Protocole VerifIA™",
+    "desc": "Moteur d'audit intégrant le laboratoire d'assurance SafeAI.report et l'ancrage d'empreintes SHA-256 sur WaqfLedger pour générer l'AI Audit Passport™."
+  },
+  "standards": {
+    "quebec": "Alignement Loi 25 du Québec & standards de recherche OBVIA"
+  },
+  "legal": {
+    "entityNotice": "L'Institut Article 4 est une association régie par la loi 1901 dédiée à la recherche et aux biens publics. La commercialisation des outils d'audit, licences de site et formations est opérée par notre société commerciale (LLC), avec Gumroad, Inc. agissant comme Merchant of Record (MoR)."
+  },
+  "header": {
+    "legalBadge": "Association Loi 1901",
+    "verifiaLab": "SafeAI.report",
+    "verifiaLedger": "WaqfLedger",
+    "llcNotice": "Outils B2B via LLC · Gumroad MoR"
+  },
+  "footer": {
+    "mission": "Observatoire indépendant et Tiers de Confiance pour la gouvernance de l'IA éducative.",
+    "ecosystemHeading": "Écosystème VerifIA",
+    "safeAi": "SafeAI.report (Laboratoire d'Évaluation / OIARF Engine)",
+    "waqfLedger": "WaqfLedger (Registre Cryptographique SHA-256)",
+    "bouclier": "Bouclier IA Publique",
+    "ateliers": "Ateliers Juridiques",
+    "regulatoryHeading": "Référentiels",
+    "regEu": "EU AI Act (Art. 4, 14, 50, Annex III §3)",
+    "regIso": "ISO/IEC 42001",
+    "regQuebec": "Quebec Law 25",
+    "regFrance": "France Universités & CGE",
+    "legalHeading": "Juridique & MoR",
+    "morNotice": "Paiements B2B et facturation automatisée avec TVA européenne gérés par Gumroad, Inc. (Merchant of Record) pour notre entité commerciale (LLC).",
+    "copyright": "© 2026 L'Institut Article 4 (Association Loi 1901). Empreintes d'intégrité horodatées sur waqfledger.tech."
+  }
+}

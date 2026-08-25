@@ -14,9 +14,9 @@ export type StorefrontLang = Lang;
 
 const sectionCopy = {
   EN: {
-    title: "Compliance Kits",
+    title: "Audit Toolkits",
     subtitle:
-      "Institutional policy packs, high-risk classification matrices, and Article 4 literacy frameworks ready for university deployment.",
+      "Enterprise audit kits, Annex III high-risk matrices, and Article 4 literacy frameworks commercialized by the US LLC vehicle via Gumroad as Merchant of Record.",
     featuresLabel: "Included",
     cta: "Purchase Kit",
     fallbackCta: "Launch Direct Procurement",
@@ -25,9 +25,9 @@ const sectionCopy = {
       "Checkout URL not yet live — request institutional procurement by email.",
   },
   FR: {
-    title: "Kits de conformité",
+    title: "Kits d’audit",
     subtitle:
-      "Packs de politiques institutionnelles, matrices de classification à haut risque et cadres de littératie Article 4 prêts pour le déploiement universitaire.",
+      "Kits d’audit entreprise, matrices Annexe III haut risque et cadres de littératie Article 4 commercialisés par le véhicule LLC via Gumroad en tant que Merchant of Record.",
     featuresLabel: "Inclus",
     cta: "Acheter le kit",
     fallbackCta: "Lancer l’achat direct",
@@ -36,9 +36,9 @@ const sectionCopy = {
       "URL de paiement non encore active — demandez l’achat institutionnel par e-mail.",
   },
   ES: {
-    title: "Kits de cumplimiento",
+    title: "Kits de auditoría",
     subtitle:
-      "Paquetes de políticas institucionales, matrices de clasificación de alto riesgo y marcos de alfabetización Artículo 4 listos para universidades.",
+      "Kits de auditoría empresarial, matrices Anexo III de alto riesgo y marcos de alfabetización Artículo 4 comercializados por el vehículo LLC vía Gumroad como Merchant of Record.",
     featuresLabel: "Incluido",
     cta: "Comprar kit",
     fallbackCta: "Iniciar adquisición directa",
