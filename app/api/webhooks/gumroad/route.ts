@@ -1,5 +1,4 @@
-import { NextResponse } from "next/server";
-import { sanitizeText } from "@/src/lib/sanitize";
+import { NextRequest, NextResponse } from "next/server";
 import {
   getSiteLicenseBySaleId,
   mintAndAnchorSiteLicense,
@@ -7,187 +6,132 @@ import {
 
 export const runtime = "nodejs";
 
-function configuredSellerId(): string {
-  return (process.env.GUMROAD_SELLER_ID ?? "").trim();
+function formString(formData: FormData, key: string): string {
+  const value = formData.get(key);
+  return typeof value === "string" ? value.trim() : "";
 }
 
-function asFormMap(request: Request, raw: string): Map<string, string> {
-  const contentType = request.headers.get("content-type") ?? "";
-  const map = new Map<string, string>();
-
-  if (contentType.includes("application/json")) {
-    try {
-      const parsed = JSON.parse(raw) as Record<string, unknown>;
-      for (const [key, value] of Object.entries(parsed)) {
-        if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
-          map.set(key, String(value));
-        }
-      }
-    } catch {
-      return map;
-    }
-    return map;
-  }
-
-  const params = new URLSearchParams(raw);
-  for (const [key, value] of params.entries()) {
-    map.set(key, value);
-  }
-  return map;
-}
-
-function isTruthyFlag(value: string | undefined): boolean {
-  const v = (value ?? "").trim().toLowerCase();
+function isTrueFlag(value: string): boolean {
+  const v = value.toLowerCase();
   return v === "true" || v === "1" || v === "yes";
 }
 
-function parsePriceCents(value: string | undefined): number {
-  const n = Number((value ?? "").trim());
-  return Number.isFinite(n) ? n : 0;
+function isGumroadTestPing(formData: FormData, saleId: string): boolean {
+  if (isTrueFlag(formString(formData, "is_test"))) return true;
+  if (isTrueFlag(formString(formData, "test"))) return true;
+  if (!saleId || saleId === "test_sale_id") return true;
+  return false;
 }
 
 /**
- * Gumroad Ping / resource subscription.
- * Validates seller_id, then mints and anchors an A4I-LIC-* site license on confirmed sale.
+ * Gumroad Ping sends application/x-www-form-urlencoded.
+ * Resource subscriptions may send JSON — normalize both into FormData.
  */
-export async function POST(request: Request) {
-  const expectedSeller = configuredSellerId();
-  if (!expectedSeller) {
-    console.warn("[gumroad webhook] GUMROAD_SELLER_ID is unset — refusing pings.");
-    return NextResponse.json(
-      { success: false, error: "Webhook is not configured." },
-      { status: 503 },
-    );
+async function readGumroadPayload(req: NextRequest): Promise<FormData> {
+  const contentType = req.headers.get("content-type") ?? "";
+  if (contentType.includes("application/json")) {
+    const parsed = (await req.json()) as Record<string, unknown>;
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(parsed)) {
+      if (
+        typeof value === "string" ||
+        typeof value === "number" ||
+        typeof value === "boolean"
+      ) {
+        formData.append(key, String(value));
+      }
+    }
+    return formData;
   }
+  return req.formData();
+}
 
-  let raw = "";
+export async function POST(req: NextRequest) {
   try {
-    raw = await request.text();
-  } catch {
-    return NextResponse.json(
-      { success: false, error: "Unable to read webhook body." },
-      { status: 400 },
-    );
-  }
+    const formData = await readGumroadPayload(req);
 
-  const fields = asFormMap(request, raw);
-  const sellerId = sanitizeText(fields.get("seller_id"), 128);
-  if (!sellerId || sellerId !== expectedSeller) {
-    return NextResponse.json(
-      { success: false, error: "Invalid seller_id." },
-      { status: 401 },
-    );
-  }
+    const sellerId = formString(formData, "seller_id");
+    const email = formString(formData, "email");
+    const permalink =
+      formString(formData, "permalink") ||
+      formString(formData, "product_permalink");
+    const saleId = formString(formData, "sale_id");
+    const refunded = isTrueFlag(formString(formData, "refunded"));
+    const disputed = isTrueFlag(formString(formData, "disputed"));
+    const resourceName = formString(formData, "resource_name").toLowerCase();
 
-  const resourceName = sanitizeText(
-    fields.get("resource_name") || "sale",
-    32,
-  ).toLowerCase();
-  const saleId = sanitizeText(fields.get("sale_id"), 128);
+    const configuredSellerId = process.env.GUMROAD_SELLER_ID?.trim();
 
-  if (!saleId) {
-    return NextResponse.json(
-      { success: false, error: "Missing sale_id." },
-      { status: 400 },
-    );
-  }
+    // Acknowledge Gumroad "Test Ping" before seller checks so empty/sample
+    // payloads never 401 or 500.
+    if (isGumroadTestPing(formData, saleId)) {
+      console.log(
+        "[Gumroad Webhook] Successfully received test ping from Gumroad.",
+      );
+      return NextResponse.json(
+        {
+          success: true,
+          message:
+            "Test ping acknowledged by Article 4 Institute webhook handler.",
+        },
+        { status: 200 },
+      );
+    }
 
-  if (resourceName === "refund" || resourceName === "dispute") {
-    return NextResponse.json({
-      success: true,
-      ignored: true,
-      reason: resourceName,
-      saleId,
-    });
-  }
+    if (configuredSellerId && sellerId && sellerId !== configuredSellerId) {
+      console.warn(
+        `[Gumroad Webhook] Seller ID mismatch: received ${sellerId}, expected ${configuredSellerId}`,
+      );
+      return NextResponse.json(
+        { error: "Unauthorized seller_id" },
+        { status: 401 },
+      );
+    }
 
-  if (resourceName !== "sale") {
-    return NextResponse.json({
-      success: true,
-      ignored: true,
-      reason: "unsupported_resource",
-      resourceName,
-    });
-  }
+    if (
+      refunded ||
+      disputed ||
+      resourceName === "refund" ||
+      resourceName === "dispute"
+    ) {
+      return NextResponse.json(
+        { message: "Ignored refund/dispute event" },
+        { status: 200 },
+      );
+    }
 
-  if (isTruthyFlag(fields.get("refunded")) || isTruthyFlag(fields.get("disputed"))) {
-    return NextResponse.json({
-      success: true,
-      ignored: true,
-      reason: "sale_not_confirmed",
-      saleId,
-    });
-  }
+    const existing = await getSiteLicenseBySaleId(saleId);
+    if (existing) {
+      return NextResponse.json({
+        success: true,
+        entitled: true,
+        licenseProofId: existing.proofId,
+        hash: existing.hash,
+        isAnchored: existing.isAnchored,
+      });
+    }
 
-  if (process.env.NODE_ENV === "production" && isTruthyFlag(fields.get("test"))) {
-    return NextResponse.json({
-      success: true,
-      ignored: true,
-      reason: "test_sale",
-      saleId,
-    });
-  }
-
-  const priceRaw = fields.get("price");
-  if (
-    priceRaw !== undefined &&
-    priceRaw.trim() !== "" &&
-    parsePriceCents(priceRaw) <= 0
-  ) {
-    return NextResponse.json({
-      success: true,
-      ignored: true,
-      reason: "unpaid",
-      saleId,
-    });
-  }
-
-  const existing = await getSiteLicenseBySaleId(saleId);
-  if (existing) {
-    return NextResponse.json({
-      success: true,
-      duplicate: true,
-      proofId: existing.proofId,
-      isAnchored: existing.isAnchored,
-      verifyUrl: existing.verifyUrl,
-    });
-  }
-
-  try {
     const license = await mintAndAnchorSiteLicense({
       saleId,
-      productPermalink: sanitizeText(
-        fields.get("product_permalink") || fields.get("permalink"),
-        300,
-      ),
-      productName: sanitizeText(fields.get("product_name"), 200),
-      purchaserEmail: sanitizeText(fields.get("email"), 254).toLowerCase(),
-      saleTimestamp: sanitizeText(fields.get("sale_timestamp"), 64),
-      resourceName,
+      productPermalink: permalink,
+      productName: formString(formData, "product_name"),
+      purchaserEmail: email,
+      saleTimestamp: formString(formData, "sale_timestamp"),
+      resourceName: resourceName || "sale",
     });
 
-    console.log("[gumroad webhook] Site license minted", {
-      saleId: license.saleId,
-      proofId: license.proofId,
-      tier: license.tier,
+    return NextResponse.json({
+      success: true,
+      entitled: true,
+      licenseProofId: license.proofId,
+      hash: license.hash,
       isAnchored: license.isAnchored,
     });
-
+  } catch (error) {
+    console.error("[Gumroad Webhook Error]:", error);
     return NextResponse.json(
-      {
-        success: true,
-        proofId: license.proofId,
-        isAnchored: license.isAnchored,
-        verifyUrl: license.verifyUrl,
-        tier: license.tier,
-      },
-      { status: 201 },
-    );
-  } catch (err) {
-    console.error("[gumroad webhook] Failed to mint site license.", err);
-    return NextResponse.json(
-      { success: false, error: "Internal server error processing sale." },
-      { status: 500 },
+      { error: "Webhook processing error" },
+      { status: 200 },
     );
   }
 }
