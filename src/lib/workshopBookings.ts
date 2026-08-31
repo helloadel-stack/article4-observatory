@@ -13,6 +13,10 @@ import {
 
 const COLLECTION: DbCollection = "bookings";
 
+/** HttpOnly cookie carrying the PDF download token — never put the token in a query string. */
+export const WORKSHOP_DOWNLOAD_COOKIE = "workshop_download";
+export const WORKSHOP_DOWNLOAD_MAX_AGE_SEC = 60 * 60;
+
 export type WorkshopBookingRecord = {
   /** Stable primary key for the JSON store (= bookingId). */
   id: string;

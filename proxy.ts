@@ -71,11 +71,12 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  // Persist preference for 1 year
+  // Persist preference for 1 year — Secure + SameSite=Lax (H5).
   response.cookies.set("NEXT_LOCALE", targetLocale, {
     path: "/",
     maxAge: 60 * 60 * 24 * 365,
     sameSite: "lax",
+    secure: true,
   });
 
   return response;

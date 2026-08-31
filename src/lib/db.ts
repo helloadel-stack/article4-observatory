@@ -15,10 +15,30 @@ const memoryFallback = new Map<string, string>();
 export type DbCollection =
   | "submissions"
   | "attestations"
-  | "bookings";
+  | "bookings"
+  | "licenses";
+
+/** Serialize read-modify-write per collection to avoid lost updates on one instance. */
+const writeLocks = new Map<DbCollection, Promise<unknown>>();
 
 function collectionPath(name: DbCollection): string {
   return path.join(DATA_DIR, `${name}.json`);
+}
+
+function withCollectionLock<T>(
+  name: DbCollection,
+  fn: () => Promise<T>,
+): Promise<T> {
+  const previous = writeLocks.get(name) ?? Promise.resolve();
+  const run = previous.then(fn, fn);
+  writeLocks.set(
+    name,
+    run.then(
+      () => undefined,
+      () => undefined,
+    ),
+  );
+  return run;
 }
 
 async function ensureDataDir(): Promise<boolean> {
@@ -78,22 +98,26 @@ export async function writeCollection<T extends { id: string }>(
   name: DbCollection,
   records: T[],
 ): Promise<void> {
-  await writeRaw(name, JSON.stringify(records, null, 2));
+  await withCollectionLock(name, () =>
+    writeRaw(name, JSON.stringify(records, null, 2)),
+  );
 }
 
 export async function upsertRecord<T extends { id: string }>(
   name: DbCollection,
   record: T,
 ): Promise<T> {
-  const records = await readCollection<T>(name);
-  const idx = records.findIndex((r) => r.id === record.id);
-  if (idx >= 0) {
-    records[idx] = record;
-  } else {
-    records.push(record);
-  }
-  await writeCollection(name, records);
-  return record;
+  return withCollectionLock(name, async () => {
+    const records = await readCollection<T>(name);
+    const idx = records.findIndex((r) => r.id === record.id);
+    if (idx >= 0) {
+      records[idx] = record;
+    } else {
+      records.push(record);
+    }
+    await writeRaw(name, JSON.stringify(records, null, 2));
+    return record;
+  });
 }
 
 export async function findRecordById<T extends { id: string }>(

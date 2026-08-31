@@ -1,10 +1,29 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { ATELIERS_JURIDIQUES, BRAND, SITE_METADATA } from "@/src/config/constants";
-import { getWorkshopBookingByToken } from "@/src/lib/workshopBookings";
+import {
+  WORKSHOP_DOWNLOAD_COOKIE,
+  getWorkshopBookingByToken,
+} from "@/src/lib/workshopBookings";
 import { buildSimplePdf } from "@/src/lib/simplePdf";
-import { sanitizeText } from "@/src/lib/sanitize";
+import { maskEmail, sanitizeText } from "@/src/lib/sanitize";
 
 export const runtime = "nodejs";
+
+function resolveDownloadToken(request: NextRequest): string {
+  const fromCookie = sanitizeText(
+    request.cookies.get(WORKSHOP_DOWNLOAD_COOKIE)?.value,
+    80,
+  );
+  if (fromCookie.length >= 32) return fromCookie;
+
+  const fromHeader = sanitizeText(
+    request.headers.get("x-workshop-download-token"),
+    80,
+  );
+  if (fromHeader.length >= 32) return fromHeader;
+
+  return "";
+}
 
 function buildMissionPdf(params: {
   bookingId: string;
@@ -24,6 +43,7 @@ function buildMissionPdf(params: {
     month: "long",
     day: "numeric",
   });
+  const maskedEmail = maskEmail(params.contactEmail);
 
   return buildSimplePdf(
     [
@@ -47,7 +67,8 @@ function buildMissionPdf(params: {
       "",
       "Contact signataire",
       `Nom : ${params.contactName}`,
-      `Email : ${params.contactEmail}`,
+      `Email : ${maskedEmail}`,
+      `Référence de réservation : ${params.bookingId}`,
       "",
       "CLAUSES DE GARANTIE FINANCIÈRE DE L'HÔTE",
       params.coversLogistics
@@ -67,18 +88,18 @@ function buildMissionPdf(params: {
   );
 }
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const token = sanitizeText(searchParams.get("token"), 80);
+    const token = resolveDownloadToken(request);
 
     if (!token) {
       return NextResponse.json(
         {
           success: false,
-          error: "Missing download token. Use the secure link from your booking confirmation.",
+          error:
+            "Missing download credential. Request the PDF from the same browser session as the booking, or resubmit.",
         },
-        { status: 400 },
+        { status: 401 },
       );
     }
 

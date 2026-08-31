@@ -3,88 +3,133 @@
 import { useState } from "react";
 import { Award, ClipboardCheck, ShieldCheck } from "lucide-react";
 import {
+  ASSESSMENT_MODULE_1_CHOICES,
+  ASSESSMENT_MODULE_1_SIZE,
+  ASSESSMENT_PASS_THRESHOLD,
   ASSESSMENT_PUBLIC_LABEL,
   ASSESSMENT_ROADMAP_BADGE,
   ASSESSMENT_SCENARIO_COUNT,
   ASSESSMENT_SCENARIOS,
-  SCENARIO_1_CHOICES,
   type Lang,
 } from "@/src/config/constants";
-import { generateProofId } from "@/src/lib/hash";
 
 const copy = {
   EN: {
     eyebrow: "Article 4 Institutional Framework",
     title: ASSESSMENT_PUBLIC_LABEL.EN,
     subtitle:
-      "Interactive Scenario 1 preview with instant scoring. The full 30-scenario Cisco-grade bank ships with Enterprise licensees.",
+      "Three interactive Module 1 scenarios, scored on the server. The full 30-scenario Cisco-grade bank is not live in this free browser client — it ships with Enterprise licensees.",
     scenarioLabel: "Scenario",
     of: "of",
+    moduleOf: "of Module 1",
     rubric: "Scoring rubric",
-    cta: "Start Scenario 1 Preview",
+    cta: "Start Module 1 Preview",
     selectPrompt: "Select the compliant control:",
-    scorecardTitle: "Instant Scorecard",
-    scorePass: "Pass — Human Oversight Control Identified",
-    scoreFail: "Needs Review — Revisit Annex III Oversight Duties",
+    next: "Next scenario",
+    submit: "Submit for server scoring",
+    submitting: "Scoring…",
+    scorecardTitle: "Server Scorecard",
+    scorePass: "Pass — A4I-CERT eligible (≥ 80%)",
+    scoreFail: "Needs Review — A4I-CERT is not issued below 80%",
     score: "Score",
-    certTitle: "AI Audit Passport™ Proof Preview",
-    certHint: "Deterministic SHA-256 proof ID ready for WaqfLedger logging.",
+    certTitle: "AI Audit Passport™ Proof",
+    certHint:
+      "Issued only after a server-side pass. Anchored on WaqfLedger when the ledger acknowledges the write.",
+    certWithheld:
+      "No A4I-CERT-* is minted below the 80% pass mark. Retry Module 1 or license the full 30-scenario bank.",
     copyProof: "Copy Proof ID",
     copied: "Copied",
-    retry: "Retry Scenario 1",
-    hubNote: `Preview scope: Scenario 1 interactive. Scenarios 2–${ASSESSMENT_SCENARIO_COUNT} form the institutional framework roadmap.`,
+    retry: "Retry Module 1",
+    hubNote: `This free client is Module 1 only (scenarios 1–${ASSESSMENT_MODULE_1_SIZE}). Scenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} are not live here.`,
     roadmapBadge: ASSESSMENT_ROADMAP_BADGE.EN,
-    roadmapHint: `Scenarios 2–${ASSESSMENT_SCENARIO_COUNT} — roadmap`,
+    roadmapHint: `Scenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — Enterprise only`,
+    interactive: "Module 1",
+    errorNetwork: "Scoring request failed. Try again.",
+    errorGrade: "Unable to grade this attempt.",
+    anchored: "Anchored on WaqfLedger",
+    notAnchored: "Hash computed — remote ledger did not confirm the write",
   },
   FR: {
     eyebrow: "Cadre institutionnel Article 4",
     title: ASSESSMENT_PUBLIC_LABEL.FR,
     subtitle:
-      "Aperçu interactif du scénario 1 avec notation instantanée. La banque complète de 30 scénarios de niveau Cisco est réservée aux licenciés Enterprise.",
+      "Trois scénarios interactifs du Module 1, notés côté serveur. La banque Cisco de 30 scénarios n’est pas active dans ce client navigateur gratuit — elle est réservée aux licenciés Enterprise.",
     scenarioLabel: "Scénario",
     of: "sur",
+    moduleOf: "du Module 1",
     rubric: "Barème de notation",
-    cta: "Lancer l’aperçu du scénario 1",
+    cta: "Lancer l’aperçu du Module 1",
     selectPrompt: "Sélectionnez le contrôle conforme :",
-    scorecardTitle: "Tableau de bord instantané",
-    scorePass: "Réussi — Contrôle de supervision humaine identifié",
-    scoreFail: "À revoir — Revoir les devoirs de supervision Annexe III",
+    next: "Scénario suivant",
+    submit: "Envoyer pour notation serveur",
+    submitting: "Notation…",
+    scorecardTitle: "Tableau de bord serveur",
+    scorePass: "Réussi — éligible A4I-CERT (≥ 80 %)",
+    scoreFail: "À revoir — aucun A4I-CERT sous 80 %",
     score: "Score",
-    certTitle: "Aperçu de preuve du Passeport d’Audit IA™",
+    certTitle: "Preuve du Passeport d’Audit IA™",
     certHint:
-      "Identifiant de preuve SHA-256 déterministe prêt pour la journalisation WaqfLedger.",
+      "Émise uniquement après une réussite côté serveur. Ancrée sur WaqfLedger lorsque le registre confirme l’écriture.",
+    certWithheld:
+      "Aucun A4I-CERT-* n’est émis sous le seuil de 80 %. Réessayez le Module 1 ou licenciez la banque complète.",
     copyProof: "Copier l’ID de preuve",
     copied: "Copié",
-    retry: "Réessayer le scénario 1",
-    hubNote: `Périmètre de l’aperçu : scénario 1 interactif. Les scénarios 2–${ASSESSMENT_SCENARIO_COUNT} constituent la feuille de route du cadre institutionnel.`,
+    retry: "Réessayer le Module 1",
+    hubNote: `Ce client gratuit couvre uniquement le Module 1 (scénarios 1–${ASSESSMENT_MODULE_1_SIZE}). Les scénarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} ne sont pas actifs ici.`,
     roadmapBadge: ASSESSMENT_ROADMAP_BADGE.FR,
-    roadmapHint: `Scénarios 2–${ASSESSMENT_SCENARIO_COUNT} — feuille de route`,
+    roadmapHint: `Scénarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — Enterprise uniquement`,
+    interactive: "Module 1",
+    errorNetwork: "Échec de la notation. Réessayez.",
+    errorGrade: "Impossible de noter cette tentative.",
+    anchored: "Ancré sur WaqfLedger",
+    notAnchored: "Hash calculé — le registre distant n’a pas confirmé l’écriture",
   },
   ES: {
     eyebrow: "Marco institucional Artículo 4",
     title: ASSESSMENT_PUBLIC_LABEL.ES,
     subtitle:
-      "Vista previa interactiva del escenario 1 con puntuación instantánea. El banco completo de 30 escenarios de grado Cisco se incluye con licencias Enterprise.",
+      "Tres escenarios interactivos del Módulo 1, puntuados en el servidor. El banco Cisco de 30 escenarios no está activo en este cliente de navegador gratuito — se incluye con licencias Enterprise.",
     scenarioLabel: "Escenario",
     of: "de",
+    moduleOf: "del Módulo 1",
     rubric: "Rúbrica de puntuación",
-    cta: "Iniciar vista previa del escenario 1",
+    cta: "Iniciar vista previa del Módulo 1",
     selectPrompt: "Seleccione el control conforme:",
-    scorecardTitle: "Tarjeta de puntuación instantánea",
-    scorePass: "Aprobado — Control de supervisión humana identificado",
-    scoreFail: "Requiere revisión — Revisar deberes de supervisión Anexo III",
+    next: "Siguiente escenario",
+    submit: "Enviar para puntuación en servidor",
+    submitting: "Puntuando…",
+    scorecardTitle: "Tarjeta de puntuación del servidor",
+    scorePass: "Aprobado — elegible para A4I-CERT (≥ 80 %)",
+    scoreFail: "Requiere revisión — no se emite A4I-CERT por debajo del 80 %",
     score: "Puntuación",
-    certTitle: "Vista previa de prueba del Pasaporte de Auditoría IA™",
+    certTitle: "Prueba del Pasaporte de Auditoría IA™",
     certHint:
-      "ID de prueba SHA-256 determinista listo para registro en WaqfLedger.",
+      "Se emite solo tras un aprobado en el servidor. Se ancla en WaqfLedger cuando el registro confirma la escritura.",
+    certWithheld:
+      "No se acuña ningún A4I-CERT-* por debajo del 80 %. Reintente el Módulo 1 o licencie el banco completo.",
     copyProof: "Copiar ID de prueba",
     copied: "Copiado",
-    retry: "Reintentar escenario 1",
-    hubNote: `Alcance de la vista previa: escenario 1 interactivo. Los escenarios 2–${ASSESSMENT_SCENARIO_COUNT} forman la hoja de ruta del marco institucional.`,
+    retry: "Reintentar Módulo 1",
+    hubNote: `Este cliente gratuito cubre solo el Módulo 1 (escenarios 1–${ASSESSMENT_MODULE_1_SIZE}). Los escenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} no están activos aquí.`,
     roadmapBadge: ASSESSMENT_ROADMAP_BADGE.ES,
-    roadmapHint: `Escenarios 2–${ASSESSMENT_SCENARIO_COUNT} — hoja de ruta`,
+    roadmapHint: `Escenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — solo Enterprise`,
+    interactive: "Módulo 1",
+    errorNetwork: "Falló la puntuación. Inténtelo de nuevo.",
+    errorGrade: "No se pudo calificar este intento.",
+    anchored: "Anclado en WaqfLedger",
+    notAnchored: "Hash calculado — el registro remoto no confirmó la escritura",
   },
 } as const;
+
+type EvaluateResponse = {
+  success: boolean;
+  score?: number;
+  passed?: boolean;
+  proofId?: string | null;
+  isAnchored?: boolean;
+  verifyUrl?: string | null;
+  error?: string;
+};
 
 type AssessmentSectionProps = {
   lang: Lang;
@@ -96,40 +141,88 @@ export default function AssessmentSection({
   onProofGenerated,
 }: AssessmentSectionProps) {
   const t = copy[lang];
-  const scenario = ASSESSMENT_SCENARIOS[0];
-  const localized = scenario[lang];
-
   const [started, setStarted] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState<Record<number, string>>({});
   const [score, setScore] = useState<number | null>(null);
+  const [passed, setPassed] = useState(false);
   const [proofId, setProofId] = useState<string | null>(null);
+  const [isAnchored, setIsAnchored] = useState(false);
+  const [verifyUrl, setVerifyUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleStart = () => {
+  const scenario = ASSESSMENT_SCENARIOS[step] ?? ASSESSMENT_SCENARIOS[0];
+  const localized = scenario[lang];
+  const choices = ASSESSMENT_MODULE_1_CHOICES[scenario.id] ?? [];
+  const selected = answers[scenario.id] ?? null;
+  const isLast = step === ASSESSMENT_MODULE_1_SIZE - 1;
+  const graded = score !== null;
+
+  const reset = () => {
     setStarted(true);
-    setSelected(null);
+    setStep(0);
+    setAnswers({});
     setScore(null);
+    setPassed(false);
     setProofId(null);
+    setIsAnchored(false);
+    setVerifyUrl(null);
+    setError(null);
+    setCopied(false);
   };
 
-  const handleSubmitChoice = async (choiceId: string) => {
-    setSelected(choiceId);
-    const choice = SCENARIO_1_CHOICES.find((c) => c.id === choiceId);
-    const passed = Boolean(choice?.correct);
-    const nextScore = passed ? 100 : 40;
-    setScore(nextScore);
+  const handleStart = () => {
+    reset();
+  };
 
-    const id = await generateProofId("certificate", {
-      scenarioId: scenario.id,
-      choiceId,
-      score: nextScore,
-      annex: scenario.annex,
-      rubric: localized.rubric,
-      institute: "Article 4 Institute",
-      product: "Article 4 AI Literacy Assessment",
-    });
-    setProofId(id);
-    onProofGenerated?.(id);
+  const handleSelect = (choiceId: string) => {
+    if (graded || submitting) return;
+    setAnswers((prev) => ({ ...prev, [scenario.id]: choiceId }));
+  };
+
+  const handleNext = () => {
+    if (!selected || isLast) return;
+    setStep((prev) => Math.min(prev + 1, ASSESSMENT_MODULE_1_SIZE - 1));
+  };
+
+  const handleSubmit = async () => {
+    if (!selected || submitting) return;
+    const payload = ASSESSMENT_SCENARIOS.map((s) => ({
+      scenarioId: s.id,
+      choiceId: answers[s.id],
+    }));
+    if (payload.some((row) => !row.choiceId)) {
+      setError(t.errorGrade);
+      return;
+    }
+
+    setSubmitting(true);
+    setError(null);
+    try {
+      const response = await fetch("/api/assessment/evaluate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers: payload }),
+      });
+      const data = (await response.json()) as EvaluateResponse;
+      if (!response.ok || !data.success || typeof data.score !== "number") {
+        setError(data.error ?? t.errorGrade);
+        return;
+      }
+      setScore(data.score);
+      setPassed(Boolean(data.passed));
+      const nextProof = data.proofId ?? null;
+      setProofId(nextProof);
+      setIsAnchored(Boolean(data.isAnchored));
+      setVerifyUrl(data.verifyUrl ?? null);
+      if (nextProof) onProofGenerated?.(nextProof);
+    } catch {
+      setError(t.errorNetwork);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleCopy = async () => {
@@ -171,14 +264,14 @@ export default function AssessmentSection({
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
           <ClipboardCheck className="h-4 w-4 text-indigo-600" aria-hidden />
           <span>
-            {t.scenarioLabel} {scenario.id} {t.of} {ASSESSMENT_SCENARIO_COUNT}
+            {t.scenarioLabel} {scenario.id} {t.moduleOf} {ASSESSMENT_MODULE_1_SIZE}
           </span>
           <span className="text-slate-300" aria-hidden>
             ·
           </span>
           <span className="text-indigo-700">{scenario.annex}</span>
           <span className="rounded border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-800">
-            Interactive preview
+            {t.interactive}
           </span>
         </div>
 
@@ -206,14 +299,14 @@ export default function AssessmentSection({
           <div className="mt-6 space-y-3">
             <p className="text-sm font-medium text-slate-800">{t.selectPrompt}</p>
             <ul className="space-y-2">
-              {SCENARIO_1_CHOICES.map((choice) => {
+              {choices.map((choice) => {
                 const active = selected === choice.id;
                 return (
                   <li key={choice.id}>
                     <button
                       type="button"
-                      disabled={score !== null}
-                      onClick={() => handleSubmitChoice(choice.id)}
+                      disabled={graded || submitting}
+                      onClick={() => handleSelect(choice.id)}
                       className={
                         active
                           ? "w-full border border-indigo-600 bg-indigo-50 px-4 py-3 text-left text-sm text-slate-900"
@@ -229,10 +322,38 @@ export default function AssessmentSection({
                 );
               })}
             </ul>
+            {!graded ? (
+              <div className="flex flex-wrap gap-2 pt-2">
+                {isLast ? (
+                  <button
+                    type="button"
+                    disabled={!selected || submitting}
+                    onClick={() => void handleSubmit()}
+                    className="inline-flex items-center rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-800 disabled:opacity-60"
+                  >
+                    {submitting ? t.submitting : t.submit}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    disabled={!selected}
+                    onClick={handleNext}
+                    className="inline-flex items-center rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-800 disabled:opacity-60"
+                  >
+                    {t.next}
+                  </button>
+                )}
+              </div>
+            ) : null}
+            {error ? (
+              <p role="alert" className="text-sm text-rose-700">
+                {error}
+              </p>
+            ) : null}
           </div>
         )}
 
-        {score !== null && proofId ? (
+        {graded ? (
           <div
             className="mt-6 space-y-4 border border-slate-200 bg-slate-50 p-4"
             role="status"
@@ -242,47 +363,78 @@ export default function AssessmentSection({
                 {t.scorecardTitle}
               </p>
               <p className="mt-1 text-base font-semibold text-slate-900">
-                {score >= 70 ? t.scorePass : t.scoreFail}
+                {passed ? t.scorePass : t.scoreFail}
               </p>
               <p className="mt-1 text-sm text-slate-600">
                 {t.score}:{" "}
                 <span className="font-semibold tabular-nums text-indigo-800">
-                  {score}/100
+                  {score}/{100}
+                </span>
+                <span className="text-slate-500">
+                  {" "}
+                  (pass {ASSESSMENT_PASS_THRESHOLD}+)
                 </span>
               </p>
             </div>
 
-            <div className="border border-emerald-200 bg-emerald-50/80 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">
-                {t.certTitle}
-              </p>
-              <p className="mt-1 text-xs text-emerald-900">{t.certHint}</p>
-              <code className="mt-2 block break-all font-mono text-[11px] text-slate-800">
-                {proofId}
-              </code>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className="inline-flex items-center rounded border border-emerald-700 bg-emerald-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800"
-                >
-                  {copied ? t.copied : t.copyProof}
-                </button>
+            {proofId ? (
+              <div className="border border-emerald-200 bg-emerald-50/80 p-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">
+                  {t.certTitle}
+                </p>
+                <p className="mt-1 text-xs text-emerald-900">{t.certHint}</p>
+                <p className="mt-1 text-[11px] font-medium text-emerald-900">
+                  {isAnchored ? t.anchored : t.notAnchored}
+                </p>
+                <code className="mt-2 block break-all font-mono text-[11px] text-slate-800">
+                  {proofId}
+                </code>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => void handleCopy()}
+                    className="inline-flex items-center rounded border border-emerald-700 bg-emerald-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800"
+                  >
+                    {copied ? t.copied : t.copyProof}
+                  </button>
+                  {verifyUrl ? (
+                    <a
+                      href={verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center rounded border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50"
+                    >
+                      WaqfLedger
+                    </a>
+                  ) : (
+                    <a
+                      href="#waqfledger"
+                      className="inline-flex items-center rounded border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50"
+                    >
+                      WaqfLedger
+                    </a>
+                  )}
+                  <button
+                    type="button"
+                    onClick={handleStart}
+                    className="inline-flex items-center rounded border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50"
+                  >
+                    {t.retry}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="border border-amber-200 bg-amber-50 p-3">
+                <p className="text-xs text-amber-950">{t.certWithheld}</p>
                 <button
                   type="button"
                   onClick={handleStart}
-                  className="inline-flex items-center rounded border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50"
+                  className="mt-3 inline-flex items-center rounded border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50"
                 >
                   {t.retry}
                 </button>
-                <a
-                  href="#waqfledger"
-                  className="inline-flex items-center rounded border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50"
-                >
-                  WaqfLedger
-                </a>
               </div>
-            </div>
+            )}
           </div>
         ) : null}
       </article>
@@ -299,22 +451,14 @@ export default function AssessmentSection({
               {t.scenarioLabel} {s.id}:
             </span>{" "}
             {s[lang].title}
-            {s.id === 1 ? (
-              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
-                Interactive
-              </span>
-            ) : (
-              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-amber-700">
-                {t.roadmapHint}
-              </span>
-            )}
+            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
+              {t.interactive}
+            </span>
           </li>
         ))}
         <li className="border border-dashed border-amber-300 bg-amber-50/80 px-3 py-2 text-xs text-amber-950 sm:col-span-3">
           <span className="font-semibold">{t.roadmapBadge}</span>
-          <span className="mt-1 block text-amber-900/80">
-            {t.roadmapHint}
-          </span>
+          <span className="mt-1 block text-amber-900/80">{t.roadmapHint}</span>
         </li>
       </ul>
     </section>

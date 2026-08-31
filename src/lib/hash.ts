@@ -106,35 +106,20 @@ export async function verifyAgainstWaqfLedger(
       signal: controller.signal,
     });
     clearTimeout(timer);
-    if (res.ok) {
-      const body = (await res.json().catch(() => null)) as {
-        valid?: boolean;
-        verified?: boolean;
-        success?: boolean;
-      } | null;
-      remoteVerified = Boolean(
-        body?.valid === true ||
-          body?.verified === true ||
-          body?.success === true ||
-          res.status === 200,
-      );
-      // If API returns 200 with explicit false, respect it
-      if (
-        body &&
-        (body.valid === false || body.verified === false || body.success === false)
-      ) {
-        remoteVerified = false;
-      }
-      if (remoteVerified) {
-        return {
-          formatValid: true,
-          remoteVerified: true,
-          localVerified: Boolean(opts?.localRegistryHit),
-          source: "waqfledger.tech",
-          message: "Verified on waqfledger.tech",
-          hashHex,
-        };
-      }
+    const body = (await res.json().catch(() => null)) as {
+      valid?: boolean;
+    } | null;
+    // Strict remote truth: HTTP OK is not enough — ledger must set valid: true.
+    remoteVerified = Boolean(res.ok && body?.valid === true);
+    if (remoteVerified) {
+      return {
+        formatValid: true,
+        remoteVerified: true,
+        localVerified: Boolean(opts?.localRegistryHit),
+        source: "waqfledger.tech",
+        message: "Verified on waqfledger.tech",
+        hashHex,
+      };
     }
   } catch {
     // Network / CORS / timeout — fall through to local engine
@@ -152,15 +137,14 @@ export async function verifyAgainstWaqfLedger(
     };
   }
 
-  // Format-valid SHA-256 proof: local structural verification without registry hit
   return {
     formatValid: true,
     remoteVerified: false,
-    localVerified: Boolean(hashHex && hashHex.length === 64),
-    source: hashHex ? "local-engine" : "unknown",
-    message: hashHex
-      ? "Local SHA-256 format verified — not found in remote ledger or local registry"
-      : "Unknown proof",
+    localVerified: Boolean(opts?.localRegistryHit),
+    source: opts?.localRegistryHit ? "local-engine" : "unknown",
+    message: opts?.localRegistryHit
+      ? "Verified by Local Cryptographic Proof Engine (WaqfLedger Hash Verification)"
+      : "Not found in remote ledger — format alone is not verification",
     hashHex,
   };
 }

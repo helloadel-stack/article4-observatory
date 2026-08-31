@@ -27,14 +27,10 @@ export function readLocaleCookie(): Lang | null {
   return null;
 }
 
-/** Persist user language preference (mirrors proxy.ts maxAge / path / sameSite). */
+/** Persist user language preference (mirrors proxy.ts maxAge / path / SameSite=Lax; Secure). */
 export function writeLocaleCookie(lang: Lang): void {
   if (typeof document === "undefined") return;
-  const secure =
-    typeof window !== "undefined" && window.location.protocol === "https:"
-      ? "; Secure"
-      : "";
-  document.cookie = `${COOKIE_NAME}=${encodeURIComponent(lang)}; path=/; max-age=${MAX_AGE_SECONDS}; SameSite=Lax${secure}`;
+  document.cookie = `${COOKIE_NAME}=${encodeURIComponent(lang)}; path=/; max-age=${MAX_AGE_SECONDS}; SameSite=Lax; Secure`;
 }
 
 /** Initial client lang: cookie if present, else DEFAULT_LANG (FR). */

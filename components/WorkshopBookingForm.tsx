@@ -253,6 +253,7 @@ export default function WorkshopBookingForm({ lang }: WorkshopBookingFormProps) 
 
       const response = await fetch("/api/workshop-booking", {
         method: "POST",
+        credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           entityType: form.organismType,

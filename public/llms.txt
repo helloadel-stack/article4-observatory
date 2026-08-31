@@ -32,4 +32,8 @@ Not issued: legal conformity certificates; official AI Act homologation.
 - LinkedIn: https://www.linkedin.com/company/l-institut-article-4-a4i/
 - Website: https://article4institute.org
 - Contact: contact@article4institute.org
-- License: Open Data under Creative Commons Attribution 4.0 (CC BY 4.0).
+
+## Licensing
+- Observatory Data & Benchmarks: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- Pro-bono Bouclier Toolkit: CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
+- B2B Enterprise Kits: Proprietary Commercial Site License

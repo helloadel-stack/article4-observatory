@@ -49,6 +49,10 @@ const formCopy = {
     copyHash: "Copier le hash",
     copiedHash: "Hash copié",
     successVerify: "Vérifier le Hash sur WaqfLedger.tech",
+    successProofId: "Identifiant de preuve WaqfLedger",
+    successAnchored: "Ancré sur WaqfLedger",
+    successNotAnchored:
+      "Empreinte locale — le registre distant n’a pas confirmé l’écriture",
     closeModal: "Fermer",
     maturityLevels: [
       {
@@ -123,6 +127,10 @@ const formCopy = {
     copyHash: "Copy hash",
     copiedHash: "Hash copied",
     successVerify: "Verify the Hash on WaqfLedger.tech",
+    successProofId: "WaqfLedger proof ID",
+    successAnchored: "Anchored on WaqfLedger",
+    successNotAnchored:
+      "Local fingerprint — remote ledger did not confirm the write",
     closeModal: "Close",
     maturityLevels: [
       {
@@ -197,6 +205,10 @@ const formCopy = {
     copyHash: "Copiar hash",
     copiedHash: "Hash copiado",
     successVerify: "Verificar el Hash en WaqfLedger.tech",
+    successProofId: "ID de prueba WaqfLedger",
+    successAnchored: "Anclado en WaqfLedger",
+    successNotAnchored:
+      "Huella local — el registro remoto no confirmó la escritura",
     closeModal: "Cerrar",
     maturityLevels: [
       {
@@ -247,6 +259,8 @@ type AttestationResponse = {
   success: boolean;
   attestationId?: string;
   hashProof?: string;
+  proofId?: string;
+  isAnchored?: boolean;
   title?: string;
   issuedAt?: string;
   verifyUrl?: string;
@@ -561,6 +575,19 @@ export default function BouclierAttestationForm({
                     {result.attestationId}
                   </dd>
                 </div>
+                {result.proofId ? (
+                  <div>
+                    <dt className="text-slate-500">{t.successProofId}</dt>
+                    <dd className="mt-1 break-all font-mono text-xs font-semibold tracking-wide text-sky-200">
+                      {result.proofId}
+                    </dd>
+                    <p className="mt-1 text-xs text-slate-400">
+                      {result.isAnchored
+                        ? t.successAnchored
+                        : t.successNotAnchored}
+                    </p>
+                  </div>
+                ) : null}
                 <div>
                   <dt className="text-slate-500">{t.successIssued}</dt>
                   <dd className="mt-1 text-slate-200">

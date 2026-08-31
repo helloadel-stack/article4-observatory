@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { upsertRecord } from "@/src/lib/db";
+import { enforceRateLimit } from "@/src/lib/rateLimit";
 import { sanitizeText } from "@/src/lib/sanitize";
 import { randomUUID } from "node:crypto";
 
@@ -49,6 +50,9 @@ function isHttpUrl(value: string): boolean {
 
 export async function POST(request: Request) {
   try {
+    const limited = enforceRateLimit(request, "submissions");
+    if (limited) return limited;
+
     let body: SubmissionBody;
     try {
       body = (await request.json()) as SubmissionBody;

@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
+const scriptSrc = isProd
+  ? "script-src 'self' 'unsafe-inline' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co"
+  : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co";
+
 const nextConfig = {
   async headers() {
     return [
@@ -17,16 +23,18 @@ const nextConfig = {
             value: "camera=(), microphone=(), geolocation=()",
           },
           {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              // gumroad.js bootstraps assets.gumroad.com/js/gumroad-bundle.js
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co",
+              scriptSrc,
               "style-src 'self' 'unsafe-inline' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com",
               "img-src 'self' data: https:",
               "font-src 'self' data: https://gumroad.com https://*.gumroad.com https://assets.gumroad.com",
               "connect-src 'self' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co https://waqfledger.tech",
-              // Overlay iframe + checkout frames
               "frame-src 'self' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co",
               "worker-src 'self' blob:",
             ].join("; "),

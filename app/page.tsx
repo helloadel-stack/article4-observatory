@@ -14,6 +14,7 @@ import TransatlanticSection from "@/components/TransatlanticSection";
 import ObservatoryExplorer from "@/src/components/ObservatoryExplorer";
 import {
   BRAND,
+  CONTENT_LICENSES,
   DEFAULT_LANG,
   INSTITUTIONAL_POSITIONING,
   SITE_METADATA,
@@ -129,7 +130,26 @@ const jsonLd = {
         url: BRAND.instituteUrl,
       },
       temporalCoverage: "2026",
-      license: "https://creativecommons.org/licenses/by-nc/4.0/",
+      license: CONTENT_LICENSES.observatory.url,
+      usageInfo: CONTENT_LICENSES.observatory.scope.EN,
+    },
+    {
+      "@type": "CreativeWork",
+      name: "Bouclier IA Publique (Pro-bono Toolkit)",
+      url: `${BRAND.instituteUrl}/bouclier-public`,
+      license: CONTENT_LICENSES.bouclier.url,
+      usageInfo: CONTENT_LICENSES.bouclier.scope.EN,
+    },
+    {
+      "@type": "Product",
+      name: "SafeAI Framework B2B Enterprise Kits",
+      url: BRAND.gumroadStoreUrl,
+      usageInfo: CONTENT_LICENSES.enterprise.scope.EN,
+      additionalProperty: {
+        "@type": "PropertyValue",
+        name: "license",
+        value: CONTENT_LICENSES.enterprise.short,
+      },
     },
   ],
 };

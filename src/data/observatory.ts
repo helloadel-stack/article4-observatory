@@ -89,8 +89,20 @@ export interface ObservatoryDeployment {
   humanInTheLoop: HumanInTheLoop;
   article4LiteracyStatus: Article4LiteracyStatus;
   waqfledgerProofHash: string;
+  /**
+   * True only after WaqfLedger acknowledges the hash on-chain.
+   * Omitted / false = local SHA-256 digest, not a live ledger receipt.
+   */
+  waqfAnchored?: boolean;
   lastAuditDate: string;
   summary: string;
+}
+
+/** Live on-chain receipt — never infer “Verified” from a hash string alone. */
+export function isObservatoryProofAnchored(
+  deployment: ObservatoryDeployment,
+): boolean {
+  return deployment.waqfAnchored === true;
 }
 
 const HIGH_RISK_ANNEX_III: ReadonlySet<EuAiActCategory> = new Set([
@@ -160,6 +172,9 @@ export type ObservatoryKpis = {
   highRiskAnnexIiiPct: number;
   sovereignCloudPct: number;
   averageComplianceScore: number;
+  /** Share of records with a confirmed on-chain WaqfLedger receipt (0–100). */
+  waqfAnchoredPct: number;
+  waqfAnchoredCount: number;
 };
 
 export function computeObservatoryKpis(
@@ -172,6 +187,8 @@ export function computeObservatoryKpis(
       highRiskAnnexIiiPct: 0,
       sovereignCloudPct: 0,
       averageComplianceScore: 0,
+      waqfAnchoredPct: 0,
+      waqfAnchoredCount: 0,
     };
   }
   const highRisk = rows.filter((d) =>
@@ -180,6 +197,7 @@ export function computeObservatoryKpis(
   const sovereignCloud = rows.filter((d) =>
     isSovereignCloud(d.hostingSovereignty),
   ).length;
+  const waqfAnchoredCount = rows.filter(isObservatoryProofAnchored).length;
   const scoreSum = rows.reduce(
     (acc, d) => acc + computeComplianceScore(d),
     0,
@@ -189,6 +207,8 @@ export function computeObservatoryKpis(
     highRiskAnnexIiiPct: Math.round((highRisk / totalDeployments) * 100),
     sovereignCloudPct: Math.round((sovereignCloud / totalDeployments) * 100),
     averageComplianceScore: Math.round(scoreSum / totalDeployments),
+    waqfAnchoredPct: Math.round((waqfAnchoredCount / totalDeployments) * 100),
+    waqfAnchoredCount,
   };
 }
 
@@ -368,6 +388,7 @@ export const OBSERVATORY_CSV_HEADERS = [
   "humanInTheLoop",
   "article4LiteracyStatus",
   "waqfledgerProofHash",
+  "waqfAnchored",
   "lastAuditDate",
   "summary",
   "complianceScore",
@@ -382,6 +403,7 @@ export function toObservatoryExportRow(
 ): ObservatoryExportRow {
   return {
     ...deployment,
+    waqfAnchored: isObservatoryProofAnchored(deployment),
     complianceScore: computeComplianceScore(deployment),
   };
 }

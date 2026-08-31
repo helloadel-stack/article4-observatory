@@ -2,7 +2,9 @@ import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { BOUCLIER_PUBLIC, BRAND } from "@/src/config/constants";
 import { upsertRecord } from "@/src/lib/db";
+import { enforceRateLimit } from "@/src/lib/rateLimit";
 import { sanitizeText } from "@/src/lib/sanitize";
+import { anchorStateToWaqfLedger } from "@/src/lib/waqfledger";
 
 export const runtime = "nodejs";
 
@@ -28,6 +30,8 @@ type AttestationRecord = {
   maturityLevel: MaturityLevel;
   issuedAt: string;
   hashProof: string;
+  proofId: string;
+  isAnchored: boolean;
   verifyUrl: string;
 };
 
@@ -48,6 +52,9 @@ function isDepartmentType(value: string): value is DepartmentType {
 
 export async function POST(request: Request) {
   try {
+    const limited = enforceRateLimit(request, "attestation");
+    if (limited) return limited;
+
     let body: AttestationBody;
     try {
       body = (await request.json()) as AttestationBody;
@@ -107,7 +114,16 @@ export async function POST(request: Request) {
     const hashProof = createHash("sha256").update(canonical, "utf8").digest("hex");
 
     const attestationId = `${BOUCLIER_PUBLIC.attestationPrefix}-${hashProof.slice(0, 12).toUpperCase()}`;
-    const verifyUrl = `${BRAND.waqfLedgerVerifyUrl}?hash=${hashProof}`;
+
+    const anchored = await anchorStateToWaqfLedger(
+      hashProof,
+      "attestation",
+      institutionName,
+    );
+    const proofId = anchored.proofId;
+    const isAnchored = anchored.isAnchored;
+    const verifyUrl =
+      anchored.verifyUrl || `${BRAND.waqfLedgerVerifyUrl}?hash=${hashProof}`;
 
     const record: AttestationRecord = {
       id: attestationId,
@@ -118,6 +134,8 @@ export async function POST(request: Request) {
       maturityLevel,
       issuedAt,
       hashProof,
+      proofId,
+      isAnchored,
       verifyUrl,
     };
 
@@ -130,6 +148,8 @@ export async function POST(request: Request) {
       maturityLevel,
       issuedAt,
       hashProof,
+      proofId,
+      isAnchored,
       hasEmail: true,
     });
 
@@ -138,6 +158,8 @@ export async function POST(request: Request) {
         success: true,
         attestationId,
         hashProof,
+        proofId,
+        isAnchored,
         title: BOUCLIER_PUBLIC.artifactName.FR,
         issuedAt,
         verifyUrl,

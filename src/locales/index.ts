@@ -46,6 +46,8 @@ export type LocaleMessages = {
     noResultsCriteria: string;
     showingFiltered: string;
     waqfIntegrityCertified: string;
+    proofLocalPending: string;
+    proofVerifiedOnChain: string;
   };
   ecosystem: {
     badge: string;

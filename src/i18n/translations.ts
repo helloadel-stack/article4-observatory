@@ -81,6 +81,8 @@ export type TranslationDict = {
   noResultsCriteria: string;
   showingFiltered: string;
   waqfIntegrityCertified: string;
+  proofLocalPending: string;
+  proofVerifiedOnChain: string;
   colAgency: string;
   colCountry: string;
   colTool: string;
@@ -253,6 +255,8 @@ export const translations: Record<Lang, TranslationDict> = {
     noResultsCriteria: localeMessages.EN.explorer.noResultsCriteria,
     showingFiltered: localeMessages.EN.explorer.showingFiltered,
     waqfIntegrityCertified: localeMessages.EN.explorer.waqfIntegrityCertified,
+    proofLocalPending: localeMessages.EN.explorer.proofLocalPending,
+    proofVerifiedOnChain: localeMessages.EN.explorer.proofVerifiedOnChain,
     colAgency: "Agency",
     colCountry: localeMessages.EN.explorer.colCountry,
     colTool: "Tool",
@@ -432,6 +436,8 @@ export const translations: Record<Lang, TranslationDict> = {
     noResultsCriteria: localeMessages.FR.explorer.noResultsCriteria,
     showingFiltered: localeMessages.FR.explorer.showingFiltered,
     waqfIntegrityCertified: localeMessages.FR.explorer.waqfIntegrityCertified,
+    proofLocalPending: localeMessages.FR.explorer.proofLocalPending,
+    proofVerifiedOnChain: localeMessages.FR.explorer.proofVerifiedOnChain,
     colAgency: "Agence",
     colCountry: localeMessages.FR.explorer.colCountry,
     colTool: "Outil",
@@ -611,6 +617,8 @@ export const translations: Record<Lang, TranslationDict> = {
     noResultsCriteria: localeMessages.ES.explorer.noResultsCriteria,
     showingFiltered: localeMessages.ES.explorer.showingFiltered,
     waqfIntegrityCertified: localeMessages.ES.explorer.waqfIntegrityCertified,
+    proofLocalPending: localeMessages.ES.explorer.proofLocalPending,
+    proofVerifiedOnChain: localeMessages.ES.explorer.proofVerifiedOnChain,
     colAgency: "Agencia",
     colCountry: localeMessages.ES.explorer.colCountry,
     colTool: "Herramienta",

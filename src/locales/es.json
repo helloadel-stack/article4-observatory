@@ -17,7 +17,7 @@
     "kpiSovereignRate": "Tasa de alojamiento soberano",
     "kpiSovereignHint": "SecNumCloud y on-prem",
     "kpiWaqfAnchored": "Pruebas ancladas en WaqfLedger",
-    "kpiWaqfSealHint": "Sello SHA-256 inmutable",
+    "kpiWaqfSealHint": "Proporción de hashes confirmados en cadena",
     "searchLabel": "Búsqueda",
     "searchPlaceholderEntity": "Entidad, sistema, palabra clave…",
     "jurisdictionFilter": "Jurisdicción / País",
@@ -40,7 +40,9 @@
     "colWaqfProof": "Prueba WaqfLedger",
     "noResultsCriteria": "Ningún despliegue coincide con los criterios seleccionados.",
     "showingFiltered": "Mostrando {filtered} de {total} despliegues",
-    "waqfIntegrityCertified": "Marca de integridad certificada por WaqfLedger"
+    "waqfIntegrityCertified": "Pruebas SHA-256 locales — anclaje WaqfLedger pendiente salvo badge Verificado",
+    "proofLocalPending": "Prueba local (Anclaje en curso)",
+    "proofVerifiedOnChain": "Verificado (WaqfLedger)"
   },
   "ecosystem": {
     "badge": "Protocolo VerifIA™",

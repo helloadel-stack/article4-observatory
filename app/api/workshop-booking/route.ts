@@ -1,8 +1,11 @@
 import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { ATELIERS_JURIDIQUES } from "@/src/config/constants";
+import { enforceRateLimit } from "@/src/lib/rateLimit";
 import { sanitizeText } from "@/src/lib/sanitize";
 import {
+  WORKSHOP_DOWNLOAD_COOKIE,
+  WORKSHOP_DOWNLOAD_MAX_AGE_SEC,
   generateDownloadToken,
   generateMissionBookingId,
   saveWorkshopBooking,
@@ -53,6 +56,9 @@ function canonicalBookingPayload(fields: {
 
 export async function POST(request: Request) {
   try {
+    const limited = enforceRateLimit(request, "workshop-booking");
+    if (limited) return limited;
+
     let body: BookingBody;
     try {
       body = (await request.json()) as BookingBody;
@@ -154,7 +160,7 @@ export async function POST(request: Request) {
       hasContactEmail: true,
     });
 
-    return NextResponse.json(
+    const json = NextResponse.json(
       {
         success: true,
         bookingId,
@@ -166,13 +172,21 @@ export async function POST(request: Request) {
         },
         invitationTemplate: {
           title: ATELIERS_JURIDIQUES.documentTitle,
-          downloadUrl: `/api/workshop-booking/download?token=${encodeURIComponent(downloadToken)}`,
+          downloadUrl: "/api/workshop-booking/download",
           status: "Attente de Signature Hôte",
         },
         timestamp,
       },
       { status: 201 },
     );
+    json.cookies.set(WORKSHOP_DOWNLOAD_COOKIE, downloadToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/api/workshop-booking/download",
+      maxAge: WORKSHOP_DOWNLOAD_MAX_AGE_SEC,
+    });
+    return json;
   } catch {
     return NextResponse.json(
       {

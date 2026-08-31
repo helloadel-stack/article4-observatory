@@ -12,7 +12,9 @@ import {
   OBSERVATORY_HITL_LABELS,
   OBSERVATORY_HOSTING_LABELS,
   OBSERVATORY_RISK_LABELS,
+  computeObservatoryKpis,
   getWaqfLedgerProofUrl,
+  isObservatoryProofAnchored,
   type ObservatoryCountry,
   type ObservatoryDeployment,
   type ObservatoryRiskLevel,
@@ -27,18 +29,6 @@ type CountryFilter = "ALL" | ObservatoryCountry;
 type RiskFilter = "ALL" | Extract<ObservatoryRiskLevel, "HIGH" | "LOW" | "PROHIBITED">;
 type SovereigntyFilter = "ALL" | "SOVEREIGN" | "NON_SOVEREIGN";
 
-const COUNTRY_SELECT_CODES: ObservatoryCountry[] = [
-  "FR",
-  "DE",
-  "ES",
-  "BE",
-  "CH",
-  "NL",
-  "EE",
-  "CA_QC",
-  "EU",
-];
-
 const RISK_BADGE_CLASS: Record<ObservatoryRiskLevel, string> = {
   HIGH: "bg-amber-950 text-amber-300 border-amber-800",
   MEDIUM: "bg-sky-950 text-sky-300 border-sky-800",
@@ -52,7 +42,7 @@ function escapeCsvValue(value: string): string {
 
 function downloadCsv(rows: readonly ObservatoryDeployment[]): void {
   const headers =
-    "ID,Name,Entity,Country,Domain,RiskCategory,RiskLevel,Hosting,Sovereign,HumanOversight,Article4Status,WaqfLedgerHash,AuditDate";
+    "ID,Name,Entity,Country,Domain,RiskCategory,RiskLevel,Hosting,Sovereign,HumanOversight,Article4Status,WaqfLedgerHash,WaqfAnchored,AuditDate";
   const body = rows
     .map((d) =>
       [
@@ -68,6 +58,7 @@ function downloadCsv(rows: readonly ObservatoryDeployment[]): void {
         d.humanInTheLoop,
         d.article4LiteracyStatus,
         d.waqfledgerProofHash,
+        String(isObservatoryProofAnchored(d)),
         d.lastAuditDate,
       ]
         .map(escapeCsvValue)
@@ -119,7 +110,8 @@ export default function ObservatoryExplorer({
     });
   }, [search, selectedCountry, selectedRisk, selectedSovereignty]);
 
-  const totalCount = OBSERVATORY_DATA.length;
+  const kpis = useMemo(() => computeObservatoryKpis(OBSERVATORY_DATA), []);
+  const totalCount = kpis.totalDeployments;
   const highRiskCount = OBSERVATORY_DATA.filter(
     (d) => d.riskLevel === "HIGH",
   ).length;
@@ -129,9 +121,7 @@ export default function ObservatoryExplorer({
       ? "0"
       : ((sovereignCount / totalCount) * 100).toFixed(0);
 
-  const countryOptions = COUNTRY_SELECT_CODES.filter((code) =>
-    OBSERVATORY_COUNTRIES.includes(code),
-  );
+  const countryOptions = [...OBSERVATORY_COUNTRIES];
 
   return (
     <section
@@ -190,8 +180,18 @@ export default function ObservatoryExplorer({
           </div>
           <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-4">
             <span className="text-xs text-slate-400">{t.kpiWaqfAnchored}</span>
-            <div className="mt-1 text-2xl font-bold text-indigo-400">100%</div>
-            <span className="text-[11px] text-slate-400">{t.kpiWaqfSealHint}</span>
+            <div
+              className={`mt-1 text-2xl font-bold ${
+                kpis.waqfAnchoredPct === 100
+                  ? "text-indigo-400"
+                  : "text-amber-400"
+              }`}
+            >
+              {kpis.waqfAnchoredPct}%
+            </div>
+            <span className="text-[11px] text-slate-400">
+              {t.kpiWaqfSealHint} ({kpis.waqfAnchoredCount}/{totalCount})
+            </span>
           </div>
         </div>
 
@@ -342,18 +342,37 @@ export default function ObservatoryExplorer({
                         {OBSERVATORY_HITL_LABELS[d.humanInTheLoop][lang]}
                       </td>
                       <td className="px-4 py-3.5 text-right">
-                        <a
-                          href={getWaqfLedgerProofUrl(d.waqfledgerProofHash)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center font-mono text-[11px] text-indigo-400 hover:text-indigo-300 hover:underline"
-                          title={d.waqfledgerProofHash}
-                        >
-                          {d.waqfledgerProofHash.substring(0, 8)}...
-                          <span className="ml-1 text-[10px]" aria-hidden="true">
-                            ↗
+                        {isObservatoryProofAnchored(d) ? (
+                          <a
+                            href={getWaqfLedgerProofUrl(d.waqfledgerProofHash)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex flex-col items-end gap-1"
+                            title={d.waqfledgerProofHash}
+                          >
+                            <span className="rounded border border-emerald-800 bg-emerald-950 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">
+                              {t.proofVerifiedOnChain}
+                            </span>
+                            <span className="inline-flex items-center font-mono text-[11px] text-indigo-400 hover:text-indigo-300 hover:underline">
+                              {d.waqfledgerProofHash.substring(0, 8)}...
+                              <span className="ml-1 text-[10px]" aria-hidden="true">
+                                ↗
+                              </span>
+                            </span>
+                          </a>
+                        ) : (
+                          <span
+                            className="inline-flex flex-col items-end gap-1"
+                            title={d.waqfledgerProofHash}
+                          >
+                            <span className="rounded border border-amber-800 bg-amber-950 px-2 py-0.5 text-[10px] font-semibold text-amber-300">
+                              {t.proofLocalPending}
+                            </span>
+                            <span className="font-mono text-[11px] text-slate-500">
+                              {d.waqfledgerProofHash.substring(0, 8)}...
+                            </span>
                           </span>
-                        </a>
+                        )}
                       </td>
                     </tr>
                   ))

@@ -224,12 +224,46 @@ export const LEGAL_ARTIFACTS = {
   },
 } as const;
 
+/**
+ * Canonical content-licensing registry — never collapse all surfaces into one CC.
+ * Observatory benchmarks are open data; Bouclier is non-commercial; B2B kits are proprietary.
+ */
+export const CONTENT_LICENSES = {
+  observatory: {
+    short: "CC BY 4.0",
+    url: "https://creativecommons.org/licenses/by/4.0/",
+    scope: {
+      EN: "Observatory Data & Benchmarks: CC BY 4.0",
+      FR: "Données et benchmarks de l’Observatoire : CC BY 4.0",
+      ES: "Datos y benchmarks del Observatorio: CC BY 4.0",
+    },
+  },
+  bouclier: {
+    short: "CC BY-NC 4.0",
+    url: "https://creativecommons.org/licenses/by-nc/4.0/",
+    scope: {
+      EN: "Pro-bono Bouclier Toolkit: CC BY-NC 4.0",
+      FR: "Boîte à outils Bouclier pro bono : CC BY-NC 4.0",
+      ES: "Kit Bouclier pro bono: CC BY-NC 4.0",
+    },
+  },
+  enterprise: {
+    short: "Proprietary Commercial Site License",
+    url: null,
+    scope: {
+      EN: "B2B Enterprise Kits: Proprietary Commercial Site License",
+      FR: "Kits entreprise B2B : licence commerciale propriétaire de site",
+      ES: "Kits empresariales B2B: licencia comercial propietaria de sitio",
+    },
+  },
+} as const;
+
 /** Pro bono public-sector shield initiative (French institutional landing) */
 export const BOUCLIER_PUBLIC = {
   path: "/bouclier-public",
   title: "Bouclier IA Publique (Safe Public AI Shield)",
-  license: "CC BY-NC 4.0",
-  licenseUrl: "https://creativecommons.org/licenses/by-nc/4.0/",
+  license: CONTENT_LICENSES.bouclier.short,
+  licenseUrl: CONTENT_LICENSES.bouclier.url,
   licenseFull: {
     FR: "Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International (CC BY-NC 4.0)",
     EN: "Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
@@ -641,61 +675,131 @@ export const ASSESSMENT_SCENARIOS: readonly AssessmentScenario[] = [
   },
 ] as const;
 
-/** Total scenarios in the full institutional Cisco-grade framework (preview ships Scenario 1). */
+/** Total scenarios in the full institutional Cisco-grade framework. */
 export const ASSESSMENT_SCENARIO_COUNT = 30;
 
-/** Public-facing assessment product label — honest about preview vs full bank. */
+/** Scenarios shipped in the free browser Module 1 preview. */
+export const ASSESSMENT_MODULE_1_SIZE = 3;
+
+/** Pass mark for A4I-CERT minting — scored server-side only. */
+export const ASSESSMENT_PASS_THRESHOLD = 80;
+
+/** Public-facing assessment product label — Module 1 preview, not the live 30-bank. */
 export const ASSESSMENT_PUBLIC_LABEL = {
-  EN: "Article 4 Benchmark: Scenario 1 Interactive Preview (30-Scenario Institutional Framework)",
-  FR: "Benchmark Article 4 : Aperçu interactif du scénario 1 (cadre institutionnel à 30 scénarios)",
-  ES: "Benchmark Artículo 4: Vista previa interactiva del escenario 1 (marco institucional de 30 escenarios)",
+  EN: "Module 1 Assessment Preview (3 Scenarios)",
+  FR: "Aperçu d’évaluation — Module 1 (3 scénarios)",
+  ES: "Vista previa de evaluación — Módulo 1 (3 escenarios)",
 } as const;
 
 export const ASSESSMENT_ROADMAP_BADGE = {
-  EN: "Full 30-Scenario Bank Available for Enterprise Licensees",
-  FR: "Banque complète de 30 scénarios disponible pour les licenciés Enterprise",
-  ES: "Banco completo de 30 escenarios disponible para licenciarios Enterprise",
+  EN: "Full 30-scenario Cisco-grade bank is not live in this free browser client — Enterprise licensees only",
+  FR: "La banque Cisco de 30 scénarios n’est pas active dans ce client navigateur gratuit — licenciés Enterprise uniquement",
+  ES: "El banco Cisco de 30 escenarios no está activo en este cliente de navegador gratuito — solo licenciarios Enterprise",
 } as const;
 
+/** Public MCQ option — no answer key. Keys live in src/lib/assessmentKeys.ts (server). */
 export type AssessmentChoice = {
   id: string;
-  correct: boolean;
   EN: string;
   FR: string;
   ES: string;
 };
 
-/** Scenario 1 interactive choices for the live preview scorecard */
-export const SCENARIO_1_CHOICES: readonly AssessmentChoice[] = [
+/** Scenario 1 public stems (no answer key). Prefer ASSESSMENT_MODULE_1_CHOICES. */
+const MODULE_1_SCENARIO_1_CHOICES: readonly AssessmentChoice[] = [
   {
     id: "a",
-    correct: false,
     EN: "Rely solely on model accuracy metrics published by the vendor.",
     FR: "S’appuyer uniquement sur les métriques de précision publiées par le fournisseur.",
     ES: "Depender únicamente de las métricas de precisión publicadas por el proveedor.",
   },
   {
     id: "b",
-    correct: true,
     EN: "Ensure meaningful human oversight with documented override rights before adverse actions.",
     FR: "Garantir une supervision humaine effective avec droit d’override documenté avant toute mesure adverse.",
     ES: "Garantizar supervisión humana efectiva con derechos de anulación documentados antes de medidas adversas.",
   },
   {
     id: "c",
-    correct: false,
     EN: "Exempt education tools from Annex III because they are not law-enforcement systems.",
     FR: "Exempter les outils éducatifs de l’Annexe III car ils ne sont pas des systèmes répressifs.",
     ES: "Eximir las herramientas educativas del Anexo III porque no son sistemas policiales.",
   },
   {
     id: "d",
-    correct: false,
     EN: "Publish the raw student feature vectors to satisfy transparency.",
     FR: "Publier les vecteurs de caractéristiques bruts des étudiants pour la transparence.",
     ES: "Publicar los vectores de características brutos de los estudiantes por transparencia.",
   },
-] as const;
+];
+
+const MODULE_1_SCENARIO_2_CHOICES: readonly AssessmentChoice[] = [
+  {
+    id: "a",
+    EN: "Only students must be AI-literate, because they are the end users of the tools.",
+    FR: "Seuls les étudiants doivent être alphabétisés en IA, car ils sont les utilisateurs finaux.",
+    ES: "Solo el alumnado debe ser alfabetizado en IA, porque es el usuario final de las herramientas.",
+  },
+  {
+    id: "b",
+    EN: "Staff who design and operate those disclosure policies must themselves demonstrate Article 4 AI literacy.",
+    FR: "Le personnel qui conçoit et applique ces politiques de divulgation doit lui-même démontrer la littératie IA Article 4.",
+    ES: "El personal que diseña y opera esas políticas de divulgación debe demostrar alfabetización IA del Artículo 4.",
+  },
+  {
+    id: "c",
+    EN: "A vendor EULA is sufficient to discharge the institution’s literacy duty.",
+    FR: "Les CGU du fournisseur suffisent à satisfaire l’obligation de littératie de l’établissement.",
+    ES: "Un EULA del proveedor basta para cumplir el deber de alfabetización de la institución.",
+  },
+  {
+    id: "d",
+    EN: "Public universities are exempt from Article 4 because they are not commercial operators.",
+    FR: "Les universités publiques sont exemptées de l’Article 4 car elles ne sont pas des opérateurs commerciaux.",
+    ES: "Las universidades públicas están exentas del Artículo 4 porque no son operadores comerciales.",
+  },
+];
+
+const MODULE_1_SCENARIO_3_CHOICES: readonly AssessmentChoice[] = [
+  {
+    id: "a",
+    EN: "Disclose clearly that the user is interacting with an AI system, before or during the exchange.",
+    FR: "Divulguer clairement que l’utilisateur interagit avec un système d’IA, avant ou pendant l’échange.",
+    ES: "Divulgar claramente que la persona usuaria interactúa con un sistema de IA, antes o durante el intercambio.",
+  },
+  {
+    id: "b",
+    EN: "No disclosure is required if chatbot answers meet an internal accuracy target.",
+    FR: "Aucune divulgation n’est requise si les réponses atteignent un objectif interne de précision.",
+    ES: "No se exige divulgación si las respuestas cumplen un objetivo interno de precisión.",
+  },
+  {
+    id: "c",
+    EN: "Article 50 only applies to deepfakes, not campus helpdesk bots.",
+    FR: "L’Article 50 ne s’applique qu’aux deepfakes, pas aux chatbots d’accueil campus.",
+    ES: "El Artículo 50 solo aplica a deepfakes, no a chatbots de ayuda del campus.",
+  },
+  {
+    id: "d",
+    EN: "Hide the AI notice exclusively in a privacy-policy footer linked from another site.",
+    FR: "Dissimuler l’avis d’IA uniquement dans un pied de politique de confidentialité hébergé ailleurs.",
+    ES: "Ocultar el aviso de IA solo en un pie de política de privacidad enlazado desde otro sitio.",
+  },
+];
+
+/**
+ * Public Module 1 choices keyed by scenario id. Contains no `correct` flags.
+ * Grading is performed by POST /api/assessment/evaluate.
+ */
+export const ASSESSMENT_MODULE_1_CHOICES: Readonly<
+  Record<number, readonly AssessmentChoice[]>
+> = {
+  1: MODULE_1_SCENARIO_1_CHOICES,
+  2: MODULE_1_SCENARIO_2_CHOICES,
+  3: MODULE_1_SCENARIO_3_CHOICES,
+};
+
+export const SCENARIO_1_CHOICES = MODULE_1_SCENARIO_1_CHOICES;
 
 /**
  * Canonical demo payloads whose SHA-256 digests seed the local proof registry.

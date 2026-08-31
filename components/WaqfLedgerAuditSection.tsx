@@ -11,7 +11,6 @@ import {
 import {
   BRAND,
   DEFAULT_LANG,
-  WAQFLEDGER_PASSPORT_PRODUCT,
   WAQFLEDGER_SEED_PROOFS,
   type Lang,
 } from "@/src/config/constants";
@@ -50,7 +49,7 @@ const copy = {
     ],
     engineTitle: "Local Cryptographic Proof Engine",
     generateLicense: "Generate License Proof",
-    generateCert: "Generate AI Audit Passport™ Proof",
+    generateCert: "Complete Module 1 Assessment for A4I-CERT",
     generating: "Hashing…",
     latestProof: "Latest generated proof ID",
     verifierTitle: "WaqfLedger Hash Verification",
@@ -95,7 +94,7 @@ const copy = {
     ],
     engineTitle: "Moteur de preuve cryptographique local",
     generateLicense: "Générer une preuve de licence",
-    generateCert: "Générer une preuve de Passeport d’Audit IA™",
+    generateCert: "Terminer le Module 1 pour un A4I-CERT",
     generating: "Hachage…",
     latestProof: "Dernier ID de preuve généré",
     verifierTitle: "Vérification de hash WaqfLedger",
@@ -140,7 +139,7 @@ const copy = {
     ],
     engineTitle: "Motor de prueba criptográfica local",
     generateLicense: "Generar prueba de licencia",
-    generateCert: "Generar prueba de Pasaporte de Auditoría IA™",
+    generateCert: "Completar el Módulo 1 para un A4I-CERT",
     generating: "Hasheando…",
     latestProof: "Último ID de prueba generado",
     verifierTitle: "Verificación de hash WaqfLedger",
@@ -177,7 +176,7 @@ export default function WaqfLedgerAuditSection({
   sessionProofs = [],
 }: WaqfLedgerAuditSectionProps) {
   const t = copy[lang];
-  const [busy, setBusy] = useState<"license" | "certificate" | null>(null);
+  const [busy, setBusy] = useState<"license" | null>(null);
   const [latestProof, setLatestProof] = useState<string | null>(null);
   const [localProofs, setLocalProofs] = useState<string[]>([]);
   const [input, setInput] = useState("");
@@ -197,15 +196,15 @@ export default function WaqfLedgerAuditSection({
     return map;
   }, [localProofs, sessionProofs]);
 
-  const mintProof = async (kind: "license" | "certificate") => {
+  const mintProof = async (kind: "license") => {
     setBusy(kind);
     try {
       const proofId = await generateProofId(kind, {
         kind,
-        product: kind === "license" ? "B2B Institutional License" : WAQFLEDGER_PASSPORT_PRODUCT,
+        product: "B2B Institutional License",
         institute: BRAND.institute,
         tsBucket: new Date().toISOString().slice(0, 13),
-        tier: kind === "license" ? "tier3" : "benchmark",
+        tier: "tier3",
       });
       setLatestProof(proofId);
       setLocalProofs((prev) =>
@@ -310,14 +309,12 @@ export default function WaqfLedgerAuditSection({
               >
                 {busy === "license" ? t.generating : t.generateLicense}
               </button>
-              <button
-                type="button"
-                disabled={busy !== null}
-                onClick={() => mintProof("certificate")}
-                className="inline-flex items-center rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-700 disabled:opacity-60"
+              <a
+                href="#assessment"
+                className="inline-flex items-center rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-700"
               >
-                {busy === "certificate" ? t.generating : t.generateCert}
-              </button>
+                {t.generateCert}
+              </a>
             </div>
             {latestProof ? (
               <div className="mt-4">
