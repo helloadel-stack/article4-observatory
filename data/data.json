@@ -1,112 +1,25 @@
-[
-  {
-    "id": "1",
-    "agency": "DINUM (Interministerial Digital Directorate)",
-    "country": "France",
-    "toolName": "Albert API / LaSuite Assistant",
-    "primaryModel": "Mistral AI (Open-Weight)",
-    "hostingProvider": "SecNumCloud Sovereign Infrastructure",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "2",
-    "agency": "Federal Ministry of the Interior (BMI)",
-    "country": "Germany",
-    "toolName": "Bundes-AI Portal",
-    "primaryModel": "Aleph Alpha / Llama 3",
-    "hostingProvider": "GovCloud Germany (On-Premise)",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "3",
-    "agency": "National Health Insurance (Ameli)",
-    "country": "France",
-    "toolName": "Ameli Digital Support Bot",
-    "primaryModel": "Proprietary Commercial LLM",
-    "hostingProvider": "US Hyperscaler European Region",
-    "sovereigntyType": "Dependent",
-    "euAiActStatus": "In Transition",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "4",
-    "agency": "AESIA / Ministry of Digital Transformation (MDT)",
-    "country": "Spain",
-    "toolName": "AESIA Regulation Parser",
-    "primaryModel": "Llama 3 70B Fine-tuned",
-    "hostingProvider": "National Supercomputing Network (RES)",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "5",
-    "agency": "CHU de Lyon (Hospices Civils de Lyon)",
-    "country": "France",
-    "toolName": "Diagnostic Imaging Assistant",
-    "primaryModel": "Owkin / In-House Clinical Vision Model",
-    "hostingProvider": "HCL Private Clinical Cloud (On-Premise)",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "6",
-    "agency": "FPS Public Health (Belgium)",
-    "country": "Belgium",
-    "toolName": "Citizen Triage Assistant",
-    "primaryModel": "Mistral Large (EU Open-Weight)",
-    "hostingProvider": "Belgian Federal Cloud (Smals)",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "7",
-    "agency": "Federal Office of Public Health (FOPH)",
-    "country": "Switzerland",
-    "toolName": "nLPD Compliance Evaluator",
-    "primaryModel": "SwissGPT / Open-Weight LLM",
-    "hostingProvider": "Swiss Government Cloud (Admin.ch)",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "8",
-    "agency": "City of Amsterdam",
-    "country": "Netherlands",
-    "toolName": "Algorithmic Transparency Register",
-    "primaryModel": "Rule-Based + Open-Weight NLP Classifier",
-    "hostingProvider": "Amsterdam Municipal Data Platform (On-Premise)",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "9",
-    "agency": "INPS (National Social Security Institute)",
-    "country": "Italy",
-    "toolName": "Automated Claims Routing System",
-    "primaryModel": "Proprietary Commercial LLM",
-    "hostingProvider": "US Hyperscaler European Region",
-    "sovereigntyType": "Dependent",
-    "euAiActStatus": "In Transition",
-    "lastUpdated": "2026-07"
-  },
-  {
-    "id": "10",
-    "agency": "Ministry of Justice (Estonia)",
-    "country": "Estonia",
-    "toolName": "AI Legal Summary Tool",
-    "primaryModel": "Llama 3 Fine-tuned (Estonian Legal Corpus)",
-    "hostingProvider": "RIK State IT Centre (GovCloud EE)",
-    "sovereigntyType": "Sovereign",
-    "euAiActStatus": "High Compliance",
-    "lastUpdated": "2026-07"
-  }
-]
+{
+  "dataset": "European & Transatlantic AI Observatory — 2026 Benchmarking Dataset",
+  "publisher": "L'Institut Article 4 (A4I)",
+  "year": 2026,
+  "registry": "A4I-Observatoire-2026",
+  "license": "CC BY 4.0",
+  "note": "Canonical live registry is src/data/observatory.ts. This file is a published snapshot of the 13-deployment corpus.",
+  "count": 13,
+  "jurisdictions": ["FR", "DE", "ES", "BE", "CH", "NL", "IT", "EE", "CA_QC", "EU"],
+  "ids": [
+    "OBS-2026-001",
+    "OBS-2026-002",
+    "OBS-2026-003",
+    "OBS-2026-004",
+    "OBS-2026-005",
+    "OBS-2026-006",
+    "OBS-2026-007",
+    "OBS-2026-008",
+    "OBS-2026-009",
+    "OBS-2026-010",
+    "OBS-2026-011",
+    "OBS-2026-012",
+    "OBS-2026-013"
+  ]
+}

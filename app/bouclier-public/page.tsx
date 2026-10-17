@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ATELIERS_JURIDIQUES,
   BOUCLIER_PUBLIC,
   BRAND,
   DEFAULT_LANG,
@@ -43,11 +44,13 @@ const pageCopy = {
     back: "Retour à l'Observatoire",
     headerSubtitle: "Secteur public francophone",
     banner: `Initiative pro bono · Article 4 Institute · Journalisation cryptographique via ${BRAND.waqfLedgerUrl.replace("https://", "")}`,
+    navAria: "Navigation Bouclier IA Publique",
+    navObservatory: "Cartographie des déploiements",
     navModules: "Modules",
-    navBundle: "Bundle open source",
+    navBundle: "Bundle pro bono",
     navScorecard: "Scorecard",
     downloadShort: "Télécharger",
-    badge: "Programme Non-Lucratif & Open Source — CC BY-NC 4.0",
+    badge: "Programme Non-Lucratif Pro Bono — CC BY-NC 4.0",
     title: "Bouclier IA Publique",
     titleAccent: "(Safe Public AI Shield)",
     subtitle:
@@ -133,8 +136,8 @@ const pageCopy = {
         ],
       },
     ],
-    bundleEyebrow: "Bundle gratuit · CC BY-NC 4.0",
-    bundleTitle: "Pack open source des 4 modules",
+    bundleEyebrow: "Bundle pro bono · CC BY-NC 4.0",
+    bundleTitle: "Pack des 4 modules — 12 livrables",
     bundleBody:
       "Téléchargez le package complet de modèles opérationnels — charte et diagnostic (.docx), boussole de risque (.xlsx), registres et scorecard (.pdf) — sous la Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International (CC BY-NC 4.0), sans coût de licence pour le secteur public.",
     bundleCta: "Télécharger le package complet",
@@ -143,6 +146,9 @@ const pageCopy = {
     footerNote:
       "Bouclier IA Publique — programme non-lucratif sous Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International (CC BY-NC 4.0)",
     footerObservatory: "Observatoire",
+    footerAteliers: "Ateliers juridiques",
+    footerLegal: "Mentions légales",
+    footerTerms: "Conditions",
     footerPrivacy: "Confidentialité",
     footerGdpr: "RGPD",
   },
@@ -151,11 +157,13 @@ const pageCopy = {
     back: "Back to Observatory",
     headerSubtitle: "Francophone public sector",
     banner: `Pro bono initiative · Article 4 Institute · Cryptographic logging via ${BRAND.waqfLedgerUrl.replace("https://", "")}`,
+    navAria: "Public AI Shield navigation",
+    navObservatory: "Deployments mapping",
     navModules: "Modules",
-    navBundle: "Open source bundle",
+    navBundle: "Pro-bono bundle",
     navScorecard: "Scorecard",
     downloadShort: "Download",
-    badge: "Non-Profit & Open Source Programme — CC BY-NC 4.0",
+    badge: "Non-Profit Pro-Bono Programme — CC BY-NC 4.0",
     title: "Public AI Shield",
     titleAccent: "(Bouclier IA Publique)",
     subtitle:
@@ -241,8 +249,8 @@ const pageCopy = {
         ],
       },
     ],
-    bundleEyebrow: "Free bundle · CC BY-NC 4.0",
-    bundleTitle: "Open source 4-module pack",
+    bundleEyebrow: "Pro-bono bundle · CC BY-NC 4.0",
+    bundleTitle: "4-module pack — 12 deliverables",
     bundleBody:
       "Download the full package of operational templates — charter and diagnostic (.docx), risk compass (.xlsx), registers and scorecard (.pdf) — under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0), at no licence cost for the public sector.",
     bundleCta: "Download the full package",
@@ -251,6 +259,9 @@ const pageCopy = {
     footerNote:
       "Public AI Shield — non-profit programme under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
     footerObservatory: "Observatory",
+    footerAteliers: "Legal workshops",
+    footerLegal: "Legal notice",
+    footerTerms: "Terms",
     footerPrivacy: "Privacy",
     footerGdpr: "GDPR",
   },
@@ -259,11 +270,13 @@ const pageCopy = {
     back: "Volver al Observatorio",
     headerSubtitle: "Sector público francófono",
     banner: `Iniciativa pro bono · Article 4 Institute · Registro criptográfico vía ${BRAND.waqfLedgerUrl.replace("https://", "")}`,
+    navAria: "Navegación Escudo IA Pública",
+    navObservatory: "Mapeo de despliegues",
     navModules: "Módulos",
-    navBundle: "Bundle open source",
+    navBundle: "Bundle pro bono",
     navScorecard: "Scorecard",
     downloadShort: "Descargar",
-    badge: "Programa Sin Fines de Lucro & Open Source — CC BY-NC 4.0",
+    badge: "Programa Pro Bono Sin Fines de Lucro — CC BY-NC 4.0",
     title: "Escudo IA Pública",
     titleAccent: "(Bouclier IA Publique)",
     subtitle:
@@ -349,8 +362,8 @@ const pageCopy = {
         ],
       },
     ],
-    bundleEyebrow: "Bundle gratuito · CC BY-NC 4.0",
-    bundleTitle: "Pack open source de 4 módulos",
+    bundleEyebrow: "Bundle pro bono · CC BY-NC 4.0",
+    bundleTitle: "Pack de 4 módulos — 12 entregables",
     bundleBody:
       "Descargue el paquete completo de modelos operativos — carta y diagnóstico (.docx), brújula de riesgo (.xlsx), registros y scorecard (.pdf) — bajo la Licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0), sin coste de licencia para el sector público.",
     bundleCta: "Descargar el paquete completo",
@@ -359,6 +372,9 @@ const pageCopy = {
     footerNote:
       "Escudo IA Pública — programa sin fines de lucro bajo la Licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)",
     footerObservatory: "Observatorio",
+    footerAteliers: "Talleres jurídicos",
+    footerLegal: "Aviso legal",
+    footerTerms: "Condiciones",
     footerPrivacy: "Privacidad",
     footerGdpr: "RGPD",
   },
@@ -427,9 +443,12 @@ export default function BouclierPublicPage() {
             </p>
           </div>
           <nav
-            aria-label="Navigation Bouclier"
+            aria-label={t.navAria}
             className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium text-slate-400"
           >
+            <Link href="/#observatory" className="transition hover:text-white">
+              {t.navObservatory}
+            </Link>
             <a href="#modules" className="transition hover:text-white">
               {t.navModules}
             </a>
@@ -468,7 +487,7 @@ export default function BouclierPublicPage() {
           <div className="relative max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-400/40 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-200">
               <Scale className="h-3.5 w-3.5" aria-hidden />
-              {BOUCLIER_PUBLIC.licenseFull[lang]}
+              {BOUCLIER_PUBLIC.programBadge[lang]}
             </span>
 
             <h1
@@ -528,7 +547,7 @@ export default function BouclierPublicPage() {
           <p className="mt-2 max-w-2xl text-sm text-slate-400">
             {t.alignmentSubtitle}
           </p>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-3">
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.regionalBadges.map((badge) => (
               <li
                 key={badge.region}
@@ -707,8 +726,17 @@ export default function BouclierPublicPage() {
             <p className="mt-1 text-xs">{t.footerNote}</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-            <Link href="/" className="hover:text-indigo-300">
+            <Link href="/#observatory" className="hover:text-indigo-300">
               {t.footerObservatory}
+            </Link>
+            <Link href={ATELIERS_JURIDIQUES.path} className="hover:text-indigo-300">
+              {t.footerAteliers}
+            </Link>
+            <Link href="/legal" className="hover:text-indigo-300">
+              {t.footerLegal}
+            </Link>
+            <Link href="/terms" className="hover:text-indigo-300">
+              {t.footerTerms}
             </Link>
             <Link href="/privacy" className="hover:text-indigo-300">
               {t.footerPrivacy}

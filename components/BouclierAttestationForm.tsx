@@ -193,13 +193,13 @@ const formCopy = {
     emailPlaceholder: "dgs@colectividad.es",
     errorRequired:
       "Indique la institución, el tipo y el correo de contacto.",
-    errorGeneration: "Error al generar la attestation.",
+    errorGeneration: "Error al generar la atestación.",
     errorNetwork: "Error de red. Inténtelo de nuevo en un momento.",
     submitLoading: "Calculando la huella SHA-256...",
     submitButton: "Generar la Atestación de Preparación y Balance de Madurez IA",
     modalTitle: "Atestación de Preparación y Balance de Madurez IA",
-    successSeal: "Sello de attestation",
-    successId: "ID de attestation",
+    successSeal: "Sello de atestación",
+    successId: "ID de atestación",
     successIssued: "Emitida el",
     successHash: "Prueba de huella SHA-256",
     copyHash: "Copiar hash",
@@ -343,6 +343,7 @@ export default function BouclierAttestationForm({
           departmentType: form.departmentType,
           email: form.email.trim(),
           maturityLevel: form.maturityLevel,
+          lang,
         }),
       });
 

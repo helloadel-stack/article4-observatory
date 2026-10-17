@@ -15,12 +15,17 @@ export type LocaleMessages = {
     subtitle: string;
     searchPlaceholder: string;
     exportDatasetCsv: string;
+    exportDatasetJson: string;
+    citeDataset: string;
+    licenseHint: string;
     kpiTotalDeployments: string;
     kpiCoverageHint: string;
     kpiHighRiskSystems: string;
     kpiArt14Hint: string;
     kpiSovereignRate: string;
     kpiSovereignHint: string;
+    kpiAvgCompliance: string;
+    kpiComplianceHint: string;
     kpiWaqfAnchored: string;
     kpiWaqfSealHint: string;
     searchLabel: string;
@@ -42,6 +47,9 @@ export type LocaleMessages = {
     colAiActCategory: string;
     colHosting: string;
     colHitl: string;
+    colLiteracy: string;
+    colAuditDate: string;
+    colComplianceScore: string;
     colWaqfProof: string;
     noResultsCriteria: string;
     showingFiltered: string;
@@ -52,6 +60,35 @@ export type LocaleMessages = {
   ecosystem: {
     badge: string;
     desc: string;
+  };
+  engines: {
+    nav: string;
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    openNode: string;
+    safeaiName: string;
+    safeaiRole: string;
+    safeaiScope: string;
+    arabicName: string;
+    arabicRole: string;
+    arabicScope: string;
+    waqfName: string;
+    waqfRole: string;
+    waqfScope: string;
+  };
+  publications: {
+    nav: string;
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    featured: string;
+    authorityLabel: string;
+    titleText: string;
+    authority: string;
+    summary: string;
+    ctaLab: string;
+    ctaContact: string;
   };
   standards: {
     quebec: string;
@@ -69,6 +106,7 @@ export type LocaleMessages = {
     mission: string;
     ecosystemHeading: string;
     safeAi: string;
+    arabicObservatory: string;
     waqfLedger: string;
     bouclier: string;
     ateliers: string;

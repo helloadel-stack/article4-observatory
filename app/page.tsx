@@ -10,6 +10,8 @@ import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NexusSection from "@/components/NexusSection";
+import TechnicalEnginesSection from "@/components/TechnicalEnginesSection";
+import PublicationsSection from "@/components/PublicationsSection";
 import TransatlanticSection from "@/components/TransatlanticSection";
 import ObservatoryExplorer from "@/src/components/ObservatoryExplorer";
 import {
@@ -20,6 +22,7 @@ import {
   SITE_METADATA,
 } from "@/src/config/constants";
 import { translations } from "@/src/i18n/translations";
+import { getLocaleMessages } from "@/src/locales";
 import { useSyncedLang } from "@/src/lib/useSyncedLang";
 
 type SubmitCountry =
@@ -109,7 +112,12 @@ const jsonLd = {
       "@type": "NGO",
       name: SITE_METADATA.publisher,
       url: BRAND.instituteUrl,
-      sameAs: [BRAND.linkedInUrl],
+      sameAs: [
+        BRAND.linkedInUrl,
+        BRAND.safeAiReportUrl,
+        BRAND.arabicObservatoryUrl,
+        BRAND.waqfLedgerUrl,
+      ],
       description: INSTITUTIONAL_POSITIONING.identity.EN,
       slogan: INSTITUTIONAL_POSITIONING.slogan.EN,
       founder: {
@@ -122,7 +130,7 @@ const jsonLd = {
       "@type": "Dataset",
       name: SITE_METADATA.datasetTitle,
       description:
-        "2026 multi-criteria benchmarking corpus of 12 authoritative public and educational AI deployments across Europe, Quebec/Canada, and EU institutions, with WaqfLedger SHA-256 proof hashes.",
+        "2026 multi-criteria benchmarking corpus of 13 authoritative public and educational AI deployments across 10 jurisdictions in Europe, Quebec/Canada, and EU institutions, with WaqfLedger SHA-256 proof hashes.",
       url: `${BRAND.instituteUrl}#observatory`,
       creator: {
         "@type": "Organization",
@@ -139,6 +147,26 @@ const jsonLd = {
       url: `${BRAND.instituteUrl}/bouclier-public`,
       license: CONTENT_LICENSES.bouclier.url,
       usageInfo: CONTENT_LICENSES.bouclier.scope.EN,
+    },
+    {
+      "@type": "ScholarlyArticle",
+      name: "Sovereign AI Assurance: Benchmarking Dialect Drift, Token Economics, and PDPL Compliance in MENA-EU Enterprise Deployments",
+      datePublished: "2026",
+      inLanguage: "en",
+      author: {
+        "@type": "Person",
+        name: "Adel El Bouzagaoui",
+        affiliation: {
+          "@type": "Organization",
+          name: SITE_METADATA.publisher,
+        },
+      },
+      publisher: {
+        "@type": "Organization",
+        name: SITE_METADATA.publisher,
+        url: BRAND.instituteUrl,
+      },
+      url: BRAND.safeAiReportUrl,
     },
     {
       "@type": "Product",
@@ -168,6 +196,7 @@ export default function Home() {
   const [sessionProofs, setSessionProofs] = useState<string[]>([]);
 
   const t = translations[lang];
+  const locale = getLocaleMessages(lang);
 
   const countryLabels: Record<SubmitCountry, string> = {
     France: t.submitCountryFrance,
@@ -272,6 +301,8 @@ export default function Home() {
   }[] = [
     { href: "#observatory", label: t.navFramework },
     { href: "#nexus", label: t.navNexus },
+    { href: "#engines", label: locale.engines.nav },
+    { href: "#publications", label: locale.publications.nav },
     { href: "#mapping", label: t.navMapping },
     { href: "#pricing", label: t.navComplianceKits },
     { href: "#waqfledger", label: t.navWaqfLedger },
@@ -304,6 +335,8 @@ export default function Home() {
         <Hero t={t} />
 
         <NexusSection lang={lang} t={t} />
+
+        <TechnicalEnginesSection lang={lang} />
 
         <TransatlanticSection lang={lang} t={t} />
 
@@ -363,6 +396,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <PublicationsSection lang={lang} />
 
         <section
           id="about"

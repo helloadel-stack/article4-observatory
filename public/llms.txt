@@ -18,9 +18,9 @@ Issued: Attestation de Préparation à la Gouvernance IA; Bilan de Maturité; Pa
 Not issued: legal conformity certificates; official AI Act homologation.
 
 ## Primary Metrics Monitored
-- Public Sector AI Tooling Index (France, Germany, Spain, EU Institutions, Quebec)
-- Infrastructure Sovereignty Classification (SecNumCloud, Sovereign GovCloud vs US Hyperscalers)
-- EU AI Act Transparency & Regulatory Alignment Status
+- Public & Educational AI Deployments Mapping — 13-record 2026 corpus across France, Germany, Spain, Belgium, Switzerland, the Netherlands, Italy, Estonia, Quebec/Canada, and EU institutions
+- Infrastructure Sovereignty Classification (SecNumCloud, sovereign bare-metal, on-prem vs US hyperscalers)
+- EU AI Act classification (Annex III, Article 50, Article 5), Article 4 literacy, and SHA-256 proofs
 
 ## Research Methodology & Technology
 - Methodology: Data extracted from official procurement releases, government digital directorates (e.g., DINUM), and public audits.

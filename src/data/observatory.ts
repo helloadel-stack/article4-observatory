@@ -95,7 +95,7 @@ export interface ObservatoryDeployment {
    */
   waqfAnchored?: boolean;
   lastAuditDate: string;
-  summary: string;
+  summary: Record<Lang, string>;
 }
 
 /** Live on-chain receipt — never infer “Verified” from a hash string alone. */
@@ -169,7 +169,10 @@ export function computeComplianceScore(
 
 export type ObservatoryKpis = {
   totalDeployments: number;
+  highRiskAnnexIiiCount: number;
   highRiskAnnexIiiPct: number;
+  sovereignHostingCount: number;
+  sovereignHostingPct: number;
   sovereignCloudPct: number;
   averageComplianceScore: number;
   /** Share of records with a confirmed on-chain WaqfLedger receipt (0–100). */
@@ -184,16 +187,20 @@ export function computeObservatoryKpis(
   if (totalDeployments === 0) {
     return {
       totalDeployments: 0,
+      highRiskAnnexIiiCount: 0,
       highRiskAnnexIiiPct: 0,
+      sovereignHostingCount: 0,
+      sovereignHostingPct: 0,
       sovereignCloudPct: 0,
       averageComplianceScore: 0,
       waqfAnchoredPct: 0,
       waqfAnchoredCount: 0,
     };
   }
-  const highRisk = rows.filter((d) =>
+  const highRiskAnnexIiiCount = rows.filter((d) =>
     isHighRiskAnnexIII(d.euAiActCategory),
   ).length;
+  const sovereignHostingCount = rows.filter((d) => d.isSovereign).length;
   const sovereignCloud = rows.filter((d) =>
     isSovereignCloud(d.hostingSovereignty),
   ).length;
@@ -204,12 +211,26 @@ export function computeObservatoryKpis(
   );
   return {
     totalDeployments,
-    highRiskAnnexIiiPct: Math.round((highRisk / totalDeployments) * 100),
+    highRiskAnnexIiiCount,
+    highRiskAnnexIiiPct: Math.round(
+      (highRiskAnnexIiiCount / totalDeployments) * 100,
+    ),
+    sovereignHostingCount,
+    sovereignHostingPct: Math.round(
+      (sovereignHostingCount / totalDeployments) * 100,
+    ),
     sovereignCloudPct: Math.round((sovereignCloud / totalDeployments) * 100),
     averageComplianceScore: Math.round(scoreSum / totalDeployments),
     waqfAnchoredPct: Math.round((waqfAnchoredCount / totalDeployments) * 100),
     waqfAnchoredCount,
   };
+}
+
+export function getObservatorySummary(
+  deployment: ObservatoryDeployment,
+  lang: Lang,
+): string {
+  return deployment.summary[lang];
 }
 
 export function getWaqfLedgerProofUrl(hash: string): string {
@@ -390,21 +411,30 @@ export const OBSERVATORY_CSV_HEADERS = [
   "waqfledgerProofHash",
   "waqfAnchored",
   "lastAuditDate",
-  "summary",
   "complianceScore",
+  "summary_EN",
+  "summary_FR",
+  "summary_ES",
 ] as const;
 
-export type ObservatoryExportRow = ObservatoryDeployment & {
+export type ObservatoryExportRow = Omit<ObservatoryDeployment, "summary"> & {
   complianceScore: number;
+  summary_EN: string;
+  summary_FR: string;
+  summary_ES: string;
 };
 
 export function toObservatoryExportRow(
   deployment: ObservatoryDeployment,
 ): ObservatoryExportRow {
+  const { summary, ...rest } = deployment;
   return {
-    ...deployment,
+    ...rest,
     waqfAnchored: isObservatoryProofAnchored(deployment),
     complianceScore: computeComplianceScore(deployment),
+    summary_EN: summary.EN,
+    summary_FR: summary.FR,
+    summary_ES: summary.ES,
   };
 }
 
@@ -461,10 +491,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Supervised Human Review",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "e4a7c819d9283f01ab654ca9120de847f92083bc9e65840d2182049e782bc194",
+      "d084d03072b4199f16637c657e22a0f2ec1fc9da3b92d203e9279f35b4ff0e22",
     lastAuditDate: "2026-08-01",
-    summary:
-      "Open-weights administrative assistant trained on administrative documentation and hosted on sovereign French SecNumCloud infrastructure.",
+    summary: {
+      EN: "Open-weights administrative assistant trained on official documentation and hosted on French SecNumCloud infrastructure, with Article 50 interaction disclosure.",
+      FR: "Assistant administratif à poids ouverts, entraîné sur la documentation officielle et hébergé sur SecNumCloud, avec mention de transparence Article 50.",
+      ES: "Asistente administrativo de pesos abiertos, entrenado con documentación oficial y alojado en SecNumCloud, con divulgación de interacción del Artículo 50.",
+    },
   },
   {
     id: "OBS-2026-002",
@@ -480,10 +513,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Supervised Human Review",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "7b865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730",
+      "06a02a8b790890f01fc79bcd0e34e7a32b46f656cd45ddd3aca28135e80f735d",
     lastAuditDate: "2026-07-28",
-    summary:
-      "Federated LLM workflow for federal administrative document synthesis, hosted on Bundes-Cloud bare-metal servers.",
+    summary: {
+      EN: "Federated LLM workflow for federal administrative document synthesis, hosted on Bundes-Cloud bare-metal servers.",
+      FR: "Flux LLM fédéré pour la synthèse de documents administratifs fédéraux, hébergé sur serveurs bare-metal Bundes-Cloud.",
+      ES: "Flujo LLM federado para la síntesis de documentos administrativos federales, alojado en servidores bare-metal de Bundes-Cloud.",
+    },
   },
   {
     id: "OBS-2026-003",
@@ -499,10 +535,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Mandatory Dual-Override",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "a4b1c837f69201de9814ca5521b0e457f92083bc9e65840d2182049e782bc194",
+      "6289675af194f1138beff36992e489ee084fed9a66e2a87c856ffad8ea828d8a",
     lastAuditDate: "2026-08-10",
-    summary:
-      "Predictive early-alert system tracking student engagement with mandatory advisor interview before any academic intervention.",
+    summary: {
+      EN: "Predictive early-alert system tracking student engagement; an advisor interview is mandatory before any academic intervention (Annex III §3).",
+      FR: "Système d’alerte précoce prédictif sur l’engagement étudiant ; un entretien conseiller est obligatoire avant toute intervention académique (Annexe III §3).",
+      ES: "Sistema predictivo de alerta temprana sobre el compromiso estudiantil; entrevista con tutor obligatoria antes de cualquier intervención académica (Anexo III §3).",
+    },
   },
   {
     id: "OBS-2026-004",
@@ -518,10 +557,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Mandatory Dual-Override",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "1f827364b91827364a0918273645b91827364a0918273645b91827364a091827",
+      "3980314a2a4be4f131d63a1bcafc86704191d19f4b0c1efa87e4f8e5a908394a",
     lastAuditDate: "2026-08-04",
-    summary:
-      "Regulatory sandbox engine evaluating bias and disparate impact in commercial AI models submitted for Spanish conformity.",
+    summary: {
+      EN: "Regulatory sandbox engine evaluating bias and disparate impact in commercial AI models submitted for Spanish conformity assessment.",
+      FR: "Moteur de bac à sable réglementaire évaluant les biais et l’impact disparate des modèles commerciaux soumis à l’évaluation de conformité espagnole.",
+      ES: "Motor de sandbox regulatorio que evalúa sesgo e impacto dispar en modelos comerciales presentados a evaluación de conformidad española.",
+    },
   },
   {
     id: "OBS-2026-005",
@@ -537,10 +579,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Mandatory Dual-Override",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "9c2ef183d298319f029a8374d9201ca7482901efca2810398471920384710293",
+      "39c0b715ade7974a62be1d0464e2d16b278fc7a391da717518f78665bf3ce86c",
     lastAuditDate: "2026-07-30",
-    summary:
-      "Oncology imaging assistance algorithm with strict clinician-in-the-loop sign-off and HDS-certified sovereign hosting.",
+    summary: {
+      EN: "Oncology imaging assistance with mandatory clinician sign-off and HDS-certified sovereign hosting.",
+      FR: "Aide à l’imagerie oncologique avec visa clinicien obligatoire et hébergement souverain certifié HDS.",
+      ES: "Apoyo de imagen oncológica con validación clínica obligatoria y alojamiento soberano certificado HDS.",
+    },
   },
   {
     id: "OBS-2026-006",
@@ -556,10 +601,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Supervised Human Review",
     article4LiteracyStatus: "In Progress",
     waqfledgerProofHash:
-      "4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+      "e7cc7e8a336e4540e1654ce2c48d943665b4ebf5398ee1afd4a513d13a306970",
     lastAuditDate: "2026-06-25",
-    summary:
-      "Billing anomaly detection across healthcare claims with human auditor verification prior to claim suspension.",
+    summary: {
+      EN: "Healthcare-claims anomaly detection; a human auditor must confirm findings before any claim suspension.",
+      FR: "Détection d’anomalies sur les feuilles de soins ; un auditeur humain confirme avant toute suspension de remboursement.",
+      ES: "Detección de anomalías en prestaciones sanitarias; un auditor humano confirma antes de suspender un reembolso.",
+    },
   },
   {
     id: "OBS-2026-007",
@@ -575,10 +623,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Human Advisory Only",
     article4LiteracyStatus: "In Progress",
     waqfledgerProofHash:
-      "8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b",
+      "6833d2a090a143f190a76266ff2a7d146f2212e6dad7753703b85faa3c54bc29",
     lastAuditDate: "2026-07-15",
-    summary:
-      "Judicial research assistant indexing Belgian case law without autonomous decision-making capability.",
+    summary: {
+      EN: "Judicial research assistant indexing Belgian case law without autonomous decision-making capability.",
+      FR: "Assistant de recherche judiciaire indexant la jurisprudence belge, sans capacité de décision autonome.",
+      ES: "Asistente de investigación judicial que indexa jurisprudencia belga, sin capacidad de decisión autónoma.",
+    },
   },
   {
     id: "OBS-2026-008",
@@ -594,10 +645,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Supervised Human Review",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e",
+      "cc86f8b339cc312a1440547f2c0555924d714a3efc5c258ae5e83dc0dd8cd4a1",
     lastAuditDate: "2026-08-05",
-    summary:
-      "Statistical epidemiological spread model running in isolated Swiss federal private cloud infrastructure.",
+    summary: {
+      EN: "Statistical epidemiological spread model running in isolated Swiss federal private-cloud infrastructure.",
+      FR: "Modèle statistique de diffusion épidémiologique opéré dans un cloud privé fédéral suisse isolé.",
+      ES: "Modelo estadístico de difusión epidemiológica ejecutado en una nube privada federal suiza aislada.",
+    },
   },
   {
     id: "OBS-2026-009",
@@ -613,10 +667,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Supervised Human Review",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b",
+      "909f97a6e49344cbf78badc05f3bfe274c9b5b610a182de7c2147d24c185098d",
     lastAuditDate: "2026-08-12",
-    summary:
-      "Public algorithmic inventory mapping municipal service AI with transparency notices.",
+    summary: {
+      EN: "Public algorithmic inventory mapping municipal-service AI with Article 50 transparency notices.",
+      FR: "Inventaire algorithmique public cartographiant l’IA des services municipaux, avec mentions de transparence Article 50.",
+      ES: "Inventario algorítmico público que mapea la IA de servicios municipales, con avisos de transparencia del Artículo 50.",
+    },
   },
   {
     id: "OBS-2026-010",
@@ -632,10 +689,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Mandatory Dual-Override",
     article4LiteracyStatus: "Certified",
     waqfledgerProofHash:
-      "5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e",
+      "ce5eef8b9ddd4f8253e8464f078efd79803d0c844797d80ec9715465fafc5fad",
     lastAuditDate: "2026-07-20",
-    summary:
-      "Small-claims procedural document processing system under judicial clerk oversight.",
+    summary: {
+      EN: "Small-claims procedural document processing under judicial clerk oversight and dual-override control.",
+      FR: "Traitement documentaire des petits litiges sous supervision des greffiers et double override obligatoire.",
+      ES: "Tramitación documental de reclamaciones menores bajo supervisión de letrados y doble anulación obligatoria.",
+    },
   },
   {
     id: "OBS-2026-011",
@@ -651,10 +711,13 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Mandatory Dual-Override",
     article4LiteracyStatus: "In Progress",
     waqfledgerProofHash:
-      "6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d",
+      "2b1bf27856183eb43386ebf1733f466f32f200ea12cf5bb274301f4d7d4a7456",
     lastAuditDate: "2026-08-14",
-    summary:
-      "Academic research evaluator aligned with Quebec Law 25 privacy standards, currently migrating from US cloud to Canadian sovereign hosting.",
+    summary: {
+      EN: "Academic research evaluator aligned with Quebec Law 25, migrating from US-cloud (EU region) hosting to Canadian sovereign infrastructure.",
+      FR: "Évaluateur de recherche académique aligné sur la Loi 25, en migration d’un cloud US (région UE) vers une infrastructure souveraine canadienne.",
+      ES: "Evaluador de investigación académica alineado con la Ley 25, en migración de nube US (región UE) a infraestructura soberana canadiense.",
+    },
   },
   {
     id: "OBS-2026-012",
@@ -670,13 +733,41 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
     humanInTheLoop: "Autonomous (Non-Compliant)",
     article4LiteracyStatus: "Non-Compliant",
     waqfledgerProofHash:
-      "0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b",
+      "a7265fc21e2f7faf95889d747b64cad5fe98c7fe86dd8440b471d863256c676d",
     lastAuditDate: "2026-06-15",
-    summary:
-      "Decommissioned deployment flagged as prohibited real-time public biometric identification under EU AI Act Article 5.",
+    summary: {
+      EN: "Decommissioned historical case: real-time public biometric identification prohibited under EU AI Act Article 5.",
+      FR: "Cas historique décommissionné : identification biométrique publique en temps réel interdite au titre de l’Article 5.",
+      ES: "Caso histórico desmantelado: identificación biométrica pública en tiempo real prohibida por el Artículo 5.",
+    },
+  },
+  {
+    id: "OBS-2026-013",
+    name: "INPS Automated Claims Routing",
+    deployingEntity: "Istituto Nazionale della Previdenza Sociale (INPS)",
+    country: "IT",
+    countryLabel: "Italy",
+    domain: "Social Security",
+    euAiActCategory: "Annex III (Public Service)",
+    riskLevel: "HIGH",
+    hostingSovereignty: "US Cloud (EU Region)",
+    isSovereign: false,
+    humanInTheLoop: "Supervised Human Review",
+    article4LiteracyStatus: "Audit Required",
+    waqfledgerProofHash:
+      "2f00c9ab6dc9ce1b3976961ac7cd960ef25ce481d05a9af733f5917fdf69dd97",
+    lastAuditDate: "2026-08-18",
+    summary: {
+      EN: "Social-security claims routing on a US hyperscaler EU region; human review is required before benefit denial, with an Article 4 literacy audit pending.",
+      FR: "Routage des dossiers de prévoyance sur un hyperscaler US en région UE ; revue humaine obligatoire avant tout refus de prestation, audit de littératie Article 4 en attente.",
+      ES: "Enrutado de expedientes de previsión en hiperescalador US (región UE); revisión humana obligatoria antes de denegar una prestación, con auditoría de alfabetización del Artículo 4 pendiente.",
+    },
   },
 ];
 
-/** Alias used by the explorer — same 12-deployment 2026 corpus. */
+/** Alias used by the explorer — same 13-deployment 2026 corpus. */
 export const OBSERVATORY_DEPLOYMENTS: readonly ObservatoryDeployment[] =
   OBSERVATORY_DATA;
+
+export const OBSERVATORY_CORPUS_COUNT = OBSERVATORY_DATA.length;
+export const OBSERVATORY_JURISDICTION_COUNT = OBSERVATORY_COUNTRIES.length;

@@ -32,7 +32,11 @@ export const SITE_CONFIG = {
   ecosystem: {
     observatory: "https://article4institute.org",
     assuranceLab: "https://safeai.report",
+    arabicObservatory:
+      "https://huggingface.co/spaces/helloadel/arabic-ai-observatory",
+    ledger: "https://waqfledger.tech",
     ledgerVerify: "https://waqfledger.tech/verify",
+    researchDesk: "mailto:support@safeai.report",
   },
   gumroad: {
     tier0: "https://safeai.gumroad.com/l/starter",
@@ -70,9 +74,10 @@ export const BRAND = {
   commercialVehicle: "LLC",
   instituteUrl: SITE_CONFIG.url,
   linkedInUrl: "https://www.linkedin.com/company/l-institut-article-4-a4i/",
-  waqfLedgerUrl: "https://waqfledger.tech",
+  waqfLedgerUrl: SITE_CONFIG.ecosystem.ledger,
   waqfLedgerVerifyUrl: SITE_CONFIG.ecosystem.ledgerVerify,
   safeAiReportUrl: SITE_CONFIG.ecosystem.assuranceLab,
+  arabicObservatoryUrl: SITE_CONFIG.ecosystem.arabicObservatory,
   gumroadStoreUrl: "https://safeai.gumroad.com",
 } as const;
 
@@ -280,6 +285,11 @@ export const BOUCLIER_PUBLIC = {
     FR: "Livrable de préparation à la gouvernance — jamais un certificat de conformité légale ni une homologation officielle AI Act.",
     EN: "Governance-readiness artifact — never a legal conformity certificate or official AI Act homologation.",
     ES: "Artefacto de preparación a la gobernanza — nunca un certificado de conformidad legal ni una homologación oficial del AI Act.",
+  },
+  programBadge: {
+    FR: "Programme non-lucratif pro bono — CC BY-NC 4.0",
+    EN: "Non-profit pro-bono programme — CC BY-NC 4.0",
+    ES: "Programa pro bono sin fines de lucro — CC BY-NC 4.0",
   },
 } as const;
 

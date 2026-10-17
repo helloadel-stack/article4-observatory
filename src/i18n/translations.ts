@@ -63,7 +63,10 @@ export type TranslationDict = {
   kpiSovereignHint: string;
   kpiWaqfAnchored: string;
   kpiWaqfSealHint: string;
+  kpiComplianceHint: string;
   exportDatasetCsv: string;
+  exportDatasetJson: string;
+  licenseHint: string;
   searchLabel: string;
   searchPlaceholderEntity: string;
   jurisdictionFilter: string;
@@ -98,6 +101,7 @@ export type TranslationDict = {
   colHitl: string;
   colLiteracy: string;
   colAuditDate: string;
+  colComplianceScore: string;
   verifyProofSha256: string;
   noResults: string;
   downloadCsv: string;
@@ -185,9 +189,9 @@ export const translations: Record<Lang, TranslationDict> = {
     logoSubtitle: localeMessages.EN.hero.badge,
     announcement:
       "2026 Mandate | Article 4 · Annex III High-Risk · ISO/IEC 42001 · Quebec Law 25",
-    navFramework: "Observatoire",
+    navFramework: "Deployments Mapping",
     navNexus: "A4I Nexus",
-    navMapping: "2026 Mapping",
+    navMapping: "Transatlantic Standards",
     navComplianceKits: "Audit Toolkits",
     navWaqfLedger: "WaqfLedger Proof",
     navDocumentation: "Benchmark",
@@ -229,7 +233,6 @@ export const translations: Record<Lang, TranslationDict> = {
     kpiTotalDeployments: localeMessages.EN.explorer.kpiTotalDeployments,
     kpiHighRiskAnnexIii: "% High-Risk Annex III",
     kpiSovereignCloud: "% Sovereign Cloud Adoption",
-    kpiAvgCompliance: "Average Compliance Score",
     kpiCoverageHint: localeMessages.EN.explorer.kpiCoverageHint,
     kpiHighRiskSystems: localeMessages.EN.explorer.kpiHighRiskSystems,
     kpiArt14Hint: localeMessages.EN.explorer.kpiArt14Hint,
@@ -237,7 +240,12 @@ export const translations: Record<Lang, TranslationDict> = {
     kpiSovereignHint: localeMessages.EN.explorer.kpiSovereignHint,
     kpiWaqfAnchored: localeMessages.EN.explorer.kpiWaqfAnchored,
     kpiWaqfSealHint: localeMessages.EN.explorer.kpiWaqfSealHint,
+    kpiAvgCompliance: localeMessages.EN.explorer.kpiAvgCompliance,
+    kpiComplianceHint: localeMessages.EN.explorer.kpiComplianceHint,
     exportDatasetCsv: localeMessages.EN.explorer.exportDatasetCsv,
+    exportDatasetJson: localeMessages.EN.explorer.exportDatasetJson,
+    licenseHint: localeMessages.EN.explorer.licenseHint,
+    citeDataset: localeMessages.EN.explorer.citeDataset,
     searchLabel: localeMessages.EN.explorer.searchLabel,
     searchPlaceholderEntity: localeMessages.EN.explorer.searchPlaceholderEntity,
     jurisdictionFilter: localeMessages.EN.explorer.jurisdictionFilter,
@@ -270,13 +278,13 @@ export const translations: Record<Lang, TranslationDict> = {
     colDomain: "Domain",
     colRisk: "Risk tier",
     colHitl: localeMessages.EN.explorer.colHitl,
-    colLiteracy: "Article 4 literacy",
-    colAuditDate: "Last audit",
+    colLiteracy: localeMessages.EN.explorer.colLiteracy,
+    colAuditDate: localeMessages.EN.explorer.colAuditDate,
+    colComplianceScore: localeMessages.EN.explorer.colComplianceScore,
     verifyProofSha256: "Verify SHA-256 Proof",
     noResults: "No records match the current filters.",
     downloadCsv: "Download CSV",
     downloadJson: "Download JSON",
-    citeDataset: "Cite This Dataset",
     citeModalTitle: "Cite This Dataset",
     citeApaLabel: "APA",
     citeBibtexLabel: "BibTeX",
@@ -285,7 +293,7 @@ export const translations: Record<Lang, TranslationDict> = {
     close: "Close",
     methodologyTitle: "Methodology & Open Research",
     methodologyText:
-      "The Article 4 Institute maintains this Observatoire as an open, non-partisan research framework. The 2026 benchmarking corpus indexes 12 authoritative public and educational AI deployments. Entries are drawn from publicly verifiable sources and institutional disclosures. Risk tiers follow EU AI Act Annex III, Article 50, and Article 5. Hosting sovereignty reflects infrastructure jurisdiction and operational control, not political endorsement. Each record is bound to a SHA-256 digest resolvable on WaqfLedger. Datasets are versioned and open to scholarly scrutiny.",
+      "The Article 4 Institute maintains this Observatoire as an open, non-partisan research framework. The 2026 benchmarking corpus indexes 13 authoritative public and educational AI deployments across 10 jurisdictions, including Italy. Entries are drawn from publicly verifiable sources and institutional disclosures. Risk tiers follow EU AI Act Annex III, Article 50, and Article 5. Hosting sovereignty reflects infrastructure jurisdiction and operational control, not political endorsement. Each record is bound to a SHA-256 digest resolvable on WaqfLedger. Datasets are versioned and open to scholarly scrutiny.",
     safeAiDisclosure:
       "Automated audits and security assurance powered by the VerifIA Protocol at SafeAI.report (Assurance Lab), with SHA-256 state receipts on WaqfLedger.",
     poweredBySafeAi: "Powered by VerifIA · SafeAI.report",
@@ -366,9 +374,9 @@ export const translations: Record<Lang, TranslationDict> = {
     logoSubtitle: localeMessages.FR.hero.badge,
     announcement:
       "Mandat 2026 | Article 4 · Annexe III haut risque · ISO/IEC 42001 · Loi 25 Québec",
-    navFramework: "Observatoire",
+    navFramework: "Cartographie des déploiements",
     navNexus: "A4I Nexus",
-    navMapping: "Cartographie 2026",
+    navMapping: "Référentiels transatlantiques",
     navComplianceKits: "Kits d’audit",
     navWaqfLedger: "Preuve WaqfLedger",
     navDocumentation: "Benchmark / Évaluation",
@@ -410,7 +418,6 @@ export const translations: Record<Lang, TranslationDict> = {
     kpiTotalDeployments: localeMessages.FR.explorer.kpiTotalDeployments,
     kpiHighRiskAnnexIii: "% haut risque Annexe III",
     kpiSovereignCloud: "% d’adoption cloud souverain",
-    kpiAvgCompliance: "Score moyen de conformité",
     kpiCoverageHint: localeMessages.FR.explorer.kpiCoverageHint,
     kpiHighRiskSystems: localeMessages.FR.explorer.kpiHighRiskSystems,
     kpiArt14Hint: localeMessages.FR.explorer.kpiArt14Hint,
@@ -418,7 +425,12 @@ export const translations: Record<Lang, TranslationDict> = {
     kpiSovereignHint: localeMessages.FR.explorer.kpiSovereignHint,
     kpiWaqfAnchored: localeMessages.FR.explorer.kpiWaqfAnchored,
     kpiWaqfSealHint: localeMessages.FR.explorer.kpiWaqfSealHint,
+    kpiAvgCompliance: localeMessages.FR.explorer.kpiAvgCompliance,
+    kpiComplianceHint: localeMessages.FR.explorer.kpiComplianceHint,
     exportDatasetCsv: localeMessages.FR.explorer.exportDatasetCsv,
+    exportDatasetJson: localeMessages.FR.explorer.exportDatasetJson,
+    licenseHint: localeMessages.FR.explorer.licenseHint,
+    citeDataset: localeMessages.FR.explorer.citeDataset,
     searchLabel: localeMessages.FR.explorer.searchLabel,
     searchPlaceholderEntity: localeMessages.FR.explorer.searchPlaceholderEntity,
     jurisdictionFilter: localeMessages.FR.explorer.jurisdictionFilter,
@@ -451,13 +463,13 @@ export const translations: Record<Lang, TranslationDict> = {
     colDomain: "Domaine",
     colRisk: "Niveau de risque",
     colHitl: localeMessages.FR.explorer.colHitl,
-    colLiteracy: "Littératie Article 4",
-    colAuditDate: "Dernier audit",
+    colLiteracy: localeMessages.FR.explorer.colLiteracy,
+    colAuditDate: localeMessages.FR.explorer.colAuditDate,
+    colComplianceScore: localeMessages.FR.explorer.colComplianceScore,
     verifyProofSha256: "Vérifier la Preuve SHA-256",
     noResults: "Aucun enregistrement ne correspond aux filtres actuels.",
     downloadCsv: "Télécharger CSV",
     downloadJson: "Télécharger JSON",
-    citeDataset: "Citer ce jeu de données",
     citeModalTitle: "Citer ce jeu de données",
     citeApaLabel: "APA",
     citeBibtexLabel: "BibTeX",
@@ -466,7 +478,7 @@ export const translations: Record<Lang, TranslationDict> = {
     close: "Fermer",
     methodologyTitle: "Méthodologie et recherche ouverte",
     methodologyText:
-      "L’Article 4 Institute maintient cet Observatoire comme un cadre de recherche ouvert et non partisan. Le corpus de benchmarking 2026 indexe 12 déploiements publics et éducatifs faisant autorité. Les entrées proviennent de sources publiques vérifiables et de divulgations institutionnelles. Les niveaux de risque suivent l’Annexe III, l’Article 50 et l’Article 5 du règlement européen sur l’IA. La souveraineté d’hébergement reflète la juridiction et le contrôle opérationnel des infrastructures, et non un endossement politique. Chaque enregistrement est lié à un condensé SHA-256 résoluble sur WaqfLedger. Les jeux de données sont versionnés et ouverts à l’examen scientifique.",
+      "L’Article 4 Institute maintient cet Observatoire comme un cadre de recherche ouvert et non partisan. Le corpus de benchmarking 2026 indexe 13 déploiements publics et éducatifs faisant autorité, sur 10 juridictions, y compris l’Italie. Les entrées proviennent de sources publiques vérifiables et de divulgations institutionnelles. Les niveaux de risque suivent l’Annexe III, l’Article 50 et l’Article 5 du règlement européen sur l’IA. La souveraineté d’hébergement reflète la juridiction et le contrôle opérationnel des infrastructures, et non un endossement politique. Chaque enregistrement est lié à un condensé SHA-256 résoluble sur WaqfLedger. Les jeux de données sont versionnés et ouverts à l’examen scientifique.",
     safeAiDisclosure:
       "Audits automatisés et assurance de sécurité alimentés par le protocole VerifIA sur SafeAI.report (Assurance Lab), avec reçus d’état SHA-256 sur WaqfLedger.",
     poweredBySafeAi: "Propulsé par VerifIA · SafeAI.report",
@@ -547,9 +559,9 @@ export const translations: Record<Lang, TranslationDict> = {
     logoSubtitle: localeMessages.ES.hero.badge,
     announcement:
       "Mandato 2026 | Artículo 4 · Anexo III alto riesgo · ISO/IEC 42001 · Ley 25 de Quebec",
-    navFramework: "Observatorio",
+    navFramework: "Mapeo de despliegues",
     navNexus: "A4I Nexus",
-    navMapping: "Cartografía 2026",
+    navMapping: "Estándares transatlánticos",
     navComplianceKits: "Kits de auditoría",
     navWaqfLedger: "Prueba WaqfLedger",
     navDocumentation: "Benchmark / Evaluación",
@@ -591,7 +603,6 @@ export const translations: Record<Lang, TranslationDict> = {
     kpiTotalDeployments: localeMessages.ES.explorer.kpiTotalDeployments,
     kpiHighRiskAnnexIii: "% alto riesgo Anexo III",
     kpiSovereignCloud: "% de adopción de nube soberana",
-    kpiAvgCompliance: "Puntuación media de cumplimiento",
     kpiCoverageHint: localeMessages.ES.explorer.kpiCoverageHint,
     kpiHighRiskSystems: localeMessages.ES.explorer.kpiHighRiskSystems,
     kpiArt14Hint: localeMessages.ES.explorer.kpiArt14Hint,
@@ -599,7 +610,12 @@ export const translations: Record<Lang, TranslationDict> = {
     kpiSovereignHint: localeMessages.ES.explorer.kpiSovereignHint,
     kpiWaqfAnchored: localeMessages.ES.explorer.kpiWaqfAnchored,
     kpiWaqfSealHint: localeMessages.ES.explorer.kpiWaqfSealHint,
+    kpiAvgCompliance: localeMessages.ES.explorer.kpiAvgCompliance,
+    kpiComplianceHint: localeMessages.ES.explorer.kpiComplianceHint,
     exportDatasetCsv: localeMessages.ES.explorer.exportDatasetCsv,
+    exportDatasetJson: localeMessages.ES.explorer.exportDatasetJson,
+    licenseHint: localeMessages.ES.explorer.licenseHint,
+    citeDataset: localeMessages.ES.explorer.citeDataset,
     searchLabel: localeMessages.ES.explorer.searchLabel,
     searchPlaceholderEntity: localeMessages.ES.explorer.searchPlaceholderEntity,
     jurisdictionFilter: localeMessages.ES.explorer.jurisdictionFilter,
@@ -632,13 +648,13 @@ export const translations: Record<Lang, TranslationDict> = {
     colDomain: "Dominio",
     colRisk: "Nivel de riesgo",
     colHitl: localeMessages.ES.explorer.colHitl,
-    colLiteracy: "Alfabetización Artículo 4",
-    colAuditDate: "Última auditoría",
+    colLiteracy: localeMessages.ES.explorer.colLiteracy,
+    colAuditDate: localeMessages.ES.explorer.colAuditDate,
+    colComplianceScore: localeMessages.ES.explorer.colComplianceScore,
     verifyProofSha256: "Verificar la prueba SHA-256",
     noResults: "Ningún registro coincide con los filtros actuales.",
     downloadCsv: "Descargar CSV",
     downloadJson: "Descargar JSON",
-    citeDataset: "Citar este conjunto de datos",
     citeModalTitle: "Citar este conjunto de datos",
     citeApaLabel: "APA",
     citeBibtexLabel: "BibTeX",
@@ -647,7 +663,7 @@ export const translations: Record<Lang, TranslationDict> = {
     close: "Cerrar",
     methodologyTitle: "Metodología e investigación abierta",
     methodologyText:
-      "El Article 4 Institute mantiene este Observatorio como un marco de investigación abierto y no partidista. El corpus de benchmarking 2026 indexa 12 despliegues públicos y educativos de referencia. Las entradas proceden de fuentes públicas verificables y divulgaciones institucionales. Los niveles de riesgo siguen el Anexo III, el Artículo 50 y el Artículo 5 del Reglamento de IA. La soberanía de alojamiento refleja jurisdicción e infraestructura, no un respaldo político. Cada registro se vincula a un digest SHA-256 resoluble en WaqfLedger. Los conjuntos de datos están versionados y abiertos al escrutinio académico.",
+      "El Article 4 Institute mantiene este Observatorio como un marco de investigación abierto y no partidista. El corpus de benchmarking 2026 indexa 13 despliegues públicos y educativos de referencia, en 10 jurisdicciones, incluida Italia. Las entradas proceden de fuentes públicas verificables y divulgaciones institucionales. Los niveles de riesgo siguen el Anexo III, el Artículo 50 y el Artículo 5 del Reglamento de IA. La soberanía de alojamiento refleja jurisdicción e infraestructura, no un respaldo político. Cada registro se vincula a un digest SHA-256 resoluble en WaqfLedger. Los conjuntos de datos están versionados y abiertos al escrutinio académico.",
     safeAiDisclosure:
       "Auditorías automatizadas y aseguramiento de seguridad impulsados por el protocolo VerifIA en SafeAI.report (Assurance Lab), con recibos de estado SHA-256 en WaqfLedger.",
     poweredBySafeAi: "Impulsado por VerifIA · SafeAI.report",

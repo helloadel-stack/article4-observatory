@@ -1,6 +1,12 @@
 import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
-import { BOUCLIER_PUBLIC, BRAND } from "@/src/config/constants";
+import {
+  BOUCLIER_PUBLIC,
+  BRAND,
+  DEFAULT_LANG,
+  SUPPORTED_LANGS,
+  type Lang,
+} from "@/src/config/constants";
 import { upsertRecord } from "@/src/lib/db";
 import { enforceRateLimit } from "@/src/lib/rateLimit";
 import { sanitizeText } from "@/src/lib/sanitize";
@@ -19,7 +25,15 @@ type AttestationBody = {
   departmentType?: unknown;
   email?: unknown;
   maturityLevel?: unknown;
+  lang?: unknown;
 };
+
+function parseLang(value: unknown): Lang {
+  if (typeof value === "string" && (SUPPORTED_LANGS as readonly string[]).includes(value)) {
+    return value as Lang;
+  }
+  return DEFAULT_LANG;
+}
 
 type AttestationRecord = {
   id: string;
@@ -103,6 +117,8 @@ export async function POST(request: Request) {
       );
     }
 
+    const lang = parseLang(body.lang);
+
     const issuedAt = new Date().toISOString();
     const canonical = JSON.stringify({
       departmentType,
@@ -160,7 +176,8 @@ export async function POST(request: Request) {
         hashProof,
         proofId,
         isAnchored,
-        title: BOUCLIER_PUBLIC.artifactName.FR,
+        title: BOUCLIER_PUBLIC.artifactName[lang],
+        lang,
         issuedAt,
         verifyUrl,
         institutionName,

@@ -65,7 +65,18 @@ export default function Footer({ t, lang }: FooterProps) {
               </li>
               <li>
                 <a
-                  href={SITE_CONFIG.ecosystem.ledgerVerify}
+                  href={SITE_CONFIG.ecosystem.arabicObservatory}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  {l.footer.arabicObservatory}
+                  <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={SITE_CONFIG.ecosystem.ledger}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={linkClass}
