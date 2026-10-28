@@ -82,8 +82,17 @@
     "titleText": "Sovereign AI Assurance: Benchmarking Dialect Drift, Token Economics, and PDPL Compliance in MENA-EU Enterprise Deployments",
     "authority": "Profesor Adel El Bouzagaoui — L'Institut Article 4 (A4I)",
     "summary": "Evaluación empírica de modelos fundacionales con capacidad árabe en darija marroquí, najdi saudí, egipcio y alternancia de código levantina, cuantificando la caída de precisión del 37 %, el sobrecoste de fertilidad de tokens (1,18 a 2,85 tok/palabra) y la exposición jurídica transfronteriza bajo la PDPL saudí y el artículo 4 del Reglamento de IA de la UE.",
+    "ctaDownload": "Descargar el Libro Blanco (PDF)",
+    "ctaEngine": "Acceder al motor de aseguramiento en vivo ↗",
     "ctaLab": "Abrir safeAI.report",
-    "ctaContact": "Escribir al despacho de investigación"
+    "ctaContact": "Escribir al despacho de investigación",
+    "citeHeading": "Citar esta publicación (ORCID / Google Scholar / Zenodo)",
+    "copyCitation": "Copiar la cita",
+    "copiedCitation": "Cita copiada",
+    "copyBibtex": "Copiar BibTeX",
+    "copiedBibtex": "BibTeX copiado",
+    "showBibtex": "Mostrar BibTeX",
+    "hideBibtex": "Ocultar BibTeX"
   },
   "standards": {
     "quebec": "Alineación con la Ley 25 de Quebec y estándares de investigación"

@@ -57,6 +57,29 @@ export const SITE_CONFIG = {
   },
 } as const;
 
+/**
+ * Canonical 2026 Sovereign AI Assurance whitepaper.
+ * Academic strings are the deposit record; chrome labels live in locale JSON.
+ */
+export const WHITEPAPER_2026 = {
+  doi: "10.5281/zenodo.23737341",
+  doiLabel: "DOI: 10.5281/zenodo.23737341",
+  doiUrl: "https://doi.org/10.5281/zenodo.23737341",
+  pdfPath: "/A4I_Sovereign_AI_Assurance_Whitepaper_2026.pdf",
+  liveEngineUrl: SITE_CONFIG.ecosystem.assuranceLab,
+  citation:
+    "El Bouzagaoui, A. (2026). Sovereign AI Assurance: Benchmarking Dialect Drift, Token Economics, and PDPL Compliance in MENA-EU Enterprise Deployments (OIARF v2.0 & Arabic AI Observatory 521-Scenario Specification). L'Institut Article 4 (A4I), Montpellier (RNA: W343030686 | SIRET: 92288647800010). https://doi.org/10.5281/zenodo.23737341",
+  bibtex: `@techreport{elbouzagaoui2026sovereign,
+  author = {El Bouzagaoui, Adel},
+  title = {Sovereign AI Assurance: Benchmarking Dialect Drift, Token Economics, and PDPL Compliance in MENA-EU Enterprise Deployments},
+  institution = {L'Institut Article 4 (A4I)},
+  year = {2026},
+  number = {A4I-WP-2026-V2.0},
+  doi = {10.5281/zenodo.23737341},
+  url = {https://article4institute.org}
+}`,
+} as const;
+
 export const BRAND = {
   name: SITE_CONFIG.name,
   shortName: SITE_CONFIG.shortName,

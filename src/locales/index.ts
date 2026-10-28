@@ -87,8 +87,17 @@ export type LocaleMessages = {
     titleText: string;
     authority: string;
     summary: string;
+    ctaDownload: string;
+    ctaEngine: string;
     ctaLab: string;
     ctaContact: string;
+    citeHeading: string;
+    copyCitation: string;
+    copiedCitation: string;
+    copyBibtex: string;
+    copiedBibtex: string;
+    showBibtex: string;
+    hideBibtex: string;
   };
   standards: {
     quebec: string;
