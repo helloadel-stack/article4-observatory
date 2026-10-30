@@ -20,6 +20,7 @@ import {
   DEFAULT_LANG,
   INSTITUTIONAL_POSITIONING,
   SITE_METADATA,
+  WHITEPAPER_2026,
 } from "@/src/config/constants";
 import { translations } from "@/src/i18n/translations";
 import { getLocaleMessages } from "@/src/locales";
@@ -153,6 +154,9 @@ const jsonLd = {
       name: "Sovereign AI Assurance: Benchmarking Dialect Drift, Token Economics, and PDPL Compliance in MENA-EU Enterprise Deployments",
       datePublished: "2026",
       inLanguage: "en",
+      identifier: WHITEPAPER_2026.doi,
+      sameAs: WHITEPAPER_2026.doiUrl,
+      encodingFormat: "application/pdf",
       author: {
         "@type": "Person",
         name: "Adel El Bouzagaoui",
@@ -166,7 +170,7 @@ const jsonLd = {
         name: SITE_METADATA.publisher,
         url: BRAND.instituteUrl,
       },
-      url: BRAND.safeAiReportUrl,
+      url: `${BRAND.instituteUrl}${WHITEPAPER_2026.pdfPath}`,
     },
     {
       "@type": "Product",
