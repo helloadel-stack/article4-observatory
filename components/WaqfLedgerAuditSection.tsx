@@ -43,12 +43,12 @@ const copy = {
       {
         title: "Institutional Chain of Custody",
         description:
-          "Link every AI Audit Passport™ and B2B license to a verifiable WaqfLedger proof.",
+          "Link every AI Audit Passport™ and research-protocol proof to a verifiable WaqfLedger record.",
         icon: Link2,
       },
     ],
     engineTitle: "Local Cryptographic Proof Engine",
-    generateLicense: "Generate License Proof",
+    generateLicense: "Generate a protocol proof",
     generateCert: "Complete Module 1 Assessment for A4I-CERT",
     generating: "Hashing…",
     latestProof: "Latest generated proof ID",
@@ -88,12 +88,12 @@ const copy = {
       {
         title: "Chaîne de custodie institutionnelle",
         description:
-          "Reliez chaque Passeport d’Audit IA™ et licence B2B à une preuve WaqfLedger vérifiable.",
+          "Reliez chaque Passeport d’Audit IA™ et preuve de protocole de recherche à un enregistrement WaqfLedger vérifiable.",
         icon: Link2,
       },
     ],
     engineTitle: "Moteur de preuve cryptographique local",
-    generateLicense: "Générer une preuve de licence",
+    generateLicense: "Générer une preuve de protocole",
     generateCert: "Terminer le Module 1 pour un A4I-CERT",
     generating: "Hachage…",
     latestProof: "Dernier ID de preuve généré",
@@ -133,12 +133,12 @@ const copy = {
       {
         title: "Cadena de custodia institucional",
         description:
-          "Vincule cada Pasaporte de Auditoría IA™ y licencia B2B a una prueba WaqfLedger verificable.",
+          "Vincule cada Pasaporte de Auditoría IA™ y prueba de protocolo de investigación a un registro WaqfLedger verificable.",
         icon: Link2,
       },
     ],
     engineTitle: "Motor de prueba criptográfica local",
-    generateLicense: "Generar prueba de licencia",
+    generateLicense: "Generar una prueba de protocolo",
     generateCert: "Completar el Módulo 1 para un A4I-CERT",
     generating: "Hasheando…",
     latestProof: "Último ID de prueba generado",
@@ -201,7 +201,7 @@ export default function WaqfLedgerAuditSection({
     try {
       const proofId = await generateProofId(kind, {
         kind,
-        product: "B2B Institutional License",
+        product: "Institutional Research Protocol",
         institute: BRAND.institute,
         tsBucket: new Date().toISOString().slice(0, 13),
         tier: "tier3",

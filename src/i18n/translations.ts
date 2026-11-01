@@ -192,7 +192,7 @@ export const translations: Record<Lang, TranslationDict> = {
     navFramework: "Deployments Mapping",
     navNexus: "A4I Nexus",
     navMapping: "Transatlantic Standards",
-    navComplianceKits: "Audit Toolkits",
+    navComplianceKits: "Research Corpora",
     navWaqfLedger: "WaqfLedger Proof",
     navDocumentation: "Benchmark",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
@@ -205,7 +205,7 @@ export const translations: Record<Lang, TranslationDict> = {
     ecosystemBadge: localeMessages.EN.ecosystem.badge,
     ecosystemDesc: localeMessages.EN.ecosystem.desc,
     standardsQuebec: localeMessages.EN.standards.quebec,
-    primaryCta: "View Audit Toolkits",
+    primaryCta: "Research Corpora",
     langToggleLabel: "Interface language",
     badgeTrilingual: "EN · FR · ES Trilingual",
     badgeGdpr: "GDPR · EU AI Act · Loi 25",
@@ -316,13 +316,13 @@ export const translations: Record<Lang, TranslationDict> = {
     footerNexus: "A4I Nexus Architecture",
     footerWaqfLedger: "WaqfLedger Proof Engine",
     footerAssessment: "Article 4 AI Assessment",
-    footerStorefront: "SafeAI Storefront (LLC / Gumroad MoR)",
+    footerStorefront: "VerifIA Protocol (open science)",
     footerMerchantDisclosure: localeMessages.EN.legal.entityNotice,
     footerIdentity: INSTITUTIONAL_POSITIONING.identity.EN,
     nexusEyebrow: localeMessages.EN.ecosystem.badge,
     nexusTitle: "The A4I Nexus — Tripartite Architecture",
     nexusSubtitle:
-      "A sovereign Tiers de Confiance spanning a non-profit observatoire, a RegTech audit protocol, and a US LLC commercial vehicle.",
+      "A sovereign Tiers de Confiance spanning a non-profit observatoire, the VerifIA protocol, and non-commercial scientific cooperation.",
     mappingEyebrow: "2026 Standards",
     mappingTitle: "Transatlantic Regulatory Mapping",
     mappingSubtitle:
@@ -362,11 +362,11 @@ export const translations: Record<Lang, TranslationDict> = {
     privacyIntro:
       "Article 4 Institute processes limited contact and crowdsource metadata to operate observatoire and institutional governance services under the GDPR, Quebec Law 25, and EU AI Act transparency duties.",
     privacyTerms:
-      "Privacy Terms: We collect only information you voluntarily submit (agency names, tool metadata, optional contact notes). Data is used for research review, procurement follow-up, and cryptographic proof logging via WaqfLedger. We do not sell personal data. Retention is limited to verification and audit necessities.",
+      "Privacy Terms: We collect only information you voluntarily submit (agency names, tool metadata, optional contact notes). Data is used for research review, institutional scientific follow-up, and cryptographic proof logging via WaqfLedger. We do not sell personal data. Retention is limited to verification and audit necessities.",
     privacyDpo: `Data Protection Officer: ${SITE_METADATA.contactEmail}`,
     privacyProcessor:
-      "Digital products, invoicing, and EU VAT collection for SafeAI Framework are securely processed and fulfilled by Gumroad, Inc., our global Merchant of Record.",
-    privacyGumroadLink: "Gumroad, Inc. privacy documentation",
+      "L'Institut Article 4 does not operate a commercial checkout and does not resell digital goods. No payment-card data is collected on article4institute.org.",
+    privacyGumroadLink: "Institutional privacy contact",
     privacyClose: "Close privacy notice",
   },
   FR: {
@@ -377,7 +377,7 @@ export const translations: Record<Lang, TranslationDict> = {
     navFramework: "Cartographie des déploiements",
     navNexus: "A4I Nexus",
     navMapping: "Référentiels transatlantiques",
-    navComplianceKits: "Kits d’audit",
+    navComplianceKits: "Corpus de recherche",
     navWaqfLedger: "Preuve WaqfLedger",
     navDocumentation: "Benchmark / Évaluation",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
@@ -390,7 +390,7 @@ export const translations: Record<Lang, TranslationDict> = {
     ecosystemBadge: localeMessages.FR.ecosystem.badge,
     ecosystemDesc: localeMessages.FR.ecosystem.desc,
     standardsQuebec: localeMessages.FR.standards.quebec,
-    primaryCta: "Voir les kits d’audit",
+    primaryCta: "Corpus de recherche",
     langToggleLabel: "Langue de l’interface",
     badgeTrilingual: "Trilingue EN · FR · ES",
     badgeGdpr: "RGPD · AI Act UE · Loi 25",
@@ -501,13 +501,13 @@ export const translations: Record<Lang, TranslationDict> = {
     footerNexus: "Architecture A4I Nexus",
     footerWaqfLedger: "Moteur de preuve WaqfLedger",
     footerAssessment: "Évaluation IA Article 4",
-    footerStorefront: "Boutique SafeAI (LLC / Gumroad MoR)",
+    footerStorefront: "Protocole VerifIA (science ouverte)",
     footerMerchantDisclosure: localeMessages.FR.legal.entityNotice,
     footerIdentity: INSTITUTIONAL_POSITIONING.identity.FR,
     nexusEyebrow: localeMessages.FR.ecosystem.badge,
     nexusTitle: "Le A4I Nexus — architecture tripartite",
     nexusSubtitle:
-      "Un Tiers de confiance souverain articulant un observatoire associatif, un protocole d’audit RegTech et un véhicule commercial LLC américaine.",
+      "Un Tiers de confiance souverain articulant un observatoire associatif, le protocole VerifIA et une coopération scientifique non commerciale.",
     mappingEyebrow: "Référentiels 2026",
     mappingTitle: "Cartographie réglementaire transatlantique",
     mappingSubtitle:
@@ -547,11 +547,11 @@ export const translations: Record<Lang, TranslationDict> = {
     privacyIntro:
       "Article 4 Institute traite des métadonnées de contact et de crowdsourcing limitées pour opérer l’Observatoire et les services de gouvernance institutionnelle au titre du RGPD, de la Loi 25 du Québec et des devoirs de transparence de l’AI Act UE.",
     privacyTerms:
-      "Conditions de confidentialité : nous collectons uniquement les informations que vous soumettez volontairement (noms d’agences, métadonnées d’outils, notes de contact facultatives). Les données servent à la revue de recherche, au suivi des achats et à la journalisation cryptographique via WaqfLedger. Nous ne vendons pas de données personnelles. La conservation est limitée aux nécessités de vérification et d’audit.",
+      "Conditions de confidentialité : nous collectons uniquement les informations que vous soumettez volontairement (noms d’agences, métadonnées d’outils, notes de contact facultatives). Les données servent à la revue de recherche, au suivi scientifique institutionnel et à la journalisation cryptographique via WaqfLedger. Nous ne vendons pas de données personnelles. La conservation est limitée aux nécessités de vérification et d’audit.",
     privacyDpo: `Délégué à la protection des données : ${SITE_METADATA.contactEmail}`,
     privacyProcessor:
-      "Les produits numériques, la facturation et la collecte de la TVA UE pour SafeAI Framework sont traités et fournis de manière sécurisée par Gumroad, Inc., notre Merchant of Record mondial.",
-    privacyGumroadLink: "Documentation confidentialité Gumroad, Inc.",
+      "L'Institut Article 4 n'exploite aucun paiement en ligne et ne revend aucun bien numérique. Aucune donnée de carte n'est collectée sur article4institute.org.",
+    privacyGumroadLink: "Contact confidentialité institutionnel",
     privacyClose: "Fermer l’avis de confidentialité",
   },
   ES: {
@@ -562,7 +562,7 @@ export const translations: Record<Lang, TranslationDict> = {
     navFramework: "Mapeo de despliegues",
     navNexus: "A4I Nexus",
     navMapping: "Estándares transatlánticos",
-    navComplianceKits: "Kits de auditoría",
+    navComplianceKits: "Corpus de investigación",
     navWaqfLedger: "Prueba WaqfLedger",
     navDocumentation: "Benchmark / Evaluación",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
@@ -575,7 +575,7 @@ export const translations: Record<Lang, TranslationDict> = {
     ecosystemBadge: localeMessages.ES.ecosystem.badge,
     ecosystemDesc: localeMessages.ES.ecosystem.desc,
     standardsQuebec: localeMessages.ES.standards.quebec,
-    primaryCta: "Ver kits de auditoría",
+    primaryCta: "Corpus de investigación",
     langToggleLabel: "Idioma de la interfaz",
     badgeTrilingual: "Trilingüe EN · FR · ES",
     badgeGdpr: "RGPD · AI Act UE · Loi 25",
@@ -686,13 +686,13 @@ export const translations: Record<Lang, TranslationDict> = {
     footerNexus: "Arquitectura A4I Nexus",
     footerWaqfLedger: "Motor de pruebas WaqfLedger",
     footerAssessment: "Evaluación IA Artículo 4",
-    footerStorefront: "Tienda SafeAI (LLC / Gumroad MoR)",
+    footerStorefront: "Protocolo VerifIA (ciencia abierta)",
     footerMerchantDisclosure: localeMessages.ES.legal.entityNotice,
     footerIdentity: INSTITUTIONAL_POSITIONING.identity.ES,
     nexusEyebrow: localeMessages.ES.ecosystem.badge,
     nexusTitle: "El A4I Nexus — arquitectura tripartita",
     nexusSubtitle:
-      "Un Tiers de confiance soberano que articula un observatorio asociativo, un protocolo de auditoría RegTech y un vehículo comercial LLC estadounidense.",
+      "Un Tiers de confiance soberano que articula un observatorio asociativo, el protocolo VerifIA y una cooperación científica no comercial.",
     mappingEyebrow: "Estándares 2026",
     mappingTitle: "Cartografía regulatoria transatlántica",
     mappingSubtitle:
@@ -732,11 +732,11 @@ export const translations: Record<Lang, TranslationDict> = {
     privacyIntro:
       "Article 4 Institute procesa metadatos de contacto y crowdsourcing limitados para operar el Observatorio y los servicios de gobernanza institucional bajo el RGPD, la Ley 25 de Quebec y los deberes de transparencia del AI Act UE.",
     privacyTerms:
-      "Términos de privacidad: solo recopilamos la información que usted envía voluntariamente (nombres de agencias, metadatos de herramientas, notas de contacto opcionales). Los datos se usan para revisión de investigación, seguimiento de compras y registro criptográfico vía WaqfLedger. No vendemos datos personales. La retención se limita a necesidades de verificación y auditoría.",
+      "Términos de privacidad: solo recopilamos la información que usted envía voluntariamente (nombres de agencias, metadatos de herramientas, notas de contacto opcionales). Los datos se usan para revisión de investigación, seguimiento científico institucional y registro criptográfico vía WaqfLedger. No vendemos datos personales. La retención se limita a necesidades de verificación y auditoría.",
     privacyDpo: `Delegado de protección de datos: ${SITE_METADATA.contactEmail}`,
     privacyProcessor:
-      "Los productos digitales, la facturación y la recaudación del IVA de la UE para SafeAI Framework son procesados y entregados de forma segura por Gumroad, Inc., nuestro Merchant of Record global.",
-    privacyGumroadLink: "Documentación de privacidad de Gumroad, Inc.",
+      "L'Institut Article 4 no opera ningún pago en línea ni revende bienes digitales. No se recogen datos de tarjeta en article4institute.org.",
+    privacyGumroadLink: "Contacto institucional de privacidad",
     privacyClose: "Cerrar aviso de privacidad",
   },
 };

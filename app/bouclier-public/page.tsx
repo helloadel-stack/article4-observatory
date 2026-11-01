@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import BouclierAttestationForm from "@/components/BouclierAttestationForm";
 import HtmlLangSync from "@/components/HtmlLangSync";
+import WhitePaperCallout from "@/components/WhitePaperCallout";
 
 const BUNDLE_HREF = BOUCLIER_PUBLIC.bundlePath;
 
@@ -476,9 +477,10 @@ export default function BouclierPublicPage() {
       </header>
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
+        <WhitePaperCallout lang={lang} tone="dark" />
         <section
           aria-labelledby="bouclier-hero-heading"
-          className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 px-6 py-12 sm:px-10 sm:py-16"
+          className="relative mt-8 overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 px-6 py-12 sm:px-10 sm:py-16"
         >
           <div
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(99,102,241,0.28),_transparent_42%),radial-gradient(circle_at_bottom_left,_rgba(15,23,42,0.9),_transparent_55%)]"

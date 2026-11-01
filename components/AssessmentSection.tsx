@@ -18,7 +18,7 @@ const copy = {
     eyebrow: "Article 4 Institutional Framework",
     title: ASSESSMENT_PUBLIC_LABEL.EN,
     subtitle:
-      "Three interactive Module 1 scenarios, scored on the server. The full 30-scenario Cisco-grade bank is not live in this free browser client — it ships with Enterprise licensees.",
+      "Three interactive Module 1 scenarios, scored on the server. The full 30-scenario bank is conducted inside institutional research protocols.",
     scenarioLabel: "Scenario",
     of: "of",
     moduleOf: "of Module 1",
@@ -36,13 +36,13 @@ const copy = {
     certHint:
       "Issued only after a server-side pass. Anchored on WaqfLedger when the ledger acknowledges the write.",
     certWithheld:
-      "No A4I-CERT-* is minted below the 80% pass mark. Retry Module 1 or license the full 30-scenario bank.",
+      "No A4I-CERT-* is minted below the 80% pass mark. Retry Module 1. The full bank is conducted inside institutional research protocols.",
     copyProof: "Copy Proof ID",
     copied: "Copied",
     retry: "Retry Module 1",
-    hubNote: `This free client is Module 1 only (scenarios 1–${ASSESSMENT_MODULE_1_SIZE}). Scenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} are not live here.`,
+    hubNote: `This public preview is Module 1 only (scenarios 1–${ASSESSMENT_MODULE_1_SIZE}). Scenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} are conducted inside institutional research protocols.`,
     roadmapBadge: ASSESSMENT_ROADMAP_BADGE.EN,
-    roadmapHint: `Scenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — Enterprise only`,
+    roadmapHint: `Scenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — institutional research protocols`,
     interactive: "Module 1",
     errorNetwork: "Scoring request failed. Try again.",
     errorGrade: "Unable to grade this attempt.",
@@ -53,7 +53,7 @@ const copy = {
     eyebrow: "Cadre institutionnel Article 4",
     title: ASSESSMENT_PUBLIC_LABEL.FR,
     subtitle:
-      "Trois scénarios interactifs du Module 1, notés côté serveur. La banque Cisco de 30 scénarios n’est pas active dans ce client navigateur gratuit — elle est réservée aux licenciés Enterprise.",
+      "Trois scénarios interactifs du Module 1, notés côté serveur. La banque de 30 scénarios est conduite dans les protocoles de recherche institutionnels.",
     scenarioLabel: "Scénario",
     of: "sur",
     moduleOf: "du Module 1",
@@ -71,13 +71,13 @@ const copy = {
     certHint:
       "Émise uniquement après une réussite côté serveur. Ancrée sur WaqfLedger lorsque le registre confirme l’écriture.",
     certWithheld:
-      "Aucun A4I-CERT-* n’est émis sous le seuil de 80 %. Réessayez le Module 1 ou licenciez la banque complète.",
+      "Aucun A4I-CERT-* n’est émis sous le seuil de 80 %. Réessayez le Module 1. La banque complète relève des protocoles de recherche institutionnels.",
     copyProof: "Copier l’ID de preuve",
     copied: "Copié",
     retry: "Réessayer le Module 1",
-    hubNote: `Ce client gratuit couvre uniquement le Module 1 (scénarios 1–${ASSESSMENT_MODULE_1_SIZE}). Les scénarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} ne sont pas actifs ici.`,
+    hubNote: `Cet aperçu public couvre uniquement le Module 1 (scénarios 1–${ASSESSMENT_MODULE_1_SIZE}). Les scénarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} relèvent des protocoles de recherche institutionnels.`,
     roadmapBadge: ASSESSMENT_ROADMAP_BADGE.FR,
-    roadmapHint: `Scénarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — Enterprise uniquement`,
+    roadmapHint: `Scénarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — protocoles de recherche institutionnels`,
     interactive: "Module 1",
     errorNetwork: "Échec de la notation. Réessayez.",
     errorGrade: "Impossible de noter cette tentative.",
@@ -88,7 +88,7 @@ const copy = {
     eyebrow: "Marco institucional Artículo 4",
     title: ASSESSMENT_PUBLIC_LABEL.ES,
     subtitle:
-      "Tres escenarios interactivos del Módulo 1, puntuados en el servidor. El banco Cisco de 30 escenarios no está activo en este cliente de navegador gratuito — se incluye con licencias Enterprise.",
+      "Tres escenarios interactivos del Módulo 1, puntuados en el servidor. El banco de 30 escenarios se conduce dentro de protocolos de investigación institucionales.",
     scenarioLabel: "Escenario",
     of: "de",
     moduleOf: "del Módulo 1",
@@ -106,13 +106,13 @@ const copy = {
     certHint:
       "Se emite solo tras un aprobado en el servidor. Se ancla en WaqfLedger cuando el registro confirma la escritura.",
     certWithheld:
-      "No se acuña ningún A4I-CERT-* por debajo del 80 %. Reintente el Módulo 1 o licencie el banco completo.",
+      "No se acuña ningún A4I-CERT-* por debajo del 80 %. Reintente el Módulo 1. El banco completo corresponde a protocolos de investigación institucionales.",
     copyProof: "Copiar ID de prueba",
     copied: "Copiado",
     retry: "Reintentar Módulo 1",
-    hubNote: `Este cliente gratuito cubre solo el Módulo 1 (escenarios 1–${ASSESSMENT_MODULE_1_SIZE}). Los escenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} no están activos aquí.`,
+    hubNote: `Esta vista pública cubre solo el Módulo 1 (escenarios 1–${ASSESSMENT_MODULE_1_SIZE}). Los escenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} corresponden a protocolos de investigación institucionales.`,
     roadmapBadge: ASSESSMENT_ROADMAP_BADGE.ES,
-    roadmapHint: `Escenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — solo Enterprise`,
+    roadmapHint: `Escenarios ${ASSESSMENT_MODULE_1_SIZE + 1}–${ASSESSMENT_SCENARIO_COUNT} — protocolos de investigación institucionales`,
     interactive: "Módulo 1",
     errorNetwork: "Falló la puntuación. Inténtelo de nuevo.",
     errorGrade: "No se pudo calificar este intento.",

@@ -48,10 +48,10 @@ function buildMissionPdf(params: {
   return buildSimplePdf(
     [
       BRAND.institute.toUpperCase(),
-      "SafeAI Framework — Mission & Formation Executive",
+      "Protocole de recherche empirique — mission d'intérêt général",
       BRAND.instituteUrl,
       "",
-      "CONVENTION DE MISSION & LETTRE D'INVITATION OFFICIELLE",
+      "LETTRE D'INTENTION INSTITUTIONNELLE (LOI)",
       ATELIERS_JURIDIQUES.documentTitle,
       `Identifiant : ${params.bookingId}`,
       "",
@@ -70,14 +70,15 @@ function buildMissionPdf(params: {
       `Email : ${maskedEmail}`,
       `Référence de réservation : ${params.bookingId}`,
       "",
-      "CLAUSES DE GARANTIE FINANCIÈRE DE L'HÔTE",
+      "COOPÉRATION SCIENTIFIQUE — BASE NON COMMERCIALE",
+      "Aucun honoraire de conseil et aucun frais de formation ne sont facturés.",
       params.coversLogistics
-        ? "L'établissement hôte confirme la prise en charge des billets de transport aller-retour, de l'hébergement pour la durée de la mission, et des frais de mission raisonnables de l'intervenant."
-        : "Garantie financière (transport / hébergement) : à confirmer — convention non émise.",
-      "Cette Convention de Mission n'est émise qu'après confirmation expresse de cette garantie.",
+        ? "L'établissement hôte peut prendre en charge le transport et l'hébergement du chercheur au titre de la logistique de recherche."
+        : "Logistique de recherche (transport / hébergement) : à confirmer — lettre non émise.",
+      "Cette lettre d'intention n'est émise qu'après confirmation de cette logistique, sans rémunération.",
       "",
-      "Cette lettre vaut Convention de Mission et invitation",
-      "officielle à intervenir sur site. Confirmation finale :",
+      "Cette lettre vaut LOI pour un séminaire doctrinal",
+      "ou un briefing de direction. Confirmation finale :",
       SITE_METADATA.contactEmail,
       "",
       `Vérification WaqfLedger : ${BRAND.waqfLedgerVerifyUrl}?hash=${params.verificationHash}`,

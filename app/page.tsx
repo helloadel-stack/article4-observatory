@@ -2,7 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import { ShieldCheck, User, PlusCircle, X } from "lucide-react";
-import PricingSection from "@/components/PricingSection";
+import ResearchCorporaSection from "@/components/ResearchCorporaSection";
+import WhitePaperCallout from "@/components/WhitePaperCallout";
 import WaqfLedgerAuditSection from "@/components/WaqfLedgerAuditSection";
 import AssessmentSection from "@/components/AssessmentSection";
 import HtmlLangSync from "@/components/HtmlLangSync";
@@ -19,6 +20,8 @@ import {
   CONTENT_LICENSES,
   DEFAULT_LANG,
   INSTITUTIONAL_POSITIONING,
+  LIVRE_BLANC_2026,
+  SITE_CONFIG,
   SITE_METADATA,
   WHITEPAPER_2026,
 } from "@/src/config/constants";
@@ -87,29 +90,6 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "SoftwareApplication",
-      name: BRAND.storefront,
-      applicationCategory: "BusinessApplication",
-      description: SITE_METADATA.description,
-      url: BRAND.instituteUrl,
-      author: {
-        "@type": "Person",
-        name: SITE_METADATA.author,
-      },
-      offers: {
-        "@type": "AggregateOffer",
-        priceCurrency: "EUR",
-        lowPrice: "49",
-        highPrice: "2499",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: SITE_METADATA.publisher,
-        url: BRAND.instituteUrl,
-        sameAs: [BRAND.linkedInUrl],
-      },
-    },
-    {
       "@type": "NGO",
       name: SITE_METADATA.publisher,
       url: BRAND.instituteUrl,
@@ -119,8 +99,14 @@ const jsonLd = {
         BRAND.arabicObservatoryUrl,
         BRAND.waqfLedgerUrl,
       ],
-      description: INSTITUTIONAL_POSITIONING.identity.EN,
+      description: `${INSTITUTIONAL_POSITIONING.identity.EN} ${SITE_CONFIG.legalDisclaimer.en}`,
       slogan: INSTITUTIONAL_POSITIONING.slogan.EN,
+      knowsAbout: [
+        "EU AI Act Article 4",
+        "Open science",
+        "Public-interest AI governance",
+        "Higher education integrity",
+      ],
       founder: {
         "@type": "Person",
         name: SITE_METADATA.author,
@@ -171,17 +157,39 @@ const jsonLd = {
         url: BRAND.instituteUrl,
       },
       url: `${BRAND.instituteUrl}${WHITEPAPER_2026.pdfPath}`,
+      license: CONTENT_LICENSES.bouclier.url,
     },
     {
-      "@type": "Product",
-      name: "SafeAI Framework B2B Enterprise Kits",
-      url: BRAND.gumroadStoreUrl,
-      usageInfo: CONTENT_LICENSES.enterprise.scope.EN,
-      additionalProperty: {
-        "@type": "PropertyValue",
-        name: "license",
-        value: CONTENT_LICENSES.enterprise.short,
+      "@type": "ScholarlyArticle",
+      name: LIVRE_BLANC_2026.title.EN,
+      alternateName: LIVRE_BLANC_2026.title.FR,
+      datePublished: "2026",
+      inLanguage: ["fr", "en"],
+      identifier: LIVRE_BLANC_2026.reference,
+      encodingFormat: "application/pdf",
+      license: LIVRE_BLANC_2026.licenseUrl,
+      usageInfo: CONTENT_LICENSES.bouclier.scope.EN,
+      author: {
+        "@type": "Person",
+        name: SITE_METADATA.author,
+        affiliation: {
+          "@type": "Organization",
+          name: SITE_METADATA.publisher,
+        },
       },
+      publisher: {
+        "@type": "Organization",
+        name: SITE_METADATA.publisher,
+        url: BRAND.instituteUrl,
+      },
+      url: `${BRAND.instituteUrl}${LIVRE_BLANC_2026.pdfPath}`,
+    },
+    {
+      "@type": "CreativeWork",
+      name: "Research Matrices & Institutional Protocols",
+      url: `${BRAND.instituteUrl}/ateliers-juridiques`,
+      license: CONTENT_LICENSES.protocols.url,
+      usageInfo: CONTENT_LICENSES.protocols.scope.EN,
     },
   ],
 };
@@ -308,7 +316,7 @@ export default function Home() {
     { href: "#engines", label: locale.engines.nav },
     { href: "#publications", label: locale.publications.nav },
     { href: "#mapping", label: t.navMapping },
-    { href: "#pricing", label: t.navComplianceKits },
+    { href: "#corpus", label: t.navComplianceKits },
     { href: "#waqfledger", label: t.navWaqfLedger },
     { href: "#assessment", label: t.navDocumentation },
     { href: "/bouclier-public", label: t.navBouclierPublic, route: true },
@@ -338,6 +346,8 @@ export default function Home() {
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
         <Hero t={t} />
 
+        <WhitePaperCallout lang={lang} />
+
         <NexusSection lang={lang} t={t} />
 
         <TechnicalEnginesSection lang={lang} />
@@ -355,7 +365,7 @@ export default function Home() {
           }
         />
 
-        <PricingSection lang={lang} onLangChange={handleLangChange} />
+        <ResearchCorporaSection lang={lang} />
 
         <WaqfLedgerAuditSection lang={lang} sessionProofs={sessionProofs} />
 

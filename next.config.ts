@@ -3,8 +3,8 @@ import type { NextConfig } from "next";
 const isProd = process.env.NODE_ENV === "production";
 
 const scriptSrc = isProd
-  ? "script-src 'self' 'unsafe-inline' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co"
-  : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co";
+  ? "script-src 'self' 'unsafe-inline'"
+  : "script-src 'self' 'unsafe-inline' 'unsafe-eval'";
 
 const nextConfig = {
   async headers() {
@@ -31,11 +31,11 @@ const nextConfig = {
             value: [
               "default-src 'self'",
               scriptSrc,
-              "style-src 'self' 'unsafe-inline' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com",
+              "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https:",
-              "font-src 'self' data: https://gumroad.com https://*.gumroad.com https://assets.gumroad.com",
-              "connect-src 'self' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co https://waqfledger.tech",
-              "frame-src 'self' https://gumroad.com https://*.gumroad.com https://assets.gumroad.com https://gum.co",
+              "font-src 'self' data:",
+              "connect-src 'self' https://waqfledger.tech",
+              "frame-src 'self'",
               "worker-src 'self' blob:",
             ].join("; "),
           },

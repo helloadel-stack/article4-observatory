@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms of Service & Licensing | Article 4 Institute",
   description:
-    "B2B digital product terms for SafeAI Framework audit toolkits — pricing tiers, US LLC commercial vehicle, Gumroad fulfillment, and legal artifacts (Attestation, Bilan de Maturité, Passeport d'Audit IA).",
+    "Non-commercial scientific licensing for Article 4 Institute research corpora — CC BY 4.0 and CC BY-NC 4.0, disinterested management under Article 206-1 bis CGI, and legal artifacts (Attestation, Bilan de Maturité, Passeport d'Audit IA).",
 };
 
 export default function TermsLayout({

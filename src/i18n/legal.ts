@@ -98,16 +98,16 @@ export const privacyCopy: Record<Lang, PrivacyCopy> = {
     subtitle:
       "How Article 4 Institute processes institutional data under GDPR, Quebec Law 25, and EU AI Act transparency duties.",
     controllerTitle: "Data Controller",
-    controllerBody: `The data controller is ${BRAND.institute} (${BRAND.legalForm}), operating the Observatoire and the ${BRAND.storefront} storefront. Privacy contact: ${SITE_METADATA.contactEmail}.`,
-    processorTitle: "Payment & Processor Disclosure (Gumroad, Inc.)",
+    controllerBody: `The data controller is ${BRAND.institute} (${BRAND.legalForm}), a scientific association with strictly disinterested management within the meaning of Article 206-1 bis of the French General Tax Code. It operates exclusively on a non-profit, non-commercial basis. Privacy contact: ${SITE_METADATA.contactEmail}.`,
+    processorTitle: "No commercial payment processing",
     processorBody:
-      "Digital products, invoicing, and EU VAT collection for the US LLC commercial vehicle of L'Institut Article 4 are securely processed and fulfilled by Gumroad, Inc., our global Merchant of Record. Payment card data is processed by Gumroad, Inc. and its payment partners — L'Institut Article 4 does not store full payment card numbers.",
-    piiTitle: "PII Collection via Crowdsource Forms",
+      "L'Institut Article 4 does not sell digital goods, does not operate a commercial checkout, and does not resell through any commercial company. No payment-card data is collected on article4institute.org.",
+    piiTitle: "PII Collection via Research Forms",
     piiBody:
-      "Form submissions collect basic institutional contact information (agency/organization name, country, optional contributor email or notes, and verification source URLs) solely for research verification, governance logging, and procurement follow-up. We do not sell personal data.",
+      "Form submissions collect basic institutional contact information (organization name, country, optional contributor email or notes, and verification source URLs) solely for research verification and governance logging. We do not sell personal data.",
     cookiesTitle: "Cookies & Analytics",
     cookiesBody:
-      "Zero non-essential tracking cookies are used on article4institute.org. We do not deploy third-party advertising or behavioral analytics cookies. Essential checkout scripts from Gumroad, Inc. load only when interacting with purchase flows.",
+      "Zero non-essential tracking cookies are used on article4institute.org. We do not deploy third-party advertising, behavioral analytics, or checkout scripts.",
     transatlanticTitle: "Transatlantic Alignment (EU & Quebec)",
     transatlanticBody:
       "EU processing follows the GDPR and EU AI Act transparency duties. For Quebec and Canadian institutional counterparts, processing is aligned with Quebec Law 25 (Loi 25 sur la protection des renseignements personnels), OBVIA research-ecosystem principles, and institutional research-ethics standards.",
@@ -121,16 +121,16 @@ export const privacyCopy: Record<Lang, PrivacyCopy> = {
     subtitle:
       "Comment Article 4 Institute traite les données institutionnelles au titre du RGPD, de la Loi 25 du Québec et des devoirs de transparence de l’AI Act UE.",
     controllerTitle: "Responsable du traitement",
-    controllerBody: `Le responsable du traitement est ${BRAND.institute} (${BRAND.legalForm}), opérant l’Observatoire et la vitrine ${BRAND.storefront}. Contact confidentialité : ${SITE_METADATA.contactEmail}.`,
-    processorTitle: "Paiement et sous-traitant (Gumroad, Inc.)",
+    controllerBody: `Le responsable du traitement est ${BRAND.institute} (${BRAND.legalForm}), association scientifique à gestion strictement désintéressée au sens de l'article 206-1 bis du Code général des impôts. Elle opère exclusivement sur une base non lucrative et non commerciale. Contact confidentialité : ${SITE_METADATA.contactEmail}.`,
+    processorTitle: "Absence de paiement commercial",
     processorBody:
-      "Les produits numériques, la facturation et la collecte de la TVA UE pour le véhicule commercial LLC de L'Institut Article 4 sont traités et fournis de manière sécurisée par Gumroad, Inc., notre Merchant of Record mondial. Les données de carte sont traitées par Gumroad, Inc. et ses partenaires — L'Institut Article 4 ne stocke pas les numéros de carte complets.",
+      "L'Institut Article 4 ne vend pas de biens numériques, n'exploite aucun paiement en ligne et ne revend rien par l'intermédiaire d'une société commerciale. Aucune donnée de carte n'est collectée sur article4institute.org.",
     piiTitle: "Collecte de données via les formulaires",
     piiBody:
-      "Les soumissions de formulaires collectent des informations de contact institutionnelles de base (nom d’agence/organisation, pays, e-mail ou notes facultatifs, URL de vérification) uniquement pour la vérification de recherche, la journalisation de gouvernance et le suivi des achats. Nous ne vendons pas de données personnelles.",
+      "Les soumissions de formulaires collectent des informations de contact institutionnelles de base (nom d’organisation, pays, e-mail ou notes facultatifs, URL de vérification) uniquement pour la vérification de recherche et la journalisation de gouvernance. Nous ne vendons pas de données personnelles.",
     cookiesTitle: "Cookies et analytique",
     cookiesBody:
-      "Aucun cookie de suivi non essentiel n’est utilisé sur article4institute.org. Nous n’utilisons pas de cookies publicitaires ou d’analytique comportementale tiers. Les scripts essentiels de paiement de Gumroad, Inc. ne se chargent que lors des parcours d’achat.",
+      "Aucun cookie de suivi non essentiel n’est utilisé sur article4institute.org. Nous n’utilisons pas de cookies publicitaires, d’analytique comportementale ni de scripts de paiement.",
     transatlanticTitle: "Alignement transatlantique (UE et Québec)",
     transatlanticBody:
       "Le traitement dans l’UE suit le RGPD et les devoirs de transparence de l’AI Act. Pour les homologues institutionnels du Québec et du Canada, le traitement est aligné sur la Loi 25 (protection des renseignements personnels), les principes de l’écosystème de recherche de l’OBVIA et les normes d’éthique de la recherche institutionnelle.",
@@ -144,16 +144,16 @@ export const privacyCopy: Record<Lang, PrivacyCopy> = {
     subtitle:
       "Cómo Article 4 Institute procesa datos institucionales bajo el RGPD, la Ley 25 de Quebec y los deberes de transparencia del AI Act UE.",
     controllerTitle: "Responsable del tratamiento",
-    controllerBody: `El responsable del tratamiento es ${BRAND.institute} (${BRAND.legalForm}), que opera el Observatorio y la vitrina ${BRAND.storefront}. Contacto de privacidad: ${SITE_METADATA.contactEmail}.`,
-    processorTitle: "Pagos y encargado del tratamiento (Gumroad, Inc.)",
+    controllerBody: `El responsable del tratamiento es ${BRAND.institute} (${BRAND.legalForm}), asociación científica con gestión estrictamente desinteresada en el sentido del artículo 206-1 bis del Código General de Impuestos francés. Opera exclusivamente sobre una base no lucrativa y no comercial. Contacto de privacidad: ${SITE_METADATA.contactEmail}.`,
+    processorTitle: "Ausencia de pago comercial",
     processorBody:
-      "Los productos digitales, la facturación y la recaudación del IVA de la UE para el vehículo comercial LLC de L'Institut Article 4 son procesados y entregados de forma segura por Gumroad, Inc., nuestro Merchant of Record global. Los datos de tarjeta los procesan Gumroad, Inc. y sus socios — L'Institut Article 4 no almacena números completos de tarjeta.",
+      "L'Institut Article 4 no vende bienes digitales, no opera ningún pago en línea y no revende a través de ninguna sociedad comercial. No se recogen datos de tarjeta en article4institute.org.",
     piiTitle: "Recogida de datos mediante formularios",
     piiBody:
-      "Los envíos de formularios recogen información de contacto institucional básica (nombre de agencia/organización, país, correo o notas opcionales y URL de verificación) únicamente para verificación de investigación, registro de gobernanza y seguimiento de compras. No vendemos datos personales.",
+      "Los envíos de formularios recogen información de contacto institucional básica (nombre de la organización, país, correo o notas opcionales y URL de verificación) únicamente para verificación de investigación y registro de gobernanza. No vendemos datos personales.",
     cookiesTitle: "Cookies y analítica",
     cookiesBody:
-      "No se utilizan cookies de seguimiento no esenciales en article4institute.org. No desplegamos cookies publicitarias ni de analítica comportamental de terceros. Los scripts esenciales de checkout de Gumroad, Inc. solo se cargan al interactuar con flujos de compra.",
+      "No se utilizan cookies de seguimiento no esenciales en article4institute.org. No desplegamos cookies publicitarias, de analítica comportamental ni scripts de pago.",
     transatlanticTitle: "Alineación transatlántica (UE y Quebec)",
     transatlanticBody:
       "El tratamiento en la UE sigue el RGPD y los deberes de transparencia del AI Act. Para homólogos institucionales de Quebec y Canadá, el tratamiento se alinea con la Ley 25 (protección de datos personales), los principios del ecosistema de investigación de OBVIA y las normas institucionales de ética de la investigación.",
@@ -166,89 +166,89 @@ export const termsCopy: Record<Lang, TermsCopy> = {
   EN: {
     backLabel: "Back to Article 4 Institute",
     langLabel: "Interface language",
-    title: "Terms of Service & Licensing",
+    title: "Terms of Use & Scientific Licensing",
     subtitle:
-      "B2B digital product terms for SafeAI Framework audit toolkits sold by the US LLC commercial vehicle via Gumroad, Inc. as Merchant of Record.",
-    storeTitle: "Store Name",
-    storeBody: `${BRAND.storefront} is the storefront brand of the ${BRAND.commercialVehicle} commercial vehicle operated by ${BRAND.institute} (${BRAND.legalForm}) for institutional EU AI Act governance toolkits.`,
-    productsTitle: "B2B Digital Products & List Prices",
+      "Non-commercial terms for the open-science corpora of L'Institut Article 4, an Association Loi 1901 with strictly disinterested management under Article 206-1 bis of the French General Tax Code.",
+    storeTitle: "Institutional status",
+    storeBody: `${BRAND.institute} (${BRAND.legalForm}) operates exclusively on a non-profit, non-commercial scientific basis. It does not sell toolkits, does not collect catalogue prices, and does not resell through a commercial company.`,
+    productsTitle: "The 4 methodological research corpora",
     tier0:
-      "Tier 0 — Faculty AI Starter Pack: €49 Individual Faculty / Course Pass.",
+      "Corpus 1 — Pedagogical & Transparency Corpus (Art. 4 & 50): Open Access (CC BY-NC 4.0), via /bouclier-public.",
     tier1:
-      "Tier 1 — Article 4 AI Literacy Kit: €399 Single Campus / Department Pass.",
+      "Corpus 2 — Institutional Acculturation Framework: Public Good (CC BY-NC 4.0), via /bouclier-public.",
     tier2:
-      "Tier 2 — EdTech & High-Risk Audit Kit: €999 Institutional & EdTech Platform License.",
+      "Corpus 3 — High-Risk Audit Matrix (Annex III §3): Research Programme, via an institutional letter of intent at /ateliers-juridiques.",
     tier3:
-      "Tier 3 — SafeAI Enterprise + WaqfLedger Proof: €2,499 Enterprise Site License (multi-campus).",
+      "Corpus 4 — VerifIA Protocol & WaqfLedger Anchoring: Scientific Cooperation, via an institutional letter of intent at /ateliers-juridiques.",
     artifactsTitle: "Legal Artifacts — What We Issue",
     artifactsBody: `${BRAND.institute} issues ${LEGAL_ARTIFACTS.attestation.EN}, a ${LEGAL_ARTIFACTS.maturity.EN}, and the ${LEGAL_ARTIFACTS.passport.EN} minted by the VerifIA Protocol. These are governance-readiness artifacts with cryptographic provenance. They are not a legal conformity certificate and do not constitute official AI Act homologation.`,
-    fulfillmentTitle: "Digital Fulfillment",
+    fulfillmentTitle: "Non-commercial dissemination",
     fulfillmentBody:
-      "Digital products, invoicing, and EU VAT collection for SafeAI Framework are securely processed and fulfilled by Gumroad, Inc., our global Merchant of Record. Products are delivered as instant digital downloads upon checkout confirmation. Access credentials and download links are provided to the purchasing institutional contact after payment confirmation.",
-    refundTitle: "Refunds & EU Digital Content Withdrawal",
+      "Public-interest documents are disseminated directly by the Institute under the licence stated on each corpus. There is no checkout, no invoicing, and no merchant of record.",
+    refundTitle: "No sale",
     refundBody:
-      "Under EU consumer rules for digital content, the standard 14-day statutory withdrawal right may be waived once delivery begins and the buyer expressly consents to immediate performance — particularly where the digital content is unsealed/downloaded. For B2B institutional purchases of digital goods, immediate access upon checkout confirmation typically begins performance and may extinguish the statutory withdrawal right for that download package. Refund requests for defective files or failed delivery are reviewed by Article 4 Institute and Gumroad, Inc. support on a case-by-case basis.",
+      "Because L'Institut Article 4 does not sell digital content on article4institute.org, consumer withdrawal and refund rules for paid downloads do not apply to these corpora. Institutional cooperation is documented by a letter of intent, not by a paid order.",
     ipTitle: "Intellectual Property",
     ipBody:
-      "All kit assets, templates, matrices, and documentation remain the intellectual property of Article 4 Institute. Purchasers receive a non-exclusive usage license scoped to the purchased tier (single campus, institutional platform, or enterprise multi-campus redistribution rights as listed). Redistribution beyond tier rights is prohibited without written authorization.",
+      "Observatory data and benchmarks are published under CC BY 4.0. Bouclier IA Publique and white papers are published under CC BY-NC 4.0. Research matrices and institutional protocols are published under CC BY-NC 4.0 (Convention de Recherche Institutionnelle). Non-commercial reuse requires attribution. Commercial exploitation is outside these licences.",
   },
   FR: {
     backLabel: "Retour à Article 4 Institute",
     langLabel: "Langue de l’interface",
-    title: "Conditions d’utilisation et licences",
+    title: "Conditions d’utilisation et licences scientifiques",
     subtitle:
-      "Conditions des produits numériques B2B SafeAI Framework vendus par le véhicule commercial LLC via Gumroad, Inc. en tant que Merchant of Record.",
-    storeTitle: "Nom de la boutique",
-    storeBody: `${BRAND.storefront} est la marque commerciale du véhicule ${BRAND.commercialVehicle} exploité par ${BRAND.institute} (${BRAND.legalForm}) pour les boîtes à outils institutionnelles de gouvernance AI Act UE.`,
-    productsTitle: "Produits numériques B2B et prix catalogue",
+      "Conditions non commerciales des corpus de science ouverte de L'Institut Article 4, Association loi 1901 à gestion strictement désintéressée au sens de l'article 206-1 bis du Code général des impôts.",
+    storeTitle: "Statut de l'Institut",
+    storeBody: `${BRAND.institute} (${BRAND.legalForm}) opère exclusivement sur une base scientifique, non lucrative et non commerciale. Il ne vend pas de kits, n'affiche aucun prix catalogue et ne revend rien par une société commerciale.`,
+    productsTitle: "Les 4 corpus méthodologiques de recherche",
     tier0:
-      "Niveau 0 — Pack Démarrage IA Enseignant : €49 Pass enseignant / cours individuel.",
+      "Corpus 1 — Corpus Pédagogique & Transparence (Art. 4 & 50) : Accès Libre (CC BY-NC 4.0), via /bouclier-public.",
     tier1:
-      "Niveau 1 — Kit Culture IA Article 4 : €399 Pass campus unique / département.",
+      "Corpus 2 — Référentiel d'Acculturation Institutionnelle : Bien Public (CC BY-NC 4.0), via /bouclier-public.",
     tier2:
-      "Niveau 2 — Kit d’Audit Risque Élevé : €999 Licence institutionnelle & plateforme EdTech.",
+      "Corpus 3 — Matrice d'Audit Haut Risque (Annexe III §3) : Programme de Recherche, via une lettre d'intention institutionnelle sur /ateliers-juridiques.",
     tier3:
-      "Niveau 3 — SafeAI Enterprise + WaqfLedger : €2,499 Licence site entreprise (multi-campus).",
+      "Corpus 4 — Protocole VerifIA & Ancrage WaqfLedger : Coopération Scientifique, via une lettre d'intention institutionnelle sur /ateliers-juridiques.",
     artifactsTitle: "Artefacts juridiques — ce que nous émettons",
     artifactsBody: `${BRAND.institute} émet l’${LEGAL_ARTIFACTS.attestation.FR}, un ${LEGAL_ARTIFACTS.maturity.FR} et le ${LEGAL_ARTIFACTS.passport.FR} minté par le protocole VerifIA. Ce sont des artefacts de préparation à la gouvernance avec provenance cryptographique. Ils ne constituent pas un certificat de conformité légale ni une homologation officielle AI Act.`,
-    fulfillmentTitle: "Livraison numérique",
+    fulfillmentTitle: "Diffusion non commerciale",
     fulfillmentBody:
-      "Les produits numériques, la facturation et la collecte de la TVA UE pour SafeAI Framework sont traités et fournis de manière sécurisée par Gumroad, Inc., notre Merchant of Record mondial. Les produits sont livrés en téléchargement numérique instantané dès confirmation du paiement. Les accès et liens de téléchargement sont fournis au contact institutionnel acheteur après confirmation.",
-    refundTitle: "Remboursements et rétractation (contenu numérique UE)",
+      "Les documents d'intérêt général sont diffusés directement par l'Institut selon la licence indiquée sur chaque corpus. Il n'y a ni paiement, ni facturation, ni intermédiaire de vente.",
+    refundTitle: "Absence de vente",
     refundBody:
-      "Selon le droit de la consommation UE relatif aux contenus numériques, le droit légal de rétractation de 14 jours peut être perdu dès le début de l’exécution lorsque l’acheteur consent expressément à une fourniture immédiate — notamment lorsque le contenu numérique est « déballé » / téléchargé. Pour les achats B2B institutionnels de biens numériques, l’accès immédiat à la confirmation de paiement commence généralement l’exécution et peut éteindre ce droit pour le pack téléchargé. Les demandes de remboursement pour fichiers défectueux ou échec de livraison sont examinées au cas par cas par Article 4 Institute et le support Gumroad, Inc.",
+      "L'Institut Article 4 ne vend pas de contenu numérique sur article4institute.org. Les règles de rétractation et de remboursement propres aux téléchargements payants ne s'appliquent donc pas à ces corpus. La coopération institutionnelle est documentée par une lettre d'intention, et non par une commande payante.",
     ipTitle: "Propriété intellectuelle",
     ipBody:
-      "Tous les actifs, modèles, matrices et documentations restent la propriété intellectuelle d’Article 4 Institute. Les acheteurs reçoivent une licence d’usage non exclusive limitée au niveau acheté (campus unique, plateforme institutionnelle, ou droits de redistribution multi-campus entreprise). Toute redistribution hors droits du niveau est interdite sans autorisation écrite.",
+      "Les données et benchmarks de l'Observatoire sont publiés sous CC BY 4.0. Le Bouclier IA Publique et les livres blancs sont publiés sous CC BY-NC 4.0. Les matrices de recherche et protocoles institutionnels sont publiés sous CC BY-NC 4.0 (Convention de Recherche Institutionnelle). La réutilisation non commerciale exige l'attribution. L'exploitation commerciale est hors de ces licences.",
   },
   ES: {
     backLabel: "Volver a Article 4 Institute",
     langLabel: "Idioma de la interfaz",
-    title: "Términos de servicio y licencias",
+    title: "Condiciones de uso y licencias científicas",
     subtitle:
-      "Términos de productos digitales B2B de SafeAI Framework vendidos por el vehículo comercial LLC a través de Gumroad, Inc. como Merchant of Record.",
-    storeTitle: "Nombre de la tienda",
-    storeBody: `${BRAND.storefront} es la marca comercial del vehículo ${BRAND.commercialVehicle} operado por ${BRAND.institute} (${BRAND.legalForm}) para kits institucionales de gobernanza del AI Act UE.`,
-    productsTitle: "Productos digitales B2B y precios de lista",
+      "Condiciones no comerciales de los corpus de ciencia abierta de L'Institut Article 4, Association loi 1901 con gestión estrictamente desinteresada en el sentido del artículo 206-1 bis del Código General de Impuestos francés.",
+    storeTitle: "Estatuto del Instituto",
+    storeBody: `${BRAND.institute} (${BRAND.legalForm}) opera exclusivamente sobre una base científica, no lucrativa y no comercial. No vende kits, no publica precios de catálogo y no revende a través de una sociedad comercial.`,
+    productsTitle: "Los 4 corpus metodológicos de investigación",
     tier0:
-      "Nivel 0 — Pack Inicial IA Docente: €49 Pase docente / curso individual.",
+      "Corpus 1 — Corpus Pedagógico y de Transparencia (Art. 4 y 50): Acceso libre (CC BY-NC 4.0), vía /bouclier-public.",
     tier1:
-      "Nivel 1 — Kit de Alfabetización IA Artículo 4: €399 Pase de campus único / departamento.",
+      "Corpus 2 — Referencial de Aculturación Institucional: Bien público (CC BY-NC 4.0), vía /bouclier-public.",
     tier2:
-      "Nivel 2 — Kit de Auditoría de Alto Riesgo: €999 Licencia institucional y plataforma EdTech.",
+      "Corpus 3 — Matriz de Auditoría de Alto Riesgo (Anexo III §3): Programa de investigación, mediante carta de intención institucional en /ateliers-juridiques.",
     tier3:
-      "Nivel 3 — SafeAI Enterprise + WaqfLedger: €2,499 Licencia empresarial de sitio (multi-campus).",
+      "Corpus 4 — Protocolo VerifIA y Anclaje WaqfLedger: Cooperación científica, mediante carta de intención institucional en /ateliers-juridiques.",
     artifactsTitle: "Artefactos jurídicos — lo que emitimos",
     artifactsBody: `${BRAND.institute} emite la ${LEGAL_ARTIFACTS.attestation.ES}, un ${LEGAL_ARTIFACTS.maturity.ES} y el ${LEGAL_ARTIFACTS.passport.ES} acuñado por el protocolo VerifIA. Son artefactos de preparación a la gobernanza con procedencia criptográfica. No constituyen un certificado de conformidad legal ni una homologación oficial del AI Act.`,
-    fulfillmentTitle: "Entrega digital",
+    fulfillmentTitle: "Difusión no comercial",
     fulfillmentBody:
-      "Los productos digitales, la facturación y la recaudación del IVA de la UE para SafeAI Framework son procesados y entregados de forma segura por Gumroad, Inc., nuestro Merchant of Record global. Los productos se entregan como descarga digital instantánea tras la confirmación del checkout. Las credenciales y enlaces de descarga se proporcionan al contacto institucional comprador tras la confirmación del pago.",
-    refundTitle: "Reembolsos y desistimiento (contenido digital UE)",
+      "Los documentos de interés general se difunden directamente por el Instituto según la licencia indicada en cada corpus. No hay pago, facturación ni intermediario de venta.",
+    refundTitle: "Ausencia de venta",
     refundBody:
-      "Conforme a la normativa UE sobre contenidos digitales, el derecho legal de desistimiento de 14 días puede perderse una vez comienza la entrega si el comprador consiente expresamente la ejecución inmediata — en particular cuando el contenido digital se «desprecinta» / descarga. En compras B2B institucionales de bienes digitales, el acceso inmediato tras la confirmación del pago suele iniciar la ejecución y puede extinguir ese derecho para el paquete descargado. Las solicitudes de reembolso por archivos defectuosos o fallo de entrega se revisan caso por caso por Article 4 Institute y el soporte de Gumroad, Inc.",
+      "L'Institut Article 4 no vende contenido digital en article4institute.org. Las reglas de desistimiento y reembolso propias de las descargas de pago no se aplican a estos corpus. La cooperación institucional se documenta mediante una carta de intención, y no mediante un pedido de pago.",
     ipTitle: "Propiedad intelectual",
     ipBody:
-      "Todos los activos, plantillas, matrices y documentación siguen siendo propiedad intelectual de Article 4 Institute. Los compradores reciben una licencia de uso no exclusiva según el nivel adquirido (campus único, plataforma institucional o derechos de redistribución empresarial multi-campus). Queda prohibida la redistribución fuera de esos derechos sin autorización escrita.",
+      "Los datos y benchmarks del Observatorio se publican bajo CC BY 4.0. Bouclier IA Publique y los libros blancos se publican bajo CC BY-NC 4.0. Las matrices de investigación y los protocolos institucionales se publican bajo CC BY-NC 4.0 (Convention de Recherche Institutionnelle). La reutilización no comercial exige atribución. La explotación comercial queda fuera de estas licencias.",
   },
 };
 

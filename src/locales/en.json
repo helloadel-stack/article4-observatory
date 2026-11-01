@@ -98,13 +98,13 @@
     "quebec": "Quebec Law 25 compliance & OBVIA research ethics alignment"
   },
   "legal": {
-    "entityNotice": "The Article 4 Institute is a non-profit association (French Law 1901) focused on open research and public goods. Commercial distribution of audit kits, enterprise licenses, and training is operated via our commercial corporate entity (LLC), with Gumroad, Inc. acting as Merchant of Record."
+    "entityNotice": "The Article 4 Institute is a French Association Loi 1901 with strictly disinterested management within the meaning of Article 206-1 bis of the French General Tax Code. It operates exclusively on a non-profit, non-commercial scientific basis."
   },
   "header": {
     "legalBadge": "Association Loi 1901",
     "verifiaLab": "SafeAI.report",
     "verifiaLedger": "WaqfLedger",
-    "llcNotice": "B2B tools via LLC · Gumroad MoR"
+    "llcNotice": "Disinterested management · Open science"
   },
   "footer": {
     "mission": "Independent observatory and trusted third party for educational AI governance.",
@@ -119,8 +119,8 @@
     "regIso": "ISO/IEC 42001",
     "regQuebec": "Quebec Law 25",
     "regFrance": "France Universités & CGE",
-    "legalHeading": "Legal & MoR",
-    "morNotice": "B2B payments and automated invoicing with European VAT are handled by Gumroad, Inc. (Merchant of Record) for our commercial entity (LLC).",
+    "legalHeading": "Governance & licences",
+    "morNotice": "Association Loi 1901 with strictly disinterested management (Art. 206-1 bis CGI). No sales and no commercial intermediary.",
     "copyright": "© 2026 L'Institut Article 4 (Association Loi 1901). Integrity fingerprints timestamped on waqfledger.tech."
   }
 }

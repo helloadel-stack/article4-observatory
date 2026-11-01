@@ -4,12 +4,12 @@ import { ATELIERS_JURIDIQUES, BRAND } from "@/src/config/constants";
 export const metadata: Metadata = {
   title: `${ATELIERS_JURIDIQUES.title} | ${BRAND.institute}`,
   description:
-    "Formation exécutive et audit terrain pour cabinets d'avocats, directeurs juridiques et barreaux — gouvernance IA, secret professionnel, clauses SaaS et attestation WaqfLedger.",
+    "Séminaires doctrinaux, briefings de direction et coopération scientifique à titre non commercial pour universités, UMR CNRS, CHU et collectivités — protocoles de recherche empirique et lettres d'intention institutionnelles.",
   authors: [{ name: BRAND.institute }],
   openGraph: {
-    title: "Ateliers Juridiques — Gouvernance IA & Audit AI Act",
+    title: ATELIERS_JURIDIQUES.title,
     description:
-      "Masterclass & workshop in-situ pour professionnels du droit : Shadow AI, clauses SaaS, Art. 50 et audit cryptographique.",
+      "Mission d'intérêt général : ateliers méthodologiques sans honoraire de conseil ni frais de formation, dans le cadre d'une lettre d'intention institutionnelle.",
     locale: "fr_FR",
   },
 };

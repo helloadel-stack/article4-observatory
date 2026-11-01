@@ -17,9 +17,9 @@ export const LANG_TO_HTML: Record<Lang, string> = {
 };
 
 /**
- * Canonical 2026 institutional identity, tripartite ecosystem links,
- * Gumroad endpoints, and corporate structure.
- * Association Loi 1901 think-tank + US LLC commercial vehicle + Gumroad MoR.
+ * Canonical 2026 institutional identity and open-science governance.
+ * Association Loi 1901 à gestion strictement désintéressée.
+ * Gumroad URL constants stay server-side for the license registry only.
  */
 export const SITE_CONFIG = {
   name: "L'Institut Article 4",
@@ -51,9 +51,9 @@ export const SITE_CONFIG = {
     "Cadres d'éthique et gouvernance de la recherche (OBVIA & Universités)",
   ],
   legalDisclaimer: {
-    fr: "L'Institut Article 4 est un observatoire et tiers de confiance indépendant constitué sous forme d'Association Loi 1901. Les kits documentaires B2B et licences logicielles sont distribués commercialement par notre entité commerciale (LLC), Gumroad Inc. agissant en qualité de Merchant of Record.",
-    en: "The Article 4 Institute is an independent observatory and trusted third-party established under French Association Law 1901. B2B documentation kits and software licenses are distributed commercially via our commercial corporate vehicle (LLC), with Gumroad Inc. serving as the Merchant of Record.",
-    es: "L'Institut Article 4 es un observatorio y tercero de confianza independiente constituido como Association Loi 1901. Los kits documentales B2B y las licencias de software se distribuyen comercialmente a través de nuestro vehículo comercial (LLC), con Gumroad Inc. actuando como Merchant of Record.",
+    fr: "L'Institut Article 4 est un observatoire et tiers de confiance indépendant constitué sous forme d'Association Loi 1901 à gestion strictement désintéressée au sens de l'article 206-1 bis du Code général des impôts. Il opère exclusivement sur une base scientifique, non lucrative et non commerciale.",
+    en: "The Article 4 Institute is an independent observatory and trusted third-party established as a French Association Loi 1901 with strictly disinterested management within the meaning of Article 206-1 bis of the French General Tax Code. It operates exclusively on a non-profit, non-commercial scientific basis.",
+    es: "L'Institut Article 4 es un observatorio y tercero de confianza independiente constituido como Association Loi 1901 con gestión estrictamente desinteresada en el sentido del artículo 206-1 bis del Código General de Impuestos francés. Opera exclusivamente sobre una base científica, no lucrativa y no comercial.",
   },
 } as const;
 
@@ -80,6 +80,33 @@ export const WHITEPAPER_2026 = {
 }`,
 } as const;
 
+/**
+ * Official 2026 doctrinal white paper on enforceable public-sector auditability.
+ * Distinct from the Zenodo Sovereign AI Assurance preprint.
+ */
+export const LIVRE_BLANC_2026 = {
+  reference: "A4I-DOC-2026-001",
+  license: "CC BY-NC 4.0",
+  licenseUrl: "https://creativecommons.org/licenses/by-nc/4.0/",
+  pdfPath:
+    "/docs/Livre_Blanc_2026_Auditabilite_IA_Publique_Institut_Article_4.pdf",
+  title: {
+    FR: "Livre Blanc 2026 : L'Auditabilité Opposable des Systèmes d'IA dans les Services Publics et l'Enseignement Supérieur",
+    EN: "2026 White Paper: Enforceable Auditability of AI Systems in Public Services and Higher Education",
+    ES: "Libro Blanco 2026: La auditabilidad exigible de los sistemas de IA en los servicios públicos y la enseñanza superior",
+  },
+  eyebrow: {
+    FR: "Publication scientifique · Mission d'intérêt général",
+    EN: "Scientific publication · Public-interest mission",
+    ES: "Publicación científica · Misión de interés general",
+  },
+  cta: {
+    FR: "Télécharger le Livre Blanc (PDF)",
+    EN: "Download the White Paper (PDF)",
+    ES: "Descargar el Libro Blanco (PDF)",
+  },
+} as const;
+
 export const BRAND = {
   name: SITE_CONFIG.name,
   shortName: SITE_CONFIG.shortName,
@@ -94,14 +121,12 @@ export const BRAND = {
   institute: SITE_CONFIG.name,
   legalForm: SITE_CONFIG.legalEntity,
   legalRole: SITE_CONFIG.legalRole,
-  commercialVehicle: "LLC",
   instituteUrl: SITE_CONFIG.url,
   linkedInUrl: "https://www.linkedin.com/company/l-institut-article-4-a4i/",
   waqfLedgerUrl: SITE_CONFIG.ecosystem.ledger,
   waqfLedgerVerifyUrl: SITE_CONFIG.ecosystem.ledgerVerify,
   safeAiReportUrl: SITE_CONFIG.ecosystem.assuranceLab,
   arabicObservatoryUrl: SITE_CONFIG.ecosystem.arabicObservatory,
-  gumroadStoreUrl: "https://safeai.gumroad.com",
 } as const;
 
 /**
@@ -114,9 +139,9 @@ export const INSTITUTIONAL_POSITIONING = {
     ES: "Operacionalizar el Artículo 4 del Reglamento de IA de la UE y el cumplimiento de alto riesgo del Anexo III para la integridad de la educación superior.",
   },
   identity: {
-    EN: "Independent Francophone Observatoire & Think Tank (Association Loi 1901) for Educational AI Governance and Compliance.",
-    FR: "Observatoire et think tank francophone indépendant (Association loi 1901) pour la gouvernance et la conformité de l’IA éducative.",
-    ES: "Observatorio y think tank francófono independiente (Association loi 1901) para la gobernanza y el cumplimiento de la IA educativa.",
+    EN: "Independent Francophone Observatoire & Think Tank (Association Loi 1901, strictly disinterested management under Article 206-1 bis CGI) for educational AI governance, open science, and the public interest.",
+    FR: "Observatoire et think tank francophone indépendant (Association loi 1901 à gestion strictement désintéressée au sens de l’article 206-1 bis du CGI) pour la gouvernance de l’IA éducative, la science ouverte et l’intérêt général.",
+    ES: "Observatorio y think tank francófono independiente (Association loi 1901 con gestión estrictamente desinteresada en el sentido del artículo 206-1 bis del CGI) para la gobernanza de la IA educativa, la ciencia abierta y el interés general.",
   },
   role: {
     EN: 'Sovereign "Tiers de Confiance" bridging the EU AI Act, ISO/IEC 42001 (AI Management Systems), applied pedagogical research, and cryptographic evidence provenance.',
@@ -127,7 +152,7 @@ export const INSTITUTIONAL_POSITIONING = {
 
 /**
  * Tripartite architecture — the A4I Nexus.
- * Non-profit core, VerifIA RegTech protocol, and US LLC commercial vehicle.
+ * Non-profit core, VerifIA protocol, and scientific cooperation.
  */
 export const A4I_NEXUS = {
   nonprofit: {
@@ -160,17 +185,17 @@ export const A4I_NEXUS = {
       ES: "Impulsa auditorías automatizadas vía safeai.report (Assurance Lab) y waqfledger.tech (recibos de estado SHA-256), emitiendo el Pasaporte de Auditoría IA™.",
     },
   },
-  commercial: {
-    key: "commercial",
+  scientific: {
+    key: "scientific",
     title: {
-      EN: "Commercial Vehicle (US LLC)",
-      FR: "Véhicule commercial (LLC américaine)",
-      ES: "Vehículo comercial (LLC estadounidense)",
+      EN: "Scientific Cooperation (Public-Interest Mission)",
+      FR: "Coopération scientifique (mission d'intérêt général)",
+      ES: "Cooperación científica (misión de interés general)",
     },
     body: {
-      EN: "Commercializes enterprise audit toolkits, bespoke conformity evaluations, corporate retainers, and onsite masterclasses via the US LLC, with Gumroad Inc. as Merchant of Record.",
-      FR: "Commercialise les kits d’audit entreprise, les évaluations de conformité sur mesure, les retainers corporatifs et les masterclass sur site via la LLC américaine, Gumroad Inc. agissant en qualité de Merchant of Record.",
-      ES: "Comercializa kits de auditoría empresarial, evaluaciones de conformidad a medida, retainers corporativos y masterclass in situ vía la LLC estadounidense, con Gumroad Inc. como Merchant of Record.",
+      EN: "Doctrinal seminars, executive briefings, and methodological workshops conducted on a non-commercial basis for universities, CNRS joint research units (UMR), university hospitals (CHU), and municipalities, under empirical research protocols and institutional letters of intent (LOI).",
+      FR: "Séminaires doctrinaux, briefings de direction et ateliers méthodologiques conduits à titre non commercial pour les universités, les laboratoires (UMR CNRS), les hôpitaux (CHU) et les collectivités, dans le cadre de protocoles de recherche empirique et de lettres d'intention institutionnelles (LOI).",
+      ES: "Seminarios doctrinales, briefings de dirección y talleres metodológicos realizados sin carácter comercial para universidades, laboratorios (UMR CNRS), hospitales (CHU) y municipios, en el marco de protocolos de investigación empírica y cartas de intención institucionales (LOI).",
     },
   },
 } as const;
@@ -178,7 +203,7 @@ export const A4I_NEXUS = {
 export const A4I_NEXUS_PILLARS = [
   A4I_NEXUS.nonprofit,
   A4I_NEXUS.verifia,
-  A4I_NEXUS.commercial,
+  A4I_NEXUS.scientific,
 ] as const;
 
 /**
@@ -254,7 +279,7 @@ export const LEGAL_ARTIFACTS = {
 
 /**
  * Canonical content-licensing registry — never collapse all surfaces into one CC.
- * Observatory benchmarks are open data; Bouclier is non-commercial; B2B kits are proprietary.
+ * Observatory benchmarks are open data; public-interest corpora are CC BY-NC.
  */
 export const CONTENT_LICENSES = {
   observatory: {
@@ -270,18 +295,18 @@ export const CONTENT_LICENSES = {
     short: "CC BY-NC 4.0",
     url: "https://creativecommons.org/licenses/by-nc/4.0/",
     scope: {
-      EN: "Pro-bono Bouclier Toolkit: CC BY-NC 4.0",
-      FR: "Boîte à outils Bouclier pro bono : CC BY-NC 4.0",
-      ES: "Kit Bouclier pro bono: CC BY-NC 4.0",
+      EN: "Bouclier IA Publique & White Papers: CC BY-NC 4.0",
+      FR: "Bouclier IA Publique et livres blancs : CC BY-NC 4.0",
+      ES: "Bouclier IA Publique y libros blancos: CC BY-NC 4.0",
     },
   },
-  enterprise: {
-    short: "Proprietary Commercial Site License",
-    url: null,
+  protocols: {
+    short: "CC BY-NC 4.0",
+    url: "https://creativecommons.org/licenses/by-nc/4.0/",
     scope: {
-      EN: "B2B Enterprise Kits: Proprietary Commercial Site License",
-      FR: "Kits entreprise B2B : licence commerciale propriétaire de site",
-      ES: "Kits empresariales B2B: licencia comercial propietaria de sitio",
+      EN: "Research Matrices & Institutional Protocols: CC BY-NC 4.0 (Convention de Recherche Institutionnelle)",
+      FR: "Matrices de recherche et protocoles institutionnels : CC BY-NC 4.0 (Convention de Recherche Institutionnelle)",
+      ES: "Matrices de investigación y protocolos institucionales: CC BY-NC 4.0 (Convention de Recherche Institutionnelle)",
     },
   },
 } as const;
@@ -316,15 +341,16 @@ export const BOUCLIER_PUBLIC = {
   },
 } as const;
 
-/** Executive onsite workshops for law firms, CLOs, and bar associations */
+/** Doctrinal seminars and institutional briefings — public-interest mission */
 export const ATELIERS_JURIDIQUES = {
   path: "/ateliers-juridiques",
   title:
-    "Masterclass & Workshop In-Situ : Gouvernance IA & Audit AI Act pour Professionnels du Droit",
+    "Séminaires Doctrinaux, Briefings de Direction & Coopération Scientifique (Mission d'Intérêt Général)",
   plaquettePath: "/downloads/ateliers-juridiques-plaquette.pdf",
   bookingPrefix: "A4I-MISSION",
   curriculumHours: 6,
-  documentTitle: "Convention de Mission & Lettre d'Invitation Officielle",
+  documentTitle:
+    "Lettre d'intention institutionnelle (LOI) — Protocole de recherche empirique",
 } as const;
 
 export const SITE_METADATA = {
@@ -372,191 +398,127 @@ export function isLiveGumroadCheckoutUrl(url: string): boolean {
   return trimmed.includes("gumroad.com/l/");
 }
 
-export function getProcurementMailto(tierTitle: string): string {
-  const subject = encodeURIComponent(
-    `Direct Procurement — ${tierTitle} | ${SITE_CONFIG.name}`,
-  );
-  const body = encodeURIComponent(
-    [
-      "Hello Article 4 Institute Procurement Team,",
-      "",
-      `I am requesting direct procurement for: ${tierTitle}`,
-      "",
-      "Institution / Organization:",
-      "Contact name:",
-      "Business email:",
-      "Campus / seats required:",
-      "",
-      "Thank you.",
-    ].join("\n"),
-  );
-  return `mailto:${SITE_METADATA.contactEmail}?subject=${subject}&body=${body}`;
-}
-
-type LocalizedTier = {
+type LocalizedCorpus = {
   title: string;
-  target: string;
-  badge: string | null;
-  features: readonly string[];
+  badge: string;
+  summary: string;
+  cta: string;
 };
 
-type PricingTier = {
-  id: string;
-  price: string;
-  featured: boolean;
-  checkoutKey: CheckoutKey;
-  EN: LocalizedTier;
-  FR: LocalizedTier;
-  ES: LocalizedTier;
-};
-
-/** Strict B2B pricing registry — never invent free tiers */
-export const PRICING_TIERS = [
+/** Four methodological research corpora — public-interest, no catalogue prices. */
+export const RESEARCH_CORPORA = [
   {
-    id: "tier0",
-    price: "€49",
+    id: "corpus1",
+    href: "/bouclier-public",
     featured: false,
-    checkoutKey: "tier0",
     EN: {
-      title: "Faculty AI Starter Pack",
-      target: "Individual Faculty / Course Pass",
-      badge: null,
-      features: [
-        "Classroom AI Policy (.docx)",
-        "Student Declaration Form (.pdf)",
-        "Article 4 Quick-Checklist (.pdf)",
-      ],
+      title: "Pedagogical & Transparency Corpus (Art. 4 & 50)",
+      badge: "Open Access (CC BY-NC 4.0)",
+      summary:
+        "Classroom disclosure, operator literacy, and Article 50 transparency methods released as a public-interest corpus.",
+      cta: "Open the corpus",
     },
     FR: {
-      title: "Pack Démarrage IA Enseignant",
-      target: "Pass enseignant / cours individuel",
-      badge: null,
-      features: [
-        "Politique IA de classe (.docx)",
-        "Formulaire de déclaration étudiante (.pdf)",
-        "Checklist rapide Article 4 (.pdf)",
-      ],
+      title: "Corpus Pédagogique & Transparence (Art. 4 & 50)",
+      badge: "Accès Libre (CC BY-NC 4.0)",
+      summary:
+        "Méthodes de divulgation pédagogique, de littératie des opérateurs et de transparence Article 50, publiées comme bien scientifique.",
+      cta: "Consulter le corpus",
     },
     ES: {
-      title: "Pack Inicial IA Docente",
-      target: "Pase docente / curso individual",
-      badge: null,
-      features: [
-        "Política de IA en el aula (.docx)",
-        "Formulario de declaración estudiantil (.pdf)",
-        "Lista rápida Artículo 4 (.pdf)",
-      ],
+      title: "Corpus Pedagógico y de Transparencia (Art. 4 y 50)",
+      badge: "Acceso libre (CC BY-NC 4.0)",
+      summary:
+        "Métodos de divulgación docente, alfabetización de operadores y transparencia del Artículo 50, publicados como bien científico.",
+      cta: "Consultar el corpus",
     },
   },
   {
-    id: "tier1",
-    price: "€399",
+    id: "corpus2",
+    href: "/bouclier-public",
     featured: false,
-    checkoutKey: "tier1",
     EN: {
-      title: "Article 4 AI Literacy Kit",
-      target: "Single Campus / Department Pass",
-      badge: null,
-      features: [
-        "Institutional Policy (.docx)",
-        "Syllabus Clauses",
-        "Staff Training Deck (.pptx)",
-      ],
+      title: "Institutional Acculturation Framework",
+      badge: "Public Good (CC BY-NC 4.0)",
+      summary:
+        "Shared reference for universities and public bodies building Article 4 acculturation without a commercial licence.",
+      cta: "Open the corpus",
     },
     FR: {
-      title: "Kit Culture IA Art. 4",
-      target: "Pass campus unique / département",
-      badge: null,
-      features: [
-        "Politique institutionnelle (.docx)",
-        "Clauses pour syllabus",
-        "Support de formation du personnel (.pptx)",
-      ],
+      title: "Référentiel d'Acculturation Institutionnelle",
+      badge: "Bien Public (CC BY-NC 4.0)",
+      summary:
+        "Référentiel commun pour les universités et les personnes publiques qui construisent l'acculturation Article 4 hors de toute licence commerciale.",
+      cta: "Consulter le corpus",
     },
     ES: {
-      title: "Kit de Alfabetización IA Art. 4",
-      target: "Pase de campus único / departamento",
-      badge: null,
-      features: [
-        "Política institucional (.docx)",
-        "Cláusulas para sílabos",
-        "Presentación de formación del personal (.pptx)",
-      ],
+      title: "Referencial de Aculturación Institucional",
+      badge: "Bien público (CC BY-NC 4.0)",
+      summary:
+        "Referencial común para universidades y entes públicos que construyen la aculturación del Artículo 4 fuera de toda licencia comercial.",
+      cta: "Consultar el corpus",
     },
   },
   {
-    id: "tier2",
-    price: "€999",
+    id: "corpus3",
+    href: "/ateliers-juridiques",
     featured: true,
-    checkoutKey: "tier2",
     EN: {
-      title: "EdTech & High-Risk Audit Kit",
-      target: "Institutional & EdTech Platform License",
-      badge: "Most Popular for Universities",
-      features: [
-        "Annex III Risk Matrix (.xlsx)",
-        "Predictive Retention Audit SOP",
-        "Article 50 Transparency Log",
-      ],
+      title: "High-Risk Audit Matrix (Annex III §3)",
+      badge: "Research Programme",
+      summary:
+        "Annex III Section 3 matrix studied with universities, laboratories, hospitals, and municipalities under a research protocol.",
+      cta: "Scientific cooperation",
     },
     FR: {
-      title: "Kit d'Audit Risque Élevé",
-      target: "Licence institutionnelle & plateforme EdTech",
-      badge: "Le plus populaire pour les universités",
-      features: [
-        "Matrice de risque Annexe III (.xlsx)",
-        "SOP d’audit de rétention prédictive",
-        "Journal de transparence Article 50",
-      ],
+      title: "Matrice d'Audit Haut Risque (Annexe III §3)",
+      badge: "Programme de Recherche",
+      summary:
+        "Matrice Annexe III section 3 étudiée avec les universités, laboratoires, CHU et collectivités dans un protocole de recherche.",
+      cta: "Coopération scientifique",
     },
     ES: {
-      title: "Kit de Auditoría de Alto Riesgo",
-      target: "Licencia institucional y plataforma EdTech",
-      badge: "El más popular para universidades",
-      features: [
-        "Matriz de riesgo Anexo III (.xlsx)",
-        "SOP de auditoría de retención predictiva",
-        "Registro de transparencia Artículo 50",
-      ],
+      title: "Matriz de Auditoría de Alto Riesgo (Anexo III §3)",
+      badge: "Programa de investigación",
+      summary:
+        "Matriz del Anexo III sección 3 estudiada con universidades, laboratorios, hospitales universitarios y municipios en un protocolo de investigación.",
+      cta: "Cooperación científica",
     },
   },
   {
-    id: "tier3",
-    price: "€2,499",
+    id: "corpus4",
+    href: "/ateliers-juridiques",
     featured: false,
-    checkoutKey: "tier3",
     EN: {
-      title: "SafeAI Enterprise + WaqfLedger Proof",
-      target: "Enterprise & Multi-Campus System",
-      badge: null,
-      features: [
-        "Full Redistribution Rights",
-        "Custom Governance SOPs",
-        "Cryptographic Verification Setup via waqfledger.tech",
-      ],
+      title: "VerifIA Protocol & WaqfLedger Anchoring",
+      badge: "Scientific Cooperation",
+      summary:
+        "Cryptographic anchoring of governance evidence on WaqfLedger, opened through institutional letters of intent.",
+      cta: "Scientific cooperation",
     },
     FR: {
-      title: "Licence Entreprise + WaqfLedger",
-      target: "Entreprise & système multi-campus",
-      badge: null,
-      features: [
-        "Droits de redistribution complets",
-        "SOP de gouvernance sur mesure",
-        "Configuration de vérification cryptographique via waqfledger.tech",
-      ],
+      title: "Protocole VerifIA & Ancrage WaqfLedger",
+      badge: "Coopération Scientifique",
+      summary:
+        "Ancrage cryptographique des preuves de gouvernance sur WaqfLedger, ouvert par lettres d'intention institutionnelles.",
+      cta: "Coopération scientifique",
     },
     ES: {
-      title: "Licencia Enterprise + WaqfLedger",
-      target: "Empresa y sistema multi-campus",
-      badge: null,
-      features: [
-        "Derechos de redistribución completos",
-        "SOP de gobernanza a medida",
-        "Configuración de verificación criptográfica vía waqfledger.tech",
-      ],
+      title: "Protocolo VerifIA y Anclaje WaqfLedger",
+      badge: "Cooperación científica",
+      summary:
+        "Anclaje criptográfico de las pruebas de gobernanza en WaqfLedger, abierto mediante cartas de intención institucionales.",
+      cta: "Cooperación científica",
     },
   },
-] as const satisfies readonly PricingTier[];
+] as const satisfies readonly {
+  id: string;
+  href: string;
+  featured: boolean;
+  EN: LocalizedCorpus;
+  FR: LocalizedCorpus;
+  ES: LocalizedCorpus;
+}[];
 
 /** EU AI Act status enums — localize table cells via these keys */
 export const EU_AI_ACT_STATUS = {
@@ -711,7 +673,7 @@ export const ASSESSMENT_SCENARIOS: readonly AssessmentScenario[] = [
 /** Total scenarios in the full institutional Cisco-grade framework. */
 export const ASSESSMENT_SCENARIO_COUNT = 30;
 
-/** Scenarios shipped in the free browser Module 1 preview. */
+/** Scenarios shipped in the public browser Module 1 preview. */
 export const ASSESSMENT_MODULE_1_SIZE = 3;
 
 /** Pass mark for A4I-CERT minting — scored server-side only. */
@@ -725,9 +687,9 @@ export const ASSESSMENT_PUBLIC_LABEL = {
 } as const;
 
 export const ASSESSMENT_ROADMAP_BADGE = {
-  EN: "Full 30-scenario Cisco-grade bank is not live in this free browser client — Enterprise licensees only",
-  FR: "La banque Cisco de 30 scénarios n’est pas active dans ce client navigateur gratuit — licenciés Enterprise uniquement",
-  ES: "El banco Cisco de 30 escenarios no está activo en este cliente de navegador gratuito — solo licenciarios Enterprise",
+  EN: "The full 30-scenario bank is conducted inside institutional research protocols. This public Module 1 preview publishes 3 scenarios.",
+  FR: "La banque de 30 scénarios est conduite dans les protocoles de recherche institutionnels. Cet aperçu public du Module 1 publie 3 scénarios.",
+  ES: "El banco de 30 escenarios se conduce dentro de protocolos de investigación institucionales. Esta vista pública del Módulo 1 publica 3 escenarios.",
 } as const;
 
 /** Public MCQ option — no answer key. Keys live in src/lib/assessmentKeys.ts (server). */
@@ -864,7 +826,7 @@ export const WAQFLEDGER_SEED_PROOFS = [
     proofId:
       "A4I-LIC-afffdf2657dcc06630f4c752a9ba9285d178eecdf06d08e07927e75c26ffb999",
     kind: "license" as const,
-    label: "Enterprise License — Tier 3 (canonical demo)",
+    label: "VerifIA research corpus — canonical demo",
     payload: WAQFLEDGER_DEMO_PAYLOADS.license,
   },
   {

@@ -105,7 +105,7 @@ export async function POST(request: Request) {
         {
           success: false,
           error:
-            "Host financial guarantee is required: travel tickets, accommodation, and mission expenses must be confirmed to issue the Convention de Mission.",
+            "Research-logistics confirmation is required, with no fee, to issue the institutional letter of intent.",
         },
         { status: 400 },
       );

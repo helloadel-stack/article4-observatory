@@ -12,11 +12,11 @@ import { useSyncedLang } from "@/src/lib/useSyncedLang";
 import { useState } from "react";
 import Link from "next/link";
 import {
-  Briefcase,
   Building2,
   ChevronDown,
   Download,
-  Gavel,
+  Hospital,
+  Landmark,
   Scale,
   ShieldCheck,
   Users,
@@ -31,29 +31,30 @@ const pageCopy = {
     langLabel: "Langue de l'interface",
     back: "Retour à l'Observatoire",
     banner:
-      "Formation exécutive sur site · Cabinets · Directions Juridiques · Barreaux",
+      "Séminaires doctrinaux · Briefings de direction · Coopération scientifique — mission d'intérêt général",
     navModules: "Curriculum",
     navTrust: "Référentiels",
-    navBook: "Réserver",
+    navBook: "Lettre d'intention",
     downloadShort: "Plaquette PDF",
-    badge: "Formation Exécutive & Audit Terrain — Juristes & Avocats",
+    badge:
+      "Mission d'intérêt général — aucun honoraire de conseil ni frais de formation",
     title:
-      "Masterclass & Workshop In-Situ : Gouvernance IA & Audit AI Act pour Professionnels du Droit",
+      "Séminaires Doctrinaux, Briefings de Direction & Coopération Scientifique (Mission d'Intérêt Général)",
     subtitle:
-      "Masterclass exécutive de 6 heures : Article 4, Article 14, secret professionnel (client privilege) et avenants SaaS — pour sécuriser l'usage interne et auditer les contrats clients.",
-    ctaPrimary: "Réserver un Workshop sur Site",
+      "Briefings et ateliers méthodologiques conduits à titre strictement non commercial pour les universités, les laboratoires de recherche (UMR CNRS), les hôpitaux (CHU) et les collectivités, dans le cadre de protocoles de recherche empirique et de lettres d'intention institutionnelles (LOI).",
+    ctaPrimary: "Déposer une lettre d'intention (LOI)",
     ctaSecondary: "Télécharger la Plaquette Programme (PDF)",
     audienceHeading: "Public cible",
     audience: [
-      { label: "Cabinets d'Avocats", icon: Briefcase },
-      { label: "Directeurs Juridiques / CLO", icon: Building2 },
-      { label: "Ordres des Avocats / Barreaux", icon: Gavel },
-      { label: "Équipes compliance & DPO", icon: Users },
+      { label: "Universités", icon: Building2 },
+      { label: "Laboratoires (UMR CNRS)", icon: Users },
+      { label: "Hôpitaux (CHU)", icon: Hospital },
+      { label: "Collectivités", icon: Landmark },
     ],
-    modulesEyebrow: "Curriculum exécutif · 6 heures",
-    modulesTitle: "4 modules : Article 4, Article 14, secret professionnel & avenants SaaS",
+    modulesEyebrow: "Séminaire doctrinal · 6 heures · base non commerciale",
+    modulesTitle: "4 modules : Article 4, Article 14, supervision humaine & preuve WaqfLedger",
     modulesSubtitle:
-      "Un parcours opérationnel de 6 heures pédagogiques, déployable en journée intensive ou format résidentiel.",
+      "Parcours méthodologique de 6 heures, conduit sans honoraire dans le cadre d'un protocole de recherche empirique et d'une lettre d'intention institutionnelle.",
     curriculumFocus: [
       "EU AI Act Art. 4",
       "EU AI Act Art. 14",
@@ -68,7 +69,7 @@ const pageCopy = {
         points: [
           "Obligations d'acculturation et de littératie IA au titre de l'Article 4.",
           "Secret professionnel (client privilege) : risques de fuite de données d'instruction sur les LLM grand public.",
-          "Rédaction de la Charte d'Usage de l'IA en Cabinet & Direction Juridique.",
+          "Rédaction d'une charte d'usage de l'IA pour un établissement public d'enseignement, un laboratoire ou un CHU.",
         ],
       },
       {
@@ -78,7 +79,7 @@ const pageCopy = {
         points: [
           "Rédaction d'avenants SaaS (transparence, souveraineté des données, indemnisation des biais).",
           "Application de La Boussole du Risque IA™ aux contrats fournisseurs d'IA.",
-          "Clause type Marchés & SaaS IA pour cabinets et directions juridiques.",
+          "Clause type pour les marchés publics et conventions de recherche.",
         ],
       },
       {
@@ -102,7 +103,7 @@ const pageCopy = {
     ],
     trustTitle: "Badges de confiance institutionnelle",
     trustSubtitle:
-      "Alignement avec les autorités de protection des données et les standards de formation continue des barreaux.",
+      "Alignement avec les autorités de protection des données et les cadres de recherche des universités, UMR, CHU et collectivités.",
     trustBadges: [
       {
         region: "France",
@@ -121,40 +122,41 @@ const pageCopy = {
         body: "Aligné Loi 25 — protection des renseignements personnels, principes OBVIA et éthique de la recherche",
       },
       {
-        region: "Barreaux",
-        body: "Conçu pour les standards de formation continue des Ordres des Avocats",
+        region: "Recherche",
+        body: "Conçu pour les protocoles empiriques et les lettres d'intention des établissements publics",
       },
     ],
     footerNote:
-      "Ateliers Juridiques Executive — intervention sur site · France, Belgique, Suisse, Luxembourg",
+      "Séminaires doctrinaux et coopération scientifique — base non commerciale, gestion désintéressée",
   },
   EN: {
     langLabel: "Interface language",
     back: "Back to Observatory",
     banner:
-      "Executive onsite training · Law firms · Legal departments · Bar associations",
+      "Doctrinal seminars · Executive briefings · Scientific cooperation — public-interest mission",
     navModules: "Curriculum",
     navTrust: "Trust marks",
-    navBook: "Book",
+    navBook: "Letter of intent",
     downloadShort: "Programme PDF",
-    badge: "Executive Training & Field Audit — Lawyers & Legal Counsel",
+    badge:
+      "Public-interest mission — no consulting fees and no commercial training rates",
     title:
-      "Masterclass & Onsite Workshop: AI Governance & AI Act Audit for Legal Professionals",
+      "Doctrinal Seminars, Executive Briefings & Scientific Cooperation (Public-Interest Mission)",
     subtitle:
-      "A 6-hour executive masterclass covering Article 4, Article 14, client privilege (secret professionnel), and SaaS addenda — to secure internal AI use and audit client contracts.",
-    ctaPrimary: "Book an Onsite Workshop",
+      "Briefings and methodological workshops conducted on a strictly non-commercial basis for universities, research laboratories (CNRS joint research units), university hospitals, and municipalities, under empirical research protocols and institutional letters of intent (LOI).",
+    ctaPrimary: "Submit an institutional letter of intent (LOI)",
     ctaSecondary: "Download Programme Brochure (PDF)",
     audienceHeading: "Target audience",
     audience: [
-      { label: "Law Firms", icon: Briefcase },
-      { label: "General Counsel / CLOs", icon: Building2 },
-      { label: "Bar Associations", icon: Gavel },
-      { label: "Compliance & DPO teams", icon: Users },
+      { label: "Universities", icon: Building2 },
+      { label: "Research laboratories (UMR CNRS)", icon: Users },
+      { label: "University hospitals (CHU)", icon: Hospital },
+      { label: "Municipalities", icon: Landmark },
     ],
-    modulesEyebrow: "Executive curriculum · 6 hours",
-    modulesTitle: "4 modules: Article 4, Article 14, client privilege & SaaS addenda",
+    modulesEyebrow: "Doctrinal seminar · 6 hours · non-commercial basis",
+    modulesTitle: "4 modules: Article 4, Article 14, human oversight & WaqfLedger proof",
     modulesSubtitle:
-      "A 6-hour operational track, delivered as an intensive day or residential format.",
+      "A 6-hour methodological track conducted without fees, under an empirical research protocol and an institutional letter of intent.",
     curriculumFocus: [
       "EU AI Act Art. 4",
       "EU AI Act Art. 14",
@@ -169,7 +171,7 @@ const pageCopy = {
         points: [
           "Article 4 AI literacy and acculturation duties for legal professionals.",
           "Client privilege (secret professionnel): risk of leaking case and instruction data into consumer LLMs.",
-          "Drafting the AI Use Charter for law firms and legal departments.",
+          "Drafting an AI use charter for a university, research laboratory, or university hospital.",
         ],
       },
       {
@@ -179,7 +181,7 @@ const pageCopy = {
         points: [
           "Drafting SaaS addenda (transparency, data sovereignty, bias indemnification).",
           "Applying the AI Risk Compass™ to AI vendor contracts.",
-          "Model Procurement & AI SaaS clauses for firms and legal departments.",
+          "Model clauses for public procurement and research agreements.",
         ],
       },
       {
@@ -203,7 +205,7 @@ const pageCopy = {
     ],
     trustTitle: "Institutional trust badges",
     trustSubtitle:
-      "Aligned with data-protection authorities and bar continuing-education standards.",
+      "Aligned with data-protection authorities and the research frameworks of universities, laboratories, hospitals, and municipalities.",
     trustBadges: [
       {
         region: "France",
@@ -222,40 +224,41 @@ const pageCopy = {
         body: "Law 25 aligned — personal-information protection, OBVIA principles, and research ethics",
       },
       {
-        region: "Bar associations",
-        body: "Designed for continuing-education standards of Bars / Ordres",
+        region: "Research",
+        body: "Designed for empirical protocols and letters of intent of public institutions",
       },
     ],
     footerNote:
-      "Executive Legal Workshops — onsite delivery · France, Belgium, Switzerland, Luxembourg",
+      "Doctrinal seminars and scientific cooperation — non-commercial basis, disinterested management",
   },
   ES: {
     langLabel: "Idioma de la interfaz",
     back: "Volver al Observatorio",
     banner:
-      "Formación ejecutiva in situ · Despachos · Direcciones jurídicas · Colegios",
+      "Seminarios doctrinales · Briefings de dirección · Cooperación científica — misión de interés general",
     navModules: "Currículo",
     navTrust: "Referencias",
-    navBook: "Reservar",
+    navBook: "Carta de intención",
     downloadShort: "Folleto PDF",
-    badge: "Formación Ejecutiva & Auditoría de Campo — Juristas y Abogados",
+    badge:
+      "Misión de interés general — sin honorarios de consultoría ni tarifas de formación",
     title:
-      "Masterclass & Workshop In-Situ: Gobernanza de IA & Auditoría AI Act para Profesionales del Derecho",
+      "Seminarios Doctrinales, Briefings de Dirección y Cooperación Científica (Misión de Interés General)",
     subtitle:
-      "Masterclass ejecutiva de 6 horas: Artículo 4, Artículo 14, secreto profesional (client privilege) y anexos SaaS — para asegurar el uso interno y auditar los contratos de clientes.",
-    ctaPrimary: "Reservar un Workshop In Situ",
+      "Briefings y talleres metodológicos realizados de forma estrictamente no comercial para universidades, laboratorios de investigación (UMR CNRS), hospitales universitarios (CHU) y municipios, en el marco de protocolos de investigación empírica y cartas de intención institucionales (LOI).",
+    ctaPrimary: "Presentar una carta de intención (LOI)",
     ctaSecondary: "Descargar el Folleto del Programa (PDF)",
     audienceHeading: "Público objetivo",
     audience: [
-      { label: "Despachos de Abogados", icon: Briefcase },
-      { label: "Directores Jurídicos / CLO", icon: Building2 },
-      { label: "Colegios de Abogados", icon: Gavel },
-      { label: "Equipos compliance & DPO", icon: Users },
+      { label: "Universidades", icon: Building2 },
+      { label: "Laboratorios (UMR CNRS)", icon: Users },
+      { label: "Hospitales (CHU)", icon: Hospital },
+      { label: "Municipios", icon: Landmark },
     ],
-    modulesEyebrow: "Currículo ejecutivo · 6 horas",
-    modulesTitle: "4 módulos: Artículo 4, Artículo 14, secreto profesional y anexos SaaS",
+    modulesEyebrow: "Seminario doctrinal · 6 horas · base no comercial",
+    modulesTitle: "4 módulos: Artículo 4, Artículo 14, supervisión humana y prueba WaqfLedger",
     modulesSubtitle:
-      "Un itinerario operativo de 6 horas pedagógicas, en jornada intensiva o formato residencial.",
+      "Itinerario metodológico de 6 horas, sin honorarios, en el marco de un protocolo de investigación empírica y de una carta de intención institucional.",
     curriculumFocus: [
       "EU AI Act Art. 4",
       "EU AI Act Art. 14",
@@ -270,7 +273,7 @@ const pageCopy = {
         points: [
           "Obligaciones de aculturación y alfabetización IA del Artículo 4.",
           "Secreto profesional (client privilege): riesgos de fuga de datos de instrucción en LLM de consumo.",
-          "Redacción de la Carta de Uso de la IA en despacho y dirección jurídica.",
+          "Redacción de una carta de uso de la IA para una universidad, un laboratorio o un hospital universitario.",
         ],
       },
       {
@@ -280,7 +283,7 @@ const pageCopy = {
         points: [
           "Redacción de anexos SaaS (transparencia, soberanía de datos, indemnización por sesgos).",
           "Aplicación de La Brújula del Riesgo IA™ a contratos de proveedores de IA.",
-          "Cláusula tipo Mercados & SaaS IA para despachos y direcciones jurídicas.",
+          "Cláusula tipo para contratación pública y convenios de investigación.",
         ],
       },
       {
@@ -304,7 +307,7 @@ const pageCopy = {
     ],
     trustTitle: "Sellos de confianza institucional",
     trustSubtitle:
-      "Alineado con autoridades de protección de datos y estándares de formación continua de los colegios.",
+      "Alineado con las autoridades de protección de datos y los marcos de investigación de universidades, laboratorios, hospitales y municipios.",
     trustBadges: [
       {
         region: "Francia",
@@ -323,12 +326,12 @@ const pageCopy = {
         body: "Alineado Ley 25 — protección de datos personales, principios OBVIA y ética de la investigación",
       },
       {
-        region: "Colegios",
-        body: "Diseñado para los estándares de formación continua de los Colegios de Abogados",
+        region: "Investigación",
+        body: "Diseñado para protocolos empíricos y cartas de intención de instituciones públicas",
       },
     ],
     footerNote:
-      "Talleres Jurídicos Executive — intervención in situ · Francia, Bélgica, Suiza, Luxemburgo",
+      "Seminarios doctrinales y cooperación científica — base no comercial, gestión desinteresada",
   },
 } as const;
 

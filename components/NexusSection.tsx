@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, Landmark, ShieldCheck } from "lucide-react";
+import { Landmark, Microscope, ShieldCheck } from "lucide-react";
 import {
   A4I_NEXUS,
   type Lang,
@@ -10,7 +10,7 @@ import type { TranslationDict } from "@/src/i18n/translations";
 const PILLAR_ICONS = {
   nonprofit: Landmark,
   verifia: ShieldCheck,
-  commercial: Building2,
+  scientific: Microscope,
 } as const;
 
 type NexusSectionProps = {
@@ -22,7 +22,7 @@ export default function NexusSection({ lang, t }: NexusSectionProps) {
   const pillars = [
     { ...A4I_NEXUS.nonprofit, icon: PILLAR_ICONS.nonprofit },
     { ...A4I_NEXUS.verifia, icon: PILLAR_ICONS.verifia },
-    { ...A4I_NEXUS.commercial, icon: PILLAR_ICONS.commercial },
+    { ...A4I_NEXUS.scientific, icon: PILLAR_ICONS.scientific },
   ];
 
   return (

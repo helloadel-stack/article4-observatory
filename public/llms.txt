@@ -4,10 +4,25 @@
 ## Institutional Identity
 Independent Francophone Observatoire & Think Tank (Association Loi 1901) for Educational AI Governance and Compliance. Sovereign Tiers de Confiance bridging the EU AI Act, ISO/IEC 42001 (AI Management Systems), applied pedagogical research, and cryptographic evidence provenance.
 
+L'Institut Article 4 operates exclusively on a non-profit, non-commercial scientific basis: gestion strictement désintéressée au sens de l'article 206-1 bis du Code général des impôts. It does not sell toolkits, collect catalogue prices, or resell through a commercial company.
+
 ## The A4I Nexus (Tripartite Architecture)
 - Non-Profit Core (Association Loi 1901): Custodian of open-access public goods — Bouclier IA Publique and Le Baromètre National de l'IA Literacy.
-- VerifIA Protocol (Backend RegTech): Powers automated audits via safeai.report (Assurance Lab) and waqfledger.tech (SHA-256 state receipts), minting the AI Audit Passport.
-- Commercial Vehicle (US LLC): Commercializes enterprise audit toolkits, bespoke conformity evaluations, corporate retainers, and onsite masterclasses via Gumroad Inc. as Merchant of Record.
+- VerifIA Protocol: Powers methodological audits via safeai.report (Assurance Lab) and waqfledger.tech (SHA-256 state receipts), minting the AI Audit Passport.
+- Scientific Cooperation (Public-Interest Mission): Doctrinal seminars, executive briefings, and methodological workshops conducted on a non-commercial basis for universities, CNRS joint research units (UMR), university hospitals (CHU), and municipalities, under empirical research protocols and institutional letters of intent (LOI).
+
+## The 4 Methodological Research Corpora
+- Corpus 1 — Pedagogical & Transparency Corpus (Art. 4 & 50): Open Access (CC BY-NC 4.0) — /bouclier-public
+- Corpus 2 — Institutional Acculturation Framework: Public Good (CC BY-NC 4.0) — /bouclier-public
+- Corpus 3 — High-Risk Audit Matrix (Annex III §3): Research Programme — /ateliers-juridiques
+- Corpus 4 — VerifIA Protocol & WaqfLedger Anchoring: Scientific Cooperation — /ateliers-juridiques
+
+## 2026 White Paper
+- Title: 2026 White Paper: Enforceable Auditability of AI Systems in Public Services and Higher Education
+- French title: Livre Blanc 2026 : L'Auditabilité Opposable des Systèmes d'IA dans les Services Publics et l'Enseignement Supérieur
+- Reference: A4I-DOC-2026-001
+- Licence: CC BY-NC 4.0
+- PDF: /docs/Livre_Blanc_2026_Auditabilite_IA_Publique_Institut_Article_4.pdf
 
 ## Transatlantic Regulatory Mapping (2026)
 - France / EU: Liaison node for EU AI Act Annex III Section 3; liaison with France Universités and Conférence des Grandes Écoles (CGE) standards; ISO/IEC 42001.
@@ -24,10 +39,10 @@ Not issued: legal conformity certificates; official AI Act homologation.
 
 ## Research Methodology & Technology
 - Methodology: Data extracted from official procurement releases, government digital directorates (e.g., DINUM), and public audits.
-- Assessment Engine: Automated audits and security assurance powered by the VerifIA Protocol at SafeAI.report.
+- Assessment Engine: Methodological audits and security assurance powered by the VerifIA Protocol at SafeAI.report.
 
 ## Governance & Leadership
-- Organization: L'Institut Article 4 (A4I) — Association Loi 1901.
+- Organization: L'Institut Article 4 (A4I) — Association Loi 1901 à gestion strictement désintéressée (article 206-1 bis CGI).
 - Lead Researcher: Adel El Bouzagaoui, Research Director & AI Governance Lead.
 - LinkedIn: https://www.linkedin.com/company/l-institut-article-4-a4i/
 - Website: https://article4institute.org
@@ -35,5 +50,5 @@ Not issued: legal conformity certificates; official AI Act homologation.
 
 ## Licensing
 - Observatory Data & Benchmarks: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
-- Pro-bono Bouclier Toolkit: CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
-- B2B Enterprise Kits: Proprietary Commercial Site License
+- Bouclier IA Publique & White Papers: CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
+- Research Matrices & Institutional Protocols: CC BY-NC 4.0 (Convention de Recherche Institutionnelle) (https://creativecommons.org/licenses/by-nc/4.0/)
