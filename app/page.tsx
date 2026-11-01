@@ -15,6 +15,7 @@ import TechnicalEnginesSection from "@/components/TechnicalEnginesSection";
 import PublicationsSection from "@/components/PublicationsSection";
 import TransatlanticSection from "@/components/TransatlanticSection";
 import ObservatoryExplorer from "@/src/components/ObservatoryExplorer";
+import { OBSERVATORY_CORPUS_COUNT } from "@/src/data/observatory";
 import {
   BRAND,
   CONTENT_LICENSES,
@@ -116,7 +117,7 @@ const jsonLd = {
       "@type": "Dataset",
       name: SITE_METADATA.datasetTitle,
       description:
-        "2026 multi-criteria benchmarking corpus of 13 authoritative public and educational AI deployments across 10 jurisdictions in Europe, Quebec/Canada, and EU institutions, with WaqfLedger SHA-256 proof hashes.",
+        `2026 multi-criteria benchmarking corpus of ${OBSERVATORY_CORPUS_COUNT} authoritative public and educational AI deployments across 10 jurisdictions in Europe, Quebec/Canada, and EU institutions, with WaqfLedger SHA-256 proof hashes.`,
       url: `${BRAND.instituteUrl}#observatory`,
       creator: {
         "@type": "Organization",
@@ -375,7 +376,10 @@ export default function Home() {
                 {t.methodologyTitle}
               </h2>
               <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
-                {t.methodologyText}
+                {t.methodologyText.replaceAll(
+                  "{count}",
+                  String(OBSERVATORY_CORPUS_COUNT),
+                )}
               </p>
               <p className="mt-4 max-w-4xl text-sm leading-relaxed text-slate-600">
                 {t.safeAiDisclosure.split("SafeAI.report").map((part, i, arr) =>

@@ -35,7 +35,9 @@ export type ObservatoryDomain = (typeof OBSERVATORY_DOMAINS)[number];
 export const EU_AI_ACT_CATEGORIES = [
   "Annex III §3 (Education)",
   "Annex III (Public Service)",
+  "Annex III §2/3 (High-Risk)",
   "Article 50 (Transparency)",
+  "Article 50 / GPAI Transparency",
   "Low Risk / Out of Scope",
   "Prohibited (Article 5)",
 ] as const;
@@ -48,7 +50,9 @@ export type ObservatoryRiskLevel = (typeof RISK_LEVELS)[number];
 
 export const HOSTING_SOVEREIGNTY = [
   "SecNumCloud (Sovereign)",
+  "SecNumCloud / Certifié HDS (Sovereign)",
   "EU Sovereign Bare-Metal",
+  "CSCS Alps Supercomputer (On-Premise Sovereign)",
   "On-Premise Campus",
   "US Cloud (EU Region)",
   "US Hyperscaler Transit",
@@ -108,10 +112,12 @@ export function isObservatoryProofAnchored(
 const HIGH_RISK_ANNEX_III: ReadonlySet<EuAiActCategory> = new Set([
   "Annex III §3 (Education)",
   "Annex III (Public Service)",
+  "Annex III §2/3 (High-Risk)",
 ]);
 
 const SOVEREIGN_CLOUD: ReadonlySet<HostingSovereignty> = new Set([
   "SecNumCloud (Sovereign)",
+  "SecNumCloud / Certifié HDS (Sovereign)",
   "EU Sovereign Bare-Metal",
 ]);
 
@@ -124,7 +130,9 @@ const LITERACY_SCORE: Record<Article4LiteracyStatus, number> = {
 
 const HOSTING_SCORE: Record<HostingSovereignty, number> = {
   "SecNumCloud (Sovereign)": 100,
+  "SecNumCloud / Certifié HDS (Sovereign)": 100,
   "EU Sovereign Bare-Metal": 92,
+  "CSCS Alps Supercomputer (On-Premise Sovereign)": 96,
   "On-Premise Campus": 88,
   "US Cloud (EU Region)": 42,
   "US Hyperscaler Transit": 12,
@@ -303,10 +311,20 @@ export const OBSERVATORY_RISK_LABELS: Record<
     FR: "Annexe III (Service public)",
     ES: "Anexo III (Servicio público)",
   },
+  "Annex III §2/3 (High-Risk)": {
+    EN: "Annex III §2/3 (High-Risk)",
+    FR: "Annexe III §2/3 (haut risque)",
+    ES: "Anexo III §2/3 (alto riesgo)",
+  },
   "Article 50 (Transparency)": {
     EN: "Article 50 (Transparency)",
     FR: "Article 50 (Transparence)",
     ES: "Artículo 50 (Transparencia)",
+  },
+  "Article 50 / GPAI Transparency": {
+    EN: "Article 50 / GPAI Transparency",
+    FR: "Article 50 / Transparence GPAI",
+    ES: "Artículo 50 / Transparencia GPAI",
   },
   "Low Risk / Out of Scope": {
     EN: "Low Risk / Out of Scope",
@@ -329,10 +347,20 @@ export const OBSERVATORY_HOSTING_LABELS: Record<
     FR: "SecNumCloud (souverain)",
     ES: "SecNumCloud (soberano)",
   },
+  "SecNumCloud / Certifié HDS (Sovereign)": {
+    EN: "SecNumCloud / HDS-Certified (Sovereign)",
+    FR: "SecNumCloud / Certifié HDS (souverain)",
+    ES: "SecNumCloud / Certificado HDS (soberano)",
+  },
   "EU Sovereign Bare-Metal": {
     EN: "EU Sovereign Bare-Metal",
     FR: "Bare-metal souverain UE",
     ES: "Bare-metal soberano UE",
+  },
+  "CSCS Alps Supercomputer (On-Premise Sovereign)": {
+    EN: "CSCS Alps Supercomputer (On-Premise Sovereign)",
+    FR: "Supercalculateur CSCS Alps (on-premise souverain)",
+    ES: "Supercomputador CSCS Alps (on-premise soberano)",
   },
   "On-Premise Campus": {
     EN: "On-Premise Campus",
@@ -763,9 +791,55 @@ export const OBSERVATORY_DATA: ObservatoryDeployment[] = [
       ES: "Enrutado de expedientes de previsión en hiperescalador US (región UE); revisión humana obligatoria antes de denegar una prestación, con auditoría de alfabetización del Artículo 4 pendiente.",
     },
   },
+  {
+    id: "A4I-OBS-2026-013",
+    name: "Audit de conformité des dispositifs médicaux IA & Triage HDS",
+    deployingEntity: "Agence du Numérique en Santé (ANS - France)",
+    country: "FR",
+    countryLabel: "France",
+    domain: "Healthcare",
+    euAiActCategory: "Annex III §2/3 (High-Risk)",
+    riskLevel: "HIGH",
+    hostingSovereignty: "SecNumCloud / Certifié HDS (Sovereign)",
+    isSovereign: true,
+    humanInTheLoop: "Mandatory Dual-Override",
+    article4LiteracyStatus: "Certified",
+    waqfledgerProofHash:
+      "bdfbe027bc9809d539d3d24003ec345faa06760753879e3a0ba517781d6aa68f",
+    waqfAnchored: true,
+    lastAuditDate: "2026-10-22",
+    summary: {
+      EN: "National conformity audit of AI medical devices and HDS-certified clinical triage, with mandatory dual clinician override on SecNumCloud infrastructure.",
+      FR: "Audit national de conformité des dispositifs médicaux d’IA et triage certifié HDS, avec double override clinicien obligatoire sur infrastructure SecNumCloud.",
+      ES: "Auditoría nacional de conformidad de productos sanitarios de IA y triaje certificado HDS, con doble anulación clínica obligatoria en infraestructura SecNumCloud.",
+    },
+  },
+  {
+    id: "A4I-OBS-2026-014",
+    name: "Modèles de fondation académiques ouverts & Évaluation multilingue",
+    deployingEntity: "EPFL & ETH Zürich — Swiss AI Initiative (Suisse)",
+    country: "CH",
+    countryLabel: "Switzerland",
+    domain: "Higher Education",
+    euAiActCategory: "Article 50 / GPAI Transparency",
+    riskLevel: "LOW",
+    hostingSovereignty: "CSCS Alps Supercomputer (On-Premise Sovereign)",
+    isSovereign: true,
+    humanInTheLoop: "Supervised Human Review",
+    article4LiteracyStatus: "Certified",
+    waqfledgerProofHash:
+      "7e2e45a05483b1d35abc7e69ae522cd14b648eebe9adfce5ba655a9406bd5646",
+    waqfAnchored: true,
+    lastAuditDate: "2026-10-28",
+    summary: {
+      EN: "Open academic foundation models and multilingual evaluation on the CSCS Alps supercomputer, under Article 50 and GPAI transparency duties with supervised human review.",
+      FR: "Modèles de fondation académiques ouverts et évaluation multilingue sur le supercalculateur CSCS Alps, au titre de l’Article 50 et des obligations de transparence GPAI, avec revue humaine supervisée.",
+      ES: "Modelos fundacionales académicos abiertos y evaluación multilingüe en el supercomputador CSCS Alps, conforme al Artículo 50 y a las obligaciones de transparencia GPAI, con revisión humana supervisada.",
+    },
+  },
 ];
 
-/** Alias used by the explorer — same 13-deployment 2026 corpus. */
+/** Alias used by the explorer — live 2026 corpus, including the ANS and Swiss AI Initiative cohort. */
 export const OBSERVATORY_DEPLOYMENTS: readonly ObservatoryDeployment[] =
   OBSERVATORY_DATA;
 

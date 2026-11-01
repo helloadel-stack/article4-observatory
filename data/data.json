@@ -4,8 +4,8 @@
   "year": 2026,
   "registry": "A4I-Observatoire-2026",
   "license": "CC BY 4.0",
-  "note": "Canonical live registry is src/data/observatory.ts. This file is a published snapshot of the 13-deployment corpus.",
-  "count": 13,
+  "note": "Canonical live registry is src/data/observatory.ts. This file is a published snapshot of the live deployment corpus.",
+  "count": 15,
   "jurisdictions": ["FR", "DE", "ES", "BE", "CH", "NL", "IT", "EE", "CA_QC", "EU"],
   "ids": [
     "OBS-2026-001",
@@ -20,6 +20,8 @@
     "OBS-2026-010",
     "OBS-2026-011",
     "OBS-2026-012",
-    "OBS-2026-013"
+    "OBS-2026-013",
+    "A4I-OBS-2026-013",
+    "A4I-OBS-2026-014"
   ]
 }

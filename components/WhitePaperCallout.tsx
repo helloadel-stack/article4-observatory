@@ -50,16 +50,20 @@ export default function WhitePaperCallout({
           {LIVRE_BLANC_2026.title[lang]}
         </h2>
       </div>
-      <p
-        className={
-          dark
-            ? "mt-3 text-xs font-medium tracking-wide text-indigo-100"
-            : "mt-3 text-xs font-medium tracking-wide text-slate-600"
-        }
-      >
-        {LIVRE_BLANC_2026.reference}
-        {" · "}
-        {LIVRE_BLANC_2026.license}
+      <p className="mt-3">
+        <span
+          className={
+            dark
+              ? "inline-flex rounded-full border border-indigo-300/40 bg-indigo-900/70 px-3 py-1 font-mono text-[11px] font-medium tracking-wide text-indigo-50"
+              : "inline-flex rounded-full border border-indigo-300 bg-white px-3 py-1 font-mono text-[11px] font-medium tracking-wide text-indigo-900"
+          }
+        >
+          {LIVRE_BLANC_2026.referencePrefix[lang]} {LIVRE_BLANC_2026.reference}
+          {" · "}
+          {LIVRE_BLANC_2026.license}
+          {" · "}
+          {LIVRE_BLANC_2026.scholarlyIndex[lang]}
+        </span>
       </p>
       <a
         href={LIVRE_BLANC_2026.pdfPath}

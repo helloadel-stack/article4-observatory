@@ -88,6 +88,16 @@ export const LIVRE_BLANC_2026 = {
   reference: "A4I-DOC-2026-001",
   license: "CC BY-NC 4.0",
   licenseUrl: "https://creativecommons.org/licenses/by-nc/4.0/",
+  referencePrefix: {
+    FR: "Réf:",
+    EN: "Ref:",
+    ES: "Ref.:",
+  },
+  scholarlyIndex: {
+    FR: "Indexé ORCID / Zenodo",
+    EN: "Indexed ORCID / Zenodo",
+    ES: "Indexado ORCID / Zenodo",
+  },
   pdfPath:
     "/docs/Livre_Blanc_2026_Auditabilite_IA_Publique_Institut_Article_4.pdf",
   title: {
