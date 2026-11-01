@@ -19,6 +19,10 @@ export type TranslationDict = {
   navDocumentation: string;
   navBouclierPublic: string;
   navAteliersJuridiques: string;
+  navObservatory: string;
+  navResearchCorpora: string;
+  navPublicAiShield: string;
+  navDoctrinalSeminars: string;
   heroTitle: string;
   heroIdentity: string;
   heroRole: string;
@@ -197,6 +201,10 @@ export const translations: Record<Lang, TranslationDict> = {
     navDocumentation: "Benchmark",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
+    navObservatory: "Observatory 2026",
+    navResearchCorpora: "Research Corpora",
+    navPublicAiShield: "Public AI Shield",
+    navDoctrinalSeminars: "Doctrinal Seminars",
     heroTitle: localeMessages.EN.hero.title,
     heroIdentity: localeMessages.EN.hero.badge,
     heroRole: localeMessages.EN.hero.badge,
@@ -382,6 +390,10 @@ export const translations: Record<Lang, TranslationDict> = {
     navDocumentation: "Benchmark / Évaluation",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
+    navObservatory: "Observatoire 2026",
+    navResearchCorpora: "Corpus de Recherche",
+    navPublicAiShield: "Bouclier IA Publique",
+    navDoctrinalSeminars: "Séminaires Doctrinaux",
     heroTitle: localeMessages.FR.hero.title,
     heroIdentity: localeMessages.FR.hero.badge,
     heroRole: localeMessages.FR.hero.badge,
@@ -567,6 +579,10 @@ export const translations: Record<Lang, TranslationDict> = {
     navDocumentation: "Benchmark / Evaluación",
     navBouclierPublic: "Bouclier IA Publique (Pro Bono)",
     navAteliersJuridiques: "Ateliers Juridiques",
+    navObservatory: "Observatorio 2026",
+    navResearchCorpora: "Corpus de Investigación",
+    navPublicAiShield: "Escudo IA Público",
+    navDoctrinalSeminars: "Seminarios Doctrinales",
     heroTitle: localeMessages.ES.hero.title,
     heroIdentity: localeMessages.ES.hero.badge,
     heroRole: localeMessages.ES.hero.badge,

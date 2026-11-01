@@ -63,8 +63,11 @@ export default function Header({
       </div>
 
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-3.5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <a href="#" className="group flex min-w-0 flex-col gap-1">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-y-3 px-4 py-3.5 sm:px-6 lg:px-8">
+          <a
+            href="#"
+            className="group order-1 flex shrink-0 mr-8 flex-col gap-1"
+          >
             <span className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
               {SITE_CONFIG.name}
             </span>
@@ -75,14 +78,14 @@ export default function Header({
 
           <nav
             aria-label="Primary"
-            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-slate-600"
+            className="order-3 flex w-full min-w-0 flex-wrap items-center gap-6 whitespace-nowrap text-sm font-medium text-slate-600"
           >
             {navLinks.map((link) =>
               link.route ? (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs font-medium text-slate-500 transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 sm:text-sm"
+                  className="whitespace-nowrap text-xs font-medium text-slate-500 transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 sm:text-sm"
                 >
                   {link.label}
                 </Link>
@@ -90,7 +93,7 @@ export default function Header({
                 <a
                   key={link.href}
                   href={link.href}
-                  className="transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+                  className="whitespace-nowrap transition-colors hover:text-indigo-700 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   {link.label}
                 </a>
@@ -98,7 +101,7 @@ export default function Header({
             )}
           </nav>
 
-          <div className="flex shrink-0 flex-wrap items-center gap-2">
+          <div className="order-2 ml-auto flex max-w-full shrink-0 flex-wrap items-center justify-end gap-2">
             <a
               href={SITE_CONFIG.ecosystem.assuranceLab}
               target="_blank"

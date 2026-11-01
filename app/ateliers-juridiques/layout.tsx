@@ -4,12 +4,12 @@ import { ATELIERS_JURIDIQUES, BRAND } from "@/src/config/constants";
 export const metadata: Metadata = {
   title: `${ATELIERS_JURIDIQUES.title} | ${BRAND.institute}`,
   description:
-    "Séminaires doctrinaux, briefings de direction et coopération scientifique à titre non commercial pour universités, UMR CNRS, CHU et collectivités — protocoles de recherche empirique et lettres d'intention institutionnelles.",
+    "Invitation aux doyens d'université, directeurs de laboratoires (UMR CNRS), DPO et directeurs d'hôpital : briefing méthodologique pro bono de 30 minutes ou convention de recherche empirique (LOI).",
   authors: [{ name: BRAND.institute }],
   openGraph: {
     title: ATELIERS_JURIDIQUES.title,
     description:
-      "Mission d'intérêt général : ateliers méthodologiques sans honoraire de conseil ni frais de formation, dans le cadre d'une lettre d'intention institutionnelle.",
+      "Mission d'intérêt général : briefing méthodologique pro bono de 30 minutes ou convention de recherche empirique (LOI), sans honoraire de conseil.",
     locale: "fr_FR",
   },
 };

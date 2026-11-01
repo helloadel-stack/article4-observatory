@@ -345,7 +345,7 @@ export const BOUCLIER_PUBLIC = {
 export const ATELIERS_JURIDIQUES = {
   path: "/ateliers-juridiques",
   title:
-    "Séminaires Doctrinaux, Briefings de Direction & Coopération Scientifique (Mission d'Intérêt Général)",
+    "Séminaires Doctrinaux & Cadrage Méthodologique (Mission d'Intérêt Général)",
   plaquettePath: "/downloads/ateliers-juridiques-plaquette.pdf",
   bookingPrefix: "A4I-MISSION",
   curriculumHours: 6,

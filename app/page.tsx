@@ -26,7 +26,6 @@ import {
   WHITEPAPER_2026,
 } from "@/src/config/constants";
 import { translations } from "@/src/i18n/translations";
-import { getLocaleMessages } from "@/src/locales";
 import { useSyncedLang } from "@/src/lib/useSyncedLang";
 
 type SubmitCountry =
@@ -208,7 +207,6 @@ export default function Home() {
   const [sessionProofs, setSessionProofs] = useState<string[]>([]);
 
   const t = translations[lang];
-  const locale = getLocaleMessages(lang);
 
   const countryLabels: Record<SubmitCountry, string> = {
     France: t.submitCountryFrance,
@@ -311,18 +309,12 @@ export default function Home() {
     label: string;
     route?: boolean;
   }[] = [
-    { href: "#observatory", label: t.navFramework },
-    { href: "#nexus", label: t.navNexus },
-    { href: "#engines", label: locale.engines.nav },
-    { href: "#publications", label: locale.publications.nav },
-    { href: "#mapping", label: t.navMapping },
-    { href: "#corpus", label: t.navComplianceKits },
-    { href: "#waqfledger", label: t.navWaqfLedger },
-    { href: "#assessment", label: t.navDocumentation },
-    { href: "/bouclier-public", label: t.navBouclierPublic, route: true },
+    { href: "/#observatory", label: t.navObservatory },
+    { href: "/#corpus", label: t.navResearchCorpora },
+    { href: "/bouclier-public", label: t.navPublicAiShield, route: true },
     {
       href: "/ateliers-juridiques",
-      label: t.navAteliersJuridiques,
+      label: t.navDoctrinalSeminars,
       route: true,
     },
   ];

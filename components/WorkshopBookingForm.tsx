@@ -10,15 +10,15 @@ import {
 import type { Lang } from "@/src/config/constants";
 
 const ORGANISM_VALUES = [
-  "Université",
-  "UMR CNRS",
-  "CHU",
-  "Collectivité",
+  "Doyen université",
+  "Directeur UMR CNRS",
+  "DPO",
+  "Directeur hôpital",
 ] as const;
 
 const FORMAT_VALUES = [
-  "Briefing de direction",
-  "Séminaire méthodologique",
+  "Briefing 30 min pro bono",
+  "Convention recherche LOI",
 ] as const;
 
 type OrganismType = (typeof ORGANISM_VALUES)[number];
@@ -68,17 +68,17 @@ const INITIAL: FormState = {
 
 const copy = {
   FR: {
-    eyebrow: "Lettre d'intention institutionnelle",
-    title: "Lettre d'intention (LOI) — protocole de recherche empirique",
+    eyebrow: "Invitation institutionnelle",
+    title: "Briefing méthodologique de 30 minutes ou convention de recherche (LOI)",
     subtitle:
-      "Déposez une lettre d'intention pour un séminaire doctrinal ou un briefing de direction, à titre strictement non commercial. Aucun honoraire de conseil ni frais de formation. Le jeton A4I-MISSION- identifie le protocole.",
-    organism: "Type d'organisme",
+      "Invitation réservée aux doyens d'université, aux directeurs de laboratoires de recherche (UMR CNRS), aux DPO et aux directeurs d'hôpital. Demandez un briefing méthodologique pro bono de 30 minutes, ou établissez une convention de recherche empirique (LOI). Aucun honoraire de conseil ni frais de formation.",
+    organism: "Qualité du demandeur",
     organismPlaceholder: "Sélectionner…",
     organisms: {
-      Université: "Université / enseignement supérieur",
-      "UMR CNRS": "Laboratoire de recherche (UMR CNRS)",
-      CHU: "Hôpital (CHU)",
-      Collectivité: "Collectivité / municipalité",
+      "Doyen université": "Doyen d'université",
+      "Directeur UMR CNRS": "Directeur de laboratoire de recherche (UMR CNRS)",
+      DPO: "DPO",
+      "Directeur hôpital": "Directeur d'hôpital",
     },
     organization: "Nom de l'établissement",
     organizationPh: "Ex. Université de Montpellier",
@@ -86,15 +86,15 @@ const copy = {
     cityPh: "Paris, Bruxelles, Genève…",
     country: "Pays d'intervention",
     countryPh: "France, Belgique, Suisse, Luxembourg…",
-    format: "Format souhaité",
+    format: "Demande",
     formats: {
-      "Briefing de direction": "Briefing de direction",
-      "Séminaire méthodologique": "Séminaire méthodologique",
+      "Briefing 30 min pro bono": "Briefing méthodologique pro bono (30 minutes)",
+      "Convention recherche LOI": "Convention de recherche empirique (LOI)",
     },
-    signatoryName: "Nom du signataire",
+    signatoryName: "Nom du demandeur",
     signatoryNamePh: "Ex. Pr. Camille Bernard",
-    signatoryTitle: "Titre du signataire",
-    signatoryTitlePh: "Présidence, direction de laboratoire, direction des soins…",
+    signatoryTitle: "Fonction",
+    signatoryTitlePh: "Doyen, directeur d'UMR CNRS, DPO, directeur d'hôpital…",
     email: "E-mail professionnel",
     emailPh: "direction@universite.fr",
     travel:
@@ -114,17 +114,17 @@ const copy = {
     host: "Hôte",
   },
   EN: {
-    eyebrow: "Institutional letter of intent",
-    title: "Letter of intent (LOI) — empirical research protocol",
+    eyebrow: "Institutional invitation",
+    title: "30-minute methodological briefing or research convention (LOI)",
     subtitle:
-      "File a letter of intent for a doctrinal seminar or executive briefing on a strictly non-commercial basis. No consulting fee and no training rate. The A4I-MISSION- token identifies the protocol.",
-    organism: "Organization type",
+      "An invitation for University Deans, Research Laboratory Directors (UMR CNRS), DPOs, and Hospital Directors to request a 30-minute pro-bono methodological briefing or to establish an empirical research convention (LOI). No consulting fee and no training rate.",
+    organism: "Requester role",
     organismPlaceholder: "Select…",
     organisms: {
-      Université: "University / higher education",
-      "UMR CNRS": "Research laboratory (UMR CNRS)",
-      CHU: "University hospital (CHU)",
-      Collectivité: "Municipality",
+      "Doyen université": "University Dean",
+      "Directeur UMR CNRS": "Research Laboratory Director (UMR CNRS)",
+      DPO: "DPO",
+      "Directeur hôpital": "Hospital Director",
     },
     organization: "Institution name",
     organizationPh: "e.g. University of Montpellier",
@@ -132,15 +132,15 @@ const copy = {
     cityPh: "Paris, Brussels, Geneva…",
     country: "Intervention country",
     countryPh: "France, Belgium, Switzerland, Luxembourg…",
-    format: "Preferred format",
+    format: "Request",
     formats: {
-      "Briefing de direction": "Executive briefing",
-      "Séminaire méthodologique": "Methodological seminar",
+      "Briefing 30 min pro bono": "30-minute pro-bono methodological briefing",
+      "Convention recherche LOI": "Empirical research convention (LOI)",
     },
-    signatoryName: "Signatory name",
+    signatoryName: "Requester name",
     signatoryNamePh: "e.g. Prof. Camille Bernard",
-    signatoryTitle: "Signatory title",
-    signatoryTitlePh: "Presidency, laboratory director, care director…",
+    signatoryTitle: "Role",
+    signatoryTitlePh: "Dean, UMR CNRS director, DPO, hospital director…",
     email: "Professional email",
     emailPh: "office@university.edu",
     travel:
@@ -160,17 +160,17 @@ const copy = {
     host: "Host",
   },
   ES: {
-    eyebrow: "Carta de intención institucional",
-    title: "Carta de intención (LOI) — protocolo de investigación empírica",
+    eyebrow: "Invitación institucional",
+    title: "Briefing metodológico de 30 minutos o convenio de investigación (LOI)",
     subtitle:
-      "Presente una carta de intención para un seminario doctrinal o un briefing de dirección, de forma estrictamente no comercial. Sin honorarios de consultoría ni tarifa de formación. El token A4I-MISSION- identifica el protocolo.",
-    organism: "Tipo de organismo",
+      "Invitación a decanos de universidad, directores de laboratorios de investigación (UMR CNRS), DPO y directores de hospital para solicitar un briefing metodológico pro bono de 30 minutos o establecer un convenio de investigación empírica (LOI). Sin honorarios de consultoría ni tarifa de formación.",
+    organism: "Calidad del solicitante",
     organismPlaceholder: "Seleccionar…",
     organisms: {
-      Université: "Universidad / enseñanza superior",
-      "UMR CNRS": "Laboratorio de investigación (UMR CNRS)",
-      CHU: "Hospital universitario (CHU)",
-      Collectivité: "Municipio",
+      "Doyen université": "Decano de universidad",
+      "Directeur UMR CNRS": "Director de laboratorio de investigación (UMR CNRS)",
+      DPO: "DPO",
+      "Directeur hôpital": "Director de hospital",
     },
     organization: "Nombre de la institución",
     organizationPh: "Ej. Universidad de Montpellier",
@@ -178,15 +178,15 @@ const copy = {
     cityPh: "París, Bruselas, Ginebra…",
     country: "País de intervención",
     countryPh: "Francia, Bélgica, Suiza, Luxemburgo…",
-    format: "Formato deseado",
+    format: "Solicitud",
     formats: {
-      "Briefing de direction": "Briefing de dirección",
-      "Séminaire méthodologique": "Seminario metodológico",
+      "Briefing 30 min pro bono": "Briefing metodológico pro bono (30 minutos)",
+      "Convention recherche LOI": "Convenio de investigación empírica (LOI)",
     },
-    signatoryName: "Nombre del firmante",
+    signatoryName: "Nombre del solicitante",
     signatoryNamePh: "Ej. Prof. Camille Bernard",
-    signatoryTitle: "Cargo del firmante",
-    signatoryTitlePh: "Presidencia, dirección de laboratorio, dirección asistencial…",
+    signatoryTitle: "Función",
+    signatoryTitlePh: "Decano, director de UMR CNRS, DPO, director de hospital…",
     email: "Correo profesional",
     emailPh: "direccion@universidad.edu",
     travel:

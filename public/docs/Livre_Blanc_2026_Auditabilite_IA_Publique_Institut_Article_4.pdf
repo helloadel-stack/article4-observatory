@@ -1,0 +1,780 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R] /Count 8 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Title (2026 White Paper: Enforceable Auditability of AI Systems in Public Services and Higher Education — Operationalizing EU AI Act Article 14 and Annex III via Zero-Knowledge Cryptographic State Sealing) /Author (Adel El Bouzagaoui) /Subject (Livre Blanc 2026 : L'Auditabilité Opposable des Systèmes d'IA dans les Services Publics et l'Enseignement Supérieur) /Keywords (A4I-DOC-2026-001, CC BY-NC 4.0, EU AI Act, Article 14, Annex III, VerifIA, WaqfLedger) /Creator (L'Institut Article 4) /Producer (A4I-DOC-2026-001) >>
+endobj
+7 0 obj
+<< /Length 3750 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 52.00 765.89 Tm (SCIENTIFIC PUBLICATION · PUBLIC-INTEREST MISSION · 2026) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 15.00 Tf 1 0 0 1 52.00 734.89 Tm (2026 White Paper: Enforceable Auditability of AI Systems in Public) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 15.00 Tf 1 0 0 1 52.00 715.39 Tm (Services and Higher Education — Operationalizing EU AI Act Article) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 15.00 Tf 1 0 0 1 52.00 695.89 Tm (14 and Annex III via Zero-Knowledge Cryptographic State Sealing) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F3 11.50 Tf 1 0 0 1 52.00 669.89 Tm (Livre Blanc 2026 : L'Auditabilité Opposable des Systèmes d'IA dans les Services Publics et) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F3 11.50 Tf 1 0 0 1 52.00 654.39 Tm (l'Enseignement Supérieur) Tj ET
+0.7961 0.8353 0.8824 rg
+52.00 638.39 491.28 0.8 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 52.00 618.39 Tm (HEADER METADATA) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 11.00 Tf 1 0 0 1 52.00 595.39 Tm (Reference: A4I-DOC-2026-001 | License: CC BY-NC 4.0) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 574.89 Tm (Publisher: L'Institut Article 4 \(Association Loi 1901 — Independent Observatory & Trusted Third-Party\)) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 556.49 Tm (Author: Adel El Bouzagaoui, Research Director, L'Institut Article 4) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F1 9.00 Tf 1 0 0 1 52.00 539.59 Tm (Siège : Montpellier. RNA W343030686. SIRET 92288647800010. The Institute is an Association Loi 1901 with strictly) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F1 9.00 Tf 1 0 0 1 52.00 527.19 Tm (disinterested management within the meaning of Article 206-1 bis of the French General Tax Code.) Tj ET
+0.7961 0.8353 0.8824 rg
+52.00 511.79 491.28 0.8 re f
+0.0588 0.0902 0.1647 rg
+BT /F2 11.00 Tf 1 0 0 1 52.00 488.79 Tm (Contents) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 469.29 Tm (•) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 68.00 469.29 Tm (Bilingual title and executive abstract \(English and French\).) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 450.69 Tm (•) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 68.00 450.69 Tm (Chapter 1. Statutory framework: Article 14, Annex III §3, and the legal failure of static PDF audits.) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 432.09 Tm (•) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 68.00 432.09 Tm (Chapter 2. Empirical benchmark 2026: twelve European and transatlantic public and academic) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 68.00 417.49 Tm (deployments.) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 398.89 Tm (•) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 68.00 398.89 Tm (Chapter 3. VerifIA and WaqfLedger: canonical SHA-256 state sealing with zero PII retention.) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 380.29 Tm (•) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 68.00 380.29 Tm (Chapter 4. Operational public doctrine: the Zero-Detector Rule, Article 50 declarations, and the EdTech) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 68.00 365.69 Tm (rider.) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (1  /  8) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 7 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+9 0 obj
+<< /Length 6618 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 755.89 3.2 18 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 64.00 765.89 Tm (EXECUTIVE ABSTRACT) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 740.89 Tm (Executive Summary) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 718.89 Tm (This white paper states the operational doctrine of L'Institut Article 4 for enforceable auditability of) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 704.29 Tm (artificial intelligence used in public services and higher education. Enforceable, here, means opposable: a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 689.69 Tm (later reviewer, a data-protection authority, a court, or the institution itself can test whether the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 675.09 Tm (human-oversight record that accompanied a decision is the same record that existed when the decision) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 660.49 Tm (was taken. The paper operationalizes Article 14 and Annex III of Regulation \(EU\) 2024/1689 by replacing) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 645.89 Tm (mutable documentary exports with a zero-knowledge cryptographic seal of the canonical local state.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 623.29 Tm (Public bodies and universities now use models to rank applicants, predict dropout, allocate benefits, triage) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 608.69 Tm (municipal requests, assist clinicians, and judge academic work. Where a system determines access to) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 594.09 Tm (education or to an essential public service, Annex III places it in the high-risk class. Article 14 then) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 579.49 Tm (requires that natural persons oversee the system: they must understand its capabilities and limitations,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 564.89 Tm (remain able to decide not to use it, intervene in its operation, and stop it. A static PDF exported from a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 550.29 Tm (vendor console does not discharge that duty. It can be regenerated, it is silent on the oversight log, and it) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 535.69 Tm (supplies no cryptographic binding to the state that actually produced the output.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 513.09 Tm (The 2026 empirical benchmark examines twelve European and transatlantic deployments in public) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 498.49 Tm (administration and higher education. Seventy-five percent have migrated, or are migrating, hosting toward) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 483.89 Tm (SecNumCloud or on-premise infrastructure. Fifty-eight percent present Annex III high-risk exposure.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 469.29 Tm (Sovereign hosting is necessary and incomplete. Moving compute inside a qualified perimeter does not, by) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 454.69 Tm (itself, create an opposable record of human oversight.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 432.09 Tm (The VerifIA protocol and the WaqfLedger utility answer that gap with a canonical local commitment:) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 417.49 Tm (SHA-256\(Metadata || Annex III Matrix || Oversight Log\). The preimage is assembled and hashed on the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 402.89 Tm (operator's premises. The ledger retains the digest, the document reference, and the sealing time. It retains) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 388.29 Tm (no personal data. Verification recomputes the hash. Equality confirms that the metadata, the Annex III) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 373.69 Tm (classification matrix, and the oversight log were not rewritten after the seal. Inequality is itself an audit) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 359.09 Tm (finding.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 336.49 Tm (Three operational rules follow for universities, university hospitals, laboratories, and municipalities. The) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 321.89 Tm (Zero-Detector Rule prohibits a disciplinary sanction that rests only on an uncorroborated score from) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 307.29 Tm (Turnitin, GPTZero, or an equivalent detector. Article 50 requires an ex-ante declaration by the student or) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 292.69 Tm (user, made before assessment, and included in the oversight log that enters the seal. The EdTech) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 278.09 Tm (sovereign procurement rider obliges the public buyer to demand SecNumCloud or on-premise hosting, an) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 263.49 Tm (Article 14 override, Article 50 transparency, and an export of the canonical state so that the buyer, not the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 248.89 Tm (vendor, can compute the seal.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 226.29 Tm (The Institute publishes this doctrine as a public-interest scientific work under the Creative Commons) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 211.69 Tm (Attribution-NonCommercial 4.0 International licence. It is an observatory and a trusted third party. It is) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 197.09 Tm (not a party to the administrative decision that the seal records, and it does not retain the personal data) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 182.49 Tm (from which the seal was computed.) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (2  /  8) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 9 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+11 0 obj
+<< /Length 7364 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 755.89 3.2 18 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 64.00 765.89 Tm (RÉSUMÉ EXÉCUTIF) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 740.89 Tm (Résumé exécutif) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 718.89 Tm (Ce livre blanc énonce la doctrine opérationnelle de L'Institut Article 4 sur l'auditabilité opposable des) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 704.29 Tm (systèmes d'intelligence artificielle déployés dans les services publics et l'enseignement supérieur.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 689.69 Tm (Opposable signifie qu'un réexamen ultérieur, par l'établissement, une autorité de protection des données) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 675.09 Tm (ou le juge, peut vérifier que la trace de surveillance humaine jointe à une décision est bien celle qui existait) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 660.49 Tm (au moment de la décision. Le document opérationnalise l'article 14 et l'annexe III du règlement \(UE\)) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 645.89 Tm (2024/1689 en substituant, aux exports documentaires muables, un scellement cryptographique à) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 631.29 Tm (connaissance nulle de l'état local canonique.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 608.69 Tm (Les administrations et les universités utilisent désormais des modèles pour classer des candidatures,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 594.09 Tm (prédire le décrochage, attribuer des prestations, trier des demandes municipales, assister le clinicien ou) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 579.49 Tm (évaluer un travail académique. Lorsqu'un système détermine l'accès à l'éducation ou à un service public) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 564.89 Tm (essentiel, l'annexe III le range dans la classe à haut risque. L'article 14 impose alors que des personnes) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 550.29 Tm (physiques surveillent le système : elles doivent en comprendre les capacités et les limites, pouvoir décider) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 535.69 Tm (de ne pas l'utiliser, intervenir dans son fonctionnement et l'arrêter. Un PDF statique exporté d'une console) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 521.09 Tm (d'éditeur ne satisfait pas ce devoir. Il peut être régénéré, il est muet sur le journal de surveillance, et il) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 506.49 Tm (n'offre aucune liaison cryptographique avec l'état qui a effectivement produit le résultat.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 483.89 Tm (Le benchmark empirique 2026 porte sur douze déploiements européens et transatlantiques, dans) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 469.29 Tm (l'administration publique et l'enseignement supérieur. Soixante-quinze pour cent ont migré, ou migrent,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 454.69 Tm (l'hébergement vers SecNumCloud ou une infrastructure sur site. Cinquante-huit pour cent présentent une) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 440.09 Tm (exposition à haut risque au sens de l'annexe III. L'hébergement souverain est nécessaire et insuffisant.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 425.49 Tm (Déplacer le calcul dans un périmètre qualifié ne crée pas, à lui seul, une trace opposable de la surveillance) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 410.89 Tm (humaine.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 388.29 Tm (Le protocole VerifIA et l'utilitaire WaqfLedger répondent par un engagement local canonique :) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 373.69 Tm (SHA-256\(Metadata || Annex III Matrix || Oversight Log\). La préimage est assemblée et condensée dans) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 359.09 Tm (les locaux de l'opérateur. Le registre conserve le condensat, la référence du document et l'horodatage du) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 344.49 Tm (scellement. Il ne conserve aucune donnée à caractère personnel. La vérification recalcule le condensat.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 329.89 Tm (L'égalité confirme que les métadonnées, la matrice de classification Annexe III et le journal de) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 315.29 Tm (surveillance n'ont pas été réécrits après le sceau. L'inégalité est elle-même un constat d'audit.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 292.69 Tm (Trois règles opérationnelles en découlent pour les universités, les centres hospitaliers universitaires, les) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 278.09 Tm (laboratoires et les collectivités. La règle du zéro détecteur interdit une sanction disciplinaire qui reposerait) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 263.49 Tm (seulement sur un score non corroboré de Turnitin, de GPTZero ou d'un détecteur équivalent. L'article 50) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 248.89 Tm (impose une déclaration préalable de l'étudiant ou de l'usager, produite avant l'évaluation et versée au) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 234.29 Tm (journal de surveillance qui entre dans le sceau. Le cahier de clauses souveraines pour l'EdTech oblige) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 219.69 Tm (l'acheteur public à exiger un hébergement SecNumCloud ou sur site, une capacité d'arrêt au sens de) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 205.09 Tm (l'article 14, la transparence de l'article 50, et l'export de l'état canonique afin que l'acheteur, et non le) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 190.49 Tm (fournisseur, calcule le sceau.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 167.89 Tm (L'Institut publie cette doctrine comme un travail scientifique d'intérêt général sous la licence Creative) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 153.29 Tm (Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Il est un observatoire et un tiers) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 138.69 Tm (de confiance. Il n'est pas partie à la décision administrative que le sceau enregistre, et il ne conserve pas) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 124.09 Tm (les données personnelles à partir desquelles le sceau a été calculé.) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (3  /  8) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 11 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+13 0 obj
+<< /Length 5745 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 755.89 3.2 18 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 64.00 765.89 Tm (CHAPTER 1  ·  STATUTORY FRAMEWORK) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 740.89 Tm (Article 14 Human Oversight, Annex III §3 Educational High-Risk Scope, and) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 724.39 Tm (the Legal Failure of Static PDF Audits) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 702.39 Tm (Article 14 of the EU AI Act organises human oversight of high-risk systems as a design duty and as an) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 687.79 Tm (operational duty. The system must be built so that natural persons can oversee it. Those persons must) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 673.19 Tm (be able to understand the relevant capacities and limitations, to monitor the operation for anomalies, to) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 658.59 Tm (interpret the output correctly, to decide not to use the system or to disregard its output, to intervene, and) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 643.99 Tm (to interrupt the system through a stop. Oversight that exists only in a policy slide, or only in a narrative) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 629.39 Tm (written after a dispute, does not meet the article. The oversight has to be exercisable on the individual) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 614.79 Tm (operation, and the fact that it was exercised has to be reconstructible.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 592.19 Tm (Annex III, point 3, brings into the high-risk class AI systems intended to be used to determine access or) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 577.59 Tm (admission to educational and vocational training institutions, to evaluate learning outcomes, to assess the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 562.99 Tm (appropriate level of education for an individual, and to monitor and detect prohibited behaviour of students) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 548.39 Tm (during tests. Adjacent public-service uses fall under the high-risk class when they evaluate eligibility for) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 533.79 Tm (essential public assistance, or when they are used by public authorities to evaluate creditworthiness or to) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 519.19 Tm (dispatch emergency services. The educational limb is the one universities meet first: admission scoring,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 504.59 Tm (proctoring, automated marking support, and dropout-risk models that trigger an intervention in a student's) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 489.99 Tm (path are not outside the Act because the operator is a public university.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 467.39 Tm (A static PDF audit fails this framework for four structural reasons. First, a PDF is a presentation, not a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 452.79 Tm (state. The same dashboard can emit a different file tomorrow without a trace that the oversight log) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 438.19 Tm (changed. Second, the file is ordinarily produced by the vendor, so the buyer cannot show that the artefact) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 423.59 Tm (was computed from the buyer's own canonical records. Third, the PDF does not bind three objects that) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 408.99 Tm (Article 14 and Annex III make inseparable: the system metadata, the classification matrix that justifies) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 394.39 Tm (the high-risk treatment, and the log of the human decision to accept, override, or stop the output. Fourth,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 379.79 Tm (a PDF is a poor exhibit in administrative review. It can be disputed as a selective export. It cannot be) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 365.19 Tm (recomputed.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 342.59 Tm (The legal consequence is narrow and practical. Where Annex III §3 or a neighbouring high-risk heading) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 327.99 Tm (applies, the institution must keep an oversight record that a third party can test. The record has to travel) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 313.39 Tm (with the decision, not with the vendor's marketing archive. The remainder of this paper specifies that) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 298.79 Tm (record as a cryptographic commitment computed locally, and it refuses the substitute that the market) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 284.19 Tm (currently sells: a detector score printed into a PDF and treated as if it were an audit.) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (4  /  8) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 13 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+15 0 obj
+<< /Length 6988 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 755.89 3.2 18 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 64.00 765.89 Tm (CHAPTER 2  ·  EMPIRICAL BENCHMARK 2026) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 740.89 Tm (Twelve European and Transatlantic Public and Academic Deployments) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 718.89 Tm (The 2026 benchmark of L'Institut Article 4 covers twelve deployments of AI in public services and higher) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 704.29 Tm (education across European and transatlantic jurisdictions. The corpus is limited to systems whose) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 689.69 Tm (existence is supported by public institutional disclosures. Each deployment is classified on three axes that) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 675.09 Tm (the Act itself uses: the Annex III heading, if any; the hosting perimeter; and the posture of human) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 660.49 Tm (oversight. The figures below are the Institute's aggregate findings for this corpus. They are not a league) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 645.89 Tm (table of vendors and they are not a finding of infringement against a named body.) Tj ET
+0.9451 0.9569 0.9686 rg
+52.00 559.79 239.64 72.00 re f
+0.0588 0.0902 0.1647 rg
+52.00 559.79 3 72.00 re f
+0.0588 0.0902 0.1647 rg
+BT /F2 18.00 Tf 1 0 0 1 68.00 599.79 Tm (75%) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F1 8.50 Tf 1 0 0 1 68.00 581.79 Tm (Sovereign hosting migration to SecNumCloud or) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F1 8.50 Tf 1 0 0 1 68.00 570.79 Tm (on-premise infrastructure.) Tj ET
+0.9451 0.9569 0.9686 rg
+303.64 559.79 239.64 72.00 re f
+0.0588 0.0902 0.1647 rg
+303.64 559.79 3 72.00 re f
+0.0588 0.0902 0.1647 rg
+BT /F2 18.00 Tf 1 0 0 1 319.64 599.79 Tm (58%) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F1 8.50 Tf 1 0 0 1 319.64 581.79 Tm (Annex III high-risk exposure across the) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F1 8.50 Tf 1 0 0 1 319.64 570.79 Tm (twelve-deployment corpus.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 535.29 Tm (Seventy-five percent of the corpus has migrated, or is in a documented migration, from general) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 520.69 Tm (hyperscaler transit toward SecNumCloud or on-premise hosting. That movement is the right response to) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 506.09 Tm (confidentiality, to research-ethics constraints, and to the expectation that a public buyer can name the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 491.49 Tm (jurisdiction of the machines. It is not a substitute for Article 14. A model that scores students on a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 476.89 Tm (sovereign cluster is still a high-risk system if it determines access, admission, or evaluation. The residual) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 462.29 Tm (quarter of the corpus remains on infrastructure the institution does not control. For those systems, the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 447.69 Tm (procurement rider in Chapter 4 is a condition of renewal, not an optional schedule.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 425.09 Tm (Fifty-eight percent of the corpus falls inside Annex III high-risk exposure, principally through the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 410.49 Tm (educational heading and through public-service eligibility or allocation. The complementary share is not a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 395.89 Tm (comfort. Systems that sit under Article 50, including student-facing assistants and administrative) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 381.29 Tm (chatbots, still require that the person be told they are interacting with an AI system, in due time, before) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 366.69 Tm (the interaction shapes a file. Article 50 transparency and Article 14 oversight are stacked, not alternative,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 352.09 Tm (whenever the same institution runs both a high-risk evaluator and a general-purpose assistant.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 329.49 Tm (Two readings follow from the joint distribution. Institutions that have both sovereign hosting and high-risk) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 314.89 Tm (exposure are the priority for state sealing: the data-protection perimeter is improving while the opposable) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 300.29 Tm (oversight record is still missing. Institutions that have high-risk exposure and non-sovereign hosting fail) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 285.69 Tm (both tests and should not add a detector-based integrity product on top of an unsealed decision system.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 271.09 Tm (Hosting sovereignty without a recomputable oversight log is an incomplete control. A recomputable log on) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 256.49 Tm (infrastructure the institution cannot locate is also incomplete. The doctrine requires both.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 233.89 Tm (Method. Entries are drawn from publicly verifiable sources and institutional disclosures. Risk headings) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 219.29 Tm (follow Annex III, Article 50, and Article 5. Hosting classes distinguish SecNumCloud, sovereign bare) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 204.69 Tm (metal, on-premise campus infrastructure, and hyperscaler arrangements. A SHA-256 digest may be) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 190.09 Tm (computed locally for each record. That digest is a receipt on WaqfLedger only when the ledger has) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 175.49 Tm (acknowledged it. A hash string alone is not treated as an on-chain anchoring. The benchmark is versioned) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 160.89 Tm (and open to scholarly scrutiny. It does not ingest student-level personal data.) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (5  /  8) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 15 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+17 0 obj
+<< /Length 6498 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 755.89 3.2 18 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 64.00 765.89 Tm (CHAPTER 3  ·  VERIFIA & WAQFLEDGER) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 740.89 Tm (Zero-Knowledge Canonical SHA-256 State Sealing, with Zero PII Retention) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 718.89 Tm (VerifIA is the protocol layer. It normalises the three objects an auditor must see together: the system) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 704.29 Tm (metadata, the Annex III classification matrix, and the human-oversight log. WaqfLedger is the utility that) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 689.69 Tm (stores the resulting receipt. The architecture is deliberately small. It does not move the student file, the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 675.09 Tm (prompt, the answer script, or the mark book to the ledger. It moves a commitment.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 652.49 Tm (The canonical preimage is the concatenation, in a fixed order and a fixed encoding, of those three objects.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 637.89 Tm (The seal is the SHA-256 digest of that concatenation:) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 593.79 491.28 32.00 re f
+1 1 1 rg
+BT /F2 10.00 Tf 1 0 0 1 66.00 605.79 Tm (SHA-256\(Metadata || Annex III Matrix || Oversight Log\)) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 569.29 Tm (Metadata identifies the system, the deploying institution, the model or service version, the purpose, and) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 554.69 Tm (the hosting class. The Annex III matrix records the heading relied upon, the role of the system in access,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 540.09 Tm (admission, evaluation, or essential-service allocation, and the human-oversight measures assigned to that) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 525.49 Tm (heading. The oversight log records, for the sealed period or the sealed decision, who reviewed the output,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 510.89 Tm (whether the output was followed, overridden, or stopped, and the Article 50 declaration where the use is) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 496.29 Tm (one that a student or user had to disclose. The concatenation order is part of the canon. A party cannot) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 481.69 Tm (produce a matching digest by rearranging fields after the fact.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 459.09 Tm (Computation is local. The institution, or the assurance environment it controls, builds the preimage and) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 444.49 Tm (calculates the digest on premises or inside the qualified hosting perimeter. Only the digest, the public) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 429.89 Tm (reference \(A4I-DOC or the deployment identifier\), and the sealing timestamp need to leave that perimeter.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 415.29 Tm (WaqfLedger retains those receipt fields. It does not retain the preimage. Zero PII retention is a storage) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 400.69 Tm (rule, not a slogan: names, student identifiers, free-text justifications, scripts, and prompts are excluded) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 386.09 Tm (from the ledger by the shape of the protocol. If a field would identify a person, it stays inside the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 371.49 Tm (institution's own record, inside the preimage, and outside the receipt.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 348.89 Tm (The construction is zero-knowledge in the operational sense required of a public receipt. A verifier who) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 334.29 Tm (sees the ledger learns that a named institution sealed a named canonical state at a named time. The) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 319.69 Tm (verifier does not learn the personal data inside that state. Knowledge of the underlying records remains) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 305.09 Tm (with the controller. When an audit is lawfully opened, the controller recomputes SHA-256 over the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 290.49 Tm (preserved preimage and exhibits equality or inequality with the receipt. Equality is evidence that the) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 275.89 Tm (metadata, the matrix, and the oversight log were not altered after sealing. Inequality is evidence that they) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 261.29 Tm (were. No student record has to be copied onto the ledger for that test to be decisive.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 238.69 Tm (This is a cryptographic commitment, not a claim that a zero-knowledge proof circuit replaces the hash.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 224.09 Tm (The Act's audit problem, as this Institute states it, is integrity plus data minimisation. SHA-256 over a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 209.49 Tm (canonical local preimage solves both if, and only if, the preimage is complete and the institution actually) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 194.89 Tm (keeps it. A receipt of an empty log is a truthful receipt of an empty log, and an empty log will not satisfy) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 180.29 Tm (Article 14. The protocol does not launder a missing oversight act into a compliant one.) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (6  /  8) Tj ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 17 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+19 0 obj
+<< /Length 6459 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 755.89 3.2 18 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 64.00 765.89 Tm (CHAPTER 4  ·  OPERATIONAL PUBLIC DOCTRINE) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 740.89 Tm (The Zero-Detector Rule, Article 50 Ex-Ante Declarations, and the EdTech) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 724.39 Tm (Sovereign Procurement Rider) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 702.39 Tm (The statutory and technical chapters collapse into three rules that a university, a hospital, a laboratory, or) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 687.79 Tm (a municipality can adopt without waiting for a vendor to rename its dashboard an audit.) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 11.50 Tf 1 0 0 1 52.00 664.19 Tm (1. The Zero-Detector Rule) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 646.19 Tm (A similarity score or an AI-writing score is not, by itself, proof of academic misconduct. Turnitin,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 631.59 Tm (GPTZero, and equivalent detectors may be consulted as signals. They may not be the sole basis of a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 616.99 Tm (sanction. The Institute states the Zero-Detector Rule as a prohibition: no disciplinary or administrative) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 602.39 Tm (decision may rest on an uncorroborated detector output. Corroboration requires a named human) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 587.79 Tm (decision-maker, an opportunity for the student to be heard, reasons that address the work itself, and an) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 573.19 Tm (entry in the oversight log. That entry is part of the preimage. A detector PDF attached to a file, with no) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 558.59 Tm (human judgement and no seal, is the static audit that Chapter 1 rejects, applied to a person's academic) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 543.99 Tm (record.) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 11.50 Tf 1 0 0 1 52.00 520.39 Tm (2. Article 50 ex-ante student declarations) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 502.39 Tm (Article 50 requires that people be informed, in a clear and distinguishable manner, when they are) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 487.79 Tm (interacting with an AI system, and it requires disclosure of synthetic content in the cases the article lists.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 473.19 Tm (In higher education the Institute draws a stricter operational consequence, timed before the assessment) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 458.59 Tm (rather than after an accusation. Before a piece of work is submitted for evaluation, the student makes an) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 443.99 Tm (ex-ante declaration: whether an AI system assisted the work, which class of system, and for what part of) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 429.39 Tm (the task. The declaration is an input to the oversight log. It is sealed with the metadata and the Annex) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 414.79 Tm (III matrix. Transparency reconstructed after a detector alert is not Article 50 compliance. It is a dispute) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 400.19 Tm (about a disclosure that should already have existed.) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 11.50 Tf 1 0 0 1 52.00 376.59 Tm (3. The EdTech sovereign procurement rider) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 358.59 Tm (Public buyers insert the following rider into EdTech and public-service AI contracts, as conditions of) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 343.99 Tm (award and of renewal. Hosting is SecNumCloud or an on-premise environment under the buyer's control.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 329.39 Tm (Institutional content is not used to train a supplier model without a recorded legal basis. The system) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 314.79 Tm (exposes an Article 14 override and a stop that a trained natural person can actually use. User-facing) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 300.19 Tm (functions meet Article 50 before the interaction influences a file. The supplier exports the canonical state,) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 285.59 Tm (meaning metadata, Annex III matrix, and oversight log, in the concatenation the buyer specifies, so that) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 270.99 Tm (the buyer computes the SHA-256 seal. The supplier's recommended workflow must not instruct the buyer) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 256.39 Tm (to sanction a person on a detector score alone. Audit rights may name L'Institut Article 4 as an) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 241.79 Tm (independent third party when the buyer so decides. A contract that cannot meet the rider is a contract for) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 227.19 Tm (a system the buyer cannot audit.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 204.59 Tm (Taken together, the three rules keep the high-risk decision inside the public institution. The vendor may) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 189.99 Tm (supply a model. The vendor does not supply the legal act of oversight, does not keep the personal data of) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 175.39 Tm (the seal, and does not define misconduct as whatever a detector printed.) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (7  /  8) Tj ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 19 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+21 0 obj
+<< /Length 3409 >>
+stream
+0.0588 0.0902 0.1647 rg
+0 795.89 595.28 46.00 re f
+0.7961 0.8353 0.8824 rg
+0 793.49 595.28 2.4 re f
+1 1 1 rg
+BT /F2 8.5 Tf 1 0 0 1 52.00 813.89 Tm (L'INSTITUT ARTICLE 4) Tj ET
+BT /F1 8 Tf 1 0 0 1 405.02 813.89 Tm (A4I-DOC-2026-001   |   CC BY-NC 4.0) Tj ET
+0.0588 0.0902 0.1647 rg
+52.00 755.89 3.2 18 re f
+0.3216 0.3765 0.4431 rg
+BT /F2 8.00 Tf 1 0 0 1 64.00 765.89 Tm (COLOPHON) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 13.00 Tf 1 0 0 1 64.00 740.89 Tm (Licence, citation, and limit of this publication) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 10.50 Tf 1 0 0 1 52.00 718.89 Tm (A4I-DOC-2026-001. CC BY-NC 4.0. L'Institut Article 4 \(Association Loi 1901 — Independent) Tj ET
+0.0588 0.0902 0.1647 rg
+BT /F2 10.50 Tf 1 0 0 1 52.00 704.29 Tm (Observatory & Trusted Third-Party\). Adel El Bouzagaoui, Research Director, L'Institut Article 4.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 681.69 Tm (This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International Licence.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 667.09 Tm (Attribution must name the author and L'Institut Article 4 and must cite the reference A4I-DOC-2026-001.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 652.49 Tm (Commercial use of the text is not granted by this licence. The doctrinal rules may be copied into a public) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 637.89 Tm (procurement clause or an institutional regulation without that copying being treated as a commercial) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 623.29 Tm (exploitation of the paper.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 600.69 Tm (Suggested citation: El Bouzagaoui, A. \(2026\). Enforceable Auditability of AI Systems in Public Services) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 586.09 Tm (and Higher Education: Operationalizing EU AI Act Article 14 and Annex III via Zero-Knowledge) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 571.49 Tm (Cryptographic State Sealing \(A4I-DOC-2026-001\). L'Institut Article 4, Montpellier.) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 548.89 Tm (This publication is a scientific and doctrinal statement of an independent observatory. It is not a legal) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 534.29 Tm (opinion delivered to a named administration, not a conformity assessment under the EU AI Act, and not a) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 519.69 Tm (certification of any vendor. Figures in Chapter 2 describe the twelve-deployment benchmark stated in this) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 505.09 Tm (document. Registry identifiers of the publisher: RNA W343030686, SIRET 92288647800010. Ledger) Tj ET
+0.0980 0.1216 0.1725 rg
+BT /F1 10.50 Tf 1 0 0 1 52.00 490.49 Tm (utility: waqfledger.tech. Institutional site: article4institute.org.) Tj ET
+0.3216 0.3765 0.4431 rg
+BT /F1 9.00 Tf 1 0 0 1 52.00 469.39 Tm (Canonical file: Livre_Blanc_2026_Auditabilite_IA_Publique_Institut_Article_4.pdf) Tj ET
+0.9451 0.9569 0.9686 rg
+0 0 595.28 34 re f
+0.0588 0.0902 0.1647 rg
+0 34 595.28 1.15 re f
+0.0588 0.0902 0.1647 rg
+BT /F1 7.5 Tf 1 0 0 1 52.00 14.5 Tm (Association Loi 1901  ·  Independent Observatory & Trusted Third-Party) Tj ET
+BT /F2 8 Tf 1 0 0 1 521.19 14.5 Tm (8  /  8) Tj ET
+endstream
+endobj
+22 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 21 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+xref
+0 23
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000170 00000 n 
+0000000267 00000 n 
+0000000369 00000 n 
+0000000474 00000 n 
+0000001017 00000 n 
+0000004819 00000 n 
+0000004971 00000 n 
+0000011641 00000 n 
+0000011794 00000 n 
+0000019211 00000 n 
+0000019365 00000 n 
+0000025163 00000 n 
+0000025317 00000 n 
+0000032358 00000 n 
+0000032512 00000 n 
+0000039063 00000 n 
+0000039217 00000 n 
+0000045729 00000 n 
+0000045883 00000 n 
+0000049345 00000 n 
+trailer
+<< /Size 23 /Root 1 0 R /Info 6 0 R >>
+startxref
+49499
+%%EOF

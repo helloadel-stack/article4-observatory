@@ -16,7 +16,6 @@ import {
   ChevronDown,
   Download,
   Hospital,
-  Landmark,
   Scale,
   ShieldCheck,
   Users,
@@ -31,7 +30,8 @@ const pageCopy = {
     langLabel: "Langue de l'interface",
     back: "Retour à l'Observatoire",
     banner:
-      "Séminaires doctrinaux · Briefings de direction · Coopération scientifique — mission d'intérêt général",
+      "Séminaires doctrinaux · Briefing méthodologique de 30 minutes · Convention de recherche (LOI)",
+    brandLine: "Séminaires Doctrinaux",
     navModules: "Curriculum",
     navTrust: "Référentiels",
     navBook: "Lettre d'intention",
@@ -39,17 +39,17 @@ const pageCopy = {
     badge:
       "Mission d'intérêt général — aucun honoraire de conseil ni frais de formation",
     title:
-      "Séminaires Doctrinaux, Briefings de Direction & Coopération Scientifique (Mission d'Intérêt Général)",
+      "Séminaires Doctrinaux & Cadrage Méthodologique (Mission d'Intérêt Général)",
     subtitle:
-      "Briefings et ateliers méthodologiques conduits à titre strictement non commercial pour les universités, les laboratoires de recherche (UMR CNRS), les hôpitaux (CHU) et les collectivités, dans le cadre de protocoles de recherche empirique et de lettres d'intention institutionnelles (LOI).",
-    ctaPrimary: "Déposer une lettre d'intention (LOI)",
+      "Invitation adressée aux doyens d'université, aux directeurs de laboratoires de recherche (UMR CNRS), aux DPO et aux directeurs d'hôpital : demandez un briefing méthodologique pro bono de 30 minutes, ou établissez une convention de recherche empirique (LOI).",
+    ctaPrimary: "Demander un briefing de 30 minutes ou une convention (LOI)",
     ctaSecondary: "Télécharger la Plaquette Programme (PDF)",
     audienceHeading: "Public cible",
     audience: [
-      { label: "Universités", icon: Building2 },
-      { label: "Laboratoires (UMR CNRS)", icon: Users },
-      { label: "Hôpitaux (CHU)", icon: Hospital },
-      { label: "Collectivités", icon: Landmark },
+      { label: "Doyens d'université", icon: Building2 },
+      { label: "Directeurs de laboratoires (UMR CNRS)", icon: Users },
+      { label: "DPO", icon: ShieldCheck },
+      { label: "Directeurs d'hôpital", icon: Hospital },
     ],
     modulesEyebrow: "Séminaire doctrinal · 6 heures · base non commerciale",
     modulesTitle: "4 modules : Article 4, Article 14, supervision humaine & preuve WaqfLedger",
@@ -133,7 +133,8 @@ const pageCopy = {
     langLabel: "Interface language",
     back: "Back to Observatory",
     banner:
-      "Doctrinal seminars · Executive briefings · Scientific cooperation — public-interest mission",
+      "Doctrinal seminars · 30-minute methodological briefing · Research convention (LOI)",
+    brandLine: "Doctrinal Seminars",
     navModules: "Curriculum",
     navTrust: "Trust marks",
     navBook: "Letter of intent",
@@ -141,17 +142,17 @@ const pageCopy = {
     badge:
       "Public-interest mission — no consulting fees and no commercial training rates",
     title:
-      "Doctrinal Seminars, Executive Briefings & Scientific Cooperation (Public-Interest Mission)",
+      "Doctrinal Seminars & Institutional Research Briefings (Public-Interest Mission)",
     subtitle:
-      "Briefings and methodological workshops conducted on a strictly non-commercial basis for universities, research laboratories (CNRS joint research units), university hospitals, and municipalities, under empirical research protocols and institutional letters of intent (LOI).",
-    ctaPrimary: "Submit an institutional letter of intent (LOI)",
+      "An invitation to University Deans, Research Laboratory Directors (UMR CNRS), DPOs, and Hospital Directors to request a 30-minute pro-bono methodological briefing or to establish an empirical research convention (LOI).",
+    ctaPrimary: "Request a 30-minute briefing or a research convention (LOI)",
     ctaSecondary: "Download Programme Brochure (PDF)",
     audienceHeading: "Target audience",
     audience: [
-      { label: "Universities", icon: Building2 },
-      { label: "Research laboratories (UMR CNRS)", icon: Users },
-      { label: "University hospitals (CHU)", icon: Hospital },
-      { label: "Municipalities", icon: Landmark },
+      { label: "University Deans", icon: Building2 },
+      { label: "Research Laboratory Directors (UMR CNRS)", icon: Users },
+      { label: "DPOs", icon: ShieldCheck },
+      { label: "Hospital Directors", icon: Hospital },
     ],
     modulesEyebrow: "Doctrinal seminar · 6 hours · non-commercial basis",
     modulesTitle: "4 modules: Article 4, Article 14, human oversight & WaqfLedger proof",
@@ -235,7 +236,8 @@ const pageCopy = {
     langLabel: "Idioma de la interfaz",
     back: "Volver al Observatorio",
     banner:
-      "Seminarios doctrinales · Briefings de dirección · Cooperación científica — misión de interés general",
+      "Seminarios doctrinales · Briefing metodológico de 30 minutos · Convenio de investigación (LOI)",
+    brandLine: "Seminarios Doctrinales",
     navModules: "Currículo",
     navTrust: "Referencias",
     navBook: "Carta de intención",
@@ -243,17 +245,17 @@ const pageCopy = {
     badge:
       "Misión de interés general — sin honorarios de consultoría ni tarifas de formación",
     title:
-      "Seminarios Doctrinales, Briefings de Dirección y Cooperación Científica (Misión de Interés General)",
+      "Seminarios Doctrinales y Orientación Institucional",
     subtitle:
-      "Briefings y talleres metodológicos realizados de forma estrictamente no comercial para universidades, laboratorios de investigación (UMR CNRS), hospitales universitarios (CHU) y municipios, en el marco de protocolos de investigación empírica y cartas de intención institucionales (LOI).",
-    ctaPrimary: "Presentar una carta de intención (LOI)",
+      "Invitación a decanos de universidad, directores de laboratorios de investigación (UMR CNRS), DPO y directores de hospital para solicitar un briefing metodológico pro bono de 30 minutos o establecer un convenio de investigación empírica (LOI).",
+    ctaPrimary: "Solicitar un briefing de 30 minutos o un convenio (LOI)",
     ctaSecondary: "Descargar el Folleto del Programa (PDF)",
     audienceHeading: "Público objetivo",
     audience: [
-      { label: "Universidades", icon: Building2 },
-      { label: "Laboratorios (UMR CNRS)", icon: Users },
-      { label: "Hospitales (CHU)", icon: Hospital },
-      { label: "Municipios", icon: Landmark },
+      { label: "Decanos de universidad", icon: Building2 },
+      { label: "Directores de laboratorio (UMR CNRS)", icon: Users },
+      { label: "DPO", icon: ShieldCheck },
+      { label: "Directores de hospital", icon: Hospital },
     ],
     modulesEyebrow: "Seminario doctrinal · 6 horas · base no comercial",
     modulesTitle: "4 módulos: Artículo 4, Artículo 14, supervisión humana y prueba WaqfLedger",
@@ -394,7 +396,7 @@ export default function AteliersJuridiquesPage() {
               ← {t.back}
             </Link>
             <p className="mt-1 truncate text-xs text-slate-500">
-              {BRAND.institute} · Ateliers Juridiques
+              {BRAND.institute} · {t.brandLine}
             </p>
           </div>
           <nav
