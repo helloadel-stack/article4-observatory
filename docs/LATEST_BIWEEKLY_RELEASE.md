@@ -1,6 +1,6 @@
 # Latest bi-weekly Observatory release
 
-Generated: 2026-11-01
+Generated: 2026-11-10
 Registry: A4I-Observatoire-2026
 Canon: `SHA-256(Metadata || Annex III Matrix || Oversight Log)`
 
@@ -45,7 +45,7 @@ These figures are computed from `OBSERVATORY_DATA`. The homepage explorer, CSV e
 ## LinkedIn — Français
 
 ```
-Observatoire Article 4 — mise à jour bi-hebdomadaire (2026-11-01).
+Observatoire Article 4 — mise à jour bi-hebdomadaire (2026-11-10).
 
 Le corpus public et académique compte désormais 15 systèmes.
 
@@ -66,7 +66,7 @@ https://article4institute.org
 ## LinkedIn — English
 
 ```
-Article 4 Observatory — bi-weekly update (2026-11-01).
+Article 4 Observatory — bi-weekly update (2026-11-10).
 
 The public and academic benchmark now tracks 15 systems.
 
@@ -87,7 +87,7 @@ https://article4institute.org
 ## X (Twitter) thread
 
 ```
-1/ Article 4 Observatory, 2026-11-01. The 2026 public and academic AI benchmark now tracks 15 systems. Two verified records join the corpus.
+1/ Article 4 Observatory, 2026-11-10. The 2026 public and academic AI benchmark now tracks 15 systems. Two verified records join the corpus.
 
 2/ A4I-OBS-2026-013 ANS (France): AI medical-device conformity audit and HDS triage. Annex III §2/3, high-risk. SecNumCloud / HDS-certified. Verified on WaqfLedger.
 
